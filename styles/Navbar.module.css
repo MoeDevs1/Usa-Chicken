@@ -1,0 +1,187 @@
+.container {
+    height: 100px;
+    padding: 0px 50px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    font-family: 'Montserrat';
+  }
+  
+  .logo {
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo:hover {
+    transform: scale(1.1);
+  }
+  
+  .item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .item:nth-child(2) {
+    flex: 3;
+  }
+  
+  .item:last-child {
+    justify-content: flex-end;
+  }
+  
+  .callbutton {
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .texts {
+    margin-left: 20px;
+    color: white; 
+  }
+  
+  .texts:first-child {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .texts:last-child {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .list {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: white;
+    margin-left: -80px;
+  }
+  
+  .listItem {
+    padding: 0;
+    margin: 0 1rem;
+    display: inline-block;
+    margin: 21px;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: fit-content;    
+    padding: 10px;
+    background-color: white;
+    display: none;
+    z-index: 999;
+  }
+  
+  .listItem:hover > .dropdown {
+    display: block;
+  }
+
+  .dropdownItem {
+    margin: 10px;
+    font-weight: 500;
+  }
+  
+  .listItem:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    
+  }
+  
+  .sublist {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    width: 150px;
+    padding: 0;
+    background-color: black;
+    list-style: none;
+    z-index: 999;
+  }
+  
+  .sublist li {
+    margin: 10px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .sublist li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .listItem:hover .sublist {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cart {
+    position: relative;
+  }
+  
+  .counter {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: red;
+  }
+
+  .cartSeparator {
+    margin: 0 10px; /* or adjust the margin as needed */
+    color: #fff; /* or any other color you want */
+  }
+
+  /* .callbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.callbutton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+} */
+
+  
+  @media screen and (max-width:480px) {
+    .item:nth-child(2) {
+      display: none;
+    } 
+  
+    .item:nth-child(1) {
+      flex: 3;
+    }
+  }
+

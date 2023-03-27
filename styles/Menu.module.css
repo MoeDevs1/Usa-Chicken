@@ -1,0 +1,44 @@
+.list {
+    list-style: none; /* remove bullet points */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .listItem {
+    flex-basis: 20%; /* set width of each item */
+    text-align: center;
+    padding: 10px; /* add some padding to the items */
+    margin: 2px;    
+    letter-spacing: -0.5px; /* adjust spacing between the letters */
+    word-spacing: 0.25em; /* reduce space between words */
+}
+  
+  .listItem:hover  {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .featuredContainer {
+    position: relative;
+    width: 100%;
+    height: 720px; /* set the height of the container */
+  }
+
+  .buttonContainer {
+    position: absolute;
+    bottom: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.button {
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 4rem;
+    font-weight: bold;
+    border-radius: 50px;
+}

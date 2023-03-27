@@ -1,0 +1,56 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #222;
+  color: white;
+}
+
+.column {
+  flex-basis: 25%;
+  min-width: 300px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.socials {
+  display: flex;
+}
+
+.icon {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.item {
+  margin-bottom: 5px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.icon {
+  width: 20px;
+  margin-right: 5px;
+}

@@ -1,0 +1,44 @@
+.container{
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc{
+    font-size: 24px;
+    color: grey;
+    width: 70%;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.orderNow{
+    font-size: 240px;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red; /* Change this to the desired color */
+        cursor: pointer;
+      }
+
+@media screen and (max-width: 480px) {
+   .title{
+    text-align: center;
+   } 
+
+   .desc{
+    width: 90%;
+    text-align: center;
+   }
+}
