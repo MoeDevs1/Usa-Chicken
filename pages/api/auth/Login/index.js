@@ -12,13 +12,14 @@ export default async function login(req, res) {
   // Check if email exists in the database
   const user = await Users.findOne({ email });
   if (!user) {
-    return res.json({ status: 'Not able to find user' });
+    return res.status(401).json({ error: "User not found" });
   }
 
   // Compare the password with the hashed password in the database
   const isPasswordMatch = await bcrypt.compare(password, user.password);
   if (!isPasswordMatch) {
-    return res.json({ status: 'Incorrect password' });
+    return res.status(404).json({ error: "lol" });
+
   }
 
   // Return a success message with the user's ID

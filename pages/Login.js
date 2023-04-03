@@ -1,103 +1,187 @@
-
-import React from 'react'
+import React from 'react';
 import styles from '../styles/Login.module.css';
-import Image from 'next/image'
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { BsEyeSlashFill, BsEyeFill } from 'react-icons/bs';
+import { AiFillUnlock } from 'react-icons/ai';
+import { AiFillLock } from 'react-icons/ai';
+import { setCookie } from 'nookies';
 
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { parseCookies } from 'nookies';
+
 
 const Login = () => {
-
-    const router = useRouter();
-    const { data: session } = useSession(); // check if the user is signed in
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-
-    const handleSignIn = async (e) => {
-        e.preventDefault();
-      
-        try {
-            const response = await axios.post('/api/auth/Login', { email, password });
-            console.log(response.data);
-        
-            if (await response.data.status == 'success') {
-            //   await signIn(); // Update the session and authenticate the user
-              router.push('/Signup');
-              console.log("HERE")
-            }
-            console.log("HERE1")
-          } catch (error) {
-            console.error(error);
-            if (error.response && error.response.status === 401) {
-              router.push('/login');
-            }
-          }
-        };
-    
-    
-    
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+  const [error, setError] = useState('');
+  const [userError, setUserError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // declare setLoading with initial value of false
+  const [rememberPassword, setRememberPassword] = useState(false); // add state for checkbox
 
 
-    return (
 
 
-        <section className={styles.Container}>
-
-            <div className={styles.formLogin}>
-                <div className={styles.formContent}>
-                    <div className={styles.head}>
-
-                        <Image src="/img/lol.png" alt="" width="222" height="222" />
 
 
-                        <header>Welcome To Usa Chicken</header>
-                    </div>
 
-                    <div className={styles.form}>
-                        
-                        
-                        
-                        
-                        <div className={styles.inputFeild}>
-                            <input type="email" placeholder="Email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        </div>
-
-                        <div className={styles.inputFeild2}>
-                            <input type="password" placeholder="Password" className="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        </div>
+  useEffect(() => {
+    const { email: emailCookie, password: passwordCookie } = parseCookies();
+    if (emailCookie && passwordCookie) {
+      setEmail(emailCookie);
+      setPassword(passwordCookie);
+      setRememberPassword(true);
+    }
+  }, []);
 
 
-                        <div className={styles.Container2} >
-                            <label>  <input   type="checkbox" className={styles.RemeberPassword}/> Remeber Password</label>
-                        <a href="#" className={styles.forgotPasswordLink}> Forgot Password?</a>
 
+  const handleSignup = async () => {
+    router.push('/Signup');
+  }
 
-                        </div>
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    if (!password) {
+      setError("Please input password");
+      return;
+    }
+  
+    try {
+      const response = await axios.post('/api/auth/Login', { email, password });
+      console.log(response.data);
+  
+      if (response.data.status === 'success') {
+        if (rememberPassword) {
+          setCookie(null, 'email', email, { path: '/' });
+          setCookie(null, 'password', password, { path: '/' });
+        } else {
+          // if the "Remember me" checkbox is unchecked, remove the cookies for email and password
+          setCookie(null, 'email', '', { path: '/', expires: new Date(0) });
+          setCookie(null, 'password', '', { path: '/', expires: new Date(0) });
+        }
+        router.push('/Signup');
+      };
+    } catch (error) {
+      console.log(error)
+  
+      if (error.response && error.response.status === 401) {
+        setUserError("Please confirm your email");
+      } else if (error.response && error.response.status === 404) {
+        setPasswordError("Please confirm your email");
+      }
+    };
+  }
+  
 
-                        <div>
-                            <button className={styles.loginButton} onClick={handleSignIn}>Log In</button>
-
-                        </div>
-
-                        <div>
-
-                            <button className={styles.signUp}>Sign Up</button>
-                        </div>
-
-                        <div className={styles.or}>Or</div>
-
-                        <div>
-                            <button className={styles.GoogleButton} onClick={() => signIn('google', { callbackUrl: '/dashboard' })}>Sign up with Google  <Image src="/img/google-logo-9808.png"
-                                alt="" width="14" height="14" />
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
+  return (
+    <section className={styles.Container}>
+      <div className={styles.formLogin}>
+        <div className={styles.formContent}>
+          <div className={styles.head}>
+            
+            <Image src="/img/lol.png" alt="" width="222" height="222" />
+          </div>
+          <div className={styles.form}>
+            <div className={`${styles.inputFeild2}  ${!email && error && styles.errorInput}`}>
+              <input
+                type="email"
+                placeholder="Email"
+                className={` ${styles.inout}`}
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setUserError('');
+                }}
+              />
+              {!email && error && <div className={styles.errorMessage}>Input Email</div>}
+              {email && userError && <div className={styles.errorMessage}>User does not  exisit</div>}
             </div>
-        </section>
-    )
+            <div className={`${styles.inputFeild2} ${!password && error && styles.errorInput}`}>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                className={`${styles.inout} password`}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setPasswordError('');
+                }}
+              />
+              {passwordError && <div className={styles.errorMessage1}>That's not the right password</div>}
+              {!password && error && <div className={styles.errorMessage1}>Password is required</div>}
+              <span className={styles.showPassword} onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <BsEyeSlashFill /> : <BsEyeFill />}
+              </span>
+            </div>
+            <div className={styles.Container2}>
+           
+
+
+            <label className={styles.rememberPasswordLabel}>
+            <input
+  type="checkbox"
+  className={styles.rememberPasswordCheckbox}
+  checked={rememberPassword}
+  onChange={(e) => setRememberPassword(e.target.checked)}
+/>
+          Remeber Password
+        </label>
+
+
+
+
+           
+              <a href="#" className={styles.forgotPasswordLink}>
+                {' '}
+                Forgot Password?</a>
+            </div>
+
+            <div>
+              <button className={styles.loginButton} onClick={handleSignIn}>
+
+                {loading ? 'Signing up...' : 'LOG IN'} {/* use loading state here */}
+                <AiFillLock className={styles.icon}/>
+
+              </button>
+
+            </div>
+
+            <div>
+              
+              
+              
+              <button
+
+
+                className={styles.signUp} onClick={handleSignup}>Sign Up <AiFillUnlock className={styles.icon} />
+
+              </button>
+
+            </div>
+            <div className={styles.line}></div>
+           
+           
+            <div>
+              <button className={styles.GoogleButton} onClick={() => signIn('google', { callbackUrl: '/Signup' })}>  <Image src="/img/google-logo-9808.png"
+                alt="" width="14" height="14" />Continue with Google 
+              </button>
+            
+            
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
+
 
 export default Login;

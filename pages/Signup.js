@@ -1,10 +1,14 @@
- import styles from '../styles/Signup.module.css';
+
+import styles from '../styles/Signup.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useSession, signIn } from 'next-auth/react';
 import axios from 'axios';
 import { useState } from 'react';
+import { BiLogIn } from 'react-icons/bi';
+import { FcGoogle } from 'react-icons/fc';
 
+import { BiError } from 'react-icons/bi';
 
 const url = 'http://localhost:3000/api/auth/upSign'
 
@@ -25,9 +29,14 @@ const Signup = () => {
   const formattedPhone = parseInt(phone.replace(/\D/g, '')); // use parseInt to convert phone to an integer
   const [emailExistsError, setEmailExistsError] = useState(''); // added state variable for email exists error
   const [isGoogleSignup, setIsGoogleSignup] = useState(false); // define the variable
-  
 
-  
+
+
+
+
+
+
+
 
   function isValidEmail(email) {
     // regular expression to check if the email is valid
@@ -38,11 +47,14 @@ const Signup = () => {
 
 
 
+  const alreadyMemeber = async () => {
+
+    router.push('/Login');
+  }
 
 
-  
 
-  
+
 
   const formatPhoneNumber = (phoneNumber) => {
     let formattedNumber = phoneNumber.replace(/[^\d]/g, '');
@@ -68,17 +80,17 @@ const Signup = () => {
   const handleGoogleSignup = async () => {
     setIsGoogleSignup(true);
     await signIn('google', { callbackUrl: '/Login' }); // specify the callback URL to redirect to after login
-}
-
-
-const findOneByEmail = async (email) => {
-  try {
-    const res = await axios.post(`${url}?email=${email}`);
-    return res.data;
-  } catch (error) {
-    console.log(error);
   }
-};
+
+
+  const findOneByEmail = async (email) => {
+    try {
+      const res = await axios.post(`${url}?email=${email}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
 
@@ -86,23 +98,23 @@ const findOneByEmail = async (email) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     try {
-    
-  
+
+
       const existingUser = await findOneByEmail(email);
       if (existingUser) {
-       
+
 
         setEmailExistsError('User with this email already exists');
         setLoading(false);
         return;
-      
+
       }
-     
-  
+
+
       const resp = await axios.post(url, {
-        firstName: firstName, 
+        firstName: firstName,
         lastName: lastName,
         phone: formattedPhone,
         email: email,
@@ -118,7 +130,7 @@ const findOneByEmail = async (email) => {
     }
     setLoading(false);
   };
-  
+
 
 
   return (
@@ -128,46 +140,56 @@ const findOneByEmail = async (email) => {
 
       <div className={styles.formLogin}>
         <div className={styles.head}>
-          <Image src="/img/lol.png" alt="" width="222" height="222" />
-          <header>Welcome To Usa Chicken</header>
+       
+        <Image src="/img/lol.png" alt="" width="222" height="222" />
+
+          <header></header>
+       
         </div>
 
-        <div className={`${styles.inputField} ${error && !firstName && styles.errorInput}`}>
+        <div className={styles.namesContainer  }>
+       
+       
+        <div className={`${styles.inputField1}  ${error  && styles.errorInput}`}>
           <input
-            type="text"
+
+           type="text"
             name="firstName"
+            
             placeholder="*First Name"
-            className={styles.input}
+            className={` ${styles.firstName}`}
             value={firstName}
             onChange={(e) => setFirst(e.target.value)}
           />
-          {error && !firstName && <div className={styles.errorMessage}>Please enter your first name</div>}
+          {error  && <div className={styles.errorMessage}>Please enter your first name</div>}
         </div>
 
-
-
-
-
-
-
-        <div className={`${styles.inputField} ${error && !lastName && styles.errorInput}`}>
+        <div className={`${styles.inputField1} ${error && !lastName && styles.errorInput}`}>
           <input
             type="text"
             name="last Name"
-            placeholder=" Last Name"
-            className={styles.input}
+            placeholder="*Last Name"
+            className={`${styles.lastName}`}
             value={lastName}
             onChange={(e) => setLast(e.target.value)}
           />
-          {error && !lastName && <div className={styles.errorMessage}>Please enter your last name</div>}
+          {error && !lastName && <div className={styles.errorMessage1}>Please enter your last name</div>}
+       
+       
+          </div>
+
         </div>
+
+
+
+
 
 
         <div className={`${styles.inputField} ${error && (!phone || phone.length !== 14) && styles.errorInput}`}>
           <input
             type="tel"
             name="phonenumber"
-            placeholder="Phone Number"
+            placeholder="*Phone Number"
             className={styles.input}
             value={phone}
             onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
@@ -180,29 +202,37 @@ const findOneByEmail = async (email) => {
           )}
         </div>
 
-     
-     
-     
-     
-     
-       <div className={`${styles.inputField} ${error&& (!email || setEmailExistsError || !isValidEmail(email)) && styles.errorInput}`}>
-       <input
-  type="email"
-  name="email"
-  placeholder="*Email"
-  className={styles.input}
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  onFocus={() => setEmailExistsError('')}
-/>
-  {error && !email && <div className={styles.errorMessage}>Please enter your email</div>}
- 
-  {error && email && !isValidEmail(email) && <div className={styles.errorMessage}>Please enter a valid email</div>}
-  {error &&!!isValidEmail(email) && email && setEmailExistsError && <div className={styles.errorMessage}>User different email</div>}
 
-</div>
 
- 
+
+
+        <div className={`${styles.inputField} ${error && (!email || (setEmailExistsError && email === confirmEmail) || (!isValidEmail(email))) && styles.errorInput}`}>
+          <input
+            type="email"
+            name="email"
+            placeholder="*Email Address"
+            className={styles.input}
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setEmailExistsError(false);
+            }}
+            onBlur={async () => {
+              if (email !== confirmEmail && isValidEmail(email)) {
+                const existingUser = await findOneByEmail(email);
+                if (existingUser) {
+                  setEmailExistsError(true);
+                }
+              }
+            }}
+          />
+          {error && !email && <div className={styles.errorMessage}>Please enter your email address</div>}
+          {error && email && setEmailExistsError && email === confirmEmail && (<div className={styles.errorMessage}>User with this email already exists</div>)}
+          {error && email && !isValidEmail(email) && <div className={styles.errorMessage}>Please enter a valid email address</div>}
+        </div>
+
+
+
 
 
         <div className={`${styles.inputField} ${error && (!confirmEmail || confirmEmail !== email) && styles.errorInput}`}>
@@ -210,7 +240,7 @@ const findOneByEmail = async (email) => {
           <input
             type="email"
             name="confirmEmail"
-            placeholder="Confirm Email"
+            placeholder="*Confirm Email"
             className={styles.input}
             value={confirmEmail}
             onChange={(e) => setCnfrmEmail(e.target.value)}
@@ -226,15 +256,15 @@ const findOneByEmail = async (email) => {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="*Password"
             className={styles.input}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
 
 
           />
-          {error && !password && <div className={styles.errorMessage}>Please enter your password</div>}   
-           {error && password && password.length<5 &&<div className={styles.errorMessage}>Password must be longer then 5</div>}
+          {error && !password && <div className={styles.errorMessage}>Please enter your password</div>}
+          {error && password && password.length < 5 && <div className={styles.errorMessage}>Password must be longer then 5</div>}
 
 
         </div>
@@ -243,7 +273,7 @@ const findOneByEmail = async (email) => {
           <input
             type="password"
             name="confirmPassword"
-            placeholder="Confirm Password"
+            placeholder="*Confirm Password"
             className={styles.input}
             value={confirmPassword}
             onChange={(e) => setCnfrmPassword(e.target.value)}
@@ -251,23 +281,35 @@ const findOneByEmail = async (email) => {
 
           />
           {error && !confirmPassword && <div className={styles.errorMessage}>Please confirm your password</div>}
-          {error && confirmPassword!=password && <div className={styles.errorMessage}>Please match your password</div>}
+          {error &&confirmPassword&& confirmPassword != password && <div className={styles.errorMessage}>Please match your password</div>}
 
- 
+
         </div>
 
 
 
+        <div className={styles.linkContainer}>
+       
+       
+        <span  className={styles.signInText} class="signup-text">Already have an account?{"   "}&nbsp;</span>
+        <a  className={styles.signInLink}  onClick={alreadyMemeber} href="#" class="signup-link">Sign In</a>
+
+</div>
+
 
         <div className={styles.buttonContainer}>
           <button className={styles.signupButton} onClick={handleSignup}>
+
             {loading ? 'Signing up...' : 'Sign Up'} {/* use loading state here */}
+            <BiLogIn className={styles.icon} />
+
           </button>
 
 
 
-          <button className={styles.GoogleButton} onClick={handleGoogleSignup}>Sign up with Google  <Image src="/img/google-logo-9808.png"
-            alt="" width="14" height="14" />
+          <button className={styles.GoogleButton} onClick={handleGoogleSignup}>Sign up with Google    <FcGoogle className={styles.google} />
+
+
           </button>
         </div>
 
