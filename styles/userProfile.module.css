@@ -1,46 +1,412 @@
-
 .parentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+}
+.container1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  height: 500px;
+  padding: 30px;
+
+background-color: white; /* Updated background color */
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 120px;
+  border-radius: 4px;
+  margin-right: 2px;
+  margin-top: 100px;
+
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  height: 500px;
+  padding: 30px;
+  border-radius: 5px;
+  background-color: white; /* Updated background color */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+
+}
+
+
+.input {
+  padding: 1em 20em 1em 1em; /* Reduced padding on the left side to left-align the text */
+  margin-bottom: 20px;
+  text-align:left;
+    border-radius: 8px;
+  background-color: #F7F7F7; /* Updated background color */
+}
+
+.inputText {
+  padding: 1em 2em 1em 1em; /* Reduced padding on the left side to left-align the text */
+  color: #333333; /* Updated text color */
+}
+
+
+.icon {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.moreContent {
+  display: none;
+  flex-direction: column;
+}
+
+/* Media query for screens with a maximum width of 900px */
+/* @media only screen and (max-width: 1000px) {
+  .parentContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container1 {
+    height: auto;
+    width: 100%;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    max-width: 800px;
     display: flex;
+    justify-content: center;
+  }
+
+  .container2 {
+    height: auto;
+    margin-left: 40px;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .input {
+    padding: 1em 5em;
+  }
+
+  .more {
+    display: block;
+  }
+
+  .moreContent {
+    display: none;
     margin-top: 20px;
   }
-  
-  .container1 {
+
+  .moreContent.show {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    width: 200px;
-    height: 700px;
-    padding: 30px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
-  
-.container2{
-margin-left:20px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+} */
+.SecurityContainer2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  height: 500px;
+  padding: 30px;
+  border-radius: 4px;
+	background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
 
-width: 700px;
-height: 700px;
-padding: 30px;
-border-radius: 10px;
-background-color: white;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.passwordContainer {
+  display: flex;
+  align-items: row;
+  margin-top: 30px;
+  
+  margin-bottom: 10px;
+}
+
+.emailContainer {
+  display: flex;
+  align-items: row;
+margin-bottom: 10%;
+
+
+
+}
+
+.inputFieldPassword {
+  height: 48px;
+  width: 300px;
+  padding: 10px; 
+  font-size: 16px;
+     margin-right: 20px;
+     
+     border-radius: 8px;
+     border: 2px solid #ccc; 
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+     transition: all 0.2s ease-in-out; 
+     
+
+}
+.inputFieldPassword:focus {
+  border-color: #6bb7f2; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5); 
+  background-color: #fff; 
+  outline: none; 
+}
+.inputFieldNewEmail {
+  margin-bottom: -3px;
+  height: 48px;
+  width: 300px;
+  padding: 10px; 
+  font-size: 16px;
+    margin-right: 70px;
+
+
+    border-radius: 8px;
+    border: 2px solid #ccc; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: all 0.2s ease-in-out; 
+    
+  }
+
+  .inputFieldNewEmail:focus {
+    border-color: #6bb7f2; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5); 
+    background-color: #fff; 
+    outline: none; 
+    
+  }
+
+.inputFieldOldPassword {
+  height: 48px;
+width: 300px;
+padding: 10px;
+font-size: 16px;
+    margin-right: 20px;
+     margin-bottom: -10px;
+
+    border-radius: 8px;
+border: 2px solid #ccc; 
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+transition: all 0.2s ease-in-out; 
+
+
+}
+
+
+
+
+.inputFieldOldPassword:focus {
+  border-color: #6bb7f2; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5); 
+  background-color: #fff; 
+  outline: none; 
+  
+  
+}
+
+
+
+
+.inputOldFieldEmail {
+  height: 48px;
+width: 300px;
+padding: 10px;
+  font-size: 16px;
+    margin-right: 20px;
+font: #007bff;
+color: #007BFF;
+
+    border-radius: 8px;
+border: 2px solid #ccc; 
+box-shadow: 0 2px 4px rgba(11, 100, 72, 0.1); 
+transition: all 0.2s ease-in-out; 
+
+
+
+}
+
+.inputOldFieldEmail:focus {
+  border-color: #6bb7f2; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5); 
+  background-color: #fff; 
+  outline: none; 
+  
 }
 
 
 
 
 
+.buttonContainer {
+  margin-top: 45px;
+  margin-left: -30px;
+
+}
+
+.button {
+  display: flex;
+  width: 113%;
+  max-width: 700px;
+  background-color: white;
+  border-color: white;
+  border-bottom: 1px solid #ddd;
+  border: #007bff;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.6em 2em;
+  margin-bottom: 1px;
+}
+
+.button:focus,
+.button:active {
+  outline: none;
+  background-color: #007fff;
+  color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.cancelButton{
+  width: 70px;
+  text-transform: uppercase;
+  font-weight: bold;
+padding: -10px;
+  height: 40px;
+  background-color: #007bff;
+  color: #fff;
+  margin-right: 4px;
+  border: #007bff;
+  border-radius: 5px;
+
+}
 
 
 
+.updateButton {
+  width: 70px;
+  height: 40px;
+  background-color: #FF1744;
+  color: #fff;
+  border: #007bff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+font-weight: bold;
+}
+
+
+.userProfileLogo{
+
+display: flex;
+justify-content: center;
+}
+
+.logoImage{
+
+border-radius: 30px;
+
+border: 5px solid rgb(49, 10, 10);
+background-color: #007BFF;
+padding-bottom: 2px;
+padding-top: 2px;
+padding-left: 5px;
+}
+
+
+.emailTitle {
+  font-size: 15px;
+  margin-bottom: 31px;
+  margin-top: 40px;
+
+  
+  font-family: "Open Sans", sans-serif ;
+  font-weight: bold;
+ 
+  text-transform: uppercase;
+  color: #1e1e1e;
+
+  letter-spacing: 4px; /* Adds 2 pixels of space between letters */
+
+  display: flex;
+  justify-content: center;
+  color:#007BFF /* Add this line to set the placeholder text color to red */
+
+
+}
+.Title {
+  font-size: 15px;
+  margin-top: -4px;
+  margin-bottom: 35px;
+ font-family: "Open Sans", sans-serif ;
+  font-weight: bold;
+ 
+  text-transform: uppercase;
+
+  letter-spacing: 4px; /* Adds 2 pixels of space between letters */
+
+  display: flex;
+  justify-content: center;
+
+  color:#007BFF /* Add this line to set the placeholder text color to red */
+
+}
+
+
+.Icon{
+margin-right: 5px;
+height: 17px;
+width: 17px;
+}
+
+.nameText{
+  margin-top: 30px;
+  margin-left: -13px;
+  margin-bottom: -10px;
+  font-family: "Open Sans", sans-serif ;
+font-weight: bold;
+letter-spacing: 4px; /* Adds 2 pixels of space between letters */
+
+}
+
+
+.topButtonContainer{
+  display: flex;
+  align-items: row;
+
+  margin-top: 47px;
+margin-left: 500px;
+
+}
 
 
 
-  .text {
-    margin-top: 2px;
-  }
+.inputFieldOldPassword::placeholder {
+  font-family: "Open Sans", sans-serif ;
+font-weight: lighter;
+letter-spacing: 3px; /* Adds 2 pixels of space between letters */}
+
+.inputFieldPassword::placeholder {
+  font-family: "Open Sans", sans-serif ;
+font-weight: lighter;
+letter-spacing: 3px; /* Adds 2 pixels of space between letters */
+}
+.inputOldFieldEmail::placeholder {
+  font-family: "Open Sans", sans-serif ;
+font-weight: lighter;
+letter-spacing: 3px; /* Adds 2 pixels of space between letters */
+}
+.inputFieldOldPassword::placeholder {
+  font-family: "Open Sans", sans-serif ;
+font-weight: lighter;
+letter-spacing: 3px; /* Adds 2 pixels of space between letters */
+}
+.inputFieldNewEmail::placeholder {
+ 
+  font-family: "Open Sans", sans-serif ;
+font-weight: lighter;
+letter-spacing: 3px; /* Adds 2 pixels of space between letters */
+
+}

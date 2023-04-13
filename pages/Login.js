@@ -8,9 +8,8 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 import { BsEyeSlashFill, BsEyeFill } from 'react-icons/bs';
 import { AiFillUnlock } from 'react-icons/ai';
 import { AiFillLock } from 'react-icons/ai';
-import { setCookie } from 'nookies';
 
-import { parseCookies } from 'nookies';
+import { parseCookies, setCookie, destroyCookie } from 'nookies';
 
 
 const Login = () => {
@@ -23,28 +22,26 @@ const Login = () => {
   const [userError, setUserError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false); // declare setLoading with initial value of false
-  const [rememberPassword, setRememberPassword] = useState(false); // add state for checkbox
-
-
-
-
-
+  const [rememberMe, setRememberMe] = useState(false);
 
 
   useEffect(() => {
-    const { email: emailCookie, password: passwordCookie } = parseCookies();
-    if (emailCookie && passwordCookie) {
-      setEmail(emailCookie);
-      setPassword(passwordCookie);
-      setRememberPassword(true);
-    }
+    const cookies = parseCookies();
+    const rememberMeCookie = cookies.rememberMe || '';
+    const [savedEmail, savedPassword] = rememberMeCookie.split(':');
+    setEmail(savedEmail || '');
+    setPassword(savedPassword || '');
+    setRememberMe(!!rememberMeCookie);
   }, []);
+
+
 
 
 
   const handleSignup = async () => {
     router.push('/Signup');
   }
+
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -54,20 +51,19 @@ const Login = () => {
     }
   
     try {
-      const response = await axios.post('/api/auth/Login', { email, password });
+      const response = await axios.post('http://localhost:3000/api/auth/Login', { email, password, rememberMe });
       console.log(response.data);
   
-      if (response.data.status === 'success') {
-        if (rememberPassword) {
-          setCookie(null, 'email', email, { path: '/' });
-          setCookie(null, 'password', password, { path: '/' });
-        } else {
-          // if the "Remember me" checkbox is unchecked, remove the cookies for email and password
-          setCookie(null, 'email', '', { path: '/', expires: new Date(0) });
-          setCookie(null, 'password', '', { path: '/', expires: new Date(0) });
-        }
-        router.push('/Signup');
-      };
+      if (rememberMe) {
+        setCookie(null, 'rememberMe', `${email}:${password}`, {
+          maxAge: 30 * 24 * 60 * 60, // 30 days
+          path: '/',
+        });
+      } else {
+        destroyCookie(null, 'rememberMe');
+      }
+  
+      router.push('/Signup');
     } catch (error) {
       console.log(error)
   
@@ -79,11 +75,15 @@ const Login = () => {
     };
   }
   
+  
 
   return (
     <section className={styles.Container}>
       <div className={styles.formLogin}>
         <div className={styles.formContent}>
+        
+        
+   
           <div className={styles.head}>
             
             <Image src="/img/lol.png" alt="" width="222" height="222" />
@@ -128,12 +128,11 @@ const Login = () => {
             <input
   type="checkbox"
   className={styles.rememberPasswordCheckbox}
-  checked={rememberPassword}
-  onChange={(e) => setRememberPassword(e.target.checked)}
+  checked={rememberMe}
+  onChange={(event) => setRememberMe(event.target.checked)}
 />
           Remeber Password
         </label>
-
 
 
 
