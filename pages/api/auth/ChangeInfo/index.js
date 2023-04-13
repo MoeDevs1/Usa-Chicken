@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       const { oldPassword, newPassword, confirmNewPassword } = req.body;
       const passwordMatch = await bcrypt.compare(oldPassword, user.password);
   
-      if (!passwordMatch) {
+      if (!passwordMatchgit) {
         return res.status(400).json({ message: 'Incorrect old password' });
       }
   
