@@ -1,19 +1,16 @@
-
 import dbConnect from "@/Utilities/mongo";
-import Users from "@/models/Users";
+import Users1 from "@/models/Users1";
 import bcrypt from "bcrypt";
-import { isEmailExists } from './index.js';
+import { v4 as uuidv4 } from "uuid";
 
+dbConnect();
 
 export default async function handler(req, res) {
   const { method } = req;
 
-
-  dbConnect();
-
   if (method === "GET") {
     try {
-      const signups = await Users.find();
+      const signups = await Users1.find();
       res.status(200).json(signups);
     } catch (error) {
       res.status(500).json(error);
@@ -21,15 +18,11 @@ export default async function handler(req, res) {
   }
 
   if (method === "POST") {
-   
-   
-   
-   
     try {
-      const { email, password,phone, confirmPassword, confirmEmail, firstName, lastName } = req.body;
+      const { email, password, phone, firstName, lastName } = req.body;
 
       // Check if email already exists
-      const userExists = await Users.findOne({ email });
+      const userExists = await Users1.findOne({ email });
       if (userExists) {
         return res.status(400).json({ error: "Email already exists" });
       }
@@ -48,48 +41,33 @@ export default async function handler(req, res) {
           .json({ error: "Password should be at least 5 characters long" });
       }
 
-      // Check if password and confirmPassword are the same
-      if (password !== confirmPassword) {
-        return res
-          .status(400)
-          .json({ error: "Password and confirm password do not match" });
-      }
-
-      // Check if email and confirmEmail are the same
-      if (email !== confirmEmail) {
-        return res
-          .status(400)
-          .json({ error: "Email and confirm email do not match" });
-      }
-
-      const hashedPassword = await bcrypt.hash(password, 3);
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      // Generate a unique userId
+      const userId = uuidv4();
 
       // Create new user
-      const newUser = await Users.create({
-       
+      const newUser = await Users1.create({
+        userId,
         firstName,
         lastName,
         phone,
         email,
         password: hashedPassword,
-        
       });
-      
 
-     
-
-      // Makes post from postman neater
+      // Return the newly created user
       const user = {
-        Email: newUser.Email,
-        phone: newUser.phone,
+        userId: newUser.userId,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
-        _id: newUser._id
+        phone: newUser.phone,
+        email: newUser.email,
       };
 
       res.status(201).json({ success: true, user });
     } catch (error) {
-      res.status(500).json({ error: 'Server error' });
+      res.status(500).json({ error: error.message });
     }
   }
 }

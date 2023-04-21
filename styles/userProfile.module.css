@@ -383,10 +383,6 @@ margin-left: 500px;
 
 
 
-.inputFieldOldPassword::placeholder {
-  font-family: "Open Sans", sans-serif ;
-font-weight: lighter;
-letter-spacing: 3px; /* Adds 2 pixels of space between letters */}
 
 .inputFieldPassword::placeholder {
   font-family: "Open Sans", sans-serif ;
@@ -409,4 +405,101 @@ letter-spacing: 3px; /* Adds 2 pixels of space between letters */
 font-weight: lighter;
 letter-spacing: 3px; /* Adds 2 pixels of space between letters */
 
+}
+
+.errorMessage {
+  color: red;
+  font-weight: 555;
+  margin-top: 5px;
+  display: inline-block;
+  /* add this line */
+  padding-left: 10px;
+  /* add this line */
+
+}
+
+.errorMessage1 {
+  color: red;
+  font-weight: 555;
+  margin-top: 15px;
+  margin-bottom: -20px;
+  display: inline-block;
+  /* add this line */
+  padding-left: 10px;
+  /* add this line */
+
+}
+.errorInput input {
+  border-color: red;
+
+}
+
+
+.popupContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+.popupContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 5rem;
+  border-radius: 1rem;
+}
+
+.popupMessage {
+  margin-top:50px ;
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif ;
+font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.popupButton {
+  background-color: #007BFF;
+  color: white;
+  margin-top: 20px;
+  text-transform: uppercase;
+font-size: 19px;
+  padding: .7rem 8rem;
+
+font-weight: bold;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  border: #007bff;
+
+}
+
+
+.check{
+  color:  rgb(45, 170, 45);
+  margin-bottom: -30px;
+  height: 50%;
+  width: 50%;
+}
+
+.text{
+  font-family: "Open Sans", sans-serif ;
+font-size: 15px;
+color: gray;
+font-weight: bold;
+}
+.popupButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
 }
