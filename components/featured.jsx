@@ -1,6 +1,7 @@
 import styles from "../styles/Featured.module.css";
 import Image from "next/legacy/image";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Featured = () => {
     const [index, setIndex] = useState(0)
@@ -8,7 +9,7 @@ const Featured = () => {
         "/img/store.png",
         "/img/fullmeal.jpeg",
         "/img/store.png"
-    ];
+        ];
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -25,7 +26,9 @@ const Featured = () => {
                     <Image src={img} alt="" layout='fill' objectFit='cover' />
                     <div className={styles.title}>USA Chicken & Biscuits</div>
                     <div className={styles.buttonContainer}>
+                    <Link href="/menu">
                         <button className={styles.button}>Order Now</button>
+                        </Link>
                     </div>
                 </div>
                 ))}

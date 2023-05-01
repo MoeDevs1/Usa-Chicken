@@ -1,4 +1,77 @@
-/* Add some css for the pizza list */
+.container{
+  background-color:  white;
+}
+
+.PizzaImg{
+  border-radius: 50%;
+}
+.formLabel {
+  font-size: .7em;
+  padding: 0.5em 0;
+}
+
+.formInput {
+  font-size: .7em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+
+.cateringButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  max-width: 100%;
+  margin: 2rem auto;
+  display: block;
+}
+
+.cateringButton:hover {
+  transform: scale(1.1);
+}
+
+.cateringcontainer {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.cateringimg {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.cateringform {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.orderTitle {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.cateringTitle {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+}
+
+.pizzaListContainer{
+
+}
+
 .pizzaList {
     display: flex;
     flex-wrap: wrap;
@@ -13,6 +86,10 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    word-wrap: break-word;
+    box-sizing: border-box;
+    flex-basis: 400px;
+    cursor: pointer;
   }
   
   .pizzaItem::before {
@@ -23,7 +100,6 @@
     width: 10px;
   }
   
-  /* Alternate the position of the pseudo-element using nth-child */
   .pizzaItem:nth-child(odd)::before {
     left: -10px;
   }
@@ -32,39 +108,12 @@
     right: -10px;
   }
   
-  /* Add some cool features using linear-gradient and transform */
   .pizzaItem:hover {
     transform: scale(1.1);
-  } /* Add a hover effect to the pizza item */
+  } 
+
   
-  /* Add a closing bracket for the pizzaItem class */
-
- /* Import some cool fonts from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
-
-/* Style the paragraph and title and the words on top with cool fonts and sizes */
-.paragraph {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 40px auto;
-  max-width: 800px;
-}
-
-.paragraph1 {
-  font-weight: 600;
-  color: #f00;
-}
-
-.paragraph2 {
-  font-weight: 700;
-  font-size: 36px;
-  text-align: center;
-}
-
-.paragraph3 {
-  font-weight: 300;
-}
 
 .top{
   font-family: 'Roboto Slab', serif;
@@ -73,25 +122,20 @@
   text-align: center;
 }
 
-/* Add some css for the content, words, and pictures */
 .content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  /* Use grid-template-areas to create a grid layout for the content */
-  grid-template-areas: 
-    "words picture2"
-    "picture1 picture1";
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .words {
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-gap: 20px;
-  /* Use text-align property to align the text to the left */
   text-align: left;
-  /* Use grid-area property to assign an area for the words */
   grid-area: words;
+  flex: 1;
 }
 
 .pictures {
@@ -101,7 +145,6 @@
   align-items: center;
 }
 
-/* Use grid-area property to assign an area for each picture */
 .picture1 {
   grid-area: picture1;
 }
@@ -109,3 +152,206 @@
 .picture2 {
   grid-area: picture2;
 }
+
+.top {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: black;
+  text-align: center;
+  animation: bounce 1s infinite;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Adds spacing between buttons */
+  
+}
+
+.button {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+.button:hover{
+  transform: scale(1.1);
+}
+
+.button:last-child{
+  cursor: disabled;
+}
+
+.menuParent {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.menuButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem; 
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 100%;
+}
+
+.menuButton:hover{
+  transform: scale(1.1);
+}
+
+.banner{
+  width: 100%;
+  height: 100%;
+}
+
+/*sign up divider css*/
+
+.left {
+  display: inline-block;
+  width: 50%;
+}
+
+.signupImg {
+  margin: 50px;
+  margin-left: 100px;
+  max-width: 100%;
+  display: block;
+}
+
+.right {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  text-align: left;
+}
+
+.totalButtons {
+  margin-top: 1em;
+}
+
+.buttoned {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+.buttoned:hover {
+  transform: scale(1.1);
+}
+
+.text{
+  margin-top: 150px;
+  width: 70%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+.scroller{
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  .pizzaListContainer {
+    overflow-x: scroll;
+    border: 1px solid whitesmoke;
+  }
+
+  .pizzaList {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-top: -50px;
+  }
+
+  
+
+  .pizzaItem {
+    width: 300px;
+    background-color: white;
+    padding: 0px;
+
+
+  }
+
+  .itemTwo{
+    background-color: white;
+    border-radius: 0%;
+
+  }
+  .pizzaItem:first-child {
+    margin-left: 15px;
+  }
+
+  .pizzaItem:hover {
+    transform: scale(1.1);
+  }
+
+  .pizzaImg {
+    border-radius: 30%;
+  }
+
+  .container {
+    background-color: white;
+  }
+
+  .banner {
+    width: 100%;
+    height: 300px;
+  }
+  
+  .buttons {
+    margin-top: 100px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+    font-size: 30px;
+    padding: 12px;
+    margin-bottom: 40px;
+
+  }
+
+  .menuParent {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .menuButton {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #8B0000;
+  }
+}
+

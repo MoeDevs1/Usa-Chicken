@@ -4,13 +4,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #222;
+  background-color: black;
   color: white;
+  position: relative;
+
 }
 
 .column {
-  flex-basis: 25%;
+  flex-basis: 20%;
   min-width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {
@@ -53,4 +57,133 @@
 .icon {
   width: 20px;
   margin-right: 5px;
+}
+
+.item .icon {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.links, .hours {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.links li, .hours li {
+  align-self: flex-start;
+}
+
+.links .firstTitle {
+  transform: translateX(40px);
+}
+
+.link:hover{
+  text-decoration: underline;
+}
+
+.icon{
+  color: white;
+}
+
+@media only screen and (max-width: 900px) {
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    position: relative;
+  }
+  
+  .column {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .icon {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .title {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .item {
+    margin-bottom: 5px;
+  }
+  
+  .bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .icon {
+    width: 20px;
+    margin-right: 5px;
+  }
+  
+  .item .icon {
+    width: 20px;
+    margin-right: 5px;
+  }
+  
+  .links, .hours {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .links li, .hours li {
+    align-self: center;
+  }
+  
+  .links .firstTitle {
+    transform: none;
+    margin-bottom: 10px;
+  }
+  
+  .link:hover{
+    text-decoration: underline;
+  }
+  
+  .icon{
+    color: white;
+  }
+  
 }

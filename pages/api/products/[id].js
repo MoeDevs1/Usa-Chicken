@@ -1,7 +1,5 @@
 import dbConnect from "../../../util/mongo";
 import Product from "../../../models/Product";
-import axios from 'axios';
-
 
 export default async function handler(req, res) {
   const {
@@ -27,7 +25,7 @@ export default async function handler(req, res) {
       return res.status(401).json("Not authenticated!")
     }
     try {
-      const Product = await Product.findByIdAndUpdate(id, req.body, {
+      const product = await Product.findByIdAndUpdate(id, req.body, {
         new: true,
       });
       res.status(200).json(product);
@@ -37,9 +35,9 @@ export default async function handler(req, res) {
   }
 
   if (method === "DELETE") {
-    if(!token || token !== process.env.token){
-      return res.status(401).json("Not authenticated!")
-    }
+    // if(!token || token !== process.env.token){
+    //   return res.status(401).json("Not authenticated!")
+    // }
     try {
       await Product.findByIdAndDelete(id);
       res.status(200).json("The product has been deleted!");

@@ -20,6 +20,7 @@ const ProductSchema = new mongoose.Schema(
     prices: {
       type: [Number],
       required: true,
+      decimal: true
     },
     extraOptions: {
       type: [
@@ -35,3 +36,5 @@ const ProductSchema = new mongoose.Schema(
 
 export default mongoose.models.Product ||
   mongoose.model("Product", ProductSchema);
+
+  
