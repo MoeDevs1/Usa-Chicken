@@ -1,0 +1,295 @@
+.Container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #F5F5F5;
+  /* Change the background color to a light grey */
+  padding: 20px;
+}
+
+.formLogin {
+  width: 620px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  /* Add a subtle box shadow */
+}
+
+.head {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  /* Change the color to a dark grey */
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  ;
+}
+
+.inputField {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+
+.signupButton:hover,
+.GoogleButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+.success {
+  color: #008000;
+  /* Change the color to a darker shade of green */
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .formLogin {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+}
+
+.inputFieldError input,
+.errorInput input {
+  border-color: red;
+
+}
+
+.errorMessage1 {
+  color: red;
+  font-weight: 555;
+  margin-top: 5px;
+  display: inline-block;
+  /* add this line */
+  padding-left: 22px;
+  /* add this line */
+
+}
+
+.errorMessage {
+  color: red;
+  font-weight: 555;
+  margin-top: 5px;
+  display: inline-block;
+  /* add this line */
+  padding-left: 10px;
+  /* add this line */
+
+}
+
+
+
+.namesContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.lastName {
+  margin-left: 10px;
+
+
+}
+
+.input {
+  height: 48px;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #EAEAEA;
+  font-size: 16px;
+  color: #555;
+  border-radius: 6px;
+
+
+  /* Change the color to a dark grey */
+}
+
+
+
+.signupButton,
+.GoogleButton {
+  display: block;
+  width: 50%;
+  /* increase the width to 50% */
+  padding: 1em 2em;
+  /* increase the padding */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: 24px;
+  margin-left: auto;
+  /* add margin-left: auto to align the buttons to the right */
+  margin-right: 0;
+  /* remove the margin-right */
+  box-sizing: border-box;
+}
+
+.GoogleButton {
+  background-color: #1E88E5;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  flex-direction: row;
+  
+
+}
+
+
+
+
+.signupButton {
+  margin-right: 2%;
+  /* add a small margin to separate the buttons */
+  background-color: #FF1744;
+
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+  }
+
+  .signupButton,
+  .GoogleButton {
+    width: 100%;
+    margin: 15px 0;
+    /* add a margin to separate the buttons */
+  }
+}
+
+
+.icon {
+  vertical-align: text-top;
+
+
+}
+
+.google {
+
+  vertical-align: text-top;
+  background-color: white;
+
+  border-radius: 22px;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 100%;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+}
+
+
+
+.signInLink {
+  font-size: 13px;
+  color: #1E90FF;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  transition: color 0.3s ease;
+  margin-top: 10px;
+  margin-right: 5px;
+
+
+}
+
+.signInText {
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  transition: color 0.3s ease;
+  margin-top: 10px;
+
+}
+
+.signInLink:hover {
+  color: #0066CC;
+}
+@media (max-width: 768px) {
+  .linkContainer {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+
+
+
+
+.lastName,
+.firstName {
+
+  height: 48px;
+  width: 97%;
+  padding: 10px;
+  border: 2px solid #EAEAEA;
+  font-size: 16px;
+  color: #555;
+  border-radius: 6px;
+
+  /* Change the color to a dark grey */
+}
+
+
+
+
+
+
+.inputField1 {
+  margin-top: 30px;
+  margin-bottom: -5px;
+
+
+  width: 400px;
+
+
+}
+
+

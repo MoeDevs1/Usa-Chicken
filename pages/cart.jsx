@@ -11,6 +11,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
 import OrderDetail from "../components/OrderDetail";
+import Link from 'next/link';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -177,9 +178,11 @@ const Cart = () => {
               </PayPalScriptProvider>
             </div>
           ) : (
+            <Link href="/Checkout">
             <button onClick={() => setOpen(true)} className={styles.button}>
               CHECKOUT NOW!
             </button>
+            </Link>
           )}
         </div>
       </div>

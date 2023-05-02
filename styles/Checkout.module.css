@@ -1,0 +1,386 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px;
+  background-color: #f5f5f5;
+}
+
+.billingInfo {
+  flex: 1;
+  max-width: 700px;
+  padding: 40px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.total {
+  flex: 1;
+  max-width: 400px;
+  padding: 40px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.formGroup {
+  margin-bottom: 20px;
+  
+}
+
+/* Styles for input elements with class names .input, .smallInput, and .tipInput */
+.input,
+.smallInput,
+.tipInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.input:focus,
+.smallInput:focus,
+.tipInput:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+}
+
+
+.input::placeholder {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+}
+.smallInput::placeholder {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 2px;
+  text-align: center;
+
+  /* Adds 2 pixels of space between letters */
+}
+.tipInput::placeholder {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+}
+
+.smallInput{
+height: 20%;
+}
+
+
+.formGroup1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.subtotal,
+.tax,
+.tip,
+.totalAmount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.orderNow {
+  background-color: #007bff;
+}
+
+
+.orderNow:hover,
+.paypal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+.line {
+  position: relative;
+  height: 2px;
+  width: 700px;
+
+  margin-top: -20px;
+  background-color: #d4d4d4;
+  margin-bottom: 30px;
+  margin-left: -38px;
+
+  }
+  
+  /* Line Separator Text */
+
+  
+.line1{
+  position: relative;
+  height: 2px;
+  width: 700px;
+  margin-top: -20px;
+  background-color: #d4d4d4;
+  margin-bottom: 30px;
+  margin-left: -38px;
+  background-color: navajowhite;
+
+
+  }
+.lineTotal{
+  position: relative;
+  height: 2px;
+  width: 390px;
+  margin-top: 20px;
+  background-color: #d4d4d4;
+  margin-bottom: 30px;
+  margin-left: -38px;
+
+
+  }
+.lineTip{
+  position: relative;
+  height: 2px;
+  width: 390px;
+  margin-top: 20px;
+  background-color: #d4d4d4;
+  margin-bottom: 30px;
+  margin-left: -38px;
+
+
+  }
+  
+  /* Line Separator Text */
+
+
+  /* Header Styling */
+  .head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  font-weight: 500;
+  color: #4a4a4a;
+  }
+  .billingInfoHeader {
+    display: flex;
+    align-items: center;
+  }
+  
+  .creditCardImageContainer {
+    margin-left: 20px;
+  }
+  
+  
+  .title1,  .title2 {
+    font-size: 17px;
+  
+    margin-bottom: 31px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    letter-spacing: 4px;
+    /* Adds 2 pixels of space between letters */
+    text-align: center;
+    /* Centers the text */
+  }
+  
+  .title2 {
+    font-size: 17px;
+  
+    margin-bottom: 31px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    letter-spacing: 4px;
+    padding-top: 10px;
+    /* Adds 2 pixels of space between letters */
+    /* Centers the text */
+  }
+.titleContainer {
+  display: flex;
+  align-items: center;
+margin-left: 70px;}
+
+
+.paypal {
+  background-color: #003087;
+  color: #fff;
+  padding: 1em 7.6em;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+
+  
+  align-items: center;
+}
+
+.paypal:hover {
+  background-color: #002b6d;
+}
+
+.paypal:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #003087;
+}
+
+.paypal > svg {
+  margin-right: 5px;
+}
+
+.paypal > span {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.orderNow {
+  padding: 1em 7em;
+  margin-right: 4px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.5em;
+}
+
+
+.tipContainer {
+  display: flex;
+  margin-top: -15px;
+margin-left: 0px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.tipButton {
+  background-color: white; /* Green */
+  border: none;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.tipInput {
+  border: none;
+  padding: 6px 30px;
+  text-align: center;
+  margin-right: 30px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px;
+  margin-left: 3px;
+  border: 2px solid lightgrey; /* Grey */
+  border-radius: 5px; /* Optional rounded corners */
+  cursor: pointer;
+}
+.tipInputContainer{  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+.selectedTipButton {
+  background-color: #104E8B;
+  color: white;
+}
+
+.purchaseContainer{
+  display: flex;
+flex-direction: row;
+}
+
+.rememberPasswordCheckbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  margin-right: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.rememberPasswordCheckbox:checked::before {
+  content: '\2714';
+  position: absolute;
+  top: -3px;
+  left: -1px;
+  font-size: 16px;
+  color: #fff;
+}
+
+
+
+.rememberPasswordCheckbox:checked {
+  border-color: #002b6d;
+  background-color: #002b6d;
+}
+
+.rememberPasswordCheckbox {
+  color: red;
+}
+
+.rememberPasswordLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: -20px;
+  color: #002b6d;
+  font-weight: bold;
+
+}

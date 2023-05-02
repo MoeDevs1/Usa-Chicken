@@ -1,0 +1,43 @@
+import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
+const User1Schema = new mongoose.Schema(
+    {
+      userId: {
+        type: String,
+        unique: true,
+        required: true,
+      },
+      firstName: {
+        type: String,
+        required: [true, "First name is required"],
+      },
+      lastName: {
+        type: String,
+        required: [true, "Last name is required"],
+      },
+      phone: {
+        type: Number,
+        required: false, // change this line
+      },
+      email: {
+        type: String,
+        unique: true,
+        required: [true, "Email is required"],
+      },
+      password: {
+        type: String,
+        required: false, // change this line
+      },
+    },
+    { collection: "Users1" }
+  );
+  // Add a pre-save hook to generate a unique userId for each user
+User1Schema.pre("save", function (next) {
+    if (!this.userId) {
+      this.userId = uuidv4();
+    }
+    next();
+  });
+  
+  export default mongoose.models.Users1 || mongoose.model("Users1", User1Schema);
+  
