@@ -3,15 +3,19 @@ import Link from "next/link";
 import styles from  "../styles/Navbar.module.css"
 import {useSelector } from "react-redux";
 import { useState } from "react";
-import { FaBars } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
+import axios from 'axios';
+
 import { FaUtensils, FaInfoCircle, FaPhone } from 'react-icons/fa';
+import Login from './Login'; // import the Address component
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 
 const Navbar = ({pizza}) => {
 
     const [showNav, setShowNav] = useState(false);
     const quantity = useSelector((state) => state.cart.quantity);
+    const [showLogin, setShowLogin] = useState(false);
 
     const handleBackgroundClick = (event) => {
       if (event.target === event.currentTarget) {
@@ -20,9 +24,37 @@ const Navbar = ({pizza}) => {
         setShowNav(false); // close dropdown when a link is clicked
       }
     };
+    const toggleLogin = () => {
+      setShowLogin(!showLogin);
+    };
+
+
+
+
+    // ... other state variables and functions
+  
+    const closeLogin = () => {
+      setShowLogin(false);
+    };
+  
 
     return(
-        <div className={styles.container}>
+      
+      <div className={styles.container}>
+
+
+{showLogin && (
+  <div className={styles.loginWrapper}>
+    <button className={styles.closeLoginButton} onClick={toggleLogin}>
+      <FaTimes />
+    </button>
+    <Login />
+  </div>
+)}
+
+
+
+
             <div className={styles.item}>
                 <div className={styles.logo}>
                     <Link href="/">
@@ -68,8 +100,19 @@ const Navbar = ({pizza}) => {
 
             <div className={styles.item}>
                  <div className={styles.cart}>
-              <Image src="/img/userI.png" alt="user" width={30} height={30} style={{verticalAlign: "middle"}} />
-                    <span className={styles.cartSeparator} style={{verticalAlign: "middle"}}>|</span>
+            
+              
+
+               <button
+  className={styles.Loginbutton}
+  style={{ verticalAlign: "middle" }}
+  onClick={() => setShowLogin(true)}
+>
+  Login
+</button>
+     
+      
+         <span className={styles.cartSeparator} style={{verticalAlign: "middle"}}>|</span>
                     <Link href="/cart">
                <Image src="/img/cartI.png" alt="Shopping Cart" width={30} height={30} style={{verticalAlign: "middle"}} />
                      </Link>

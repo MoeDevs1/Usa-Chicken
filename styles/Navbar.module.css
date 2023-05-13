@@ -1,16 +1,39 @@
 .container {
-  height: 70px;
-  padding: 0px 20px;
-  background-color: white;
+  color: red;
+
+
+
+}
+.loginContainer {
+  height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 15;
-  font-family: 'Montserrat';
-  opacity: 1;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+  position: fixed; /* Make the container fixed */
+  top: 0; /* Position the container at the top left corner */
+  left: 0; /* Position the container at the top left corner */
+  z-index: 1000; /* Ensure the container is on top of other elements */
 }
+.Loginbutton{
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;
+
+  width: 70px;
+  height: 40px;
+  color: #fff;
+  border: #007bff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
 .menuTitle{
   color: black;
   margin-top: 50px;
@@ -115,7 +138,10 @@
   color: black;
   margin-top: 100px;
 }
-
+.LoginLink{
+  color: black;
+  margin-right: 20px;
+}
    
 .menuButton {
   background-color: transparent;
@@ -139,7 +165,7 @@
       .container {
         height: 70px;
         padding: 0 50px;
-        background-color: white;
+        background-color: #1558d4;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -148,7 +174,41 @@
         z-index: 999;
         font-family: 'Montserrat';
         opacity: 1;
+
+
+    
       }
+      
+      .container a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 18px;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      .container a:hover {
+        color: #FF1744;
+      }
+      
+      .container .logo {
+        font-size: 30px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .container .menu {
+        display: flex;
+        align-items: center;
+      }
+
+
+    
+
+
+
+      
     
       .logo {
         margin: 0;
@@ -286,6 +346,7 @@
         justify-content: center;
         font-weight: bold;
         color: red;
+        margin-top: 10px;
       }
     
       .cartSeparator {

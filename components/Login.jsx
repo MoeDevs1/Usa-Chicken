@@ -2,19 +2,15 @@ import React from 'react';
 import styles from '../styles/Login.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import { BsEyeSlashFill, BsEyeFill } from 'react-icons/bs';
 import { AiFillUnlock } from 'react-icons/ai';
 import { AiFillLock } from 'react-icons/ai';
-import jwt from 'jsonwebtoken';
 import { signIn as nextAuthSignIn } from 'next-auth/react';
 
-import { parseCookies, setCookie, destroyCookie } from 'nookies';
 
 
-const Login = () => {
+const Login = ({ closeLogin }) => {
   const [emailError, setEmailError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +25,7 @@ const Login = () => {
 
 
 
+ 
     const handleGoogleSignIn = async (email) => {
       try {
         const response = await axios.post('http://localhost:3000/api/googleLogin', { email });
@@ -128,17 +125,25 @@ const Login = () => {
     };
   }
   
+  
   return (
-    <section className={styles.Container}>
+    <section className={styles.loginContainer}>
+
+    
       <div className={styles.formLogin}>
+        
         <div className={styles.formContent}>
-        
-        
+        <button className={styles.closeButton} onClick={closeLogin}>
+  X
+</button>
+        <div className={styles.line1}></div> {/* Add this line */}
    
           <div className={styles.head}>
-            
             <Image src="/img/lol.png" alt="" width="222" height="222" />
+            
           </div>
+          <div className={styles.head}>  Sign In To Usa Chicken </div>
+
           <div className={styles.form}>
             
           <form onSubmit={handleSignIn}>

@@ -87,7 +87,7 @@ export default function Home({ pizzaList }) {
         <Link href={"/menu"}>
       <button className={styles.button}>Order Now from Manchester </button>
       </Link>
-      <button className={styles.button} disabled>Order Now from Nashua </button>
+      <button className={styles.button1} disabled>Order Now from Nashua </button>
 
       </div>
       <div className={styles.content}>
