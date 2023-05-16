@@ -1,32 +1,54 @@
 .container {
   color: red;
-
-
-
 }
-.loginContainer {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
-  position: fixed; /* Make the container fixed */
-  top: 0; /* Position the container at the top left corner */
-  left: 0; /* Position the container at the top left corner */
-  z-index: 1000; /* Ensure the container is on top of other elements */
+
+.Loginbutton:hover{
+  /* Add hover styles for buttons */
+  filter: grayscale(0%) contrast(150%) brightness(150%); /* Adjust the values as desired */
+  transform: scale(1.1); /* Add a scale effect on hover */
+}
+.signUpButton:hover {
+  /* Add hover styles for buttons */
+  filter: grayscale(0%) contrast(150%) brightness(150%); /* Adjust the values as desired */
+  transform: scale(1.1); /* Add a scale effect on hover */
+}
+
+.container a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
 }
 .Loginbutton{
 
   filter: grayscale(0%) contrast(130%) brightness(110%);
   background-color: #ca1035;
 
-  width: 70px;
+  width: 90px;
   height: 40px;
   color: #fff;
   border: #007bff;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+.signUpButton{
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #007bff;
+
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  border: #ffffff;
+  border-radius: 5px;
+  margin-left: 6px;
+  margin-bottom: 5px;
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
@@ -160,6 +182,80 @@
 .menuButton svg {
   font-size: 2em; /* Adjust the size as needed */
 }
+
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 160%;
+  height: 500%;
+  left: -140%;
+  z-index: 10;
+  display: none;
+  padding: 30px;
+
+  padding-right: 0px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+ .dropdownMenu {
+  display: block;
+}
+
+
+.dropDownTitle{
+color: #007bff;
+letter-spacing: 3px;
+font-weight: bold;
+font-size: 17px;
+margin-left: -10px;
+margin-top: -10px;
+
+}
+.dropDownTitle2{
+color: #007bff;
+letter-spacing: 3px;
+font-weight: bold;
+font-size: 17px;
+margin-left: -10px;
+margin-top: 10px;
+
+}
+.line {
+  height: 2px;
+  width: 220px;
+
+  background-color: #d4d4d4;
+  margin-bottom: 10px;
+  margin-left: -30px;
+
+  }
+.line2{
+  height: 2px;
+  width: 220px;
+
+  background-color: #d4d4d4;
+  margin-bottom: 10px;
+  margin-left: -30px;
+
+  }
+ .dropdownContainer a{
+  color: black;
+  margin-left: -5px; 
+  
+}
+
+.divder{
+
+  margin-top: 8px;
+}
+
 /* Media Queries */
     @media (min-width: 768px) {
       .container {
@@ -179,13 +275,7 @@
     
       }
       
-      .container a {
-        color: #fff;
-        text-decoration: none;
-        margin-left: 20px;
-        font-size: 18px;
-        transition: all 0.2s ease-in-out;
-      }
+    
       
       .container a:hover {
         color: #FF1744;

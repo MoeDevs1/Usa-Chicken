@@ -7,6 +7,7 @@ import { BsEyeSlashFill, BsEyeFill } from 'react-icons/bs';
 import { AiFillUnlock } from 'react-icons/ai';
 import { AiFillLock } from 'react-icons/ai';
 import { signIn as nextAuthSignIn } from 'next-auth/react';
+import axios from 'axios';
 
 
 
@@ -31,6 +32,7 @@ const Login = ({ closeLogin }) => {
         const response = await axios.post('http://localhost:3000/api/googleLogin', { email });
     
         if (response.data.authorized) {
+          closeLogin(); // close login form
           router.push('/userProfile');
         } else {
           setError("User not found in database");
@@ -40,8 +42,6 @@ const Login = ({ closeLogin }) => {
         setError("Error occurred during sign in");
       }
     };
-    
-
 
 
 
@@ -96,34 +96,34 @@ const Login = ({ closeLogin }) => {
     router.push('/Signup');
   }
 
+
+    
   const handleSignIn = async (e) => {
     e.preventDefault();
     if (!password) {
       setError("Please input password");
       return;
-
     }
     setLoading(true); // set loading state to true
-
+  
     try {
       const response = await axios.post('http://localhost:3000/api/Login', { email, password, rememberMe });
       console.log(response.data);
-  
-      router.push('/userProfile');
+      closeLogin(); // close login form
+      window.location.reload();
     } catch (error) {
       console.log(error)
   
       if (error.response && error.response.status === 401) {
         setUserError("Please confirm your email");
-        setLoading(false); // set loading state to true
-
+        setLoading(false); // set loading state to false
       } else if (error.response && error.response.status === 404) {
         setPasswordError("Please confirm your email");
-        setLoading(false); // set loading state to true
-
+        setLoading(false); // set loading state to false
       }
     };
   }
+ 
   
   
   return (
