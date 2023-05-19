@@ -1,0 +1,347 @@
+.pageOne{
+background-color: white;
+}
+  
+
+  .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 450px;
+  max-height: 750px;
+  height: 800px;
+  margin: 0 auto;
+  overflow-y: scroll;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: white;
+  }
+
+
+  .title{
+    margin-top: -50px;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .required {
+    color: red;
+    right: 0;
+  }
+
+  .optional{
+    right: 0;
+  }
+  
+  .backButton{
+    cursor: pointer;
+    font-size: 25px;
+    color: black;
+    background-color: transparent;
+    border: none;
+    margin-left: -230px;
+    
+    }
+
+    .imgContainer {
+      width: 80%;
+      height: 200px;
+      margin-top: -50px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 50px;
+      border-radius: 50%;
+      margin-left: 43px;
+    }
+
+  .formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  }
+  
+  .price{
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+  }
+  
+  .sizes{
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  }
+  .size{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  }
+  
+  .size:nth-child(2){
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  }
+  
+  .size:nth-child(3){
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  }
+  
+  .number{
+  position: absolute;
+  top: -5px;
+  right: -20px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  padding: 0 5px;
+  border-radius: 10px;
+  }
+  
+  .ingredients{
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+  }
+  
+  .optionRow {
+  /*Only if needed to have choices next to each other
+  /* display: flex;
+  flex-wrap: wrap; */
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 50px;
+  }
+
+  .optionRow:last-child{
+    margin-bottom: 200px;
+  }
+
+  .choose{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .option {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  }
+  
+/* Hide default checkbox appearance */
+.checkbox {
+  appearance: none;
+}
+
+/* Create custom checkbox appearance */
+.checkbox::before {
+  content: '';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  background-color: white;
+  margin-right: 10px;
+  border-radius: 50%;
+
+}
+
+.checkbox:checked::before {
+  content: '✓';
+  color: white;
+  background-color: black;
+  margin: 2px; /* Create white margin inside the black circle */
+  width: 18px;
+  height: 18px;
+}
+
+.quantity {
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 50px;
+  margin-left: 395px;
+  border-color: black;
+}
+
+    
+  .button {
+    position: absolute;
+    transform: translateX(0%);    
+    bottom: 0;
+    left: 0%;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 450px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    background-color: red;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  
+
+  .add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -300px;
+    margin-top: 250px;
+    background-color: white;
+  }
+  .row{
+    background-color: silver;
+  }
+
+
+ .allOptions {
+  display: flex;
+  flex: 1;
+  flex-basis: 25%;
+  padding: 10px;
+}
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+  }
+
+
+  .desc{
+    text-align: center;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: -15px;
+    border-bottom: 3px solid black;
+    padding-bottom: 20px; /* Adjust this value to change the amount of space */
+
+  }
+
+  .buttonAdd{
+    color: black;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+  }
+
+  .special{
+    margin-top: 1000px;
+  }
+
+  .quantity{
+    border: 1px solid black;
+  }
+
+ @media only screen and (max-width: 600px) {
+  .quantity{
+    margin-left: 320px;
+  }
+
+  .backButton{
+    margin-left: -190px;
+  }
+ }
+
+ @media only screen and (max-width: 380px) {
+ 
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px;
+    height:  567px;
+    margin: 0 auto;
+    overflow-y: scroll;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: white;
+    }
+  
+  }
+
+  
+  @media only screen and (min-width: 800px) and (max-width: 850px) {
+  
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 450px;
+      max-height: 1300px ;
+      height:  1100px;
+      margin: 0 auto;
+      overflow-y: scroll;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      background-color: white;
+      }
+    
+    }
+
+
+    @media only screen and (min-width: 750px) and (max-width: 800px) {
+  
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 450px;
+        max-height: 1100px ;
+        height:  1000px;
+        margin: 0 auto;
+        overflow-y: scroll;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        background-color: white;
+        }
+      
+      }
+  

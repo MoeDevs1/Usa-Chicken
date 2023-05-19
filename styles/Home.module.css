@@ -1,0 +1,486 @@
+.container{
+  background-color:  white;
+}
+
+
+.formLabel {
+  font-size: .7em;
+  padding: 0.5em 0;
+}
+
+.formInput {
+  font-size: .7em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+
+
+
+.item1 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+.cateringButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  max-width: 100%;
+  margin: 2rem auto;
+  display: block;
+}
+
+.cateringButton:hover {
+  transform: scale(1.1);
+}
+
+.cateringcontainer {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.cateringimg {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.cateringform {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.orderTitle {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.cateringTitle {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+}
+
+
+
+.pizzaList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .pizzaItem {
+    position: relative;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    box-sizing: border-box;
+    flex-basis: 400px;
+    cursor: pointer;
+    /* New Features */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+ 
+  
+  .pizzaItem img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+
+  
+  .pizzaItem:nth-child(odd)::before {
+    left: -10px;
+  }
+  
+  .pizzaItem:nth-child(even)::before {
+    right: -10px;
+  }
+  
+  .pizzaItem:hover {
+    transform: scale(1.1);
+  } 
+
+  
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+
+
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.words {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 20px;
+  text-align: left;
+  grid-area: words;
+  flex: 1;
+}
+
+.pictures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture1 {
+  grid-area: picture1;
+}
+
+.picture2 {
+  grid-area: picture2;
+}
+
+.top {
+  font-size: 27px;
+  
+  margin-bottom: 21px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  margin-top: 30px;
+  letter-spacing: 5px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+  
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Adds spacing between buttons */
+  
+}
+
+
+.button1 {
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;  color: white;
+  margin-right: 10px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+.button {
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #007BFF;
+    color: white;
+  margin-right: 10px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+.button:hover{
+  transform: scale(1.1);
+}
+.button1:hover{
+  transform: scale(1.1);
+}
+
+.button:last-child{
+  cursor: disabled;
+}
+
+.menuParent {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.menuButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: #1b5990;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+
+  color: white;
+  margin-right: 10px;
+  border: none;
+  
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.icon{
+  height: 35px;
+  width: 25px;
+  margin-top: -4px;
+
+  vertical-align: text-top;
+}
+
+.menuButton:hover{
+  transform: scale(1.1);
+}
+.banner {
+  width: 100%;
+  margin-top: 0px;
+  border-radius: 5px;
+  filter: grayscale(0%) contrast(130%) brightness(150%);
+padding: 4px;
+
+}
+
+
+
+
+
+
+
+
+/*sign up divider css*/
+
+.left {
+  display: inline-block;
+  width: 50%;
+}
+
+.signupImg {
+  margin: 50px;
+  margin-left: 100px;
+  max-width: 100%;
+  display: block;
+}
+
+.right {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  text-align: left;
+}
+
+.totalButtons {
+  margin-top: 1em;
+}
+
+.buttoned {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+.buttoned:hover {
+  transform: scale(1.1);
+}
+
+.text{
+  margin-top: 150px;
+  width: 70%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+.scroller{
+  display: none;
+}
+
+.pizzaTitle {
+  font-size: 19px;
+  margin-bottom: -1px;
+    color: #1b5990;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  /* Adds 2 pixels of space between letters */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  /* Centers the text */}
+
+.pizzaDesc {
+  margin-bottom: 6px;
+  color: rgb(102, 93, 93);
+  font-weight:900;
+  /* Updated text color */
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  margin-left: 20px;
+  letter-spacing: 1.5px;
+}
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+}
+.pizzaPrice {
+  color: #007BFF;
+display: none  }
+
+
+@media only screen and (max-width: 900px) {
+ .pizzaListContainer {
+    overflow-x:auto;
+    justify-content: flex-start;
+
+  }
+  
+  .pizzaList {
+    display: flex;
+    justify-content: flex-start;
+ 
+    flex-wrap: nowrap;  
+  }
+
+  .pizzaItem {
+    
+    flex: 0 0 auto;  
+    width: 80%; /* Changed from fixed width to auto */
+    background-color: white;
+    padding: 0px;
+  }
+
+  .itemTwo{
+    background-color: white;
+    border-radius: 0%;
+
+  }
+  .pizzaItem:first-child {
+    margin-left: 15px;
+  }
+
+  .pizzaItem:hover {
+    transform: scale(1.1);
+  }
+
+  .pizzaImg {
+    border-radius: 30%;
+  }
+
+  .container {
+    background-color: white;
+  }
+
+  .banner {
+    width: 100%;
+    height: 300px;
+  }
+  
+  .buttons {
+    margin-top: 100px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+  .menuParent {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .menuButton {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #8B0000;
+    
+  }
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -5px;
+  
+}
+
+
+.button {
+  width: 90%; /* Adjust the width value as needed */
+  padding: 1.8rem 1em; /* Adjust the padding values as needed */
+  font-size: 24px;
+  background-color: #007bff;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  color: white;
+  margin-right: 10px;
+  border: none;
+  padding-right: 2px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  padding-left: 3px;
+  margin-bottom: -20px;
+  overflow: hidden; /* Add this line to prevent text overflow */
+}
+.button{
+  width: 90%; /* Adjust the width value as needed */
+  padding: 1.8rem 1em; /* Adjust the padding values as needed */
+  font-size: 22px;
+  background-color: #ca1035;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  color: white;
+  margin-right: 10px;
+  border: none;
+  padding-right: 2px;
+  border-radius: 9px;
+  cursor: pointer;
+
+  margin-top: 15px;
+  font-weight: bold;
+  padding-left: 3px;
+  margin-bottom: -70px;
+  overflow: hidden; /* Add this line to prevent text overflow */
+}
+
+
+}

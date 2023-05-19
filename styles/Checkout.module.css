@@ -1,0 +1,799 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px;
+    background-color: #f5f5f5;
+  }
+  
+  .billingInfo {
+    flex: 1;
+    max-width: 700px;
+    padding: 40px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .total {
+    flex: 1;
+    max-width: 400px;
+    padding: 40px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+    
+  }
+  
+  /* Styles for input elements with class names .input, .smallInput, and .tipInput */
+  .input,
+  .smallInput,
+  .tipInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+  
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .input:focus,
+  .smallInput:focus,
+  .tipInput:focus {
+    border-color: #6bb7f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+    background-color: #fff;
+    outline: none;
+  }
+  
+  
+  .input::placeholder {
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 2px;
+    /* Adds 2 pixels of space between letters */
+  }
+  .smallInput::placeholder {
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+  
+    /* Adds 2 pixels of space between letters */
+  }
+  .tipInput::placeholder {
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 2px;
+    /* Adds 2 pixels of space between letters */
+  }
+  
+  .smallInput{
+  height: 20%;
+  }
+  
+  
+  .formGroup1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .subtotal,
+  .tax,
+  .tip,
+  .totalAmount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  
+  .orderNow {
+    background-color: #007bff;
+  }
+  
+  
+  .orderNow:hover,
+  .paypal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  }
+  .line {
+    position: relative;
+    height: 2px;
+    width: 700px;
+  
+    margin-top: -20px;
+    background-color: #d4d4d4;
+    margin-bottom: 30px;
+    margin-left: -38px;
+  
+    }
+    
+    /* Line Separator Text */
+  
+    
+  .line1{
+    position: relative;
+    height: 2px;
+    width: 700px;
+    margin-top: -20px;
+    background-color: #d4d4d4;
+    margin-bottom: 30px;
+    margin-left: -38px;
+    background-color: navajowhite;
+  
+  
+    }
+  .lineTotal{
+    position: relative;
+    height: 2px;
+    width: 390px;
+    margin-top: 20px;
+    background-color: #d4d4d4;
+    margin-bottom: 30px;
+    margin-left: -38px;
+  
+  
+    }
+  .lineTip{
+    position: relative;
+    height: 2px;
+    width: 390px;
+    margin-top: 20px;
+    background-color: #d4d4d4;
+    margin-bottom: 30px;
+    margin-left: -38px;
+  
+  
+    }
+    
+    /* Line Separator Text */
+  
+  
+    /* Header Styling */
+    .head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+    font-weight: 500;
+    color: #4a4a4a;
+    }
+    .billingInfoHeader {
+      display: flex;
+      align-items: center;
+    }
+    
+    .creditCardImageContainer {
+      margin-left: 20px;
+    }
+    
+    .wider-buttons {
+      width: 200px; /* Adjust the width value according to your preference */
+    }
+    
+    
+    .title1,  .title2 {
+      font-size: 17px;
+    
+      margin-bottom: 31px;
+      font-family: "Open Sans", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #1e1e1e;
+      letter-spacing: 4px;
+      /* Adds 2 pixels of space between letters */
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      /* Centers the text */
+    }
+    
+    .title2 {
+      font-size: 17px;
+    
+      margin-bottom: 31px;
+      font-family: "Open Sans", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #1e1e1e;
+      letter-spacing: 4px;
+      padding-top: 10px;
+      /* Adds 2 pixels of space between letters */
+      /* Centers the text */
+    }
+  .titleContainer {
+    display: flex;
+    align-items: center;
+  margin-left: 70px;}
+  
+  
+  .paypal {
+    background-color: white;
+    color: #fff;
+    padding: 1.5em;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 185px;
+  }
+  
+  .paypal:hover {
+    background-color: white;
+  }
+  
+  .paypal:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px white;
+  }
+  
+  .paypal > svg {
+    margin-right: 5px;
+  }
+  
+  .paypal > span {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .orderNow {
+    padding: 1em 7em;
+    margin-right: 4px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+  }
+  
+  .icon {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 0.5em;
+  }
+  
+  
+  .tipContainer {
+    display: flex;
+    margin-top: -15px;
+  margin-left: 0px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  
+  .tipButton {
+    background-color: white;
+    border: none;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 1px;
+    cursor: pointer;
+  }
+  
+  .tipButton:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+  }
+  
+  .tipButton:active {
+    background-color: #1E88E5;
+    color: white;
+  }
+  
+  .tipContainer{
+    gap: 3px;
+  }
+  
+  .tipComment{
+  font-weight: normal;
+  font-size: 12px;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  text-align: center;
+  }
+  .tipAmountNum{
+    font-size: 12px;
+    font-weight: normal;
+  }
+  
+  .tipInput {
+    border: none;
+    padding: 6px 30px;
+    text-align: center;
+    margin-right: 30px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px;
+    margin-left: 3px;
+    border: 2px solid lightgrey; /* Grey */
+    border-radius: 5px; /* Optional rounded corners */
+    cursor: pointer;
+    width: 120px;
+  }
+  
+  
+  
+  .tipInputContainer{  display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  
+  }
+  .selectedTipButton {
+    background-color: #104E8B;
+    color: white;
+  }
+  
+  
+  .purchaseContainer{
+    display: flex;
+  flex-direction: row;
+  }
+  
+  .rememberPasswordCheckbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    position: relative;
+    margin-right: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .rememberPasswordCheckbox:checked::before {
+    content: '\2714';
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  
+  
+  .rememberPasswordCheckbox:checked {
+    border-color: #002b6d;
+    background-color: #002b6d;
+  }
+  
+  .rememberPasswordCheckbox {
+    color: red;
+  }
+  
+  .rememberPasswordLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: -20px;
+    color: #002b6d;
+    font-weight: bold;
+  
+  }
+  
+  /*added by mohamed */
+  
+  .container {
+    padding: 50px;
+    display: flex;
+  }
+  
+  .left {
+    overflow-y: scroll;
+    max-height: 320px;
+  }
+  
+  
+  .imgContainer {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    border-radius: 50%;
+  }
+  
+  .table {
+    width: 100%;
+    border-spacing: 20px;
+  }
+  
+  .name {
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .totals {
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantity{
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .extras{
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    color: #1e1e1e;
+  }
+  
+  .images{
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wrapper {
+    width: 90%;
+    max-height: 300px;
+    background-color: #333;
+    padding: 50px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  .totalTextTitle {
+    margin-right: 10px;
+  }
+  
+  .titleCart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 160px;
+    font-size: 17px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    letter-spacing: 4px;
+    margin-bottom: 31px;
+  
+  }
+  
+  .td{
+    margin-left: 100px;
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: #1e1e1e;
+  }
+  
+  .trTitle{
+    font-size: 13px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e1e1e;
+  }
+  
+  .realImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  
+  .deleteButton{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+  }
+  
+  .deleteButton:hover{
+    cursor: pointer;
+  }
+  
+  .cartImg{
+    margin-bottom: 20px;
+    margin-left: 6px;
+  }
+  
+  .totalPay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  
+  
+  .deleteButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px white;
+  }
+  
+  .editButton{
+    background-color: #1E88E5;
+    color: white;
+    border: 1px solid #1E88E5;
+    margin-bottom: 5px;
+    margin-right: 1px;
+  }
+  
+  .editButton:hover{
+    cursor: pointer;
+  }
+  
+  .editButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px white;
+  }
+  
+  
+  .deleteButton:hover,
+  .editButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  }
+  
+  .edButtons{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+  .paymentMethods {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .payButton {
+    padding: 10px 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    background-color: white;
+    color: teal;
+    font-weight: bold;
+  }
+  
+  
+  /**/
+  
+  @media only screen and (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+    
+    .billingInfo, .total {
+      max-width: 100%;
+      margin: 10px;
+    }
+    
+    .smallInput {
+      height: auto;
+    }
+    
+    .line, .line1, .lineTotal, .lineTip {
+      width: 100%;
+    }
+    
+    .titleContainer {
+      margin-left: 0;
+    }
+    
+    .paypal {
+      margin-left: 0;
+    }
+    
+    .orderNow {
+      padding: 0.8em 4em;
+    }
+    
+    .tipContainer {
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .tipInput {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    
+    .tipComment {
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+    
+    .purchaseContainer {
+      flex-direction: column;
+    }
+    
+    .rememberPasswordLabel {
+      margin-top: -10px;
+    }
+    
+    .left {
+      max-height: none;
+      overflow-y: initial;
+    }
+    
+    .imgContainer {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .wrapper {
+      padding: 20px;
+      padding-top: 0;
+    }
+    
+    .titleCart {
+      margin-left: 0;
+    }
+    
+    .td {
+      margin-left: 0;
+    }
+    
+    .realImage {
+      border-radius: 10px;
+    }
+    
+    .cartImg {
+      margin-bottom: 10px;
+      margin-left: 3px;
+    }
+    
+    .totalPay {
+      font-size: 14px;
+    }
+    
+    .deleteButton,
+    .editButton {
+      margin-bottom: 3px;
+    }
+    
+    .edButtons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .payButton {
+      padding: 8px 3px;
+      margin-top: 10px;
+    }
+    
+    .paymentMethods {
+      margin-top: 5px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .table {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .trTitle {
+      display: none;
+    }
+  
+    .tr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  
+    .imgContainer {
+      width: 35vw;
+      height: 35vw;
+    }
+  
+    .name,
+    .total {
+      font-size: 24px;
+    }
+  
+    .extras,
+    .price,
+    .quantity {
+      font-size: 22px;
+    }
+  
+    .price::before {
+      content: "Price: ";
+      font-weight: 500;
+    }
+    .quantity::before {
+      content: "Quantity: ";
+      font-weight: 500;
+    }
+    .total::before {
+      content: "Total: ";
+      font-weight: 500;
+    }
+  
+    .wrapper {
+      width: 100%;
+    }
+  }

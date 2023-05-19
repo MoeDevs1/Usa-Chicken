@@ -1,0 +1,424 @@
+.loginContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(1px);
+  
+}
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* .line1 {
+  position: relative;
+  height: 2px;
+  width: 428px;
+
+  background-color: #d4d4d4;
+  margin-bottom: 30px;
+  margin-left: -28px;
+
+  } */
+
+
+  .cancelButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    color: #a41616;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+
+  .formLogin {
+    position: relative;
+    max-width: 430px;
+    width: 220%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+
+.head {
+   font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+    font-size: 14px;
+    letter-spacing: 2px;
+    /* Adds 2 pixels of space between letters */
+    text-align: center;
+    color: #0066CC;
+}
+
+
+
+.signUp,
+.loginButton {
+  display: block;
+  width: 100%;
+  /* increase the width to 50% */
+  padding: 1em 2em;
+  /* increase the padding */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: 20px;
+  margin-left: auto;
+  /* add margin-left: auto to align the buttons to the right */
+  margin-right: 0;
+  /* remove the margin-right */
+  box-sizing: border-box;
+}
+
+.signUp:hover,
+.loginButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.forgotPasswordLink:hover {
+  color: #0066CC;
+}
+
+
+.GoogleButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.GoogleButton img {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+}
+
+
+.Container2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+}
+
+.line {
+
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background-color: #d4d4d4;
+  margin-top: 20px;
+}
+
+.line::before {
+
+  content: 'Or';
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  padding: 0 15px;
+
+}
+
+.errorMessage1 {
+  font-size: 14px;
+  color: #ff4d4f;
+  font-weight: bold;
+  top: 0;
+  left: 0;
+  margin-top: -2px;
+  margin-left: 26x;
+
+}
+
+
+
+
+.errorMessage {
+  font-size: 14px;
+  color: #ff4d4f;
+  font-weight: bold;
+  top: 0;
+  left: 0;
+  margin-top: -2px;
+  margin-left: 0px;
+
+}
+
+.inputFeild2 {
+  position: relative;
+
+}
+
+.inputFeild input:focus,
+.inputFeild2 input:focus {
+  border-color: grey;
+  outline: none;
+
+}
+
+.signUp {
+  background-color: #FF1744;
+}
+
+
+
+.loginButton {
+
+  background-color: #1E88E5;
+}
+
+
+.icon {
+  vertical-align: text-top;
+
+}
+
+
+
+
+
+.inputFeild input,
+.inputFeild2 input {
+  margin-top: 10px;
+  height: 45px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 2px solid #EAEAEA;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #444444;
+}
+
+
+
+
+
+
+.or {
+  margin: 10px;
+  text-align: center;
+  color: #444444;
+}
+
+
+
+.forgotPasswordLink {
+  font-size: 12px;
+  color: #1E90FF;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  transition: color 0.3s ease;
+}
+
+
+.GoogleButton {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: grey;
+
+  justify-content: center;
+  background-color: white;
+  padding: 0.75rem 5rem;
+  /* reduce padding */
+  border: 2px solid #eaeaea;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.GoogleButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.google {
+
+  vertical-align: text-top;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+
+
+}
+
+
+
+.line::before {
+
+  content: 'Or';
+  position: absolute;
+  color: grey;
+  font-weight: bold;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  padding: 0 15px;
+
+}
+
+
+.inputFieldError input,
+.errorInput input {
+  border-color: red;
+
+}
+
+
+
+
+
+
+
+
+.showPassword {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  color: #808080;
+  /* a nice grey color */
+
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  padding: 5px;
+  margin-right: 5px;
+  /* Add some margin to the right */
+}
+
+
+
+
+
+.rememberPasswordCheckbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  margin-right: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.rememberPasswordCheckbox:checked::before {
+  content: '\2714';
+  position: absolute;
+  top: -3px;
+  left: -1px;
+  font-size: 16px;
+  color: #fff;
+}
+
+
+
+.rememberPasswordCheckbox:checked {
+  border-color: #1E90FF;
+  background-color: #1E90FF;
+}
+
+.rememberPasswordCheckbox {
+  color: red;
+}
+
+.rememberPasswordLabel {
+  display: flex;
+  align-items: center;
+  color: #555;
+  cursor: pointer;
+  font-size: 12px;
+  color: #1E90FF;
+  font-weight: bold;
+
+}@media (max-width: 480px) {
+  .loginContainer {
+    width: 100%;
+    height: 100vh;
+    height: 100vh;
+    margin-left: 0px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+  }
+  .formLogin {
+    max-width: 330px;
+    width: 100%;
+    padding: 10px;
+
+  }
+  .signUp,
+  .loginButton,.GoogleButton {
+    padding: 1em 3.5em;
+    font-size: 14px;
+  }
+
+.Container2{
+  margin-top: -5px;
+}
+
+  .loginButton{
+    margin-top: -3px;
+    margin-bottom: -10px;
+  }
+
+ .closeButton {
+    right: 5px;
+  }
+
+  
+  /* include other styles you want to adjust for smaller screens here */
+}
