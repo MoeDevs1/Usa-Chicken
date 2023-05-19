@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dbConnect from '@/util/mongo';
 import Users1 from '@/models/Users1';
-import GoogleUsers from "@/models/GoogleUsers";
 import { useSession, signIn, getSession, onSignIn } from 'next-auth/react';
 
 
