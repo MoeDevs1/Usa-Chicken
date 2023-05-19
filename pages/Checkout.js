@@ -17,7 +17,6 @@ import { deleteProduct } from "../redux/cartSlice"; // Import the deleteProduct 
 import axios from "axios";
 import { reset } from "../redux/cartSlice";
 import OrderDetail from "../components/OrderDetail";
-import { firstName, lastName } from '/pages/UserProfile'; // Replace './UserProfile' with the correct path to the file containing the variables
 
 
 
