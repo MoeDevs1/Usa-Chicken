@@ -12,8 +12,8 @@ const PizzaCard = ({pizza}) => {
           <span className={styles.price}>{pizza.prices[0].toFixed(2)}</span>
           <p className={styles.desc}>{pizza.desc}</p>
         </div>
-        <div className={styles.img}>
-          <Image src={pizza.img} alt="" width="100" height="100"/> 
+        <div className={styles.img3}>
+          <Image src={pizza.img} alt="" width="130" height="130"/> 
         </div>
       </div>
       </Link>

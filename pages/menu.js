@@ -87,7 +87,7 @@ export default function Menu({pizzaList, admin}) {
 
       <ul className={styles.listContainer}>
       <li className={styles.listTitle}>
-          <h3>Menu</h3>
+          <h3 >Menu</h3>
           
         </li>
         <li id="popular-itemss" className={styles.listItem} onClick={(e) => {handleClick(e); scrollToSection('popular-items')}} style={{color: "black"}}>

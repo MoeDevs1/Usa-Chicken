@@ -28,6 +28,12 @@
   border-radius: 100%;
 }
 
+.icon2{
+  margin-top: 5px;
+margin-right: 50px;
+}
+
+
 .container {
   color: red;
 }
@@ -156,7 +162,8 @@
 
 .cart {
   position: relative;
-  color: black;
+  color: rgb(255, 0, 0);
+
 }
 
 .counter {
@@ -176,8 +183,7 @@
 }
 
 .cartSeparator {
-  margin: 0 10px; /* or adjust the margin as needed */
-  color: black; /* or any other color you want */
+  color: rgb(255, 0, 0); /* or any other color you want */
   opacity: .2;
   display: none;
 }
@@ -216,10 +222,7 @@
   font-size: 2em; /* Adjust the size as needed */
 }
 
-.dropdownContainer {
-  position: relative;
-  display: inline-block;
-}
+
 .head {
 
    margin-top: -20px;
@@ -233,17 +236,17 @@
 }
 .dropdownMenu {
   position: absolute;
-  top: 120%;
-  height: 550%;
-  left: -80%;
+  top: 110%;
+  height: 580%;
+  left: 19%;
   z-index: 10;
   display: none;
   padding: 30px;
   padding-left: 8px;
-  border-radius: 8px;
+  border-radius: 20px;
 
   padding-right: 4px;
-  background-color: #09317d;
+  background-color: #263249;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
 }
@@ -270,7 +273,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 100%;
-  color: white;
+  color: #ff0000;
 
   text-align: center;
   letter-spacing: 1px;
@@ -383,6 +386,11 @@ margin-top: 20px;
   margin-top: 8px;
 }
 
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
 .userButton {
   color: black; /* White text color */
   background-color: #09317d; /* Primary color */
@@ -485,6 +493,7 @@ margin-left: 50px;
         align-items: center;
         justify-content: center;
         flex: 455px;
+        margin-left: 45px;
       }
       
 
@@ -507,6 +516,7 @@ margin-left: 50px;
       .signUpButton{
         width: 80px;
         height: 40px;
+        margin-top: 20px;
         margin-right: -25px;
 
       }
@@ -572,6 +582,20 @@ margin-left: 50px;
       .listItem:first-child {
         color: white;
       }
+
+
+.cart {
+  position: relative;
+  color: rgb(255, 0, 0);
+  margin-top: -20px;
+}
+
+.counter {
+  position: relative;
+  color: black;
+  margin-top: -20px;
+}
+
     }
     
     

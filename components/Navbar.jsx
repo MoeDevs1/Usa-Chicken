@@ -210,7 +210,7 @@ const Navbar = ({ pizza }) => {
 
                       <div className={styles.head}>
             
-            <Image src="/img/lol.png" alt="" width="122" height="122" />
+            <Image src="/img/Logo.png" alt="" width="122" height="122" />
           </div>
                       <div className={`${styles.dropDownTitle1}  icon`}> {newFirstName} {newLastName}</div>
 
@@ -254,9 +254,7 @@ const Navbar = ({ pizza }) => {
 
     
                 <span className={styles.cartSeparator} style={{verticalAlign: "middle"}}>|</span>
-                <Link href="/Checkout">
-                  <Image className={styles.icon2} src="/img/cartI.png" alt="Shopping Cart" width={30} height={30} style={{verticalAlign: "middle"}} />
-                </Link>
+               
                 <div className={styles.counter}>{quantity}</div>
               </>
             ) : (
@@ -273,6 +271,12 @@ const Navbar = ({ pizza }) => {
             )}
           </div>
         </div>
+        {sessionToken && (
+        <Link href="/Checkout">
+          <Image className={styles.icon2} src="/img/cartI.png" alt="Shopping Cart" width={30} height={30} style={{verticalAlign: "middle"}} />
+        </Link>
+      )}
+  
       </div>
     );
 };

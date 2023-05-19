@@ -440,15 +440,16 @@ display: none  }
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: -5px;
+  margin-top: -40px;
+  margin-bottom: 40px;
   
 }
 
 
-.button {
+.button{
   width: 90%; /* Adjust the width value as needed */
   padding: 1.8rem 1em; /* Adjust the padding values as needed */
-  font-size: 24px;
+  font-size: 21px;
   background-color: #007bff;
   filter: grayscale(0%) contrast(130%) brightness(110%);
   color: white;
@@ -462,7 +463,7 @@ display: none  }
   margin-bottom: -20px;
   overflow: hidden; /* Add this line to prevent text overflow */
 }
-.button{
+.button1{
   width: 90%; /* Adjust the width value as needed */
   padding: 1.8rem 1em; /* Adjust the padding values as needed */
   font-size: 22px;

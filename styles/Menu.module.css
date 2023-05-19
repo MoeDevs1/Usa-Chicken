@@ -13,7 +13,8 @@
     list-style-type: none;
     margin-left: 10px;
     overflow-y: scroll;
-  }
+  } 
+  
   
   .listTitle{
     font-size: 30px;
@@ -29,6 +30,7 @@
     margin-left: 200px;
     position: fixed;
     max-height: 800px;
+    margin-top: -10px;
     overflow-y: scroll;
   }
   
@@ -73,10 +75,27 @@
   .titleS {
     text-align: left;
     margin-top: 2rem;
-    margin-bottom: -80px;
-    margin-left: 65px;
-    font-family: "Arial Black";
-    font-size: 15px;
+    margin-bottom: -70px;
+    margin-left: 85px;
+    font-size: 12px;
+
+  
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+  
+    text-transform: uppercase;
+  
+    letter-spacing: 4px;
+    /* Adds 2 pixels of space between letters */
+    color: #007BFF;
+
+  }
+
+  .listTitle{
+    font-weight: 100;
+    color: #09317d;
+
+ 
   }
   
   .titleS:first-child{
@@ -114,6 +133,7 @@
   }
   
   .menuPhoneTitle{
+    
     display: none;
   }
   
@@ -151,6 +171,7 @@
       margin-top: 20px;
       margin-bottom: 10px;
       font-family: "Arial Black";
+      color: green;
       position: fixed;
       margin-top: -100px;
       display: none;
