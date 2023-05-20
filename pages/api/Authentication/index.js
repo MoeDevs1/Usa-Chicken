@@ -41,10 +41,11 @@ export default async function login(req, res) {
         // Set session token cookie
         const sessionCookie = serialize('sessionToken', sessionToken, {
             httpOnly: true,
-            sameSite: 'none',
-            secure: true,
+            sameSite: 'lax',
+            secure: false, // change secure attribute for testing
             path: '/',
-        });
+          });
+          
 
         // Generate "remember me" token if checkbox is checked
         if (rememberMe) {

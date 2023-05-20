@@ -109,9 +109,6 @@
 
 
 
-.forgotPasswordLink:hover {
-  color: #0066CC;
-}
 
 
 .GoogleButton:hover {
@@ -240,16 +237,23 @@
   color: #444444;
 }
 
+.forgotPasswordLink a {
+ 
+    font-size: 12px;
+
+    color: #1E90FF;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.3s ease;
+    margin-top: 15px;
+    margin-right: 5px;
+  
+  
+  }
+  
 
 
-.forgotPasswordLink {
-  font-size: 12px;
-  color: #1E90FF;
-  font-weight: bold;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  transition: color 0.3s ease;
-}
 
 
 .GoogleButton {
@@ -382,6 +386,7 @@
   font-size: 12px;
   color: #1E90FF;
   font-weight: bold;
+  margin-top: -5px;
 
 }@media (max-width: 480px) {
   .loginContainer {

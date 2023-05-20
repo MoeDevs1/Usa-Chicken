@@ -200,9 +200,10 @@ const Login = ({ closeLogin }) => {
 
 
            
-              <a href="#" className={styles.forgotPasswordLink}>
-                {' '}
-                Forgot Password?</a>
+        <div className={styles.forgotPasswordLink}>
+  <a href="/forgot-password">Forgot password?</a>
+</div>
+
             </div>
 
             <div>

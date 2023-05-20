@@ -227,15 +227,7 @@
     width: 500px;
   }
   
-  
-  .button:focus,
-  .button:active {
-    outline: none;
-    background-color: #007fff;
-    color: #fff;
-    border-bottom: 1px solid #ddd;
-  }
-  
+
   
   .cancelButton {
     width: 70px;

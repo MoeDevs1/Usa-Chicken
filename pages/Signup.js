@@ -183,37 +183,30 @@ const Signup = () => {
 
         <div className={styles.namesContainer  }>
        
-       
-        <div className={`${styles.inputField1}  ${error  && styles.errorInput}`}>
-          <input
+        <div className={`${styles.inputField1} ${error && !firstName.match(/^[a-zA-Z]+$/) && styles.errorInput}`}>
+  <input
+    type="text"
+    name="firstName"
+    placeholder="*First Name"
+    className={`${styles.firstName}`}
+    value={firstName}
+    onChange={(e) => setFirst(e.target.value)}
+  />
+  {error && !firstName.match(/^[a-zA-Z]+$/) && <div className={styles.errorMessage}>Please enter a valid first name</div>}
+</div>
 
-           type="text"
-            name="firstName"
-            
-            placeholder="*First Name"
-            className={` ${styles.firstName}`}
-            value={firstName}
-            onChange={(e) => setFirst(e.target.value)}
-          />
-          {error  && <div className={styles.errorMessage}>Please enter your first name</div>}
-        </div>
-
-        <div className={`${styles.inputField1} ${error && !lastName && styles.errorInput}`}>
-          <input
-            type="text"
-            name="last Name"
-            placeholder="*Last Name"
-            className={`${styles.lastName}`}
-            value={lastName}
-            onChange={(e) => setLast(e.target.value)}
-          />
-          {error && !lastName && <div className={styles.errorMessage1}>Please enter your last name</div>}
-       
-       
-          </div>
-
-        </div>
-
+<div className={`${styles.inputField1} ${error && (!lastName || !lastName.match(/^[a-zA-Z]+$/)) && styles.errorInput}`}>
+  <input
+    type="text"
+    name="lastName"
+    placeholder="*Last Name"
+    className={`${styles.lastName}`}
+    value={lastName}
+    onChange={(e) => setLast(e.target.value)}
+  />
+  {error && (!lastName || !lastName.match(/^[a-zA-Z]+$/)) && <div className={styles.errorMessage1}>Please enter a valid last name</div>}
+</div>
+</div>
 
 
 
