@@ -1,0 +1,232 @@
+.container {
+  margin: 20px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trTitle th,
+.trTitle td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.trTitle th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
+}
+
+.trTitle:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal form {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.modal input[type="password"] {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* card code */
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.card {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 10px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cardHeaderText {
+  margin: 0;
+}
+
+.cardHeaderDate {
+  color: #888;
+  font-size: 0.8em;
+}
+
+.cardContent {
+  margin-bottom: 10px;
+}
+
+.cardTextTitle {
+  font-weight: bold;
+}
+
+.cardItemSeparator {
+  margin: 10px 0;
+  color: #888;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardButton {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.cardButton:hover {
+  background-color: #45a049;
+}
+
+.columnTitle{
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust the height as needed */
+  border-radius: 30px;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.navbarButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  width: 300px;
+  max-width: 500px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-left: 16px;
+}
+
+.navbarButton:hover {
+  background-color: #003b80;
+}
+
+.title{
+  font-size: 22px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  letter-spacing: 2px;
+  margin-bottom: 31px;
+  text-align: center; /* Center align the text */
+  margin-top: 20px;
+}
+
+.dashboard{
+  height: 800px;
+}
+
+.buttons{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-left: 5px;
+}
+
+.buttons:hover {
+background-color: #0056b3;
+cursor: pointer;
+}
+
+.buttons:active {
+background-color: #003b80;
+}
+
+.buttons:last-child{
+  background-color: red;
+}
+
+.buttons:last-child:hover{
+  background-color: darkred;
+}
+
+.passcodeTitle{
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  letter-spacing: 2px;
+  margin-bottom: 31px;
+  margin-top: 20px;
+}

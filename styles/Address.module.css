@@ -1,0 +1,79 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: black;
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2; 
+}
+
+.selection {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.content {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: bold;
+  font-family: "Arial";
+  
+}
+
+.info {
+  margin: 0;
+}
+
+.icon {
+  font-size: 30px;
+  color: red;
+}
+
+.button {
+  color: red;
+  border-radius: 50px;
+}
+
+/* Media Query for small screens like iPhone */
+@media only screen and (max-width: 600px) {
+
+  .navbar {
+    height: 50px;
+    font-size: 14px;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .selection {
+    margin: 0 5px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .labelLast{
+    font-weight: bold;
+    font-family: "Arial";
+    width: 150px;
+  }
+  
+}
+

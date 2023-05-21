@@ -1,0 +1,83 @@
+.container {
+  margin: 20px;
+
+  }
+  
+  .item {
+    flex: 1;
+  }
+  
+  .table {
+    width: 100%;
+    border-spacing: 20px;
+    text-align: left;
+  }
+  
+  .button {
+    border: none;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .button:first-child {
+    background-color: teal;
+    margin-right: 10px;
+  }
+  
+  .button:last-child {
+    background-color: crimson;
+  }
+
+  .button:hover{
+    color: black;
+  }
+
+
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+  }
+  
+  .navbarButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    width: 300px;
+    max-width: 500px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-left: 16px;
+  }
+  
+  .navbarButton:hover {
+    background-color: #003b80;
+  }
+  
+  .title{
+    font-size: 22px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    letter-spacing: 2px;
+    margin-bottom: 31px;
+    text-align: center; /* Center align the text */
+    margin-top: 20px;
+  }
+
+  
