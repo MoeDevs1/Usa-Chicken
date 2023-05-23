@@ -300,7 +300,7 @@ const containerStyle = {
     
     </div>
   <div className={styles.textContainer}>
-  <div className={styles.head}>
+  <div className={styles.head1}>
             <Image src="/img/Logo.png" alt="" width="290" height="290" />
             
           </div>

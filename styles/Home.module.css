@@ -331,6 +331,12 @@ display: none  }
 
 }
 
+
+.head1{
+  margin-top: 30PX;
+  margin-bottom: -120PX;
+}
+
 .head2{
 display: none;
 
