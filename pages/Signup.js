@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 import { BiError } from 'react-icons/bi';
 
-const url = 'http://localhost:3000/api/upSign'
+const url = 'api/upSign'
 
 
 
