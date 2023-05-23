@@ -282,4 +282,3 @@ const Navbar = ({ pizza }) => {
 };
 
 export default Navbar;
-

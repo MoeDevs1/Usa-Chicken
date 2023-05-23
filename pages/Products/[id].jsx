@@ -17,6 +17,8 @@ const [extras, setExtras] = useState([]);
 const [quantity, setQuantity] = useState(1);
 const dispatch = useDispatch();
 
+
+
 const changePrice = (number) => {
     setPrice(price + number);
 }
@@ -4541,4 +4543,3 @@ export const getServerSideProps = async ({ params }) => {
 
 
 export default Product
-

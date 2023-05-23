@@ -1,21 +1,16 @@
 import dbConnect from '@/util/mongo';
 import Users1 from '@/models/Users1';
-import crypto from 'crypto';
-import nodemailer from 'nodemailer';
+import AWS from 'aws-sdk';
 
-const MAX_LOGIN_ATTEMPTS = 15;
-const LOCKOUT_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-// Create a Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  // Configure your email provider here
-  // For example, using Gmail SMTP:
-  service: 'Gmail',
-  auth: {
-    user: 'your-email@gmail.com',
-    pass: 'your-password',
-  },
+// Load AWS credentials from environment variables
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
 });
+
+// Create an Amazon SES object
+const ses = new AWS.SES({ apiVersion: '2010-12-01' });
 
 export default async function emailExisit(req, res) {
   const { method } = req;
@@ -29,52 +24,40 @@ export default async function emailExisit(req, res) {
 
   const { oldEmail } = req.body;
 
-  try {
-    // Find user by email
-    const user = await Users1.findOne({ email: oldEmail });
+  const user = await Users1.findOne({ email: oldEmail });
 
-    if (!user) {
-      res.status(400).json({ success: false, message: 'Email not found' });
-      return;
-    }
-
-    // Check if the account is locked
-    if (user.loginAttempts >= MAX_LOGIN_ATTEMPTS && user.lockUntil > Date.now()) {
-      const remainingTime = Math.ceil((user.lockUntil - Date.now()) / 1000 / 60);
-      res.status(429).json({ success: false, message: `Account locked. Please try again after ${remainingTime} minutes.` });
-      return;
-    }
-
-    // Create a random 6-digit code
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-
-    // Save the code and reset the login attempts
-    user.resetPasswordCode = code;
-    user.loginAttempts = 0;
-    user.lockUntil = undefined;
-    await user.save();
-
-    // Send the email with the code
-    const mailOptions = {
-      from: 'mohannadosman2@gmail.com',
-      to: oldEmail,
-      subject: 'Reset Password Code',
-      html: `
-        <h1>Welcome to our Website</h1>
-        <p>We received a request to reset your password. Please use the following code to reset your password:</p>
-        <h2>${code}</h2>
-        <p>This code will expire in 15 minutes.</p>
-        <p>If you did not request a password reset, please ignore this email.</p>
-        <p>Best regards,</p>
-        <p>Your Website Team</p>
-      `,
+  if (user) {
+    // Email parameters
+    const params = {
+      Destination: { 
+        ToAddresses: [oldEmail]
+      },
+      Message: {
+        Body: {
+          Text: {
+            Charset: "UTF-8",
+            Data: "Hello, please use the following link to unsubscribe if you wish to stop receiving these emails: <unsubscribe link>"
+          }
+        },
+        Subject: {
+          Charset: 'UTF-8',
+          Data: 'Test email'
+        }
+      },
+      Source: "mohannadosman2@gmail.com",// sip email from aws SMTP
     };
 
-    await transporter.sendMail(mailOptions);
-
-    res.status(200).json({ success: true, message: 'Email exists' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    // Send the email
+    ses.sendEmail(params, function(err, data) {
+      if (err) {
+        console.log(err, err.stack);
+        res.status(500).json({ message: 'Error sending email', error: err.message }); // Sends the error message in the response
+      } else {
+        console.log(data);
+        res.status(200).json({ message: 'Email sent' });
+      }
+    });
+  } else {
+    res.status(404).json({ message: 'User not found' });
   }
 }

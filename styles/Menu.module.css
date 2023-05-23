@@ -76,8 +76,8 @@
     text-align: left;
     margin-top: 2rem;
     margin-bottom: -70px;
-    margin-left: 85px;
-    font-size: 12px;
+    margin-left: 75px;
+    font-size: 11px;
 
   
     font-family: "Open Sans", sans-serif;
@@ -87,13 +87,13 @@
   
     letter-spacing: 4px;
     /* Adds 2 pixels of space between letters */
-    color: #007BFF;
+    color: #09317d;
 
   }
 
   .listTitle{
     font-weight: 100;
-    color: #09317d;
+    color: #007BFF;
 
  
   }

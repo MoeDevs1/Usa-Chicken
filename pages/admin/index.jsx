@@ -13,7 +13,7 @@ const Index = ({ orders, products, admin }) => {
 
   const [pizzaList, setPizzaList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
-  const status = ["preparing", "on the way", "Picked Up"];
+  const status = ["preparing", "Almost Done", "Ready", "Picked Up", "Finished"];
 
   const handleDelete = async (id) => {
     console.log(id);
@@ -66,62 +66,86 @@ const Index = ({ orders, products, admin }) => {
     }
   };
 
+  const [passwords, setPasswords] = useState('');
+  const [isPasswordCorrects, setIsPasswordCorrects] = useState(false);
+  const [showForms, setShowForms] = useState(false);
+  const routers = useRouter();
+
+  const handleSubmitOrders = (es) => {
+    es.preventDefault();
+    if (passwords === '123') {
+      setIsPasswordCorrects(true);
+      routers.push('/allOrders');
+    } else {
+      alert('Incorrect password');
+    }
+  };
+
   return (
     <div className={styles.container}>
-      
-      {!isPasswordCorrect ? (
+      <nav className={styles.navbar}>
+  <div className={styles.buttonContainer}>
+    <Link href="/admin">
+      <button className={styles.navbarButton}>Dashboard</button>
+    </Link>
+    <Link href="/customerOrders">
+      <button className={styles.navbarButton}>Orders</button>
+    </Link>
+    {!isPasswordCorrect ? (
         <>
           {!showForm ? (
-            <button onClick={() => setShowForm(true)} className={styles.editButton}>
-              Click to edit Products
+            <button onClick={() => setShowForm(true)} className={styles.navbarButton}>
+              Products
             </button>
           ) : (
             <div className={styles.modal}>
               <form onSubmit={handleSubmit}>
+              <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Submit</button>
+                <button className={styles.buttons}>Submit</button>
+                <button className={styles.buttons} onClick={() => setShowForm(false)}>Close</button>
               </form>
             </div>
           )}
         </>
-      ) : null}
-      <div className={styles.item}>
-        <h1 className={styles.title}>Orders</h1>
-        <table className={styles.table}>
-          <tbody>
-            <tr className={styles.trTitle}>
-              <th>Id</th>
-              <th>Customer</th>
-              <th>Total</th>
-              <th>Payment</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </tbody>
-          {orderList.map((order) => (
-            <tbody key={order._id}>
-              <tr className={styles.trTitle}>
-                <td>{order._id.slice(0, 6)}...</td>
-                <td>{order.customer}</td>
-                <td>${order.total}</td>
-                <td>
-                  {order.method === 0 ? <span>Paid</span> : <span>Paid</span>}
-                </td>
-                <td>{status[order.status]}</td>
-                <td>
-                  <button onClick={() => handleStatus(order._id)}>
-                    Next Stage
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-      </div>
+      ) : null}  
+    {!isPasswordCorrects ? (
+         <>
+    {!showForms ? (
+            <button onClick={() => setShowForms(true)} className={styles.navbarButton}>
+              All Orders
+            </button>
+          ) : (
+            <div className={styles.modal}>
+              <form onSubmit={handleSubmitOrders}>
+              <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
+                <input
+                  type="password"
+                  value={passwords}
+                  onChange={(es) => setPasswords(es.target.value)}
+                />
+                <button className={styles.buttons}>Submit</button>
+                <button className={styles.buttons} onClick={() => setShowForms(false)}>Close</button>
+              </form>
+            </div>
+          )}
+                  </>
+      ) : null}  
+  </div>
+</nav>
+     
+<div className={styles.dashboard}>
+<h1 className={styles.title}>Dashboard</h1>
+</div>
+
+
+
+
+
     </div>
   );
 };
@@ -161,47 +185,3 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default Index;
-
-
-
-{/* <div className={styles.item}>
-        <h1 className={styles.title}>Products</h1>
-        <table className={styles.table}>
-          <tbody>
-            <tr className={styles.trTitle}>
-              <th>Image</th>
-              <th>Id</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-          </tbody>
-          {pizzaList.map((product) => (
-            <tbody key={product._id}>
-              <tr className={styles.trTitle}>
-                <td>
-                  <Image
-                    src={product.img}
-                    width={50}
-                    height={50}
-                    objectFit="cover"
-                    alt=""
-                  />
-                </td>
-                <td>{product._id.slice(0, 5)}...</td>
-                <td>{product.title}</td>
-                <td>${product.prices[0]}</td>
-                <td>
-                  <button className={styles.button}>Edit</button>
-                  <button
-                    className={styles.button}
-                    onClick={() => handleDelete(product._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-      </div> */}

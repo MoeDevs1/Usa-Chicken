@@ -16,6 +16,10 @@ const googleUserSchema = new mongoose.Schema(
       unique: true,
       required: [true, "Email is required"],
     },
+    dateJoined: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { collection: "GoogleUsers" }
 );

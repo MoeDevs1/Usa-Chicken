@@ -33,25 +33,26 @@ const [selectedTip, setSelectedTip] = useState(0);
 const [selectedPersonalTip, setSelectedPersonalTip] = useState(0);
 const tipAmount = parseFloat(selectedTip) / 100.0 * cart.total;
 let personalTip = parseFloat(selectedPersonalTip);
+let [points, setPoints] = useState(0); // Initialize with 0 instead of an empty string
 const taxAmount = cart.total * taxRate;
-const myTotal = cart.total + tipAmount + taxAmount + personalTip;
 const tipAmount10 = parseFloat(10) / 100.0 * cart.total;
 const tipAmount15 = parseFloat(15) / 100.0 * cart.total;
 const tipAmount30 = parseFloat(30) / 100.0 * cart.total;
 const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
+const [emailState, setEmailState] = useState('');
+const [personalPhone, setpersonalPhone] = useState('');
 
 useEffect(() => {
   const fetchUserDetails = async () => {
     try {
       const response = await axios.get('/api/getUserDetails');
-      const { firstName, lastName, phone } = response.data;
+      const { firstName, lastName, email, phone, points } = response.data;
       setFirstName(firstName);
       setLastName(lastName);
-      setPhone(formatPhoneNumber(phone));
-      setRawPhone(phone); // Set the raw phone number
-      setNewFirstName(firstName);
-      setNewLastName(lastName);
+      setEmailState(email);
+      setpersonalPhone(phone)
+      setPoints(points)
     } catch (error) {
       console.error('Error fetching user details', error);
     }
@@ -60,31 +61,59 @@ useEffect(() => {
   fetchUserDetails();
 }, []);
 
-
-const handleDeleteProduct = (productId) => {
-  dispatch(deleteProduct(productId));
-};
-  
-const handleTipClick = (value) => {
-  setSelectedTip(value);
-  personalTip = 0;
-  setSelectedPersonalTip(0);
+let Discount = 0;
+if (points === 500) {
+  Discount = 10;
 }
+
+const handleDeleteProduct = (index) => {
+  dispatch(deleteProduct(index));
+};
+
+
+const handleTipClick = (value) => {
+  const tipPercentage = parseFloat(value) / 100;
+  const tipAmount = tipPercentage * cart.total;
+  const roundedTipAmount = roundToTwoDecimals(tipAmount);
+  // setSelectedTip(roundedTipAmount);
+  setSelectedPersonalTip(roundedTipAmount);
+};
+
+// const handleCustomTipChange = (event) => {
+//   const customTip = event.target.value;
+//   // setSelectedTip(customTip);
+//   setSelectedPersonalTip(customTip);
+// };
+
+
+const handleCustomTipChange = (event) => {
+  const customTip = event.target.value;
+  setSelectedPersonalTip(customTip);
+  
+  // Remove leading "0" if present
+  const tipValue = customTip !== '' ? parseFloat(customTip.replace(/^0+/, '')) : 0;
+  setSelectedPersonalTip(tipValue);
+};
+
+
+const roundToTwoDecimals = (number) => {
+  return Math.round(number * 100) / 100;
+};
 
 const handlePersonal = (value) => {
   setSelectedTip(0);
 }
 
-const handleCustomTipChange = (event) => {
-  setSelectedPersonalTip(event.target.value);
-
-};
 
 const isSelected = (value) => {
   return value === setSelectedTip ? styles.selectedTipButton : "";
 };
 
-
+function handleKeyPress(event) {
+  if (event.key === "-") {
+    event.preventDefault();
+  }
+}
 
 
 const createOrder = async (data) => {
@@ -98,6 +127,32 @@ const createOrder = async (data) => {
     console.log(err);
   }
 };
+
+if (points === 600 ) {
+  points = 100;
+}
+
+const updatePointsInDatabase = async (newPoints) => {
+  try {
+    // Make a request to your backend API to update the points
+    await axios.put('/api/updatePoints', { points: newPoints });
+    console.log('Points updated successfully in the database');
+
+    // Check if points reach 600, then reset to 0
+    if (newPoints === 600) {
+      await axios.put('/api/updatePoints', { points: 100 });
+      console.log('Points reset to 0');
+    }
+  } catch (error) {
+    console.error('Error updating points in the database', error);
+  }
+};
+
+let myTotal = cart.total + tipAmount + taxAmount + personalTip - Discount;
+
+if ( myTotal < 0) {
+  myTotal = 0;
+}
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
 
@@ -142,12 +197,29 @@ const createOrder = async (data) => {
           }}
           onApprove={function (data, actions) {
             return actions.order.capture().then(function (details) {
+              const cartItems = cart.products.map((product) => ({
+                product: product._id,
+                extras: product.extras.map((extra) => extra._id),
+                quantity: product.quantity,
+              }));
+          
               createOrder({
                 customer: firstName + ' ' + lastName,
                 address: '990 Elm St, Manchester, NH',
                 total: myTotal.toFixed(2),
-                method: 1234,
+                method: 6032322934,
+                phone: personalPhone,
+                email: emailState,
+                cart: cartItems,
               });
+
+              if (myTotal > 10) {
+                const newPointsValue = points + 100; // Add 100 points to the existing points value
+                updatePointsInDatabase(newPointsValue);
+              }if(myTotal < 10 && points === 500 ){
+                const newPointsValue = points + 100; // Add 100 points to the existing points value
+                updatePointsInDatabase(newPointsValue);
+              }
             });
           }}
         />
@@ -164,12 +236,10 @@ const createOrder = async (data) => {
       <div className={styles.billingInfo}>
    
         <div className={styles.billingInfoHeader}>
-        <div className={styles.billingInfoHeader}>
   <div className={styles.titleContainer}>
     <h1 className={styles.titleCart}>Your Cart</h1>
         <Image className={styles.cartImg} src="/img/cartI.png" alt="" width="30" height="30"/>
   </div>
-</div>
 
 
         </div>
@@ -180,17 +250,17 @@ const createOrder = async (data) => {
         <table className={styles.table}>
           <tbody>
             <tr className={styles.trTitle}>
-              <th>Product</th>
-              <th>Name</th>
-              <th>Extras</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th>Edit</th>
+              <th className={styles.columnTitles}>Product</th>
+              <th className={styles.columnTitles}>Name</th>
+              <th className={styles.columnTitles}>Extras</th>
+              <th className={styles.columnTitles}>Quantity</th>
+              <th className={styles.columnTitles}>Total</th>
+              <th className={styles.columnTitles}>Edit</th>
 
             </tr>
           </tbody>
           <tbody>
-            {cart.products.map((product) => (
+            {cart.products.map((product, index) => (
               <tr className={styles.tr} key={product._id}>
                 <td className={styles.td}>
                   <div className={styles.imgContainer}>
@@ -233,118 +303,148 @@ const createOrder = async (data) => {
                   >Edit
                   </button>
                   </Link>
-                  <button className={styles.deleteButton}
-                      onClick={() => handleDeleteProduct(product._id)}
-                    >Delete</button>
+                  <button className={styles.deleteButton} onClick={() => handleDeleteProduct(index)}>
+          Delete
+        </button>
                   </span>
                 </td>
+          
               </tr>
+              
             ))}
           </tbody>
         </table>
+        
+      </div>
+<div>
+  
+     
+    </div>
+   
+     
+     
+
+
       </div>
 
-<div>
-      <h1 className={styles.title2}>
+      <div className={styles.total}>
+      {open ? (
+        
+        <div className={styles.paymentMethods}>
+           <h1 className={styles.title2}>
         Pay Now <span className={styles.icon}><AiOutlineCreditCard size={24} /></span>
       </h1>
-    </div>
-        <div className={styles.line}></div> 
-     
-     
-     
-
-     <div className={styles.purchaseContainer}>
-    <div>
-      <div className={styles.paypal} >
+      <div className={styles.lineTotal}></div> {/* add this div for the line */}
       <PayPalScriptProvider
   options={{
     "client-id": "test",
     components: "buttons",
     currency: "USD",
-    "disable-funding": "paylater",
+    intent: "capture", // or intent: "purchase"
   }}
 >
-<ButtonWrapper currency={currency} showSpinner={false} style={{ width: '200px' }} />
+  <ButtonWrapper currency={currency} showSpinner={false} />
 </PayPalScriptProvider>
-
-
-
-      {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
-
-         
+          <button className={styles.backButton} onClick={() => setOpen(false)}>
+  <span className={styles.buttonText}>Go Back to Billing</span>
+  <span className={styles.buttonAmount}>${myTotal.toFixed(2)}</span>
+</button>
+          {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
         </div>
+      ) : (
+        <div>
+          <h2 className={styles.title1}>Cart Total</h2>
+          <div className={styles.subtotal}>
+            <p>Subtotal:</p>
+            <p>${cart.total.toFixed(2)}</p>
+          </div>
+          <div className={styles.tax}>
+            <p>Tax:</p>
+            <p>${taxAmount.toFixed(2)}</p>
+          </div>
+          {points === 500 ? (
+
+          <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Congrats! You've reached 500 points. Enjoy a $10 discount! Order must be over $10.</h5>
+
+  ) : (
+    <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Once you reach 500 points, you'll get a $10 discount!  &nbsp; &nbsp;  <span className={styles.pointComment}>Your points:</span> {points}</h5>
+    )}
+          <div className={styles.tax}>
+  <p>Discount:</p>
+  {points === 500 ? (
+    <>
+      <p>$-{Discount}</p>
+    </>
+  ) : (
+    <p>$0</p>
+  )}
 </div>
-   
-</div>
-      </div>
+          <div className={styles.buttons}></div>
 
-      <div className={styles.total}>
-        <h2 className={styles.title1}>Cart Total</h2>
-        <div className={styles.subtotal}>
-          <p>Subtotal:</p>
-          <p>${cart.total.toFixed(2)}</p>
+          <div className={styles.lineTotal}></div> {/* add this div for the line */}
+          <h2 className={styles.title1}>Tip</h2>
+          <h5 className={styles.tipComment}>Spread the love! Tip your order, it's appreciated!</h5>
+          <div className={styles.tipContainer}>
+            <button
+              className={`${styles.tipButton} ${isSelected("10%")}`}
+              onClick={() => handleTipClick("10%")}
+            >
+              10%
+              <div className={styles.tipAmountNum}>${tipAmount10.toFixed(2)}</div>
+            </button>
+            <button
+              className={`${styles.tipButton} ${isSelected("15%")}`}
+              onClick={() => handleTipClick("15%")}
+            >
+              15%
+              <div className={styles.tipAmountNum}>${tipAmount15.toFixed(2)}</div>
+            </button>
+            <button
+              className={`${styles.tipButton} ${isSelected("30%")}`}
+              onClick={() => handleTipClick("30%")}
+            >
+              30%
+              <div className={styles.tipAmountNum}>${tipAmount30.toFixed(2)}</div>
+            </button>
+
+            <input
+  className={styles.tipInput}
+  type="number"
+  id="custom-amount"
+  name="custom-amount"
+  min="0"
+  step="1.00"
+  value={selectedPersonalTip}
+  onChange={handleCustomTipChange}
+  onClick={handlePersonal}
+  onKeyPress={handleKeyPress} // Add this line
+/>
+            <div className={styles.tipInputContainer}></div>
+          </div>
+
+          <div className={styles.lineTip}></div> {/* add thislineTip div for the line */}
+          <div className={styles.subtotal}>
+            <p>Total:</p>
+            <p>${myTotal.toFixed(2)}</p>
+          </div>
+          <div className={styles.wholePriceArea}>
+          {myTotal <= 0 ? (
+    <>
+          <button onClick={() => setOpen(false)} className={styles.checkoutButton}>
+            Checkout &nbsp; <span className={styles.buttonSentence}>(order cant be $0)</span>
+          </button>    </>
+  ) : (
+    <button onClick={() => setOpen(true)} className={styles.checkoutButton}>
+    Checkout
+  </button>  )}
+
+          </div>
         </div>
-        {/* <div className={styles.tax}>
-          <p>Discount:</p>
-          <p>$0</p>
-        </div> */}
-        <div className={styles.tax}>
-          <p>Tax:</p>
-          <p>${taxAmount.toFixed(2)}</p>
-        </div>
-        
-        <div className={styles.buttons}></div>
+      ) }
 
-
-        <div className={styles.lineTotal}></div> {/* add this div for the line */}
-        <h2 className={styles.title1}>Tip</h2>
-        <h5 className={styles.tipComment}>Spread the love! Tip your order, it's appreciated!</h5>
-      <div className={styles.tipContainer}>
-        <button
-          className={`${styles.tipButton} ${isSelected("10%")}`}
-          onClick={() => handleTipClick("10%")}
-        >
-          10%
-          <div className={styles.tipAmountNum}>${tipAmount10.toFixed(2)}</div>
-        </button>
-        <button
-          className={`${styles.tipButton} ${isSelected("15%")}`}
-          onClick={() => handleTipClick("15%")}
-        >
-          15%
-          <div className={styles.tipAmountNum}>${tipAmount15.toFixed(2)}</div>
-        </button>
-        <button
-          className={`${styles.tipButton} ${isSelected("30%")}`}
-          onClick={() => handleTipClick("30%")}
-        >
-          30%
-          <div className={styles.tipAmountNum}>${tipAmount30.toFixed(2)}</div>
-        </button>
-       
-      <input
-        className={styles.tipInput}
-        type="number"
-        id="custom-amount"
-        name="custom-amount"
-        min="0"
-        step="1.00"
-        value={selectedPersonalTip}
-        onChange={handleCustomTipChange}
-        onClick={handlePersonal}
-      />
-      <div className={styles.tipInputContainer}></div>
-
-</div>
-        <div className={styles.lineTip}></div> {/* add thislineTip div for the line */}
-        <div className={styles.subtotal}>
-          <p>Total:</p>
-          <p>${myTotal.toFixed(2)}</p>
-        </div>
-      </div>
     </div>
+    </div>
+
     
   );
 }
-

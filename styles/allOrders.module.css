@@ -1,0 +1,148 @@
+.container {
+    padding: 20px;
+    margin-left: 65px;
+  }
+  
+  .navbar {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbarButton {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .item {
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  
+  .customer {
+    font-weight: bold;
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .cardHeaderText {
+    font-size: 18px;
+  }
+  
+  .cardHeaderDate {
+    color: #666;
+  }
+  
+  .cardTextTitle {
+    margin-top: 10px;
+  }
+  
+  .status {
+    font-weight: bold;
+    color: #4caf50;
+  }
+  
+  .line1 {
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px 0;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .cartItem {
+    border-bottom: 1px solid #ccc;
+  }
+  
+
+  .navbarButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    width: 300px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-left: 16px;
+  }
+  
+  .navbarButton:hover {
+    background-color: #003b80;
+  }
+  
+  .title {
+    font-size: 30px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: #1e1e1e;
+    letter-spacing: 2px;
+    margin-bottom: 31px;
+    text-align: center; /* Center align the text */
+    margin-top: 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+  }

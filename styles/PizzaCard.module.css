@@ -13,10 +13,10 @@
 
 .card {
     display: flex;
-    width: 380px;
+    width: 370px;
     height: 190px;
     border-radius: 35px;
-    margin-right: 20px;
+    margin-right: 40px;
     margin-left: 120px;
     margin-top: -50px;
     margin-bottom: 40px;
@@ -102,7 +102,7 @@ padding: 20PX;
     font-weight: bold;
     letter-spacing: 1px;
     /* Updated text color */
-    font-family: "Montserrat", sans-serif;    font-size: 13px;
+    font-family: "Montserrat", sans-serif;    font-size: 12px;
 }
 
 

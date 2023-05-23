@@ -4,22 +4,20 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FiEdit2 } from 'react-icons/fi';
 import { RiKey2Line } from 'react-icons/ri';
-
 import { AiFillLock } from 'react-icons/ai';
 import { GrTransaction } from 'react-icons/gr';
 import axios from 'axios';
 import { BsFillPersonFill, BsXLg } from 'react-icons/bs';
 import styles from '../styles/userProfile.module.css';
 import Image from 'next/image';
-
 import { BsCheck2Circle } from 'react-icons/bs';
+import Link from 'next/link';
 
 
-
-
-const UserProfile = () => {
+const UserProfile = ({ orders, products, admin }) => {
   const [teleport, setTeleport] = useState(false);
   const [teleport1, setTeleport1] = useState(false);
+  const [teleport2, setTeleport2] = useState(false);
   const [update, setUpdate] = useState(false)
   const [loading, setLoading] = useState(false); // declare setLoading with initial value of false
   const [lastNameError, setLastNameError] = useState(false);
@@ -43,8 +41,14 @@ const [newFirstName, setNewFirstName] = useState('');
 const [newLastName, setNewLastName] = useState('');
 const [firstNameError, setFirstNameError] = useState(false);
 const [rawPhone, setRawPhone] = useState('');
-
 const [activeButton, setActiveButton] = useState("User profile");
+const [close, setClose] = useState(true);
+const [pizzaList, setPizzaList] = useState(products);
+const [orderList, setOrderList] = useState(orders);
+const status = ["Paid", "Preparing", "Ready", "Picked Up!"];
+const [emailState, setEmailState] = useState('');
+const [points, setPoints] = useState();
+
 
 const handleButtonClick = (event) => {
   setActiveButton(event.target.innerText);
@@ -64,13 +68,16 @@ const formatPhoneNumber = (number) => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get('/api/getUserDetails');
-        const { firstName, lastName, phone } = response.data;
+        const { firstName, lastName, phone, email, points } = response.data;
         setFirstName(firstName);
         setLastName(lastName);
+        setEmailState(email);
         setPhone(formatPhoneNumber(phone));
         setRawPhone(phone); // Set the raw phone number
         setNewFirstName(firstName);
         setNewLastName(lastName);
+        setPoints(points);
+
       } catch (error) {
         console.error('Error fetching user details', error);
       }
@@ -96,7 +103,6 @@ const formatPhoneNumber = (number) => {
   };
 
 
-
   const handleLogin = async () => {
     router.push('/Login');
   }
@@ -113,6 +119,7 @@ const formatPhoneNumber = (number) => {
     } else {
       setTeleport(false); // Set teleport to false when "User profile" is clicked
       setTeleport1(false); // Set teleport to false when "User profile" is clicked
+      setTeleport2(false); // Set teleport to false when "User profile" is clicked
 
       setActiveButton("User profile");
     }
@@ -121,7 +128,16 @@ const formatPhoneNumber = (number) => {
 
   const handleTransactionClick = () => {
     setTeleport1(true);
+    setTeleport2(false); // Set teleport to false when "User profile" is clicked
+    setTeleport(false); // Set teleport to false when "User profile" is clicked
     setActiveButton("Transactions"); // Add this line to set the active button
+  };
+
+  const handlePointsClick = () => {
+    setTeleport2(true);
+    setTeleport1(false);
+    setTeleport(false); // Set teleport to false when "User profile" is clicked
+    setActiveButton("Banking Info"); // Add this line to set the active button
   };
 
 
@@ -195,8 +211,6 @@ const formatPhoneNumber = (number) => {
 
 
 
-
-
   const handleUpdate = async (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -260,6 +274,8 @@ const formatPhoneNumber = (number) => {
     }
   };
 
+  
+
   if (teleport) {
     // Render the empty container when teleport is true
     return (
@@ -308,10 +324,10 @@ const formatPhoneNumber = (number) => {
   <div className={styles.buttonWrapper}>
     <button
       className={`${styles.button} ${activeButton === "Banking Info" ? styles.active : ""}`}
-      onClick={handleButtonClick}
+      onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
           </div>
         </div>
@@ -495,10 +511,10 @@ const formatPhoneNumber = (number) => {
   <div className={styles.buttonWrapper}>
     <button
       className={`${styles.button} ${activeButton === "Banking Info" ? styles.active : ""}`}
-      onClick={handleButtonClick}
+      onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
           </div>
         </div>
@@ -507,8 +523,36 @@ const formatPhoneNumber = (number) => {
 
 
         <div className={styles.container2}>
-          <header className={styles.Title}> Password Setting</header>
+        {/* {points === 500 ? (
+          <header className= {`${styles.Title} ${styles.Title}`}><span className={styles.pointsTitle}>Your Points: </span> {points} <span className={styles.ordering}> &nbsp; (Order and get $10 Off)  </span></header>
+  ) : (
+    <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> {points}</header>
+    )} */}
+    <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
+        <header className= {`${styles.Title} ${styles.Title}`}> Your Orders</header>
 
+          <div className={styles.cardContainer}>
+          {orderList.map((order) => {
+  if (order.email === emailState) {
+    return (
+      <div className={styles.cardHeader}>
+        <Link href={`/orders/${order._id}`}>
+          <button className={styles.checkoutButton}>
+          <h2 className={styles.cardHeaderOrder}>{order.address}</h2>
+
+          <h2 className={styles.cardHeaderText}>Total: {order.total}</h2>
+
+          <span className={styles.cardHeaderDate}>
+            {new Date(order.createdAt).toLocaleString()}
+          </span>
+          </button>
+          </Link>
+        </div>
+    );
+  }
+  return null; // Skip rendering if the order doesn't match the email
+})}
+  </div>
 
         </div>
       </div>
@@ -516,7 +560,82 @@ const formatPhoneNumber = (number) => {
   }
 
 
+  if (teleport2) {
+    // Render the empty container when teleport is true
+    return (
 
+      <div className={styles.parentContainer}>
+
+   <div className={styles.container1}>
+        
+        <div className={styles.userProfileLogo}>
+  <Image src="/img/lol.png" alt="" width="142" height="142" className={styles.logoImage} />
+</div>
+<div className={styles.nameText}>{firstName} {lastName}</div>
+
+
+       
+<div className={styles.buttonWrapper}>
+    <button
+      className={`${styles.button} ${activeButton === "User profile" ? styles.active : ""}`}
+      onClick={handleProfileClick}
+    >
+      <BsFillPersonFill className={styles.Icon} />
+      User profile
+    </button>
+  </div>
+
+  <div className={styles.buttonWrapper}>
+    <button
+      className={`${styles.button} ${activeButton === "Sign in & Security" ? styles.active : ""}`}
+      onClick={handleTextClick}
+    >
+      <AiFillLock className={styles.Icon} />
+      Sign in & Security
+    </button>
+  </div>
+
+  <div className={styles.buttonWrapper}>
+    <button
+      className={`${styles.button} ${activeButton === "Transactions" ? styles.active : ""}`}
+      onClick={handleTransactionClick}
+    >
+      <GrTransaction className={styles.Icon} />
+      Transactions
+    </button>
+  </div>
+
+  <div className={styles.buttonWrapper}>
+    <button
+      className={`${styles.button} ${activeButton === "Banking Info" ? styles.active : ""}`}
+      onClick={handlePointsClick}
+    >
+      <BsFillPersonFill className={styles.Icon} />
+      Points Tracker
+    </button>
+          </div>
+        </div>
+
+
+
+        <div className={styles.container2}>
+        {points === 500 ? (
+          <header className= {`${styles.Title} ${styles.Title}`}><span className={styles.pointsTitle}>Your Points: </span> {points} <span className={styles.ordering}> &nbsp; (Order and get $10 Off)  </span></header>
+  ) : (
+    <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> &nbsp; {points} / 1000</header>
+    )}
+    <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
+        <header className= {`${styles.Title} ${styles.Title}`}> Point Tracker</header>
+
+        <div className={styles.circleContainer}>
+       
+             
+</div>
+
+        </div>
+      </div>
+    );
+  }
 
 
 
@@ -582,10 +701,10 @@ const formatPhoneNumber = (number) => {
   <div className={styles.buttonWrapper}>
     <button
       className={`${styles.button} ${activeButton === "Banking Info" ? styles.active : ""}`}
-      onClick={handleButtonClick}
+      onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
   </div>
 
@@ -686,5 +805,20 @@ const formatPhoneNumber = (number) => {
   );
 };
 
+export const getServerSideProps = async (ctx) => {
+  const res = await axios.get("http://localhost:3000/api/products");
+
+
+
+  const productRes = await axios.get("http://localhost:3000/api/products");
+  const orderRes = await axios.get("http://localhost:3000/api/orders");
+
+  return {
+    props: {
+      orders: orderRes.data,
+      products: productRes.data,
+    },
+  };
+};
 
 export default UserProfile;

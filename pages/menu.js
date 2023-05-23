@@ -13,7 +13,6 @@ import Add from "../components/Add";
 
 
 
-
 export default function Menu({pizzaList, admin}) {
   const [close, setClose] = useState(true);
 
@@ -62,7 +61,7 @@ export default function Menu({pizzaList, admin}) {
       setSelected(null);
     } else {
       // make the clicked item black and set it as the new selected item
-      clicked.style.color = "black";
+      clicked.style.color = "#09317d";
       setSelected(clicked);
     }
   }
@@ -87,7 +86,7 @@ export default function Menu({pizzaList, admin}) {
 
       <ul className={styles.listContainer}>
       <li className={styles.listTitle}>
-          <h3 >Menu</h3>
+          <h3>Menu</h3>
           
         </li>
         <li id="popular-itemss" className={styles.listItem} onClick={(e) => {handleClick(e); scrollToSection('popular-items')}} style={{color: "black"}}>
@@ -194,9 +193,11 @@ export default function Menu({pizzaList, admin}) {
 <div className={styles.titleS}> <h1>BEVERAGES</h1> </div> <PizzaList pizzaList={pizzaList.slice(92, 99)} />
 <h1 className={styles.dash}>------------</h1>
 
-{/* <h1 className={styles.dash} id="extras">------------</h1>
+<h1 className={styles.dash} id="extras">------------</h1>
 <div className={styles.titleS}> <h1>Extras</h1> </div> <PizzaList pizzaList={pizzaList.slice(98)} />
-<h1 className={styles.dash}>------------</h1> */}
+<h1 className={styles.dash}>------------</h1>
+<h1 className={styles.dash}>------------</h1>
+<h1 className={styles.dash}>------------</h1>
 
 
 </div>

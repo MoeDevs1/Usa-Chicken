@@ -5,8 +5,9 @@ import Featured from '@/components/featured';
 import PizzaList from '@/components/PizzaList';
 import axios from 'axios';
 import Link from 'next/link';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { RxEnter } from 'react-icons/rx';
+
 
 
 const pizzas = [
@@ -81,16 +82,24 @@ export default function Home({ pizzaList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <img className={styles.banner} src={"/img/banner.jpg"} alt="banner"/>
-
+      <div className={styles.bannerContainer}>
+  <div className={styles.circularContainer}>
+    <img className={styles.banner} src={"/img/banner.jpg"} alt="banner" />
+  </div>
+  <img className={styles.halal} src={"/img/halal.png"} alt="halal" />
+</div>
       <div className={styles.buttons}>
+      <div className={styles.slideInImage}>
+
       <button className={styles.button}>Order Now from Manchester            <RxEnter className={styles.icon} />
-
 </button>
-     <button className={styles.button1} disabled>Order Now from Nashua       <RxEnter className={styles.icon} />
+</div>
+<div className={styles.slideInImage2}>
+     <button className={styles.button1}>Order Now from Nashua       <RxEnter className={styles.icon} />
 </button>
 
-      </div>
+</div>
+ </div>
       <div className={styles.content}>
         <div className={styles.words}>
           <div className={styles.paragraph1}>
@@ -106,7 +115,7 @@ export default function Home({ pizzaList }) {
     <Link href={pizza.shref}>
       <div>
         <div className={styles.imageWrapper}>
-          <Image src={pizza.img} alt={pizza.title} width={300} height={200}/>
+          <Image src={pizza.img} alt={pizza.title} width={280} height={180}/>
         </div>
         <h3 className={styles.pizzaTitle}>{pizza.title}</h3>
         <p className={styles.pizzaDesc}>{pizza.desc}</p>
@@ -124,9 +133,45 @@ export default function Home({ pizzaList }) {
 
       <div className={styles.menuParent}>
       <Link href="/menu">
-      <button className={styles.menuButton}>View Full Menu</button>
+      <button className={styles.menuButton}>View Full Menu  </button>
+      {/* <Image src="/img/menuIcon.png" className={styles.menuImg}  width={40} height={40} /> */}
       </Link>
       </div>
+
+      <div className={styles.signupContainer}>
+  <div className={styles.imageContainer}>
+  <div className={styles.slideInImage}>
+      {/* <Image className={styles.signImg} src="/img/logo.png" alt="" width={300} height={300} /> */}
+    </div>  </div>
+  <div className={styles.textContainer}>
+    <h2 className={styles.signupP}>Sign up and earn points!</h2>
+    <p className={styles.signupDesc}>Join USA-Chicken®. Earn points with every qualifying purchase. Redeem available rewards of your choice.</p>
+    <div className={styles.deliveryOptions}>
+      <Link href="/Signup">
+        <button className={styles.signupButton}>Sign Me Up!</button>
+      </Link>
+    </div>
+    <h5 className={styles.lastSign}>Already have an account? <Link className={styles.signin} href="/Signup">Sign-in</Link></h5>
+  </div>
+</div>
+
+
+      <div className={styles.delivery}>
+  <h2 className={styles.deliveryTitle}>Delivery Options</h2>
+  <p className={styles.deliveryP}>Enjoy the convenience of delivery through popular services like DoorDash, Grubhub, and UberEats. Order your favorite meals and have them delivered right to your doorstep. We partner with trusted delivery providers to ensure a seamless and reliable experience for our customers.</p>
+
+  <div className={styles.deliveryOptions}>
+  <a href="https://www.ubereats.com/store/usa-chicken-%26-biscuit/3dYWUZGfRDqHxTYxFni34A" target="_blank">
+    <Image className={styles.deliveryLogo} src="/img/ubereats.png" alt="UberEats" width={65} height={60} />
+  </a>
+  <a href="https://www.grubhub.com/restaurant/usa-chicken--biscuit-990-elm-st-manchester/1105914" target="_blank">
+    <Image className={styles.deliveryLogo} src="/img/grubhub.png" alt="Grubhub" width={100} height={100} />
+  </a>
+  <a href="https://www.doordash.com/store/usa-chicken-&-biscuit-manchester-675957/" target="_blank">
+    <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={100} height={100} />
+  </a>
+</div>
+</div>
 
 </div>
 
