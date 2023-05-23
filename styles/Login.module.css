@@ -54,6 +54,7 @@
     width: 200%;
     height: 700px;
     padding: 30px;
+    padding-top: 10px;
     border-radius: 10px;
     background-color: #FFFFFF;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
@@ -389,42 +390,23 @@
   font-weight: bold;
   margin-top: -5px;
 }
-@media (max-width: 480px) {
-  .loginContainer {
-    width: 100%;
-    height: 100vh;
-    margin-left: 0px;
-    backdrop-filter: blur(2px);
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .formLogin {
-    max-width: 300px;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-  }
-  
-  .signUp,
-  .loginButton,
-  .GoogleButton {
-    padding: 1em 3.5em;
-    font-size: 14px;
-  }
-  
-  .Container2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .loginButton {
-    margin-top: -3px;
-    margin-bottom: -10px;
-  }
-  
-  .closeButton {
-    right: 5px;
-  }
 
-  /* include other styles you want to adjust for smaller screens here */
+@media only screen and (max-width: 600px) {
+  /* styles for mobile screens */
+  .formLogin {
+      width: 90%; /* or whatever you prefer for mobile */
+      height: auto;
+      padding: 15px;
+  }
+  /* add more styles for other classes if needed */
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
+  /* styles for tablet screens */
+  .formLogin {
+      width: 70%; /* or whatever you prefer for tablets */
+      height: auto;
+      padding: 20px;
+  }
+  /* add more styles for other classes if needed */
 }

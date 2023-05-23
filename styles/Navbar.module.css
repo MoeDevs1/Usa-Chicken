@@ -95,6 +95,9 @@ margin-right: 50px;
 
 
 
+
+
+
 .menuTitle{
   color: black;
   margin-top: 50px;
@@ -218,22 +221,21 @@ margin-right: 50px;
   font-size: 2em; /* Adjust the size as needed */
 }
 
-
 .head {
 
-   margin-top: -20px;
-   margin-bottom: 5px;
-   
-   font-size: 14px;
-   letter-spacing: 2px;
-   /* Adds 2 pixels of space between letters */
-   text-align: center;
-   color: white;
+  margin-top: -35px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+
+  font-size: 14px;
+  letter-spacing: 2px;
+  
 }
+
 .dropdownMenu {
   position: absolute;
   top: 110%;
-  height: 580%;
+  height: 525%;
   left: 19%;
   z-index: 10;
   display: none;
@@ -242,9 +244,9 @@ margin-right: 50px;
   border-radius: 20px;
 
   padding-right: 4px;
-  background-color: #263249;
+  background-color: #09317d;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+
 }
 
  .dropdownMenu {
@@ -269,7 +271,7 @@ margin-right: 50px;
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 100%;
-  color: #ff0000;
+  color: black;
 
   text-align: center;
   letter-spacing: 1px;
@@ -489,7 +491,7 @@ margin-left: 50px;
         align-items: center;
         justify-content: center;
         flex: 455px;
-        margin-left: 45px;
+        margin-left: 5px;
       }
       
 

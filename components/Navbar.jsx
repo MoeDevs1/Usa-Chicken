@@ -271,6 +271,8 @@ const Navbar = ({ pizza }) => {
             )}
           </div>
         </div>
+       
+       
         {sessionToken && (
         <Link href="/Checkout">
           <Image className={styles.icon2} src="/img/cartI.png" alt="Shopping Cart" width={30} height={30} style={{verticalAlign: "middle"}} />

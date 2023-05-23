@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
     "@paypal/react-paypal-js": "^7.8.3",
+    "@react-spring/web": "^9.7.2",
     "@reduxjs/toolkit": "^1.9.5",
     "aws-sdk": "^2.1381.0",
     "axios": "^1.4.0",
@@ -24,10 +26,13 @@
     "nodemailer": "^6.9.2",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-google-charts": "^4.0.0",
     "react-icons": "^4.8.0",
+    "react-minimal-pie-chart": "^8.4.0",
     "react-modal": "^3.16.1",
+    "react-progressbar.js": "^0.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
     "webpack": "^5.83.1"

@@ -7,8 +7,14 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from "react";
 import { RxEnter } from 'react-icons/rx';
+import { useSelector } from "react-redux";
 
-
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { TbPigMoney } from "react-icons/tb";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { Doughnut } from 'react-chartjs-2';
+import { SemiCircle } from 'react-progressbar.js';
 
 const pizzas = [
   {
@@ -71,6 +77,156 @@ const pizzas = [
 
 
 export default function Home({ pizzaList }) {
+ 
+  const [showNav, setShowNav] = useState(false);
+  const quantity = useSelector((state) => state.cart.quantity);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [sessionToken, setSessionToken] = useState(null);
+  const [newFirstName, setNewFirstName] = useState('');
+  const [newLastName, setNewLastName] = useState('');
+  // const [userPoints, setUserPoints] = useState(0);
+
+  const dropdownRef = useRef(null); // Create a ref for the dropdown container
+
+  const points = 6;
+  const totalPoints = 10;
+
+
+
+const options = {
+    strokeWidth: 6,
+    // color to be replaced with gradient via CSS
+    color: 'url(#gradient)',
+    trailColor: '#eee',
+    trailWidth: 1,
+    easing: 'easeInOut',
+    duration: 1400,
+    text: {
+        value: '',
+    },
+    // Remove color animation
+    from: { color: '#ED6A5A' },
+    to: { color: '#ED6A5A' },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * totalPoints));
+    },
+};
+
+const containerStyle = {
+    width: '300px',
+    height: '150px',
+};
+
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const redirectToOtherAccount = (event) => {
+    event.preventDefault();
+    console.log("Redirecting to other account");
+  };
+
+  const handleSignup = async () => {
+    router.push('/Signup');
+  };
+
+  const redirectToSettings = () => {
+    router.push('/userProfile');
+  };
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('/api/getUserDetails');
+        if (response.status === 200) {
+          setSessionToken(true);
+          const { firstName, lastName} = response.data;
+          setNewFirstName(firstName);
+          setNewLastName(lastName);
+          // setUserPoints(points);
+        } else {
+          setSessionToken(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user details', error);
+        setSessionToken(null);
+      }
+    };
+
+    fetchUserDetails();
+  }, [sessionToken]);
+
+
+
+  const signOut = async () => {
+    try {
+      let session = null;
+      let response = null;
+  
+      try {
+        session = await axios.get('/api/getUserDetails');
+      } catch (error) {
+        console.error('Error getting session details', error);
+      }
+  
+      try {
+        response = await axios.get('/api/getUserDetails?signout=true');
+      } catch (error) {
+        console.error('Error signing out', error);
+      }
+  
+      if (session && session.data) {
+        await nextAuthSignOut();
+      }
+  
+      if (response && response.status === 200) {
+        setSessionToken(null);
+      } else {
+        console.error('Error signing out');
+      }
+    } catch (error) {
+      console.error('Error signing out', error);
+    }
+  };
+  
+
+
+
+
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      setShowNav(false);
+      setShowDropdown(false); // Hide the dropdown when clicking away from it
+    } else {
+      setShowNav(false);
+    }
+  };
+
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+  };
+
+  const closeLogin = () => {
+    setShowLogin(false);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+
+  
 
   return (
 
@@ -84,21 +240,17 @@ export default function Home({ pizzaList }) {
 
       <div className={styles.bannerContainer}>
   <div className={styles.circularContainer}>
-    <img className={styles.banner} src={"/img/banner.jpg"} alt="banner" />
+    <img className={styles.banner} src={"/img/306745897_595177622299564_6310950388275390202_n.jpeg"} alt="banner" />
   </div>
   <img className={styles.halal} src={"/img/halal.png"} alt="halal" />
 </div>
       <div className={styles.buttons}>
-      <div className={styles.slideInImage}>
 
       <button className={styles.button}>Order Now from Manchester            <RxEnter className={styles.icon} />
 </button>
-</div>
-<div className={styles.slideInImage2}>
      <button className={styles.button1}>Order Now from Nashua       <RxEnter className={styles.icon} />
 </button>
 
-</div>
  </div>
       <div className={styles.content}>
         <div className={styles.words}>
@@ -137,13 +289,21 @@ export default function Home({ pizzaList }) {
       {/* <Image src="/img/menuIcon.png" className={styles.menuImg}  width={40} height={40} /> */}
       </Link>
       </div>
+      {!sessionToken && (
 
       <div className={styles.signupContainer}>
   <div className={styles.imageContainer}>
   <div className={styles.slideInImage}>
       {/* <Image className={styles.signImg} src="/img/logo.png" alt="" width={300} height={300} /> */}
-    </div>  </div>
+    </div>  
+    
+    
+    </div>
   <div className={styles.textContainer}>
+  <div className={styles.head}>
+            <Image src="/img/Logo.png" alt="" width="290" height="290" />
+            
+          </div>
     <h2 className={styles.signupP}>Sign up and earn points!</h2>
     <p className={styles.signupDesc}>Join USA-Chicken®. Earn points with every qualifying purchase. Redeem available rewards of your choice.</p>
     <div className={styles.deliveryOptions}>
@@ -151,9 +311,80 @@ export default function Home({ pizzaList }) {
         <button className={styles.signupButton}>Sign Me Up!</button>
       </Link>
     </div>
-    <h5 className={styles.lastSign}>Already have an account? <Link className={styles.signin} href="/Signup">Sign-in</Link></h5>
+    <h5 className={styles.lastSign}>Already have an account?   <Link className={styles.signin} href="/Signup">  Sign-in </Link></h5>
   </div>
+  
 </div>
+      )}
+      {sessionToken && (
+   <div className={styles.signupContainer}>
+   <div className={styles.imageContainer}>
+     <div className={styles.slideInImage}>
+       {/* <Image className={styles.signImg} src="/img/logo.png" alt="" width={300} height={300} /> */}
+     </div>  
+   </div>
+   <div className={styles.textContainer}>
+   <div className={styles.left}>
+   <div className={styles.head2}>
+            <Image src="/img/Logo.png" alt="" width="290" height="290" />
+            
+          </div>
+     <div className={styles.head}>
+     <h2 className={styles.signup3}>Reward Tracker         
+</h2>
+< GiTakeMyMoney  className={styles.check}/>
+</div>
+<div className={styles.head}>
+
+     <h2 className={styles.signup4}>Your 5/10th Of The Way Off 10% </h2>
+     </div>
+
+     <div className={styles.deliveryOptions}>
+       <Link href="/Signup">
+        <div className={styles.head}>
+
+         <button className={styles.signupButton2}>Redeem</button>
+         </div>
+
+       </Link>
+       
+     </div>
+
+     </div>
+     <div className={styles.right}>
+     <div className={styles.circularProgress}>
+
+     <CircularProgressbar 
+    value={points}
+    maxValue={totalPoints}
+    text={`${points}/${totalPoints}`}
+    styles={buildStyles({
+      strokeLinecap: "round",
+      textSize: "20px",
+      pathColor: `rgba(62, 152, 199, ${points / totalPoints})`,
+      textColor: '',
+      trailColor: '#d6d6d6',
+      backgroundColor: '#3e98c7',
+      pathTransition: 'stroke-dashoffset 0.5s ease 0s',
+      transition: 'stroke 0.3s, stroke-width 0.3s ease-in-out',
+      strokeWidth: 8,
+      pathTransitionDuration: 0.5,
+  })}
+  
+/>
+</div>
+
+<defs>
+    <linearGradient id="gradient" gradientTransform="rotate(90)">
+      <stop offset="0%"  stopColor="gold" />
+      <stop offset="50%" stopColor="orange" />
+      <stop offset="100%" stopColor="red" />
+    </linearGradient>
+  </defs>
+  </div>
+   </div>
+ </div>
+      )}
 
 
       <div className={styles.delivery}>
@@ -170,10 +401,13 @@ export default function Home({ pizzaList }) {
   <a href="https://www.doordash.com/store/usa-chicken-&-biscuit-manchester-675957/" target="_blank">
     <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={100} height={100} />
   </a>
+  
 </div>
+
 </div>
 
 </div>
 
 ); 
 }
+

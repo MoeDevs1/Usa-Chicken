@@ -1,13 +1,21 @@
 .container{
-  background-color:  white;
+  padding-left:30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  
 }
-
+.halal{
+}
 
 .formLabel {
   font-size: .7em;
   padding: 0.5em 0;
 }
 
+
+
+
+ 
 .formInput {
   font-size: .7em;
   padding: 0.5em;
@@ -84,8 +92,8 @@
     margin: 10px;
     margin-right: 20px;
     
-    height: 340px;
-    padding: 20px;
+    height: 320px;
+    padding-top: 30px;
     width: 100px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -122,13 +130,12 @@
 
 .pizzaDesc {
   margin-bottom: 6px;
-  color: rgb(102, 93, 93);
   font-weight:900;
-  /* Updated text color */
+  color: rgb(74, 69, 69);
   font-family: "Roboto", sans-serif;
   font-size: 13px;
   margin-left: 20px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 .imageWrapper {
   display: flex;
@@ -211,7 +218,7 @@ display: none  }
   /* Centers the text */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-  
+
 
 .buttons {
   display: flex;
@@ -219,14 +226,21 @@ display: none  }
   gap: 1rem; /* Adds spacing between buttons */
   
 }
-
-.button {
-  padding: 1.5rem 3rem;
-  font-size: 1.5rem;
-  background-color: #1b5990;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-
+.check{
   color: white;
+  width: 100px;
+  height: 100px;
+   border-radius: 100%;
+   margin-top: 25px;
+   padding-top: 10px;
+
+}
+.button1 {
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;  color: white;
   margin-right: 10px;
   border: none;
   border-radius: 9px;
@@ -234,12 +248,13 @@ display: none  }
   font-weight: bold;
   margin-top: 75px;
 }
-.button1 {
-  padding: 1.5rem 3rem;
+.button {
+  padding: 1.5rem 4rem;
   font-size: 1.5rem;
 
   filter: grayscale(0%) contrast(130%) brightness(110%);
-  background-color: #ca1035;  color: white;
+  background-color: #007BFF;
+    color: white;
   margin-right: 10px;
   border: none;
   border-radius: 9px;
@@ -287,30 +302,38 @@ display: none  }
 }
 .banner {
   width: 100%;
+  filter: grayscale(0%) contrast(130%) brightness(150%);
+
   margin-top: 0px;
   border-radius: 5px;
-  filter: grayscale(0%) contrast(130%) brightness(190%);
   transition: all 0.3s ease;
   border: 10px solid #fff; /* remove this line */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.banner:before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  bottom: -20px;
-  right: -20px;
-  border: 10px solid #fff;
+.logo{
+  margin-top: 30px;
 }
-
-
 /*sign up divider css*/
 
 .left {
   display: inline-block;
   width: 50%;
+}
+
+
+.head{
+  margin-bottom: -0px;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+  margin-right: -290px;
+
+}
+
+.head2{
+display: none;
+
 }
 
 .signupImg {
@@ -373,9 +396,8 @@ display: none  }
 .signButton {
   padding: 1.5rem 3rem;
   font-size: 1.5rem;
-  background-color: #0066CC;
   filter: grayscale(0%) contrast(130%) brightness(110%);
-
+  background-color: #007bff;
   color: white;
   margin-right: 10px;
   border: none;
@@ -414,11 +436,10 @@ display: none  }
 .delivery {
   text-align: center;
   margin-bottom: 20px;
-  border: 2px solid #ccc;
+  border: 2px solid white;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  background-color: #f9f9f9;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -493,6 +514,17 @@ display: none  }
  margin-left: 100px;
  margin-right: 100px;
 }
+.signupP2{
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 100px;
+ margin-right: 100px;
+}
 
 .signupDesc{
   font-size: 16px;
@@ -511,6 +543,7 @@ display: none  }
 .lastSign{
   font-family: "Open Sans", sans-serif;
   color: white;
+  margin-bottom: 90px;
 }
 
 .signupButton {
@@ -526,6 +559,7 @@ display: none  }
   font-weight: bold;
   margin-top: 75px;
 }
+
 
 .signupButton:hover{
   transform: scale(1.1);
@@ -570,6 +604,7 @@ display: none  }
 }
 
 .banner {
+  margin-top: 10px;
   width: 100%;
   height: auto;
 }
@@ -585,24 +620,18 @@ display: none  }
   filter: grayscale(0%) contrast(130%) brightness(110%);
   transition: all 0.3s ease;
   box-shadow: 0px 0px 100px rgba(250, 248, 248, 0.3);
-  margin-right: 90px;
-  margin-top: 40px;
+  margin-top: 60px;
+  margin-right: 95px;
+  display: none;
 
 }
 
-.lastSign{
-  margin-bottom: 160px;
-}
 
 .slideInImage {
   animation: slideIn 0.8s ease-in 1s forwards;
   opacity: 0;
 }
 
-.textContainer {
-  border: 7px solid #fff; /* remove this line */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
 @keyframes slideIn {
   0% {
     transform: translateX(-100%);
@@ -645,12 +674,20 @@ display: none  }
     animation-iteration-count: 1;
   }
 } */
-
-
 @media only screen and (max-width: 900px) {
+
+
+  .container{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+  }
+  
   .pizzaListContainer {
      overflow-x:auto;
      justify-content: flex-start;
+     margin-left: -30px;
+     
  
    }
    
@@ -661,14 +698,18 @@ display: none  }
      flex-wrap: nowrap;  
    }
  
+
    .pizzaItem {
-     
+    padding-top: 30px;
+
      flex: 0 0 auto;  
-     width: 80%; /* Changed from fixed width to auto */
+     width: 50%; /* Changed from fixed width to auto */
      background-color: white;
-     padding: 0px;
    }
- 
+   .pizzaItem {
+    flex-basis: 70%;
+  }
+  
    .itemTwo{
      background-color: white;
      border-radius: 0%;
@@ -708,13 +749,7 @@ display: none  }
      margin-top: 20px;
    }
  
-   .menuButton {
-     padding: 10px 20px;
-     font-size: 1.2rem;
-     background-color: #8B0000;
-     
-   }
- 
+
  
  .buttons {
    display: flex;
@@ -725,7 +760,7 @@ display: none  }
  }
  
  
- .button {
+ .button1 {
    width: 90%; /* Adjust the width value as needed */
    padding: 1.8rem 1em; /* Adjust the padding values as needed */
    font-size: 24px;
@@ -761,7 +796,137 @@ display: none  }
    margin-bottom: -70px;
    overflow: hidden; /* Add this line to prevent text overflow */
  }
- 
- 
+ .head{
+  margin-top: 60px;
  }
+ .halal{
+  display: none;
+ }
+ .signupContainer {
+  margin: 0;
+
+  padding: 10px;
+
+  text-align: left;
+}
+
+/* delivery */
+.delivery {
+  padding: 10px;
+  margin: 0;
+  text-align: left;
+}
+
+/* reduce font sizes for smaller screens */
+.signupP, .deliveryTitle {
+  font-size: 35px;
+  margin-left: 23px;
+  margin-right: 20px;
+
+}
+
+.signupDesc, .deliveryP {
+  font-size: 14px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* control button sizes */
+.signupButton, .button, .button1, .menuButton {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+/* Adjust image size for smaller screens */
+.signupImg, .deliveryLogo {
+  width: 50%;
+}
+
+/* adjust pizza items for smaller screens */
+
+/* Adjust catering form label and input */
+.formLabel, .formInput {
+  font-size: 1em;
+  padding: 1em;
+}
+
+/* Adjust catering button */
+.cateringButton {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+ /* Added styles for .lastSign */
+ .lastSign {
+  font-size: 14px; /* Adjust as per your requirement */
+display: flex;
+justify-content: center;
+}
+ }
+
  
+
+ .textContainer {
+  border: 7px solid #fff; /* remove this line */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+ 
+ .signup3{
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  margin-top: 50px;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 25px;
+}
+
+.signup4{
+  font-size: 30px;
+  font-family: "Open Sans", sans-serif;
+  color: #a2aab9;
+  letter-spacing: 2px;
+  font-family: bolder;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 100px;
+ margin-right: 100px;
+ margin-top: -10px;
+ margin-bottom: -5px;
+}
+
+.circularProgress{
+  width: 40%;
+  height: 40%;
+  position: sticky;
+  color: #000000;
+  margin-top: 25px;
+  margin-left: 280px;
+}
+
+
+
+
+.signupButton2 {
+  padding: 1.5rem 8rem;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;   margin-right: 10px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  margin-right: 18px;
+  color: white;
+
+}
+
+.signupbutton2:hover{
+  background-color:#09317d;
+    transform: scale(1.1);
+}

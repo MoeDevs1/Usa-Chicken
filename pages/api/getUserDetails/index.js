@@ -1,7 +1,9 @@
-// pages/api/auth/getUserDetails.js
 import jwt from 'jsonwebtoken';
 import dbConnect from '@/util/mongo';
 import Users1 from '@/models/Users1';
+import GoogleUsers from "@/models/GoogleUsers";
+import { useSession, signIn, getSession, onSignIn } from 'next-auth/react';
+
 
 export default async function getUserDetails(req, res) {
   const { method } = req;
@@ -14,6 +16,18 @@ export default async function getUserDetails(req, res) {
   }
 
   try {
+    const session = await getSession({ req });
+
+    if (session) {
+      const { user } = session;
+      const { email, name } = user;
+      const [firstName, lastName] = name.split(' ');
+
+      // return the user details with an empty phone field
+      res.status(200).json({ firstName, lastName, phone: '' });
+      return;
+    }
+
     const token = req.cookies.sessionToken;
 
     if (!token) {
@@ -44,7 +58,7 @@ export default async function getUserDetails(req, res) {
     }
     
 
-    res.status(200).json({ firstName: user.firstName, lastName: user.lastName, phone: user.phone, email: user.email, points: user.points});
+    res.status(200).json({ firstName: user.firstName, lastName: user.lastName, phone: user.phone });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
