@@ -467,6 +467,7 @@ margin-left: -44px;
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   color: #1e1e1e;
+  letter-spacing: 2px;
   margin-top: 30px;
   letter-spacing: 2px;
   /* Adds 2 pixels of space between letters */
@@ -511,13 +512,15 @@ margin-left: -44px;
 
 .signupButton {
   padding: 1.5rem 3rem;
-  font-size: 1.5rem;
-  font-family: "Open Sans", sans-serif;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-  background-color: #ca1035;  color: white;
+  
   margin-right: 10px;
   border: none;
   border-radius: 9px;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;  color: white;
   cursor: pointer;
   font-weight: bold;
   margin-top: 75px;

@@ -63,7 +63,7 @@ useEffect(() => {
 
 let Discount = 0;
 if (points === 500) {
-  Discount = 10;
+  Discount = 0.05 * cart.total;
 }
 
 const handleDeleteProduct = (index) => {
@@ -364,7 +364,7 @@ if ( myTotal < 0) {
           </div>
           {points === 500 ? (
 
-          <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Congrats! You've reached 500 points. Enjoy a $10 discount! Order must be over $10.</h5>
+          <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Congrats! You've reached 500 points. Enjoy a $5% discount! Order must be over $10.</h5>
 
   ) : (
     <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Once you reach 500 points, you'll get a $10 discount!  &nbsp; &nbsp;  <span className={styles.pointComment}>Your points:</span> {points}</h5>
@@ -373,7 +373,7 @@ if ( myTotal < 0) {
   <p>Discount:</p>
   {points === 500 ? (
     <>
-      <p>$-{Discount}</p>
+      <p>$-{Discount.toFixed(2)}</p>
     </>
   ) : (
     <p>$0</p>

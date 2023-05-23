@@ -181,7 +181,7 @@ const Navbar = ({ pizza, orders, products}) => {
             </Link>
           </li>
           <li className={styles.listItem}>
-            <Link href="/">
+            <Link href="/contact">
               <FaPhone className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
               Contact
             </Link>

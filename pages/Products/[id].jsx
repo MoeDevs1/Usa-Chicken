@@ -214,28 +214,35 @@ const handleChange = (e, option) => {
 
 
 const [specialInstructions, setSpecialInstructions] = useState('');
-  
+
+const [isAdded, setIsAdded] = useState(false);
+
+
 const handleClick = () => {
   const extrasArray = specialInstructions ? [...extras, specialInstructions] : extras;
   const product = { ...pizza, extras: extrasArray, price, quantity };
   dispatch(addProduct(product));
   setSpecialInstructions(''); // clear the input field after adding to cart
+  setIsAdded(true);
+
+  setTimeout(() => {
+    setIsAdded(false);
+  }, 1000);
 }
 
     return (
-      <div>  <Address />
+      <div className={styles.mainContainer}>  <Address />
 <div className={styles.pageOne}>
   <div className={styles.container}>
     <Link href="/menu">
       <button className={styles.backButton}>X</button>
     </Link>
     <div className={styles.formContainer}>
+    <h1 className={styles.title}>{pizza.title}</h1>
+    <p className={styles.desc}>{pizza.desc}</p>
       <div className={styles.imgContainer}>
         <Image src={pizza.img} width={500} height={500} objectFit="contain" alt="" />
       </div>
-      <h1 className={styles.title}>{pizza.title}</h1>
-      <p className={styles.desc}>{pizza.desc}</p>
-
   {/*checkboxes for the spot*/}
   {pizza.title === "The Spot" && (
   <>{/*For the two rows for the must include options and additional options*/}
@@ -243,7 +250,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Meat <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Meat <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 5).map((option) => (
@@ -260,7 +267,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Rice <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Rice <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(5, 8).map((option) => (
@@ -277,7 +284,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(8, 12).map((option) => (
@@ -294,7 +301,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add-ons <span className={styles.optional}>(Optional)</span></h4>
+      <h4 className={styles.choiceOf} >Add-ons <span className={styles.optional}>(Optional)</span></h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(12, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -323,7 +330,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -339,7 +346,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -354,7 +361,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
@@ -383,7 +390,7 @@ const handleClick = () => {
   <div className={styles.options}>
     <div>
 
-    <h4>Cheese Choice <span className={styles.required}>(Required)</span>
+    <h4 className={styles.choiceOf} >Cheese Choice <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 3).map((option) => (
@@ -412,7 +419,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Two Sides  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Two Sides  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -428,7 +435,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -443,7 +450,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -458,7 +465,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Sides and Appetizers (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Sides and Appetizers (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -473,7 +480,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(17, 21).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -500,7 +507,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -516,7 +523,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -531,7 +538,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-     <h4>Recommended Desserts (Optional)</h4>
+     <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -546,7 +553,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 16).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -574,7 +581,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -590,7 +597,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -605,7 +612,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -632,7 +639,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -648,7 +655,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 10).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -663,7 +670,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(10, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -690,7 +697,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -706,7 +713,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -721,7 +728,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -748,7 +755,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Cheese Sub Toppings (Optional)</h4>
+      <h4 className={styles.choiceOf} >Cheese Sub Toppings (Optional)</h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
        <div className={styles.option} key={option._id}>
@@ -763,7 +770,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 10).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -778,7 +785,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(10, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -793,7 +800,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(17, 21).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -821,7 +828,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -836,7 +843,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -851,7 +858,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -878,7 +885,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Cheese Sub Toppings (Optional)</h4>
+      <h4 className={styles.choiceOf} >Cheese Sub Toppings (Optional)</h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
        <div className={styles.option} key={option._id}>
@@ -893,7 +900,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 10).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -908,7 +915,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(10, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -923,7 +930,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(17, 21).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -950,7 +957,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -965,7 +972,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -980,7 +987,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1007,7 +1014,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1022,7 +1029,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1037,7 +1044,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1064,7 +1071,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1079,7 +1086,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1094,7 +1101,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1121,7 +1128,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1136,7 +1143,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1151,7 +1158,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1178,7 +1185,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1193,7 +1200,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1208,7 +1215,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1235,7 +1242,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1250,7 +1257,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1265,7 +1272,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1292,7 +1299,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1307,7 +1314,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1322,7 +1329,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1349,7 +1356,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1364,7 +1371,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1379,7 +1386,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1406,7 +1413,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1421,7 +1428,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1436,7 +1443,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1463,7 +1470,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1478,7 +1485,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1493,7 +1500,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1521,7 +1528,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 6).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1536,7 +1543,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(6, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1551,7 +1558,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1578,7 +1585,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1606,7 +1613,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1634,7 +1641,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1663,7 +1670,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1691,7 +1698,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1719,7 +1726,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1747,7 +1754,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1775,7 +1782,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Preparation Addition  (Optional)</h4>
+      <h4 className={styles.choiceOf} >Preparation Addition  (Optional)</h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
        <div className={styles.option} key={option._id}>
@@ -1790,7 +1797,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Chicken Size <span className={styles.required}>(Required)</span></h4>
+      <h4 className={styles.choiceOf} >Chicken Size <span className={styles.required}>(Required)</span></h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 10).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1805,7 +1812,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(10, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1820,7 +1827,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side  (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side  (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1835,7 +1842,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Drink  (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Drink  (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(19, 26).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1850,7 +1857,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(26, 30).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1877,7 +1884,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Piece  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Piece  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -1893,7 +1900,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>   
-      <h4>Choice of Biscuits (Optional)
+      <h4 className={styles.choiceOf} >Choice of Biscuits (Optional)
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(4,7).map((option) => (
@@ -1921,7 +1928,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -1937,7 +1944,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1952,7 +1959,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1967,7 +1974,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -1982,7 +1989,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(18, 22).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2009,7 +2016,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2025,7 +2032,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2040,7 +2047,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2055,7 +2062,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2070,7 +2077,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(18, 22).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2097,7 +2104,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2113,7 +2120,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2128,7 +2135,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2143,7 +2150,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(18, 22).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2170,7 +2177,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2186,7 +2193,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2201,7 +2208,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2216,7 +2223,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2231,7 +2238,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(18, 22).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2258,7 +2265,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2274,7 +2281,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Soda <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Soda <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 5).map((option) => (
@@ -2290,7 +2297,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(5, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2305,7 +2312,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2320,7 +2327,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2348,7 +2355,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2364,7 +2371,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Soda <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Soda <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 5).map((option) => (
@@ -2380,7 +2387,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(5, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2395,7 +2402,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2410,7 +2417,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2437,7 +2444,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2453,7 +2460,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Soda <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Soda <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 5).map((option) => (
@@ -2469,7 +2476,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(5, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2484,7 +2491,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2499,7 +2506,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2526,7 +2533,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -2542,7 +2549,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Soda <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Soda <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 5).map((option) => (
@@ -2558,7 +2565,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(5, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2573,7 +2580,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2588,7 +2595,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Recommended Desserts (Optional)</h4>
+      <h4 className={styles.choiceOf} >Recommended Desserts (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 18).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2615,7 +2622,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -2631,7 +2638,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Option)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Option)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2646,7 +2653,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2673,7 +2680,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -2689,7 +2696,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(4, 11).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2704,7 +2711,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(11, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2731,7 +2738,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of First Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of First Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -2747,7 +2754,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Second Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Second Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(4, 8).map((option) => (
@@ -2763,7 +2770,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(8, 15 ).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2778,7 +2785,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2805,7 +2812,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of First Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of First Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -2821,7 +2828,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Second Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Second Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(4, 8).map((option) => (
@@ -2837,7 +2844,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Third Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Third Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(8, 12).map((option) => (
@@ -2853,7 +2860,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(12, 19 ).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2868,7 +2875,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(19, 23).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2895,7 +2902,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of First Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of First Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -2911,7 +2918,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Second Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Second Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(4, 8).map((option) => (
@@ -2927,7 +2934,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Third Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Third Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(8, 12).map((option) => (
@@ -2943,7 +2950,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Fourth Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Fourth Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(12, 16).map((option) => (
@@ -2959,7 +2966,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(16, 23 ).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -2974,7 +2981,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(23, 27).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3001,7 +3008,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of First Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of First Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -3017,7 +3024,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Second Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Second Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(4, 8).map((option) => (
@@ -3033,7 +3040,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Third Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Third Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(8, 12).map((option) => (
@@ -3049,7 +3056,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Fourth Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Fourth Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(12, 16).map((option) => (
@@ -3065,7 +3072,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Fifth Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Fifth Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(16, 20).map((option) => (
@@ -3081,7 +3088,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(20, 27 ).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3096,7 +3103,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(27, 31).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3123,7 +3130,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of First Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of First Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 4).map((option) => (
@@ -3139,7 +3146,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Second Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Second Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(4, 8).map((option) => (
@@ -3155,7 +3162,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Third Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Third Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(8, 12).map((option) => (
@@ -3171,7 +3178,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Fourth Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Fourth Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(12, 16).map((option) => (
@@ -3187,7 +3194,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Fifth Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Fifth Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(16, 20).map((option) => (
@@ -3203,7 +3210,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Choice of Sixth Side  <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sixth Side  <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(20, 24).map((option) => (
@@ -3219,7 +3226,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(24, 31).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3234,7 +3241,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(31, 35).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3261,7 +3268,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -3277,7 +3284,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3292,7 +3299,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3319,7 +3326,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -3335,7 +3342,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3350,7 +3357,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3377,7 +3384,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -3393,7 +3400,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3408,7 +3415,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3435,7 +3442,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -3451,7 +3458,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3466,7 +3473,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3493,7 +3500,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce - Select at least 1 <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow} style={{marginRight: '100px'}}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -3509,7 +3516,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3524,7 +3531,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3551,7 +3558,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3566,7 +3573,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3581,7 +3588,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3608,7 +3615,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3623,7 +3630,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3638,7 +3645,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3665,7 +3672,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-    <h4>Jumbo Shrimp Size <span className={styles.required}>(Required)</span></h4>
+    <h4 className={styles.choiceOf} >Jumbo Shrimp Size <span className={styles.required}>(Required)</span></h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3680,7 +3687,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3695,7 +3702,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3710,7 +3717,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3737,7 +3744,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-    <h4>Jumbo Shrimp Size <span className={styles.required}>(Required)</span></h4>
+    <h4 className={styles.choiceOf} >Jumbo Shrimp Size <span className={styles.required}>(Required)</span></h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3752,7 +3759,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3767,7 +3774,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3782,7 +3789,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3809,7 +3816,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3824,7 +3831,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 13).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3839,7 +3846,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3866,7 +3873,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -3882,7 +3889,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3897,7 +3904,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3912,7 +3919,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3939,7 +3946,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -3955,7 +3962,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3970,7 +3977,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -3985,7 +3992,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4012,7 +4019,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Side <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Side <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 2).map((option) => (
@@ -4028,7 +4035,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(2, 9).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4043,7 +4050,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Side (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Side (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(9, 15).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4058,7 +4065,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(15, 19).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4085,7 +4092,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4100,7 +4107,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4127,7 +4134,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4142,7 +4149,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4169,7 +4176,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4184,7 +4191,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4211,7 +4218,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4226,7 +4233,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Dessert (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Dessert (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(13, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4253,7 +4260,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -4269,7 +4276,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(7, 14).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4284,7 +4291,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 17).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4311,7 +4318,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -4327,7 +4334,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 21).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4342,7 +4349,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(21, 24).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4369,7 +4376,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Sauce <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -4385,7 +4392,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Beverage (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Beverage (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(14, 21).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4400,7 +4407,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
-      <h4>Add a Biscuit (Optional)</h4>
+      <h4 className={styles.choiceOf} >Add a Biscuit (Optional)</h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(21, 24).map((option) => (
           <div className={styles.option} key={option._id}>
@@ -4427,7 +4434,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of 2 Liter Drink <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of 2 Liter Drink <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 7).map((option) => (
@@ -4455,7 +4462,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Meat <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Meat <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 3).map((option) => (
@@ -4483,7 +4490,7 @@ const handleClick = () => {
 <div className={styles.ingredients}>
   <div className={styles.options}>
     <div>
-      <h4>Choice of Meat <span className={styles.required}>(Required)</span>
+      <h4 className={styles.choiceOf} >Choice of Meat <span className={styles.required}>(Required)</span>
 </h4>
       <div className={styles.optionRow}>
         {pizza.extraOptions.slice(0, 3).map((option) => (
@@ -4512,13 +4519,31 @@ const handleClick = () => {
 
     {/*Add to cart button*/}
     <div className={styles.quantityContainer}>
-        <input onChange={(e)=>setQuantity(e.target.value)} type="number" min={1} max={10} defaultValue={1} className={styles.quantity} style={{color: "black"}}/>
+    <input
+  onChange={(e) => setQuantity(e.target.value)}
+  type="number"
+  min={1}
+  max={10}
+  defaultValue={1}
+  className={styles.quantity}
+  style={{ color: "black" }}
+  onKeyPress={(e) => {
+    const charCode = e.which ? e.which : e.keyCode;
+    if (charCode >= 48 && charCode <= 57) {
+      e.preventDefault();
+    }
+  }}
+/>
+
         </div>
         <div  className={styles.buttonContainer}>
         <button className={styles.button} onClick={handleClick}>
-        Add to Cart   
-        <span className={styles.buttonAdd} >+${price}</span>
-        </button>
+      {isAdded ? 'Added!' : 'ADD TO CART'}
+      &nbsp;
+     
+
+      <span className={styles.buttonAdd}>+${price}</span>
+    </button>
         </div>
 
     </div>
