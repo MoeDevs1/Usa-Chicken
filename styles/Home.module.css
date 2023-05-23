@@ -2,6 +2,30 @@
   background-color:  white;
 }
 
+.bannerContainer {
+  position: relative;
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+
+}
+
+.halal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  padding: 50px;
+  border-radius: 10px;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  transition: all 0.3s ease;
+  margin-right: 20px;
+  margin-top: 20px;
+
+} 
 
 .formLabel {
   font-size: .7em;
@@ -67,7 +91,10 @@
 }
 
 .pizzaListContainer{
-
+/* background-image: url("/img/fullMeal.jpeg");
+background-size: cover;
+background-position: center; */
+margin-left: -44px;
 }
 
 .pizzaList {
@@ -81,13 +108,14 @@
   .pizzaItem {
     position: relative;
     margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 0 90px rgba(0,0,0,0.1);
     word-wrap: break-word;
     box-sizing: border-box;
-    flex-basis: 400px;
+    flex-basis: 350px;
     cursor: pointer;
+    background-color: white;
   }
   
   .pizzaItem::before {
@@ -109,6 +137,36 @@
   .pizzaItem:hover {
     transform: scale(1.1);
   } 
+
+  .pizzaImg{
+    border-radius: 50px;
+  }
+
+  .pizzaTitle{
+    font-size: 20px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #09317d;
+  }
+
+  .pizzaDesc{
+    font-size: 13px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 1px;
+    color: #09317d;
+  }
+
+  .pizzaPrice{
+    font-size: 12px;
+    text-align: right;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 1px;
+    color: black;
+  }
 
   
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
@@ -148,19 +206,17 @@
 }
 
 .top {
-  font-size: 27px;
-  
+  font-size: 30px;
   margin-bottom: 21px;
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-  color: #1e1e1e;
+  color: #09317d;
   margin-top: 30px;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   /* Adds 2 pixels of space between letters */
   text-align: center;
   /* Centers the text */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
   
 
@@ -174,9 +230,7 @@
 .button {
   padding: 1.5rem 3rem;
   font-size: 1.5rem;
-  background-color: #1b5990;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-
+  background-color: #09317d;
   color: white;
   margin-right: 10px;
   border: none;
@@ -220,9 +274,7 @@
 .menuButton {
   padding: 1.5rem 3rem;
   font-size: 1.5rem;
-  background-color: #1b5990;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-
+  background-color: #09317d;
   color: white;
   margin-right: 10px;
   border: none;
@@ -236,13 +288,14 @@
 .menuButton:hover{
   transform: scale(1.1);
 }
+
 .banner {
   width: 100%;
   margin-top: 0px;
   border-radius: 5px;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
+  filter: grayscale(0%) contrast(130%) brightness(150%);
   transition: all 0.3s ease;
-  border: 10px solid #fff; /* remove this line */
+  border: 7px solid #fff; /* remove this line */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -326,11 +379,9 @@
   font-size: 1.5rem;
   background-color: #0066CC;
   filter: grayscale(0%) contrast(130%) brightness(110%);
-
   color: white;
   margin-right: 10px;
   border: none;
-  
   border-radius: 9px;
   cursor: pointer;
   font-weight: bold;
@@ -347,6 +398,8 @@
   margin-bottom: 20px;
   background-color: #09317d;
   padding: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
 
 }
 
@@ -360,14 +413,15 @@
 
 .delivery {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 250px;
+  margin-top: 250px;
 
 }
 
 .delivery h2 {
   font-size: 24px;
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .delivery p {
@@ -381,14 +435,16 @@
   gap: 80px;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 10px;
-
 }
 
 .deliveryLogo {
   object-fit: contain;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 200px;
+}
+
+.deliveryLogo:hover {
+  transform: scale(1.2);
 }
 
 /* Add additional styling as needed */
@@ -472,15 +528,17 @@
 }
 
 
-/* .signupContainer {
-  display: flex;
-  align-items: center;
-}
+
+
+
+
+
+
 
 .imageContainer {
   margin-right: 20px;
   width: 600px;
-} */
+}
 
 
 .signImg {
@@ -504,46 +562,17 @@
   border: 10px solid #fff;
 }
 
-
-.bannerContainer {
-  position: relative;
-}
-
-.banner {
-  width: 100%;
-  height: auto;
-}
-
-.halal {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 250px;
-  height: 250px;
-  padding: 50px;
-  border-radius: 10px;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-  transition: all 0.3s ease;
-  border: 7px solid #fff; 
-  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.3);
-  margin-right: 20px;
-  margin-top: 20px;
-
-}
-
 .lastSign{
   margin-bottom: 160px;
 }
+
+
 
 .slideInImage {
   animation: slideIn 0.8s ease-in 1s forwards;
   opacity: 0;
 }
 
-.textContainer {
-  border: 7px solid #fff; /* remove this line */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
 @keyframes slideIn {
   0% {
     transform: translateX(-100%);
@@ -569,10 +598,13 @@
     transform: translateX(0);
     opacity: 1;
   }
-}
+} 
 
 
-/* .circularContainer {
+
+
+/* 
+.circularContainer {
 
   animation: rotate 3s linear;
 }
@@ -587,21 +619,125 @@
   }
 } */
 
-@media (max-width: 900px) {
-  .halal {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 100px;
-    padding: 50px;
-    border-radius: 5px;
-    filter: grayscale(0%) contrast(130%) brightness(110%);
-    transition: all 0.3s ease;
-    border: 7px solid #fff; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    margin-right: 20px;
-    margin-top: 20px;
+.lineTip{
+  position: relative;
+  height: 2px;
+  max-width: 100%;
+  margin-top: 20px;
+  background-color: #09317d;
+  margin-bottom: 30px;
+  margin-right: 500px;
+  margin-left: 500px;
+
+  }
+
+  .mealContainer {
+    position: relative;
+  }
+  
+  .meal {
+    width: 100%;
+    height: auto;
   
   }
-}
+
+  .meal {
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 5px;
+    filter: grayscale(0%) contrast(130%) brightness(100%);
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .meal:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    border: 10px solid #fff;
+  }
+
+  @media (max-width: 600px) {
+
+    .banner{
+      height: 250px;
+      border: 0px solid #fff;
+      border-radius: 0px;
+
+    }
+
+    .halal {
+     filter: grayscale(0%) contrast(130%) brightness(110%);
+      display: none;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+    }
+  
+    .button,
+    .button1 {
+      width: 90%;
+      margin: 0.5rem 0;
+      border-radius: 50px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      margin-top: 50px;
+      margin-left: 20px;
+
+    }
+
+    .menuButton{
+      margin-left: 48px;
+    }
+
+    .pizzaItem {
+      position: relative;
+      margin: 20px;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 0 90px rgba(0,0,0,0.1);
+      word-wrap: break-word;
+      box-sizing: border-box;
+      flex-basis: 300px;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    .deliveryP{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .deliveryOptions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      margin-top: 20px;
+      margin: 20px;
+    }
+
+  }
+
+  @media (max-height: 700px) {
+    .banner{
+      height: 250px;
+    }
+    .button,
+    .button1 {
+      margin-top: 25px;
+    }
+
+ 
+  }

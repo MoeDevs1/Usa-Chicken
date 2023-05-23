@@ -41,7 +41,9 @@ const Address = () => {
       <div className={styles.selection}>
         <FaPhone className={styles.icon} />
         <div className={styles.content}>
-          <p className={`${styles.label} ${styles.labelLast}`}>{getPhoneText()}</p>
+          <p className={`${styles.label} ${styles.labelLast}`}>
+          <a href="tel:+16032322934" className={styles.phoneNumber}>(603) 232-2934</a>
+          </p>
         </div>
       </div>
       {/* <button className={styles.button} onClick={handleClick}>

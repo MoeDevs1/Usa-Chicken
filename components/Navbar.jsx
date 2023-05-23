@@ -19,7 +19,7 @@ import { ImCool } from 'react-icons/im';
 
 
 
-const Navbar = ({ pizza }) => {
+const Navbar = ({ pizza, orders, products}) => {
   const [showNav, setShowNav] = useState(false);
   const quantity = useSelector((state) => state.cart.quantity);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -27,8 +27,9 @@ const Navbar = ({ pizza }) => {
   const [sessionToken, setSessionToken] = useState(null);
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
-
+  const [emailState, setEmailState] = useState('');
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
+  const [orderList, setOrderList] = useState(orders);
 
   const router = useRouter();
 
@@ -49,25 +50,31 @@ const Navbar = ({ pizza }) => {
     router.push('/userProfile');
   };
 
+
+
   useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await axios.get('/api/getUserDetails');
-        if (response.status === 200) {
-          setSessionToken(true);
-          const { firstName, lastName } = response.data;
-          setNewFirstName(firstName);
-          setNewLastName(lastName);
-        } else {
-          setSessionToken(null);
-        }
-      } catch (error) {
-        console.error('Error fetching user details', error);
+
+  const fetchUserDetails = async () => {
+    try {
+      const response = await axios.get('/api/getUserDetails');
+      if (response.status === 200) {
+        setSessionToken(true);
+        const { firstName, lastName, email } = response.data;
+        setNewFirstName(firstName);
+        setNewLastName(lastName);
+        setEmailState(email);
+      } else {
         setSessionToken(null);
       }
-    };
+      
+    } catch (error) {
+      console.error('Error fetching user details', error);
+      setSessionToken(null);
+    }
+    
+  };
 
-    fetchUserDetails();
+  fetchUserDetails();
   }, [sessionToken]);
 
 
@@ -102,10 +109,6 @@ const Navbar = ({ pizza }) => {
       console.error('Error signing out', error);
     }
   };
-  
-
-
-
 
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -179,19 +182,46 @@ const Navbar = ({ pizza }) => {
           </li>
           <li className={styles.listItem}>
             <Link href="/">
-              <FaInfoCircle className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              About
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/">
               <FaPhone className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
               Contact
             </Link>
           </li>
-        </ul>
+          {/* {sessionToken && (
+  <li className={styles.listItem}>
+    {orderList && Array.isArray(orderList) && orderList.length > 0 && orderList.map((order) => {
+      if (order.email === emailState) {
+        return (
+          <Link href={`/orders/${order._id}`}>
+            <FaInfoCircle
+              className={styles.faIcon}
+              size={24}
+              color="#000"
+              style={{ marginRight: '10px', marginLeft: '-10px' }}
+            />
+            Tracker
+          </Link>
+        );
+      }
+      return null; // Skip rendering if the order doesn't match the email
+    })}
+  </li>
+)} */}
+{ sessionToken ? (
+  <li className={styles.listItem}>
+
+<Link href="/trackers">
+            <FaInfoCircle
+              className={styles.faIcon}
+              size={24}
+              color="#000"
+              style={{ marginRight: '10px', marginLeft: '-10px' }}
+            />
+            Tracker
+          </Link>
+          </li>
+) : null }
+          </ul>
       </div>
-  
       <div className={styles.item}>
         <div className={styles.cart}>
           {sessionToken ? (
@@ -279,6 +309,23 @@ const Navbar = ({ pizza }) => {
   
       </div>
     );
+};
+
+
+export const getServerSideProps = async (ctx) => {
+  const res = await axios.get("http://localhost:3000/api/products");
+
+
+
+  const productRes = await axios.get("http://localhost:3000/api/products");
+  const orderRes = await axios.get("http://localhost:3000/api/orders");
+
+  return {
+    props: {
+      orders: orderRes.data,
+      products: productRes.data,
+    },
+  };
 };
 
 export default Navbar;

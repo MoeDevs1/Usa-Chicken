@@ -327,7 +327,7 @@ const formatPhoneNumber = (number) => {
       onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
           </div>
         </div>
@@ -514,7 +514,7 @@ const formatPhoneNumber = (number) => {
       onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
           </div>
         </div>
@@ -611,12 +611,11 @@ const formatPhoneNumber = (number) => {
       onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
           </div>
         </div>
 
-        
 
 
         <div className={styles.container2}>
@@ -705,7 +704,7 @@ const formatPhoneNumber = (number) => {
       onClick={handlePointsClick}
     >
       <BsFillPersonFill className={styles.Icon} />
-      Banking Info
+      Points Tracker
     </button>
   </div>
 

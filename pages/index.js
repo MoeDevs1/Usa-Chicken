@@ -5,8 +5,9 @@ import Featured from '@/components/featured';
 import PizzaList from '@/components/PizzaList';
 import axios from 'axios';
 import Link from 'next/link';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useSelector, useRouter } from "react";
 import { RxEnter } from 'react-icons/rx';
+import SignPoints from '@/components/signPoints'; // import the Address component
 
 
 
@@ -16,7 +17,7 @@ const pizzas = [
     title: 'The Spot',
     img: '/img/spot.webp',
     desc: 'A customizable and spicy dish with rice, meat, sauce, salad, and drink. Choose your favorites and enjoy a satisfying meal.',
-    price: '$16.99',
+    price: '$16.50',
     shref: "/Products/6428772c1f3cd6526fd276d6"
 
   },
@@ -71,6 +72,123 @@ const pizzas = [
 
 
 export default function Home({ pizzaList }) {
+  const [showNav, setShowNav] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [sessionToken, setSessionToken] = useState(null);
+  const [newFirstName, setNewFirstName] = useState('');
+  const [newLastName, setNewLastName] = useState('');
+  const [emailState, setEmailState] = useState('');
+  const dropdownRef = useRef(null); // Create a ref for the dropdown container
+
+  
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const redirectToOtherAccount = (event) => {
+    event.preventDefault();
+    console.log("Redirecting to other account");
+  };
+
+  const handleSignup = async () => {
+    router.push('/Signup');
+  };
+
+  const redirectToSettings = () => {
+    router.push('/userProfile');
+  };
+
+
+
+  useEffect(() => {
+
+  const fetchUserDetails = async () => {
+    try {
+      const response = await axios.get('/api/getUserDetails');
+      if (response.status === 200) {
+        setSessionToken(true);
+        const { firstName, lastName, email } = response.data;
+        setNewFirstName(firstName);
+        setNewLastName(lastName);
+        setEmailState(email);
+      } else {
+        setSessionToken(null);
+      }
+      
+    } catch (error) {
+      console.error('Error fetching user details', error);
+      setSessionToken(null);
+    }
+    
+  };
+
+  fetchUserDetails();
+  }, [sessionToken]);
+
+
+
+  const signOut = async () => {
+    try {
+      let session = null;
+      let response = null;
+  
+      try {
+        session = await axios.get('/api/getUserDetails');
+      } catch (error) {
+        console.error('Error getting session details', error);
+      }
+  
+      try {
+        response = await axios.get('/api/getUserDetails?signout=true');
+      } catch (error) {
+        console.error('Error signing out', error);
+      }
+  
+      if (session && session.data) {
+        await nextAuthSignOut();
+      }
+  
+      if (response && response.status === 200) {
+        setSessionToken(null);
+      } else {
+        console.error('Error signing out');
+      }
+    } catch (error) {
+      console.error('Error signing out', error);
+    }
+  };
+
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      setShowNav(false);
+      setShowDropdown(false); // Hide the dropdown when clicking away from it
+    } else {
+      setShowNav(false);
+    }
+  };
+
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+  };
+
+  const closeLogin = () => {
+    setShowLogin(false);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    window.addEventListener('click', handleOutsideClick);
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
 
   return (
 
@@ -82,17 +200,22 @@ export default function Home({ pizzaList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      
+
       <div className={styles.bannerContainer}>
-  <div className={styles.circularContainer}>
     <img className={styles.banner} src={"/img/banner.jpg"} alt="banner" />
-  </div>
+    <div className={styles.circularContainer}>
   <img className={styles.halal} src={"/img/halal.png"} alt="halal" />
+  </div>
 </div>
+
       <div className={styles.buttons}>
       <div className={styles.slideInImage}>
-
+      <Link href="/menu">
       <button className={styles.button}>Order Now from Manchester            <RxEnter className={styles.icon} />
 </button>
+</Link>
+
 </div>
 <div className={styles.slideInImage2}>
      <button className={styles.button1}>Order Now from Nashua       <RxEnter className={styles.icon} />
@@ -106,20 +229,22 @@ export default function Home({ pizzaList }) {
         </div>
         </div>  
       </div>
-      <h2 className={styles.top}>Popular Dishes       <span className={styles.scroller}>Scroll &gt;</span>     </h2>
+      
+      <h2 className={styles.top}>Popular Dishes </h2>
+
        <div className={styles.pizzaListContainer}>
       <ul className={styles.pizzaList}>
-    
+  
       {pizzas.map(pizza => (
   <li key={pizza.id} className={styles.pizzaItem}>
     <Link href={pizza.shref}>
       <div>
         <div className={styles.imageWrapper}>
-          <Image src={pizza.img} alt={pizza.title} width={300} height={200}/>
+          <Image className={styles.pizzaImg} src={pizza.img} alt={pizza.title} width={300} height={200}/>
         </div>
         <h3 className={styles.pizzaTitle}>{pizza.title}</h3>
         <p className={styles.pizzaDesc}>{pizza.desc}</p>
-        <span className={styles.pizzaPrice}>{pizza.price}</span> {/* Added className here */}
+        <p className={styles.pizzaPrice}>{pizza.price}</p> {/* Added className here */}
       </div>         
     </Link> 
   </li>
@@ -129,46 +254,45 @@ export default function Home({ pizzaList }) {
 
 
       </ul>
-      </div>
-
       <div className={styles.menuParent}>
       <Link href="/menu">
       <button className={styles.menuButton}>View Full Menu  </button>
-      {/* <Image src="/img/menuIcon.png" className={styles.menuImg}  width={40} height={40} /> */}
+
+
+
+
       </Link>
       </div>
+      </div>
 
-      <div className={styles.signupContainer}>
-  <div className={styles.imageContainer}>
-  <div className={styles.slideInImage}>
-      {/* <Image className={styles.signImg} src="/img/logo.png" alt="" width={300} height={300} /> */}
-    </div>  </div>
-  <div className={styles.textContainer}>
-    <h2 className={styles.signupP}>Sign up and earn points!</h2>
-    <p className={styles.signupDesc}>Join USA-Chicken®. Earn points with every qualifying purchase. Redeem available rewards of your choice.</p>
-    <div className={styles.deliveryOptions}>
-      <Link href="/Signup">
-        <button className={styles.signupButton}>Sign Me Up!</button>
-      </Link>
-    </div>
-    <h5 className={styles.lastSign}>Already have an account? <Link className={styles.signin} href="/Signup">Sign-in</Link></h5>
-  </div>
-</div>
+{/* 
+      <div className={styles.mealContainer}>
+    <img className={styles.meal} src={"/img/fullMeal.jpeg"} alt="banner" />
+</div> */}
 
+      {sessionToken ? (
+        <div>
+        </div>
+      ) : (
+        <SignPoints/>
 
-      <div className={styles.delivery}>
+      )}
+
+<div className={styles.delivery}>
   <h2 className={styles.deliveryTitle}>Delivery Options</h2>
+  {/* <div className={styles.lineTip}></div>  */}
+
   <p className={styles.deliveryP}>Enjoy the convenience of delivery through popular services like DoorDash, Grubhub, and UberEats. Order your favorite meals and have them delivered right to your doorstep. We partner with trusted delivery providers to ensure a seamless and reliable experience for our customers.</p>
 
   <div className={styles.deliveryOptions}>
   <a href="https://www.ubereats.com/store/usa-chicken-%26-biscuit/3dYWUZGfRDqHxTYxFni34A" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/ubereats.png" alt="UberEats" width={100} height={100} />
+    <Image className={styles.deliveryLogo} src="/img/ubereats.png" alt="UberEats" width={120} height={120} />
   </a>
   <a href="https://www.grubhub.com/restaurant/usa-chicken--biscuit-990-elm-st-manchester/1105914" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/grubhub.png" alt="Grubhub" width={100} height={100} />
+    <Image className={styles.deliveryLogo} src="/img/grubhub.png" alt="Grubhub" width={180} height={180} />
   </a>
   <a href="https://www.doordash.com/store/usa-chicken-&-biscuit-manchester-675957/" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={100} height={100} />
+    <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={150} height={150} />
   </a>
 </div>
 </div>

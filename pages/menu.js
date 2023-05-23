@@ -61,7 +61,7 @@ export default function Menu({pizzaList, admin}) {
       setSelected(null);
     } else {
       // make the clicked item black and set it as the new selected item
-      clicked.style.color = "black";
+      clicked.style.color = "#09317d";
       setSelected(clicked);
     }
   }
