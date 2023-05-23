@@ -178,9 +178,9 @@ const Navbar = ({ pizza }) => {
             </Link>
           </li>
           <li className={styles.listItem}>
-            <Link href="/">
+            <Link href="/trackers">
               <FaInfoCircle className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              About
+              Trackers
             </Link>
           </li>
           <li className={styles.listItem}>

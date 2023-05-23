@@ -235,7 +235,7 @@ margin-right: 50px;
 .dropdownMenu {
   position: absolute;
   top: 110%;
-  height: 525%;
+  height: 535%;
   left: 19%;
   z-index: 10;
   display: none;
