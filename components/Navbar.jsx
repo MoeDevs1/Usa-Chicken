@@ -151,6 +151,9 @@ const Navbar = ({ pizza }) => {
         </div>
       )}
   
+     
+     
+     
       <div className={styles.item1}>
           <Link href="/">
             <Image src="/img/Logo.png" alt="Pizza Logo" width={65} height={65}    className={styles.logo}/>
@@ -159,6 +162,9 @@ const Navbar = ({ pizza }) => {
             
           </Link>
       </div>
+
+      {sessionToken && (
+
       <div className={styles.item}>
   <button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
     <FaBars className={styles.bars} />
@@ -171,8 +177,7 @@ const Navbar = ({ pizza }) => {
         </Link>
       </div>
       <button className={styles.signUpButton3} onClick={() => setShowLogin(true)}>
-        Sign In & Earn Rewards
-      </button>
+      {newFirstName} {newLastName}      </button>
     </div>
 
     {showNav && (
@@ -198,6 +203,54 @@ const Navbar = ({ pizza }) => {
     </li>
   </ul>
 </div>
+)}
+    {!sessionToken && (
+
+<div className={styles.item}>
+<button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
+<FaBars className={styles.bars} />
+</button>
+<ul className={`${styles.list} ${showNav ? styles.show : ""}`} onClick={handleBackgroundClick}>
+<div className={styles.menuTitle}>
+<div className={styles.logocontainer}>
+  <Link href="/">
+    <Image src="/img/Logo.png" alt="Pizza Logo" width={140} height={145} className={styles.s}/>
+  </Link>
+</div>
+<button className={styles.signUpButton3} onClick={() => setShowLogin(true)}>
+  Sign In & Earn Rewards
+</button>
+</div>
+
+{showNav && (
+<button className={styles.closeButton} onClick={() => setShowNav(false)}>
+  <FaTimes className={styles.closeIcon} />
+</button>
+)}
+
+<li className={styles.listItem}>
+<div className={styles.line0}></div>
+</li>
+<li className={styles.listItem}>
+<Link className={styles.fontstlye} href="/">Home</Link>
+</li>
+<li className={styles.listItem}>
+<Link className={styles.fontstlye} href="/menu">Menu</Link>
+</li>
+
+<li className={styles.listItem}>
+<Link className={styles.fontstlye}  href="/contact">Contact</Link>
+</li>
+</ul>
+</div>
+)}
+
+
+
+
+
+
+
 
   
       <div className={styles.item}>
