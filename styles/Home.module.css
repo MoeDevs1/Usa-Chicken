@@ -700,10 +700,27 @@ display: none;
   transform: translate(-50%, -50%); /* Compensate the displacement caused by the 'top' and 'left' properties */
   display: block;
 }
+.signupContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head2 {
+  text-align: center;
+}
 
  
-  
+  .imageWrapper{
+    width: 85%;
+    margin-left: 18px;
+  }
   .container{
     padding-left: 5px;
     padding-right: 5px;
@@ -861,7 +878,7 @@ display: none;
 /* control button sizes */
 .signupButton, .button, .button1, .menuButton {
   padding: 1rem 2rem;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 /* Adjust image size for smaller screens */

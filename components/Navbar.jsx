@@ -167,7 +167,7 @@ const Navbar = ({ pizza }) => {
     <div className={styles.menuTitle}>
       <div className={styles.logocontainer}>
         <Link href="/">
-          <Image src="/img/Logo.png" alt="Pizza Logo" width={100} height={105} className={styles.s}/>
+          <Image src="/img/Logo.png" alt="Pizza Logo" width={140} height={145} className={styles.s}/>
         </Link>
       </div>
       <button className={styles.signUpButton3} onClick={() => setShowLogin(true)}>
@@ -185,16 +185,16 @@ const Navbar = ({ pizza }) => {
       <div className={styles.line0}></div>
     </li>
     <li className={styles.listItem}>
-      <Link href="/">Home</Link>
+      <Link className={styles.fontstlye} href="/">Home</Link>
     </li>
     <li className={styles.listItem}>
-      <Link href="/menu">Menu</Link>
+      <Link className={styles.fontstlye} href="/menu">Menu</Link>
     </li>
     <li className={styles.listItem}>
-      <Link href="/trackers">Trackers</Link>
+      <Link className={styles.fontstlye} href="/trackers">Trackers</Link>
     </li>
     <li className={styles.listItem}>
-      <Link href="/contact">Contact</Link>
+      <Link className={styles.fontstlye}  href="/contact">Contact</Link>
     </li>
   </ul>
 </div>
