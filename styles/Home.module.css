@@ -11,6 +11,14 @@
   font-size: .7em;
   padding: 0.5em 0;
 }
+.circularProgress{
+  width: 40%;
+  height: 40%;
+  position: sticky;
+  color: #000000;
+  margin-top: 25px;
+  margin-left: 280px;
+}
 
 
 
@@ -682,15 +690,20 @@ display: none;
 } */
 @media only screen and (max-width: 900px) {
 
+.circularProgress {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  color: #000000;
+  top: 50%; /* Align the element to center vertically */
+  left: 50%; /* Align the element to center horizontally */
+  transform: translate(-50%, -50%); /* Compensate the displacement caused by the 'top' and 'left' properties */
+  display: block;
+}
 
 
-  .circularProgress{
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    color: #000000;
-    margin-left: -300px;
-  }
+ 
+  
   .container{
     padding-left: 5px;
     padding-right: 5px;
@@ -776,7 +789,7 @@ display: none;
  
  .button1 {
    width: 90%; /* Adjust the width value as needed */
-   padding: 1.8rem 1em; /* Adjust the padding values as needed */
+   height: 60px;
    font-size: 24px;
    background-color: #007bff;
    filter: grayscale(0%) contrast(130%) brightness(110%);
@@ -793,8 +806,8 @@ display: none;
  }
  .button{
    width: 90%; /* Adjust the width value as needed */
-   padding: 1.8rem 1em; /* Adjust the padding values as needed */
-   font-size: 22px;
+   height: 60px;
+   font-size: 25px;
    background-color: #ca1035;
    filter: grayscale(0%) contrast(130%) brightness(110%);
    color: white;
@@ -848,7 +861,7 @@ display: none;
 /* control button sizes */
 .signupButton, .button, .button1, .menuButton {
   padding: 1rem 2rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 
 /* Adjust image size for smaller screens */
@@ -875,6 +888,8 @@ display: none;
 display: flex;
 justify-content: center;
 }
+
+
  }
 
  
@@ -911,14 +926,6 @@ justify-content: center;
  margin-bottom: -5px;
 }
 
-.circularProgress{
-  width: 40%;
-  height: 40%;
-  position: sticky;
-  color: #000000;
-  margin-top: 25px;
-  margin-left: 280px;
-}
 
 
 
@@ -940,7 +947,10 @@ justify-content: center;
 
 }
 
+
+
 .signupbutton2:hover{
   background-color:#09317d;
     transform: scale(1.1);
 }
+

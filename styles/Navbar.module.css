@@ -1,4 +1,43 @@
+.blurBackground {
+  position: fixed;
+  margin-left: 205px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px); /* adjust the blur amount as needed */
+  z-index: 10; /* adjust as needed, it should be less than your navbar */
+  background-color: rgba(186, 172, 172, 0.5);
 
+}
+
+.signUpButton2 {
+  background-color: transparent;
+  color: white; /* Green */
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.loogo {
+  flex: 1;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.signUpButton2:hover {
+  background-color: #45a049;
+}
 
 .container {
   height: 70px;
@@ -20,7 +59,10 @@
 
   color: #007bff;
 }
-
+.logocontainer{
+  margin-left: 35px;
+  margin-bottom: 14px;
+}
 
 
 .iconn{
@@ -92,8 +134,32 @@ margin-right: 50px;
   font-weight: bold;
   cursor: pointer;
 }
+.signUpButton3{
+
+  margin-bottom: 5px;
+  width: 130px;
+  height: 40px;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #007bff;
+  color: #fff;
+  border: #ffffff;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+
+  margin-left: 40px;
+}
 
 
+.line0 {
+  height: 2px;
+  width: 104%; /* Adjusted width value */
+  background-color: lightgray;
+  margin-bottom: 40px;
+  margin-left: -8px;
+  margin-top: 20px;
+}
 
 
 
@@ -127,6 +193,7 @@ margin-right: 50px;
   align-items: center;
   justify-content: center;
 }
+
 
 .item:nth-child(2) {
   flex: 3;
@@ -334,6 +401,7 @@ margin-top: 20px;
   margin-top: 20px;
 }
 
+
 .line2{
   height: 2px;
   width: 105%; /* Adjusted width value */
@@ -430,6 +498,7 @@ margin-top: 20px;
       
     
       .list {
+        
         display: flex;
         align-items: center;
         justify-content: center;
@@ -468,6 +537,7 @@ margin-top: 20px;
       .ButtonContainer{
         margin-left: 00px;
       }
+     
 
 
       .Loginbutton{
@@ -524,8 +594,11 @@ margin-left: 50px;
     
       .list {
         padding: 0;
+        background-color: #08315c;
+        box-shadow: 0 0 90px 1px rgba(0, 0, 0,.4);
+
         display: none;
-       
+       width: 205px;
         margin: 0;
       }
 
@@ -545,30 +618,12 @@ margin-left: 50px;
 }
 
       .listItem {
-        padding: 0px;
-        margin: 0 1rem;
-        display: inline-block;
-        margin: 20px;
-        font-weight: 500;
-        position: relative;
-        font-weight: bold;
-        color: black;
-        border: 1px solid #ccc;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-        padding: 20px;
-        transition: all 0.3s ease-in-out;
-        font-size: 25px;
-        margin-top: 40px;
-        width: 200px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+ color: #1e1e1e;
+
       }
       
       .listItem:hover {
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        transform: translate(-2px, -2px);
+   
       }
       
       .listItem img {
@@ -581,7 +636,14 @@ margin-left: 50px;
         color: white;
       }
 
+   
+      .closeButton{
+        position: absolute;
+        top: 10px;
+        cursor: pointer;
 
+        right: 10px;   
+        }
 .cart {
   position: relative;
   color: rgb(255, 0, 0);
@@ -597,4 +659,6 @@ margin-left: 50px;
     }
     
     
-    
+    .iteme{
+      margin-top: 30px;
+    }

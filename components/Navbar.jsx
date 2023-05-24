@@ -31,6 +31,7 @@ const Navbar = ({ pizza }) => {
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
 
   const router = useRouter();
+  
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -139,6 +140,8 @@ const Navbar = ({ pizza }) => {
 
   return (
     <div className={styles.container}>
+          {showNav && <div className={styles.blurBackground} onClick={handleBackgroundClick} />}
+
       {showLogin && (
         <div className={styles.loginWrapper}>
           <button className={styles.closeLoginButton} onClick={toggleLogin}>
@@ -156,41 +159,46 @@ const Navbar = ({ pizza }) => {
             
           </Link>
       </div>
-  
       <div className={styles.item}>
-        <button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
-          <FaBars className={styles.bars} />
-        </button>
-        <ul className={`${styles.list} ${showNav ? styles.show : ""}`} onClick={handleBackgroundClick}>
-          <div className={styles.menuTitle}>
-            <h1>USA Chicken</h1>
-          </div>
-          <li className={styles.listItem}>
-            <Link href="/">
-              <FaHome className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Home
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/menu">
-              <FaUtensils className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Menu
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/trackers">
-              <FaInfoCircle className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Trackers
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/">
-              <FaPhone className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Contact
-            </Link>
-          </li>
-        </ul>
+  <button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
+    <FaBars className={styles.bars} />
+  </button>
+  <ul className={`${styles.list} ${showNav ? styles.show : ""}`} onClick={handleBackgroundClick}>
+    <div className={styles.menuTitle}>
+      <div className={styles.logocontainer}>
+        <Link href="/">
+          <Image src="/img/Logo.png" alt="Pizza Logo" width={100} height={105} className={styles.s}/>
+        </Link>
       </div>
+      <button className={styles.signUpButton3} onClick={() => setShowLogin(true)}>
+        Sign In & Earn Rewards
+      </button>
+    </div>
+
+    {showNav && (
+      <button className={styles.closeButton} onClick={() => setShowNav(false)}>
+        <FaTimes className={styles.closeIcon} />
+      </button>
+    )}
+
+    <li className={styles.listItem}>
+      <div className={styles.line0}></div>
+    </li>
+    <li className={styles.listItem}>
+      <Link href="/">Home</Link>
+    </li>
+    <li className={styles.listItem}>
+      <Link href="/menu">Menu</Link>
+    </li>
+    <li className={styles.listItem}>
+      <Link href="/trackers">Trackers</Link>
+    </li>
+    <li className={styles.listItem}>
+      <Link href="/contact">Contact</Link>
+    </li>
+  </ul>
+</div>
+
   
       <div className={styles.item}>
         <div className={styles.cart}>
