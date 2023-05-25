@@ -11,15 +11,6 @@
   font-size: .7em;
   padding: 0.5em 0;
 }
-.circularProgress{
-  width: 40%;
-  height: 40%;
-  position: sticky;
-  color: #000000;
-  margin-top: 25px;
-  margin-left: 280px;
-}
-
 
 
 
@@ -238,9 +229,8 @@ display: none  }
   color: white;
   width: 100px;
   height: 100px;
-   border-radius: 100%;
-   margin-top: 25px;
-   padding-top: 10px;
+   margin-top: 80px;
+   
 
 }
 .button1 {
@@ -324,20 +314,6 @@ display: none  }
 }
 /*sign up divider css*/
 
-.left {
-  display: inline-block;
-  width: 50%;
-}
-
-
-.head{
-  margin-bottom: -0px;
-  display: flex;
-  justify-content: center;
-  margin-top: 0px;
-  margin-right: -290px;
-
-}
 
 
 .head1{
@@ -357,12 +333,8 @@ display: none;
   display: block;
 }
 
-.right {
-  display: inline-block;
-  width: 50%;
-  vertical-align: top;
-  text-align: left;
-}
+
+
 
 .totalButtons {
   margin-top: 1em;
@@ -432,9 +404,11 @@ display: none;
   margin-bottom: 20px;
   background-color: #09317d;
   padding: 20px;
+  padding-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  height: 50%;
 
 
 }
@@ -674,32 +648,251 @@ display: none;
 }
 
 
-/* .circularContainer {
 
-  animation: rotate 3s linear;
+.textContainer {
+  border: 7px solid #fff; /* remove this line */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+ 
+
+
+
+
+
+.head7{
+  display: flex;
+justify-content: left;
+margin-left: 23%;
+margin-top: -5%;
+margin-bottom: 10%;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+
+
+.head{
+  display: flex;
+  justify-content: left;
+  margin-top: -16%;
+  margin-left:0%;
+
+
+}
+.heade{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.headmax{
+  margin-top: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.textContainer2{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupButton2 {
+  padding: 1rem 8rem;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;   
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  font-family: "Open Sans", sans-serif;
+  color: #a2aab9;
+  letter-spacing: 2px;
+  font-family: bolder;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  margin-top: -4%;
+  margin-right: 350px;
+  margin-bottom: 2%;
+
+}
+.signupbutton2:hover{
+  background-color:#09317d;
+    transform: scale(1.1);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
   }
-  100% {
-    transform: rotate(360deg);
-    animation-iteration-count: 1;
-  }
-} */
+  
+  
+
+.signup3{
+  font-size: 52px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+  margin-top: 20%;
+  
+}
+
+.signup4{
+  font-size: 31px;
+  font-family: "Open Sans", sans-serif;
+  color: #a2aab9;
+  letter-spacing: 2px;
+  font-family: bolder;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  margin-right: 340px;
+  /* Centers the text */
+
+}
+
+.circularProgress{
+  margin-left: 50%;
+  margin-top: 10%;
+
+  margin-bottom: 15px;
+}
+.textContainer2p{
+  height: 20%;
+  width: 20%;
+  
+}
+
+
 @media only screen and (max-width: 900px) {
 
-.circularProgress {
-  width: 40%;
-  height: 40%;
-  position: absolute;
-  color: #000000;
-  top: 50%; /* Align the element to center vertically */
-  left: 50%; /* Align the element to center horizontally */
-  transform: translate(-50%, -50%); /* Compensate the displacement caused by the 'top' and 'left' properties */
-  display: block;
+
+
+
+
+  .head {
+    display: initial;
+    justify-content: initial;
+    margin-top: initial;
+    margin-left: initial;
+  }
+  
+  .heade {
+    display: initial;
+    justify-content: initial;
+    align-items: initial;
+  }
+  
+  .headmax {
+    margin-top: initial;
+    display: initial;
+    justify-content: initial;
+    align-items: initial;
+  }
+  
+  .textContainer2 {
+    display: initial;
+    justify-content: initial;
+    align-items: initial;
+  }
+  
+  .signupButton2 {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+
+
+
+    font-size: 1.5rem;
+    font-family: "Open Sans", sans-serif;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    background-color: #ca1035;  color: white;
+    margin-right: 0px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: -25px;
+  }
+  
+  .signupbutton2:hover {
+    background-color: initial;
+    transform: initial;
+  }
+  
+  .right {
+    display: initial;
+    flex-direction: initial;
+  }
+  
+ 
+  
+  .signup4 {
+    font-size: 15px;
+    margin-left: 23px;
+    margin-top: 10%;
+    margin-right: 20px;
+
+  }
+
+
+  .signupP, .deliveryTitle{
+    font-size: 15px;
+    margin-left: 23px;
+    margin-right: 20px;
+  
+  }
+
+.signup3{ font-size: 28px;
+  margin-left: -5px;
+  margin-right: 20px;
+
 }
+    
+  
+  .check{
+
+    width: 15%;
+    height: 15%;
+    margin-left: 85%;
+    margin-bottom: 38px;
+    margin-top:-200%;
+    
+
+  }
+  .circularProgress {
+    margin-left: initial;
+    margin-top: initial;
+    margin-bottom: initial;
+  }
+  
+  .textContainer2p,.circularProgress{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 23px;
+    margin-right: 20px;
+
+  }
+
+  
+
+  
+
+
+
 .signupContainer {
   display: flex;
   flex-direction: column;
@@ -841,7 +1034,7 @@ display: none;
    overflow: hidden; /* Add this line to prevent text overflow */
  }
  .head{
-  margin-top: 60px;
+  margin-left: -200px;
  }
  .halal{
   display: none;
@@ -862,12 +1055,7 @@ display: none;
 }
 
 /* reduce font sizes for smaller screens */
-.signupP, .deliveryTitle {
-  font-size: 35px;
-  margin-left: 23px;
-  margin-right: 20px;
 
-}
 
 .signupDesc, .deliveryP {
   font-size: 14px;
@@ -910,64 +1098,4 @@ justify-content: center;
  }
 
  
-
- .textContainer {
-  border: 7px solid #fff; /* remove this line */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
- 
- .signup3{
-  font-size: 50px;
-  font-family: "Open Sans", sans-serif;
-  color: white;
-  margin-top: 50px;
-  letter-spacing: 2px;
-  /* Adds 2 pixels of space between letters */
-  text-align: center;
-  /* Centers the text */
- margin-left: 25px;
-}
-
-.signup4{
-  font-size: 30px;
-  font-family: "Open Sans", sans-serif;
-  color: #a2aab9;
-  letter-spacing: 2px;
-  font-family: bolder;
-  /* Adds 2 pixels of space between letters */
-  text-align: center;
-  /* Centers the text */
- margin-left: 100px;
- margin-right: 100px;
- margin-top: -10px;
- margin-bottom: -5px;
-}
-
-
-
-
-
-.signupButton2 {
-  padding: 1.5rem 8rem;
-  font-size: 1.5rem;
-  font-family: "Open Sans", sans-serif;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-  background-color: #ca1035;   margin-right: 10px;
-  border: none;
-  border-radius: 9px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 25px;
-  margin-bottom: 20px;
-  margin-right: 18px;
-  color: white;
-
-}
-
-
-
-.signupbutton2:hover{
-  background-color:#09317d;
-    transform: scale(1.1);
-}
 

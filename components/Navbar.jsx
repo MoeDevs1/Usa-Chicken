@@ -176,31 +176,46 @@ const Navbar = ({ pizza }) => {
           <Image src="/img/Logo.png" alt="Pizza Logo" width={140} height={145} className={styles.s}/>
         </Link>
       </div>
-      <button className={styles.signUpButton3} onClick={() => setShowLogin(true)}>
-      {newFirstName} {newLastName}      </button>
-    </div>
 
+      <div className={styles.signUpButtonP}>
+      <button className={styles.signUpButtonP} onClick={() => setShowLogin(true)}>
+      {newFirstName}     </button>
+    </div>
+</div>
     {showNav && (
       <button className={styles.closeButton} onClick={() => setShowNav(false)}>
         <FaTimes className={styles.closeIcon} />
       </button>
     )}
 
-    <li className={styles.listItem}>
+    <li className={styles.listIteme}>
       <div className={styles.line0}></div>
     </li>
-    <li className={styles.listItem}>
+    <li className={styles.listIteme}>
       <Link className={styles.fontstlye} href="/">Home</Link>
     </li>
-    <li className={styles.listItem}>
+    <li className={styles.listIteme}>
       <Link className={styles.fontstlye} href="/menu">Menu</Link>
     </li>
-    <li className={styles.listItem}>
+    <li className={styles.listIteme}>
       <Link className={styles.fontstlye} href="/trackers">Trackers</Link>
     </li>
-    <li className={styles.listItem}>
+    <li className={styles.listIteme}>
       <Link className={styles.fontstlye}  href="/contact">Contact</Link>
     </li>
+    <li className={styles.listIteme}>
+      <Link className={styles.fontstlye}  href="/contact">Settings</Link>
+    </li>
+    <div className={styles.line00}></div>
+    <div className={styles.cost}>
+    <Link href="#" className={styles.greenLink} onClick={signOut}>
+
+<FaSignOutAlt className={styles.Icone} />   Sign Out     
+
+
+</Link>
+</div>
+
   </ul>
 </div>
 )}

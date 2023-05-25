@@ -304,7 +304,7 @@ const containerStyle = {
             <Image src="/img/Logo.png" alt="" width="290" height="290" />
             
           </div>
-    <h2 className={styles.signupP}>Sign up and earn points!</h2>
+    <h2 className={styles.signupP}>Sign Up & Earn Points!</h2>
     <p className={styles.signupDesc}>Join USA-Chicken®. Earn points with every qualifying purchase. Redeem available rewards of your choice.</p>
     <div className={styles.deliveryOptions}>
       <Link href="/Signup">
@@ -316,74 +316,73 @@ const containerStyle = {
   
 </div>
       )}
+     
+     
+     
       {sessionToken && (
    <div className={styles.signupContainer}>
-   <div className={styles.imageContainer}>
-     <div className={styles.slideInImage}>
-       {/* <Image className={styles.signImg} src="/img/logo.png" alt="" width={300} height={300} /> */}
-     </div>  
-   </div>
+
    <div className={styles.textContainer}>
-   <div className={styles.left}>
-   <div className={styles.head2}>
-            <Image src="/img/Logo.png" alt="" width="290" height="290" />
-            
-          </div>
+
+    
+   <div className={styles.textContainer2}>
+
      <div className={styles.head}>
-     <h2 className={styles.signup3}>Reward Tracker         
+     <h2 className={styles.signup3}>Reward Tracker    
+          
 </h2>
 < GiTakeMyMoney  className={styles.check}/>
+
 </div>
+
+<div className={styles.textContainer2p}>
+
+<CircularProgressbar 
+  className={styles.circularProgress}
+
+value={points}
+maxValue={totalPoints}
+text={`${points}/${totalPoints}`}
+styles={buildStyles({
+ strokeLinecap: "round",
+ textSize: "20px",
+ pathColor: `rgba(62, 152, 199, ${points / totalPoints})`,
+ textColor: '',
+ trailColor: '#d6d6d6',
+ backgroundColor: '#3e98c7',
+ pathTransition: 'stroke-dashoffset 0.5s ease 0s',
+ transition: 'stroke 0.3s, stroke-width 0.3s ease-in-out',
+ strokeWidth: 8,
+ pathTransitionDuration: 0.5,
+})}
+
+/>
+</div>
+</div>
+
+
+<div className={styles.headmax}>
+   
 <div className={styles.head}>
 
      <h2 className={styles.signup4}>Your 5/10th Of The Way Off 10% </h2>
      </div>
 
-     <div className={styles.deliveryOptions}>
-       <Link href="/Signup">
-        <div className={styles.head}>
+  
+     <div className={styles.head}>
 
-         <button className={styles.signupButton2}>Redeem</button>
+         </div>
+    
          </div>
 
-       </Link>
        
-     </div>
+         <div className={styles.heade}>
 
-     </div>
-     <div className={styles.right}>
-     <div className={styles.circularProgress}>
+         <button className={styles.signupButton2}>Redeem</button>
 
-     <CircularProgressbar 
-    value={points}
-    maxValue={totalPoints}
-    text={`${points}/${totalPoints}`}
-    styles={buildStyles({
-      strokeLinecap: "round",
-      textSize: "20px",
-      pathColor: `rgba(62, 152, 199, ${points / totalPoints})`,
-      textColor: '',
-      trailColor: '#d6d6d6',
-      backgroundColor: '#3e98c7',
-      pathTransition: 'stroke-dashoffset 0.5s ease 0s',
-      transition: 'stroke 0.3s, stroke-width 0.3s ease-in-out',
-      strokeWidth: 8,
-      pathTransitionDuration: 0.5,
-  })}
-  
-/>
-</div>
-
-<defs>
-    <linearGradient id="gradient" gradientTransform="rotate(90)">
-      <stop offset="0%"  stopColor="gold" />
-      <stop offset="50%" stopColor="orange" />
-      <stop offset="100%" stopColor="red" />
-    </linearGradient>
-  </defs>
+  </div>
   </div>
    </div>
- </div>
       )}
 
 
