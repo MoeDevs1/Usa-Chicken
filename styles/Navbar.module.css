@@ -105,6 +105,7 @@
 }
 
 
+
 .iconn{
   background-color: #09acf2;
   border-radius: 100%;
@@ -224,7 +225,7 @@ display: none;
 
 .listIteme{
 
-  margin: 0px 0px;
+  margin: 10px 0px;
   
   font-size: 0px;
   font-weight: bolder;
@@ -267,9 +268,13 @@ display: none;
   color: black;
 }
 
+.ButtonContainer{
+}
+
 .texts:first-child {
   font-size: 12px;
   font-weight: 500;
+  margin-left: -100px;
 }
 
 .texts:last-child {
@@ -282,6 +287,8 @@ display: none;
   color: rgb(255, 0, 0);
 
 }
+
+.item{}
 
 .counter {
   position: absolute;
@@ -678,10 +685,7 @@ margin-left: 50px;
 
       }
       
-      .listItem:hover {
    
-      }
-      
       .listItem img {
         width: 40px;
         height: 40px;

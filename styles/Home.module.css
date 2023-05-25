@@ -4,9 +4,6 @@
   padding-top: 20px;
   
 }
-.halal{
-}
-
 .formLabel {
   font-size: .7em;
   padding: 0.5em 0;
@@ -73,9 +70,7 @@
   text-align: center;
 }
 
-.pizzaListContainer{
 
-}
 
 .pizzaList {
     display: flex;
@@ -98,10 +93,9 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     word-wrap: break-word;
     box-sizing: border-box;
-    flex-basis: 370px;
+    flex-basis: 450px;
     cursor: pointer;
   }
-  
   
 
   
@@ -215,7 +209,6 @@ display: none  }
   /* Adds 2 pixels of space between letters */
   text-align: center;
   /* Centers the text */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -415,6 +408,7 @@ display: none;
 
 .signin{
   color: red;
+  margin-left: 4px;
 }
 
 
@@ -1004,7 +998,6 @@ margin-bottom: 10%;
    background-color: #007bff;
    filter: grayscale(0%) contrast(130%) brightness(110%);
    color: white;
-   margin-right: 10px;
    border: none;
    padding-right: 2px;
    border-radius: 9px;
@@ -1021,7 +1014,6 @@ margin-bottom: 10%;
    background-color: #ca1035;
    filter: grayscale(0%) contrast(130%) brightness(110%);
    color: white;
-   margin-right: 10px;
    border: none;
    padding-right: 2px;
    border-radius: 9px;

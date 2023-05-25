@@ -10,12 +10,9 @@ import { useSession, signOut as nextAuthSignOut } from 'next-auth/react';
 import { FaHome, FaUtensils, FaInfoCircle, FaPhone, FaBars, FaTimes } from 'react-icons/fa';
 import Login from './logComp';
 import axios from 'axios';
-import { AiOutlineCaretDown } from 'react-icons/ai';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { BiHelpCircle } from 'react-icons/bi';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { FaRegHandshake } from 'react-icons/fa';
-import { ImCool } from 'react-icons/im';
 
 
 
@@ -27,6 +24,12 @@ const Navbar = ({ pizza }) => {
   const [sessionToken, setSessionToken] = useState(null);
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
+
+  const LoadingSpinner = () => (
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  );
 
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
 
@@ -43,8 +46,10 @@ const Navbar = ({ pizza }) => {
   };
 
   const handleSignup = async () => {
+    setIsLoading(true);
     router.push('/Signup');
   };
+  
 
   const redirectToSettings = () => {
     router.push('/userProfile');
@@ -118,8 +123,10 @@ const Navbar = ({ pizza }) => {
   };
 
   const toggleLogin = () => {
+    setIsLoading(true);
     setShowLogin(!showLogin);
   };
+  
 
   const closeLogin = () => {
     setShowLogin(false);

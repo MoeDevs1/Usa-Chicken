@@ -203,6 +203,42 @@
   
   
   }
+
+  .loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .logoContainer {
+    margin-bottom: 16px;
+  }
+  
+  .loadingDots {
+    display: flex;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000;
+    margin: 0 4px;
+    animation: dotAnimation 1s infinite;
+  }
+  
+  @keyframes dotAnimation {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
   
   .google {
   
@@ -225,7 +261,6 @@
   }
   
   
-  
   .signInLink {
     font-size: 13px;
     color: #1E90FF;
@@ -238,6 +273,7 @@
   
   
   }
+ 
   
   .signInText {
     font-size: 12px;
