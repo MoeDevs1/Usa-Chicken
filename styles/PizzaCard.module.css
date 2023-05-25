@@ -109,7 +109,19 @@ padding: 20PX;
 .button {
   margin-left: auto;
 }
-@media screen and (max-width: 480px) {
-.card{
-}
+@media screen and (max-width: 580px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+        margin-top: -50px;
+
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 25px;
+height: 100%;
+  }
 }

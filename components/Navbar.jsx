@@ -192,19 +192,19 @@ const Navbar = ({ pizza }) => {
       <div className={styles.line0}></div>
     </li>
     <li className={styles.listIteme}>
-      <Link className={styles.fontstlye} href="/">Home</Link>
+      <Link className={styles.listIteme} href="/">Home</Link>
     </li>
     <li className={styles.listIteme}>
-      <Link className={styles.fontstlye} href="/menu">Menu</Link>
+      <Link className={styles.listIteme} href="/menu">Menu</Link>
     </li>
     <li className={styles.listIteme}>
-      <Link className={styles.fontstlye} href="/trackers">Trackers</Link>
+      <Link className={styles.listIteme} href="/trackers">Trackers</Link>
     </li>
     <li className={styles.listIteme}>
-      <Link className={styles.fontstlye}  href="/contact">Contact</Link>
+      <Link className={styles.listIteme}  href="/contact">Contact</Link>
     </li>
     <li className={styles.listIteme}>
-      <Link className={styles.fontstlye}  href="/contact">Settings</Link>
+      <Link className={styles.listIteme}  href="/userProfile">Settings</Link>
     </li>
 
     <li className={styles.listIteme}>
@@ -302,12 +302,12 @@ const Navbar = ({ pizza }) => {
 
   
                       <div className={`${styles.link} ${styles.flexContainer}`}>
-                        <Link href="#" className={styles.greenLink} onClick={redirectToSettings}>
+                        <Link href="#" className={styles.greenLinkk} onClick={redirectToSettings}>
                         <AiOutlineSetting className={styles.Icon}/>   Settings & Privacy      
 
               </Link>
               <div className={styles.divder}></div> {/* you might want to adjust the styling of this divider */}
-              <Link href="#" className={styles.greenLink} onClick={redirectToOtherAccount}>
+              <Link href="#" className={styles.greenLinkk} onClick={redirectToOtherAccount}>
 
               <BiHelpCircle className={styles.Icon} />     Help     
 
@@ -321,7 +321,7 @@ const Navbar = ({ pizza }) => {
 
 
           <div className="menu-item">
-            <Link href="#" className={styles.greenLink} onClick={signOut}>
+            <Link href="#" className={styles.greenLinkk} onClick={signOut}>
 
             <FaSignOutAlt className={styles.Icon} />   Sign Out     
 
