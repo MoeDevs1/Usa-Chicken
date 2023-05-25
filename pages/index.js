@@ -86,11 +86,11 @@ export default function Home({ pizzaList }) {
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
   // const [userPoints, setUserPoints] = useState(0);
+  const [points, setPoints] = useState(0);
 
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
 
-  const points = 6;
-  const totalPoints = 10;
+  const totalPoints = 100;
 
 
 
@@ -142,10 +142,11 @@ const containerStyle = {
         const response = await axios.get('/api/getUserDetails');
         if (response.status === 200) {
           setSessionToken(true);
-          const { firstName, lastName} = response.data;
+          const { firstName, lastName, points} = response.data;
           setNewFirstName(firstName);
           setNewLastName(lastName);
           // setUserPoints(points);
+          setPoints(points);
         } else {
           setSessionToken(null);
         }
@@ -365,7 +366,7 @@ styles={buildStyles({
    
 <div className={styles.head}>
 
-     <h2 className={styles.signup4}>Your 5/10th Of The Way Off 10% </h2>
+     <h2 className={styles.signup4}>Your {points/10}/10th Of The Way Off 10% </h2>
      </div>
 
   

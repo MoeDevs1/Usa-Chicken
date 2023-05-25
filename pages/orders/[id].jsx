@@ -4,7 +4,6 @@ import axios from "axios";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { formatPhoneNumber } from 'libphonenumber-js';
 import { useEffect, useState } from "react";
-import { phone as userProfilePhone } from '/pages/UserProfile'; // Replace './UserProfile' with the correct path to the file containing the variables
 
 
 const Order = ({ order, products }) => {
