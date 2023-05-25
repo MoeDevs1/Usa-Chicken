@@ -128,8 +128,8 @@ const createOrder = async (data) => {
   }
 };
 
-if (points === 600 ) {
-  points = 100;
+if (points === 110 ) {
+  points = 10;
 }
 
 const updatePointsInDatabase = async (newPoints) => {
@@ -214,10 +214,10 @@ if ( myTotal < 0) {
               });
 
               if (myTotal > 10) {
-                const newPointsValue = points + 100; // Add 100 points to the existing points value
+                const newPointsValue = points + 10; // Add 100 points to the existing points value
                 updatePointsInDatabase(newPointsValue);
-              }if(myTotal < 10 && points === 500 ){
-                const newPointsValue = points + 100; // Add 100 points to the existing points value
+              }if(myTotal < 10 && points === 100 ){
+                const newPointsValue = points + 10; // Add 100 points to the existing points value
                 updatePointsInDatabase(newPointsValue);
               }
             });
@@ -364,14 +364,14 @@ if ( myTotal < 0) {
           </div>
           {points === 500 ? (
 
-          <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Congrats! You've reached 500 points. Enjoy a $5% discount! Order must be over $10.</h5>
+          <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Congrats! You've reached 100 points. Enjoy a 10% discount! Order must be over $10.</h5>
 
   ) : (
-    <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Once you reach 500 points, you'll get a $10 discount!  &nbsp; &nbsp;  <span className={styles.pointComment}>Your points:</span> {points}</h5>
+    <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Once you reach 100 points, you'll get a 10% discount!  &nbsp; &nbsp;  <span className={styles.pointComment}>Your points:</span> {points}</h5>
     )}
           <div className={styles.tax}>
   <p>Discount:</p>
-  {points === 500 ? (
+  {points === 100 ? (
     <>
       <p>$-{Discount.toFixed(2)}</p>
     </>

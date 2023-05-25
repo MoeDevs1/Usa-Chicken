@@ -57,14 +57,14 @@ max-width: 700px;
 
 
 .inputText {
-  margin-bottom: 6px;
-  color: #333333;
+  margin-bottom: 9px;
+  color: #000000;
   /* Updated text color */
   margin-left: 4px;
   font-family: "Open Sans", sans-serif;
-  font-weight: lighter;
   letter-spacing: 3px;
   /* Adds 2 pixels of space between letters */
+
 
 }
 
@@ -136,12 +136,8 @@ max-width: 700px;
 
 }
 
-.inputFieldPassword:focus {
-  border-color: #6bb7f2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
-  background-color: #fff;
-  outline: none;
-}
+
+
 
 .inputFieldNewEmail {
   margin-bottom: -3px;
@@ -181,6 +177,40 @@ max-width: 700px;
 }
 
 
+.input:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+.inputFieldOldPassword:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+.inputFieldPassword1:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+.inputFieldPassword:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+
+
 
 
 .inputOldFieldEmail {
@@ -188,8 +218,6 @@ max-width: 700px;
   width: 300px;
   font-size: 16px;
   margin-right: 20px;
-  font: #007bff;
-  color: #007BFF;
   padding: 10px;
 
   border-radius: 8px;
