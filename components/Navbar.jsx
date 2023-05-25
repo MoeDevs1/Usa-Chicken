@@ -210,9 +210,9 @@ const Navbar = ({ pizza }) => {
     <li className={styles.listIteme}>
       <Link className={styles.listIteme}  href="/contact">Contact</Link>
     </li>
-    <li className={styles.listIteme}>
-      <Link className={styles.listIteme}  href="/userProfile">Settings</Link>
-    </li>
+    <li className={`${styles.listIteme} ${styles.settingsItem}`}>
+  <Link className={styles.listIteme} href="/userProfile">Settings</Link>
+</li>
 
     <li className={styles.listIteme}>
 
