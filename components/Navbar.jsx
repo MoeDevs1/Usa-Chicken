@@ -206,14 +206,22 @@ const Navbar = ({ pizza }) => {
     <li className={styles.listIteme}>
       <Link className={styles.fontstlye}  href="/contact">Settings</Link>
     </li>
+
+    <li className={styles.listIteme}>
+
     <div className={styles.line00}></div>
+    </li>
+
     <div className={styles.cost}>
+
+  
     <Link href="#" className={styles.greenLink} onClick={signOut}>
 
 <FaSignOutAlt className={styles.Icone} />   Sign Out     
 
 
 </Link>
+
 </div>
 
   </ul>

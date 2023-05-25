@@ -10,6 +10,10 @@
   background-color: rgba(186, 172, 172, 0.5);
 
 }
+
+.greenLink{
+  display: none;
+}
 .signUpButton3 {
   background-color: transparent;
   border: none;
@@ -192,11 +196,10 @@ margin-right: 50px;
   margin-top: 20px;
 }
 
+
 .Icone{
 
-  margin-top: 20px;
-  width: 10px;
-  height: 10px;
+display: none;
 }
 
 
@@ -556,7 +559,6 @@ margin-top: 20px;
         padding: 0;
       }
 
-
       .listItem {
         margin: 0 10px;
       }
@@ -712,7 +714,19 @@ margin-left: 50px;
   margin-top: -20px;
 }
 
+.Icone{
+
+  margin-top: 20px;
+  width: 10px;
+  height: 10px;
+  display: initial;
+}
+
+.greenLink{
+      display:initial;
     }
+    }
+    
     
     
     .iteme{
