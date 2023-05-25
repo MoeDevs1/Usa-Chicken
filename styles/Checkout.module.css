@@ -601,7 +601,9 @@ flex-direction: row;
 .checkoutButton:focus {
   outline: none;
 }
-
+.spinner{
+  width: 1000px;
+}
 .backButton{
     background-color: #007bff;
     color: #fff;
@@ -925,4 +927,50 @@ flex-direction: row;
 
   .buttonSentence{
     font-size: 12px;
+  }
+
+  
+
+  .orderNowButton {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .orderNowButton:hover {
+    background-color: darkred;
+  }
+  
+  .orderNowButton:active {
+    background-color: darkred;
+  }
+  
+  .orderNowButton:focus {
+    outline: none;
+  }
+
+  .cartEmpty{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 13px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    color: #1e1e1e;
+    letter-spacing: 1px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }

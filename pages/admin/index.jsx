@@ -6,14 +6,21 @@ import AddButton from "/components/AddButton.jsx";
 import Add from "/components/Add.jsx";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { FaHome, FaUtensils, FaInfoCircle, FaPhone, FaBars, FaTimes, FaCircle} from 'react-icons/fa';
 
 
 const Index = ({ orders, products, admin }) => {
   const [close, setClose] = useState(true);
-
-  const [pizzaList, setPizzaList] = useState(products);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [prevselectedOrder, setprevSelectedOrder] = useState(null);
   const [orderList, setOrderList] = useState(orders);
-  const status = ["preparing", "Almost Done", "Ready", "Picked Up", "Finished"];
+  const [phone, setPhone] = useState(0);
+  const [firstName, setFirstName] = useState('');
+  const status = ["Preparing", "Ready for Pick Up"];
+  const [formOpen, setformOpen] = useState(false);
+  const [accepting, setAccepting] = useState(false);
+  const [pollingIntervalId, setPollingIntervalId] = useState(null);
+  const [pizzaList, setPizzaList] = useState(products);
 
   const handleDelete = async (id) => {
     console.log(id);
@@ -83,69 +90,90 @@ const Index = ({ orders, products, admin }) => {
 
   return (
     <div className={styles.container}>
-      <nav className={styles.navbar}>
-  <div className={styles.buttonContainer}>
-    <Link href="/admin">
-      <button className={styles.navbarButton}>Dashboard</button>
-    </Link>
-    <Link href="/customerOrders">
-      <button className={styles.navbarButton}>Orders</button>
-    </Link>
-    {!isPasswordCorrect ? (
-        <>
-          {!showForm ? (
-            <button onClick={() => setShowForm(true)} className={styles.navbarButton}>
-              Products
-            </button>
-          ) : (
-            <div className={styles.modal}>
-              <form onSubmit={handleSubmit}>
-              <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className={styles.buttons}>Submit</button>
-                <button className={styles.buttons} onClick={() => setShowForm(false)}>Close</button>
-              </form>
-            </div>
-          )}
-        </>
-      ) : null}  
-    {!isPasswordCorrects ? (
-         <>
-    {!showForms ? (
-            <button onClick={() => setShowForms(true)} className={styles.navbarButton}>
-              All Orders
-            </button>
-          ) : (
-            <div className={styles.modal}>
-              <form onSubmit={handleSubmitOrders}>
-              <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
-                <input
-                  type="password"
-                  value={passwords}
-                  onChange={(es) => setPasswords(es.target.value)}
-                />
-                <button className={styles.buttons}>Submit</button>
-                <button className={styles.buttons} onClick={() => setShowForms(false)}>Close</button>
-              </form>
-            </div>
-          )}
-                  </>
-      ) : null}  
-  </div>
-</nav>
+     <nav className={styles.navbar}>
+      </nav>
+      <div className={styles.sidebar}>
+        <div className={styles.topSideBar}>
+        <Link href="/admin">
+        <span className={styles.backButton}><FaBars className={styles.FaBars}/> </span>
+        </Link>
+        <span className={styles.title}>Admin Page</span>
+        </div>
+        <div className={styles.topSideBar2}>
+        <span className={styles.kitchenTitle}>Select from menu</span>
+   
+
+<span className={styles.orderCount}>Options</span>
+        </div>
+        <ul className={styles.orderList}>
      
-<div className={styles.dashboard}>
-<h1 className={styles.title}>Dashboard</h1>
+<nav className={styles.navbar}>
+<div className={styles.buttonContainer}>
+  <Link href="/admin">
+    <button className={styles.button}>Dashboard</button>
+  </Link>
+  <Link href="/customerOrders">
+    <button className={styles.button}>Orders</button>
+  </Link>
+  {!isPasswordCorrect ? (
+      <>
+        {!showForm ? (
+          <button onClick={() => setShowForm(true)} className={styles.button}>
+            Products
+          </button>
+        ) : (
+          <div className={styles.modal}>
+            <form onSubmit={handleSubmit}>
+            <h1 className={styles.passcodeTitle}>Enter Passcode </h1>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button className={styles.buttons}>Submit</button>
+              <button className={styles.buttons} onClick={() => setShowForm(false)}>Close</button>
+            </form>
+          </div>
+        )}
+      </>
+    ) : null}  
+  {!isPasswordCorrects ? (
+       <>
+  {!showForms ? (
+          <button onClick={() => setShowForms(true)} className={styles.button}>
+           Order History
+          </button>
+        ) : (
+          <div className={styles.modal}>
+            <form onSubmit={handleSubmitOrders}>
+            <h1 className={styles.passcodeTitle}>Enter Passcode </h1>
+              <input
+                type="password"
+                value={passwords}
+                onChange={(es) => setPasswords(es.target.value)}
+              />
+              <button className={styles.buttons}>Submit</button>
+              <button className={styles.buttons} onClick={() => setShowForms(false)}>Close</button>
+            </form>
+          </div>
+        )}
+                </>
+    ) : null}  
 </div>
+</nav>
+   
 
 
 
 
+</ul>
 
+
+      </div>
+      <div className={styles.cart}>
+            <h2 className={styles.cartTitle}>DashBoard</h2>
+            
+      </div>
     </div>
   );
 };
@@ -185,3 +213,66 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default Index;
+
+{/* <nav className={styles.navbar}>
+<div className={styles.buttonContainer}>
+  <Link href="/admin">
+    <button className={styles.navbarButton}>Dashboard</button>
+  </Link>
+  <Link href="/customerOrders">
+    <button className={styles.navbarButton}>Orders</button>
+  </Link>
+  {!isPasswordCorrect ? (
+      <>
+        {!showForm ? (
+          <button onClick={() => setShowForm(true)} className={styles.navbarButton}>
+            Products
+          </button>
+        ) : (
+          <div className={styles.modal}>
+            <form onSubmit={handleSubmit}>
+            <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button className={styles.buttons}>Submit</button>
+              <button className={styles.buttons} onClick={() => setShowForm(false)}>Close</button>
+            </form>
+          </div>
+        )}
+      </>
+    ) : null}  
+  {!isPasswordCorrects ? (
+       <>
+  {!showForms ? (
+          <button onClick={() => setShowForms(true)} className={styles.navbarButton}>
+            All Orders
+          </button>
+        ) : (
+          <div className={styles.modal}>
+            <form onSubmit={handleSubmitOrders}>
+            <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
+              <input
+                type="password"
+                value={passwords}
+                onChange={(es) => setPasswords(es.target.value)}
+              />
+              <button className={styles.buttons}>Submit</button>
+              <button className={styles.buttons} onClick={() => setShowForms(false)}>Close</button>
+            </form>
+          </div>
+        )}
+                </>
+    ) : null}  
+</div>
+</nav>
+   
+<div className={styles.dashboard}>
+<h1 className={styles.title}>Dashboard</h1>
+</div>
+
+ */}
+
+

@@ -76,8 +76,8 @@
     text-align: left;
     margin-top: 2rem;
     margin-bottom: -70px;
-    margin-left: 85px;
-    font-size: 12px;
+    margin-left: 75px;
+    font-size: 11px;
 
   
     font-family: "Open Sans", sans-serif;
@@ -87,13 +87,13 @@
   
     letter-spacing: 4px;
     /* Adds 2 pixels of space between letters */
-    color: #09317d;
+    color: #007BFF;
 
   }
 
   .listTitle{
     font-weight: 100;
-    color: #09317d;
+    color: #007BFF;
 
  
   }
@@ -137,7 +137,7 @@
     display: none;
   }
   
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 700px) {
     .container{
       background-color: white;
       height: 100%;
@@ -206,12 +206,13 @@
       cursor: pointer;
       font-family: "Arial";
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: -0px;
       text-align: center;
       white-space: nowrap;
       padding: 0  10px; /* optional padding to create some space around each item */
       width: 100%;
-      margin-top: 10px;
+      margin-top: 0px;
+    
     }
   
     .menuPhoneTitle{

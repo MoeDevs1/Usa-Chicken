@@ -10,16 +10,13 @@ import { useSession, signOut as nextAuthSignOut } from 'next-auth/react';
 import { FaHome, FaUtensils, FaInfoCircle, FaPhone, FaBars, FaTimes } from 'react-icons/fa';
 import Login from './logComp';
 import axios from 'axios';
-import { AiOutlineCaretDown } from 'react-icons/ai';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { BiHelpCircle } from 'react-icons/bi';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { FaRegHandshake } from 'react-icons/fa';
-import { ImCool } from 'react-icons/im';
 
 
 
-const Navbar = ({ pizza, orders, products}) => {
+const Navbar = ({ pizza }) => {
   const [showNav, setShowNav] = useState(false);
   const quantity = useSelector((state) => state.cart.quantity);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -27,11 +24,17 @@ const Navbar = ({ pizza, orders, products}) => {
   const [sessionToken, setSessionToken] = useState(null);
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
-  const [emailState, setEmailState] = useState('');
+
+  const LoadingSpinner = () => (
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  );
+
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
-  const [orderList, setOrderList] = useState(orders);
 
   const router = useRouter();
+  
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -43,38 +46,34 @@ const Navbar = ({ pizza, orders, products}) => {
   };
 
   const handleSignup = async () => {
+    setIsLoading(true);
     router.push('/Signup');
   };
+  
 
   const redirectToSettings = () => {
     router.push('/userProfile');
   };
 
-
-
   useEffect(() => {
-
-  const fetchUserDetails = async () => {
-    try {
-      const response = await axios.get('/api/getUserDetails');
-      if (response.status === 200) {
-        setSessionToken(true);
-        const { firstName, lastName, email } = response.data;
-        setNewFirstName(firstName);
-        setNewLastName(lastName);
-        setEmailState(email);
-      } else {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('/api/getUserDetails');
+        if (response.status === 200) {
+          setSessionToken(true);
+          const { firstName, lastName } = response.data;
+          setNewFirstName(firstName);
+          setNewLastName(lastName);
+        } else {
+          setSessionToken(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user details', error);
         setSessionToken(null);
       }
-      
-    } catch (error) {
-      console.error('Error fetching user details', error);
-      setSessionToken(null);
-    }
-    
-  };
+    };
 
-  fetchUserDetails();
+    fetchUserDetails();
   }, [sessionToken]);
 
 
@@ -109,6 +108,10 @@ const Navbar = ({ pizza, orders, products}) => {
       console.error('Error signing out', error);
     }
   };
+  
+
+
+
 
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -120,8 +123,10 @@ const Navbar = ({ pizza, orders, products}) => {
   };
 
   const toggleLogin = () => {
+    setIsLoading(true);
     setShowLogin(!showLogin);
   };
+  
 
   const closeLogin = () => {
     setShowLogin(false);
@@ -142,6 +147,8 @@ const Navbar = ({ pizza, orders, products}) => {
 
   return (
     <div className={styles.container}>
+          {showNav && <div className={styles.blurBackground} onClick={handleBackgroundClick} />}
+
       {showLogin && (
         <div className={styles.loginWrapper}>
           <button className={styles.closeLoginButton} onClick={toggleLogin}>
@@ -151,6 +158,9 @@ const Navbar = ({ pizza, orders, products}) => {
         </div>
       )}
   
+     
+     
+     
       <div className={styles.item1}>
           <Link href="/">
             <Image src="/img/Logo.png" alt="Pizza Logo" width={65} height={65}    className={styles.logo}/>
@@ -159,69 +169,120 @@ const Navbar = ({ pizza, orders, products}) => {
             
           </Link>
       </div>
-  
-      <div className={styles.item}>
-        <button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
-          <FaBars className={styles.bars} />
-        </button>
-        <ul className={`${styles.list} ${showNav ? styles.show : ""}`} onClick={handleBackgroundClick}>
-          <div className={styles.menuTitle}>
-            <h1>USA Chicken</h1>
-          </div>
-          <li className={styles.listItem}>
-            <Link href="/">
-              <FaHome className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Home
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/menu">
-              <FaUtensils className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Menu
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/contact">
-              <FaPhone className={styles.faIcon} size={24} color="#000" style={{ marginRight: "10px", marginLeft: "-10px" }} />
-              Contact
-            </Link>
-          </li>
-          {/* {sessionToken && (
-  <li className={styles.listItem}>
-    {orderList && Array.isArray(orderList) && orderList.length > 0 && orderList.map((order) => {
-      if (order.email === emailState) {
-        return (
-          <Link href={`/orders/${order._id}`}>
-            <FaInfoCircle
-              className={styles.faIcon}
-              size={24}
-              color="#000"
-              style={{ marginRight: '10px', marginLeft: '-10px' }}
-            />
-            Tracker
-          </Link>
-        );
-      }
-      return null; // Skip rendering if the order doesn't match the email
-    })}
-  </li>
-)} */}
-{ sessionToken ? (
-  <li className={styles.listItem}>
 
-<Link href="/trackers">
-            <FaInfoCircle
-              className={styles.faIcon}
-              size={24}
-              color="#000"
-              style={{ marginRight: '10px', marginLeft: '-10px' }}
-            />
-            Tracker
-          </Link>
-          </li>
-) : null }
-          </ul>
+      {sessionToken && (
+
+      <div className={styles.item}>
+  <button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
+    <FaBars className={styles.bars} />
+  </button>
+  <ul className={`${styles.list} ${showNav ? styles.show : ""}`} onClick={handleBackgroundClick}>
+    <div className={styles.menuTitle}>
+      <div className={styles.logocontainer}>
+        <Link href="/">
+          <Image src="/img/Logo.png" alt="Pizza Logo" width={140} height={145} className={styles.s}/>
+        </Link>
       </div>
+
+      <div className={styles.signUpButtonP}>
+      <button className={styles.signUpButtonP} onClick={() => setShowLogin(true)}>
+      {newFirstName}     </button>
+    </div>
+</div>
+    {showNav && (
+      <button className={styles.closeButton} onClick={() => setShowNav(false)}>
+        <FaTimes className={styles.closeIcon} />
+      </button>
+    )}
+
+    <li className={styles.listIteme}>
+      <div className={styles.line0}></div>
+    </li>
+    <li className={styles.listIteme}>
+      <Link className={styles.listIteme} href="/">Home</Link>
+    </li>
+    <li className={styles.listIteme}>
+      <Link className={styles.listIteme} href="/menu">Menu</Link>
+    </li>
+    <li className={styles.listIteme}>
+      <Link className={styles.listIteme} href="/trackers">Trackers</Link>
+    </li>
+    <li className={styles.listIteme}>
+      <Link className={styles.listIteme}  href="/contact">Contact</Link>
+    </li>
+    <li className={styles.listIteme}>
+      <Link className={styles.listIteme}  href="/userProfile">Settings</Link>
+    </li>
+
+    <li className={styles.listIteme}>
+
+    <div className={styles.line00}></div>
+    </li>
+
+    <div className={styles.cost}>
+
+  
+    <Link href="#" className={styles.greenLink} onClick={signOut}>
+
+<FaSignOutAlt className={styles.Icone} />   Sign Out     
+
+
+</Link>
+
+</div>
+
+  </ul>
+</div>
+)}
+    {!sessionToken && (
+
+<div className={styles.item}>
+<button className={styles.menuButton} onClick={() => setShowNav(!showNav)}>
+<FaBars className={styles.bars} />
+</button>
+<ul className={`${styles.list} ${showNav ? styles.show : ""}`} onClick={handleBackgroundClick}>
+<div className={styles.menuTitle}>
+<div className={styles.logocontainer}>
+  <Link href="/">
+    <Image src="/img/Logo.png" alt="Pizza Logo" width={140} height={145} className={styles.s}/>
+  </Link>
+</div>
+<button className={styles.signUpButton3} onClick={() => setShowLogin(true)}>
+  Sign In & Earn Rewards
+</button>
+</div>
+
+{showNav && (
+<button className={styles.closeButton} onClick={() => setShowNav(false)}>
+  <FaTimes className={styles.closeIcon} />
+</button>
+)}
+
+<li className={styles.listItem}>
+<div className={styles.line0}></div>
+</li>
+<li className={styles.listItem}>
+<Link className={styles.fontstlye} href="/">Home</Link>
+</li>
+<li className={styles.listItem}>
+<Link className={styles.fontstlye} href="/menu">Menu</Link>
+</li>
+
+<li className={styles.listItem}>
+<Link className={styles.fontstlye}  href="/contact">Contact</Link>
+</li>
+</ul>
+</div>
+)}
+
+
+
+
+
+
+
+
+  
       <div className={styles.item}>
         <div className={styles.cart}>
           {sessionToken ? (
@@ -248,12 +309,12 @@ const Navbar = ({ pizza, orders, products}) => {
 
   
                       <div className={`${styles.link} ${styles.flexContainer}`}>
-                        <Link href="#" className={styles.greenLink} onClick={redirectToSettings}>
+                        <Link href="#" className={styles.greenLinkk} onClick={redirectToSettings}>
                         <AiOutlineSetting className={styles.Icon}/>   Settings & Privacy      
 
               </Link>
               <div className={styles.divder}></div> {/* you might want to adjust the styling of this divider */}
-              <Link href="#" className={styles.greenLink} onClick={redirectToOtherAccount}>
+              <Link href="#" className={styles.greenLinkk} onClick={redirectToOtherAccount}>
 
               <BiHelpCircle className={styles.Icon} />     Help     
 
@@ -267,7 +328,7 @@ const Navbar = ({ pizza, orders, products}) => {
 
 
           <div className="menu-item">
-            <Link href="#" className={styles.greenLink} onClick={signOut}>
+            <Link href="#" className={styles.greenLinkk} onClick={signOut}>
 
             <FaSignOutAlt className={styles.Icon} />   Sign Out     
 
@@ -301,6 +362,8 @@ const Navbar = ({ pizza, orders, products}) => {
             )}
           </div>
         </div>
+       
+       
         {sessionToken && (
         <Link href="/Checkout">
           <Image className={styles.icon2} src="/img/cartI.png" alt="Shopping Cart" width={30} height={30} style={{verticalAlign: "middle"}} />
@@ -309,23 +372,6 @@ const Navbar = ({ pizza, orders, products}) => {
   
       </div>
     );
-};
-
-
-export const getServerSideProps = async (ctx) => {
-  const res = await axios.get("http://localhost:3000/api/products");
-
-
-
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
-
-  return {
-    props: {
-      orders: orderRes.data,
-      products: productRes.data,
-    },
-  };
 };
 
 export default Navbar;

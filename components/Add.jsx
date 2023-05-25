@@ -7,6 +7,7 @@ const Add = ({ setClose }) => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
+  const [category, setCategory] = useState(null);
   const [prices, setPrices] = useState([]);
   const [extraOptions, setExtraOptions] = useState([]);
   const [extra, setExtra] = useState(null);
@@ -42,6 +43,7 @@ const Add = ({ setClose }) => {
         prices,
         extraOptions,
         img: url,
+        category,
       };
 
       await axios.post("http://localhost:3000/api/products", newProduct);
@@ -76,6 +78,14 @@ const Add = ({ setClose }) => {
             rows={4}
             type="text"
             onChange={(e) => setDesc(e.target.value)}
+          />
+        </div>
+        <div className={styles.item}>
+          <label className={styles.label}>Category</label>
+          <textarea
+            rows={4}
+            type="text"
+            onChange={(e) => setCategory(e.target.value)}
           />
         </div>
         <div className={styles.item}>

@@ -622,7 +622,7 @@ const formatPhoneNumber = (number) => {
         {points === 500 ? (
           <header className= {`${styles.Title} ${styles.Title}`}><span className={styles.pointsTitle}>Your Points: </span> {points} <span className={styles.ordering}> &nbsp; (Order and get 5% Off)  </span></header>
   ) : (
-    <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> &nbsp; {points} / 500</header>
+    <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> &nbsp; {points} / 100</header>
     )}
     <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
         <header className= {`${styles.Title} ${styles.Title}`}> Point Tracker</header>

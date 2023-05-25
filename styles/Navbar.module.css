@@ -1,4 +1,82 @@
+.blurBackground {
+  position: fixed;
+  margin-left: 205px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px); /* adjust the blur amount as needed */
+  z-index: 10; /* adjust as needed, it should be less than your navbar */
+  background-color: rgba(186, 172, 172, 0.5);
 
+}
+
+.greenLink{
+  display: none;
+}
+.signUpButton3 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+.signUpButtonP {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+ 
+  outline: none;
+  display: flex;
+  justify-content: center;
+}
+.signUpButton3:hover {
+  background-color: #87CEEB; /* Light blue color */
+  color: #FFFFFF; /* Text color when hovering */
+}
+
+.signUpButton2 {
+  background-color: transparent;
+  color: white; /* Green */
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.loogo {
+  flex: 1;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.signUpButton2:hover {
+  background-color: #45a049;
+}
 
 .container {
   height: 70px;
@@ -20,12 +98,18 @@
 
   color: #007bff;
 }
+.logocontainer{
+  margin-left: 10px;
+  margin-bottom: 14px;
+  margin-top: -20px;
+}
 
 
 
 .iconn{
-  background-color: #09acf2;
+  background-color: white;
   border-radius: 100%;
+  margin-right: -50px;
 }
 
 .icon2{
@@ -94,6 +178,32 @@ margin-right: 50px;
 }
 
 
+.cost{
+  margin-left: -4px;
+}
+.line0 {
+  height: 5px;
+  width: 104%; /* Adjusted width value */
+  background-color: rgb(255, 252, 252);
+  margin-bottom: -20px;
+  margin-left: -8px;
+  margin-top: 20px;
+}
+.line00 {
+  height: 5px;
+  width: 104%; /* Adjusted width value */
+  background-color: rgb(255, 252, 252);
+  margin-bottom: 2px;
+  margin-left: -8px;
+  margin-top: 20px;
+}
+
+
+.Icone{
+
+display: none;
+}
+
 
 .menuTitle{
   color: black;
@@ -110,7 +220,19 @@ margin-right: 50px;
 }
 
 .listItem {
-  margin: 10px 0;
+  margin: 0px 0;
+  font-size: 3px;
+}
+
+.listIteme{
+
+  margin: 10px 0px;
+  
+  font-size: 0px;
+  font-weight: bolder;
+}
+.fontstlye{
+  color: green;
 }
 
 
@@ -124,6 +246,7 @@ margin-right: 50px;
   align-items: center;
   justify-content: center;
 }
+
 
 .item:nth-child(2) {
   flex: 3;
@@ -146,9 +269,13 @@ margin-right: 50px;
   color: black;
 }
 
+.ButtonContainer{
+}
+
 .texts:first-child {
   font-size: 12px;
   font-weight: 500;
+  margin-left: -100px;
 }
 
 .texts:last-child {
@@ -162,21 +289,24 @@ margin-right: 50px;
 
 }
 
+.item{}
+
 .counter {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 0px;
+  right: -58px;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: 100%;
   background-color: black;
-  padding: 3px;
-  display: none;
+  padding-left: 5px;
+  padding-top: 2px;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: red;
+  color: #87CEEB;
 }
+
 
 .cartSeparator {
   color: rgb(255, 0, 0); /* or any other color you want */
@@ -214,38 +344,36 @@ margin-right: 50px;
   margin-top: -20px;
 }
 
-
 .menuButton svg {
   font-size: 2em; /* Adjust the size as needed */
 }
 
-
 .head {
 
-   margin-top: -35px;
-   margin-bottom: 5px;
-   
-   font-size: 14px;
-   letter-spacing: 2px;
-   /* Adds 2 pixels of space between letters */
-   text-align: center;
-   color: white;
+  margin-top: -35px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+
+  font-size: 14px;
+  letter-spacing: 2px;
+  
 }
+
 .dropdownMenu {
   position: absolute;
-  top: 110%;
-  height: 515%;
-  left: 19%;
+  top: 108%;
+  height: 545%;
+  left: 13%;
   z-index: 10;
   display: none;
   padding: 30px;
   padding-left: 8px;
   border-radius: 20px;
+  box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4);
 
   padding-right: 4px;
-  background-color: #09317d;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+  background-color: #08315c;
+
 }
 
  .dropdownMenu {
@@ -270,7 +398,7 @@ margin-right: 50px;
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 100%;
-  color: black;
+  color: white;
 
   text-align: center;
   letter-spacing: 1px;
@@ -332,6 +460,7 @@ margin-top: 20px;
   margin-left: -8px;
   margin-top: 20px;
 }
+
 
 .line2{
   height: 2px;
@@ -426,9 +555,11 @@ margin-top: 20px;
  margin-left: 90px;
  margin-right: 15px;
       }
-      
+
+
     
       .list {
+        
         display: flex;
         align-items: center;
         justify-content: center;
@@ -436,7 +567,6 @@ margin-top: 20px;
         margin: 0;
         padding: 0;
       }
-
 
       .listItem {
         margin: 0 10px;
@@ -467,6 +597,7 @@ margin-top: 20px;
       .ButtonContainer{
         margin-left: 00px;
       }
+   
 
 
       .Loginbutton{
@@ -485,12 +616,15 @@ margin-left: 50px;
 
     @media (max-width: 766px){
       
+       .userButton{
+        display: none;
+       }
       .item1 {
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 455px;
-        margin-left: 45px;
+        margin-left: 5px;
       }
       
 
@@ -514,7 +648,7 @@ margin-left: 50px;
         width: 80px;
         height: 40px;
         margin-top: 20px;
-        margin-right: -25px;
+        margin-right: -40px;
 
       }
       
@@ -523,9 +657,13 @@ margin-left: 50px;
     
       .list {
         padding: 0;
+        background-color: #08315c;
+        box-shadow: 0 0 90px 1px rgba(0, 0, 0,.4);
+
         display: none;
-       
+       width: 205px;
         margin: 0;
+        height: 100%;
       }
 
       .item1{
@@ -544,32 +682,11 @@ margin-left: 50px;
 }
 
       .listItem {
-        padding: 0px;
-        margin: 0 1rem;
-        display: inline-block;
-        margin: 20px;
-        font-weight: 500;
-        position: relative;
-        font-weight: bold;
-        color: black;
-        border: 1px solid #ccc;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-        padding: 20px;
-        transition: all 0.3s ease-in-out;
-        font-size: 25px;
-        margin-top: 40px;
-        width: 200px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+ color: #1e1e1e;
+
       }
       
-      .listItem:hover {
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        transform: translate(-2px, -2px);
-      }
-      
+   
       .listItem img {
         width: 40px;
         height: 40px;
@@ -580,20 +697,69 @@ margin-left: 50px;
         color: white;
       }
 
+      .icon2{
+        margin-left:- 80px;
+ margin-right: -30px;
+      }
+      
+      .closeButton{
+        position: absolute;
+        top: 10px;
+        cursor: pointer;
 
+        right: 10px;   
+        }
 .cart {
   position: relative;
   color: rgb(255, 0, 0);
   margin-top: -20px;
 }
 
-.counter {
-  position: relative;
-  color: black;
-  margin-top: -20px;
+
+.Icone{
+
+  margin-top: 20px;
+  width: 10px;
+  height: 10px;
+  display: initial;
 }
 
+.greenLink{
+      display:initial;
+    }
+
+    .listItem {
+      margin: 10px 0;
+      font-size: 80px;
     }
     
+    .listIteme{
     
+      margin: 1px 0;
+      font-size: 60px;
+      font-weight: 100;
+    }
+    .counter{
+
+      position: absolute;
+      top: -8px;
+      right: -58px;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      background-color: black;
+      padding-left: 5px;
+      padding-top: 2px;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #87CEEB;
+    }
     
+    }
+    
+ 
+    
+    .iteme{
+      margin-top: 30px;
+    }

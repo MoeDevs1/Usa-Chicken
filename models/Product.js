@@ -30,8 +30,13 @@ const ProductSchema = new mongoose.Schema(
         },
       ],
     },
+  category: {
+    type: String,
+    required: true,
   },
+},
   { timestamps: true }
+  
 );
 
 export default mongoose.models.Product ||

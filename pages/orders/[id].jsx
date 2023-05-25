@@ -13,6 +13,7 @@ const Order = ({ order, products }) => {
   const [phone, setPhone] = useState('');
   const [rawPhone, setRawPhone] = useState('');
 
+  
 
 
   function formatPhoneNumber(phoneNumber) {
@@ -90,7 +91,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(2)}>
+        <div className={statusClass(1)}>
           <Image src="/img/almostDone.png" width={30} height={30} alt="" />
           <span className={styles.text}>Ready</span>
           <div className={styles.checkedIcon}>

@@ -5,6 +5,7 @@ import styles from '/styles/editProducts.module.css';
 import AddButton from '/components/AddButton.jsx';
 import Add from '/components/Add.jsx';
 import Link from 'next/link';
+import { FaHome, FaUtensils, FaInfoCircle, FaPhone, FaBars, FaTimes, FaCircle} from 'react-icons/fa';
 
 const Index = ({ orders, products, admin }) => {
   const [close, setClose] = useState(true);
@@ -30,20 +31,61 @@ const Index = ({ orders, products, admin }) => {
 
   return (
     <div className={styles.container}>
-      <nav className={styles.navbar}>
-        <div className={styles.buttonContainer}>
-          <Link href="/admin">
-            <button className={styles.navbarButton}>Back to Admin Dashboard</button>
-          </Link>
-        </div>
+  
+          <nav className={styles.navbar}>
       </nav>
+      <div className={styles.sidebar}>
+        <div className={styles.topSideBar}>
+        <Link href="/admin">
+        <span className={styles.backButton}><FaBars className={styles.FaBars}/> </span>
+        </Link>
+        <span className={styles.title}>Products Page</span>
+        </div>
+        <div className={styles.topSideBar2}>
+        <span className={styles.kitchenTitle}></span>
+   
+
+<span className={styles.orderCount}></span>
+        </div>
+        <ul className={styles.orderList}>
+     
+<nav className={styles.navbar}>
+<div className={styles.buttonContainer}>
+{admin && <AddButton setClose={setClose} />}
+      {!close && <Add setClose={setClose} />}
+            
+{/* 
+      {pizzaList.map((product) => {
+  if (product.category === 'Popular') {
+    return (
+      <div key={product.id}>
+        {product.title}
+      </div>
+    );
+  }
+  return null;
+})} */}
+</div>
+</nav>
+   
+
+
+
+
+</ul>
+
+
+      </div>
+      <div className={styles.cart}>
+            <h2 className={styles.cartTitle}>Products</h2>
+
       <div className={styles.item}>
-        <h1 className={styles.title}>Products</h1>
         <table className={styles.table}>
           <tbody>
             <tr className={styles.trTitle}>
               <th>Image</th>
               <th>Id</th>
+              <th>Catagory</th>
               <th>Title</th>
               <th>Price</th>
               <th>Action</th>
@@ -52,7 +94,7 @@ const Index = ({ orders, products, admin }) => {
           {pizzaList.map((product) => (
             <tbody key={product._id}>
               <tr className={styles.trTitle}>
-                <td>
+                <td className={styles.td}>
                   <Image
                     src={product.img}
                     width={50}
@@ -61,16 +103,17 @@ const Index = ({ orders, products, admin }) => {
                     alt=""
                   />
                 </td>
-                <td>{product._id.slice(0, 5)}...</td>
-                <td>{product.title}</td>
-                <td>${product.prices[0]}</td>
-                <td>
-                  <button className={styles.button}>Edit</button>
+                <td className={styles.td}>{product._id.slice(0, 5)}...</td>
+                <td className={styles.td}>{product.category}</td>
+                <td className={styles.td}>{product.title}</td>
+                <td className={styles.td}>${product.prices[0]}</td>
+                <td className={styles.td}>
+                  <button className={styles.choiceButton}>Edit</button>
                   {product.showConfirmation ? (
                     <div>
                       <p>Are you sure you want to delete this product?</p>
                       <button
-                        className={styles.button}
+                        className={styles.choiceButton}
                         onClick={() => {
                           handleDelete(product._id);
                         }}
@@ -78,7 +121,7 @@ const Index = ({ orders, products, admin }) => {
                         Yes
                       </button>
                       <button
-                        className={styles.button}
+                        className={styles.choiceButton}
                         onClick={() => {
                           setPizzaList((prevList) =>
                             prevList.map((item) =>
@@ -94,7 +137,7 @@ const Index = ({ orders, products, admin }) => {
                     </div>
                   ) : (
                     <button
-                      className={styles.button}
+                      className={styles.choiceButton}
                       onClick={() => handleDeleteConfirmation(product._id)}
                     >
                       Delete
@@ -106,8 +149,7 @@ const Index = ({ orders, products, admin }) => {
           ))}
         </table>
       </div>
-      {admin && <AddButton setClose={setClose} />}
-      {!close && <Add setClose={setClose} />}
+      </div>
     </div>
   );
 };

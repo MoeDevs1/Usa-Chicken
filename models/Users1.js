@@ -1,4 +1,3 @@
-  
 import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
@@ -34,7 +33,11 @@ const User1Schema = new mongoose.Schema(
       type: Number,
       required: true,
       default: 0, // Set the default value to 0
-    }
+    },
+    dateJoined: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { collection: "Users1" }
 );

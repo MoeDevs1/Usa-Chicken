@@ -5,10 +5,15 @@ import Featured from '@/components/featured';
 import PizzaList from '@/components/PizzaList';
 import axios from 'axios';
 import Link from 'next/link';
-import { useEffect, useState, useRef, useSelector, useRouter } from "react";
+import { useEffect, useState, useRef } from "react";
 import { RxEnter } from 'react-icons/rx';
-import SignPoints from '@/components/signPoints'; // import the Address component
-
+import { useSelector } from "react-redux";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { TbPigMoney } from "react-icons/tb";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { Doughnut } from 'react-chartjs-2';
+import { SemiCircle } from 'react-progressbar.js';
 
 
 const pizzas = [
@@ -17,7 +22,7 @@ const pizzas = [
     title: 'The Spot',
     img: '/img/spot.webp',
     desc: 'A customizable and spicy dish with rice, meat, sauce, salad, and drink. Choose your favorites and enjoy a satisfying meal.',
-    price: '$16.50',
+    price: '$16.99',
     shref: "/Products/6428772c1f3cd6526fd276d6"
 
   },
@@ -72,16 +77,47 @@ const pizzas = [
 
 
 export default function Home({ pizzaList }) {
+ 
   const [showNav, setShowNav] = useState(false);
+  const quantity = useSelector((state) => state.cart.quantity);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [sessionToken, setSessionToken] = useState(null);
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
-  const [emailState, setEmailState] = useState('');
+  // const [userPoints, setUserPoints] = useState(0);
+
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
 
-  
+  const points = 6;
+  const totalPoints = 10;
+
+
+
+const options = {
+    strokeWidth: 6,
+    // color to be replaced with gradient via CSS
+    color: 'url(#gradient)',
+    trailColor: '#eee',
+    trailWidth: 1,
+    easing: 'easeInOut',
+    duration: 1400,
+    text: {
+        value: '',
+    },
+    // Remove color animation
+    from: { color: '#ED6A5A' },
+    to: { color: '#ED6A5A' },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * totalPoints));
+    },
+};
+
+const containerStyle = {
+    width: '300px',
+    height: '150px',
+};
+
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -100,31 +136,26 @@ export default function Home({ pizzaList }) {
     router.push('/userProfile');
   };
 
-
-
   useEffect(() => {
-
-  const fetchUserDetails = async () => {
-    try {
-      const response = await axios.get('/api/getUserDetails');
-      if (response.status === 200) {
-        setSessionToken(true);
-        const { firstName, lastName, email } = response.data;
-        setNewFirstName(firstName);
-        setNewLastName(lastName);
-        setEmailState(email);
-      } else {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('/api/getUserDetails');
+        if (response.status === 200) {
+          setSessionToken(true);
+          const { firstName, lastName} = response.data;
+          setNewFirstName(firstName);
+          setNewLastName(lastName);
+          // setUserPoints(points);
+        } else {
+          setSessionToken(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user details', error);
         setSessionToken(null);
       }
-      
-    } catch (error) {
-      console.error('Error fetching user details', error);
-      setSessionToken(null);
-    }
-    
-  };
+    };
 
-  fetchUserDetails();
+    fetchUserDetails();
   }, [sessionToken]);
 
 
@@ -159,6 +190,10 @@ export default function Home({ pizzaList }) {
       console.error('Error signing out', error);
     }
   };
+  
+
+
+
 
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -190,6 +225,9 @@ export default function Home({ pizzaList }) {
     };
   }, []);
 
+
+  
+
   return (
 
     <div className={styles.container}>
@@ -200,28 +238,19 @@ export default function Home({ pizzaList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      
-
       <div className={styles.bannerContainer}>
-    <img className={styles.banner} src={"/img/banner.jpg"} alt="banner" />
-    <div className={styles.circularContainer}>
-  <img className={styles.halal} src={"/img/halal.png"} alt="halal" />
+  <div className={styles.circularContainer}>
+  <img className={styles.banner} src={"/img/306745897_595177622299564_6310950388275390202_n.jpeg"} alt="banner" />
   </div>
+  <img className={styles.halal} src={"/img/halal.png"} alt="halal" />
 </div>
-
       <div className={styles.buttons}>
-      <div className={styles.slideInImage}>
-      <Link href="/menu">
+
       <button className={styles.button}>Order Now from Manchester            <RxEnter className={styles.icon} />
 </button>
-</Link>
-
-</div>
-<div className={styles.slideInImage2}>
      <button className={styles.button1}>Order Now from Nashua       <RxEnter className={styles.icon} />
 </button>
 
-</div>
  </div>
       <div className={styles.content}>
         <div className={styles.words}>
@@ -229,22 +258,20 @@ export default function Home({ pizzaList }) {
         </div>
         </div>  
       </div>
-      
-      <h2 className={styles.top}>Popular Dishes </h2>
-
+      <h2 className={styles.top}>Popular Dishes       <span className={styles.scroller}>Scroll &gt;</span>     </h2>
        <div className={styles.pizzaListContainer}>
       <ul className={styles.pizzaList}>
-  
+    
       {pizzas.map(pizza => (
   <li key={pizza.id} className={styles.pizzaItem}>
     <Link href={pizza.shref}>
       <div>
         <div className={styles.imageWrapper}>
-          <Image className={styles.pizzaImg} src={pizza.img} alt={pizza.title} width={300} height={200}/>
+          <Image src={pizza.img} alt={pizza.title} width={280} height={180}/>
         </div>
         <h3 className={styles.pizzaTitle}>{pizza.title}</h3>
         <p className={styles.pizzaDesc}>{pizza.desc}</p>
-        <p className={styles.pizzaPrice}>{pizza.price}</p> {/* Added className here */}
+        <span className={styles.pizzaPrice}>{pizza.price}</span> {/* Added className here */}
       </div>         
     </Link> 
   </li>
@@ -254,47 +281,128 @@ export default function Home({ pizzaList }) {
 
 
       </ul>
+      </div>
+
       <div className={styles.menuParent}>
       <Link href="/menu">
       <button className={styles.menuButton}>View Full Menu  </button>
-
-
-
-
+      {/* <Image src="/img/menuIcon.png" className={styles.menuImg}  width={40} height={40} /> */}
       </Link>
       </div>
-      </div>
+      {!sessionToken && (
 
-{/* 
-      <div className={styles.mealContainer}>
-    <img className={styles.meal} src={"/img/fullMeal.jpeg"} alt="banner" />
-</div> */}
+      <div className={styles.signupContainer}>
+  <div className={styles.imageContainer}>
+  <div className={styles.slideInImage}>
+      {/* <Image className={styles.signImg} src="/img/logo.png" alt="" width={300} height={300} /> */}
+    </div>  
+    
+    
+    </div>
+  <div className={styles.textContainer}>
+  <div className={styles.head1}>
+            <Image src="/img/Logo.png" alt="" width="290" height="290" />
+            
+          </div>
+    <h2 className={styles.signupP}>Sign Up & Earn Points!</h2>
+    <p className={styles.signupDesc}>Join USA-Chicken®. Earn points with every qualifying purchase. Redeem available rewards of your choice.</p>
+    <div className={styles.deliveryOptions}>
+      <Link href="/Signup">
+        <button className={styles.signupButton}>Sign Me Up!</button>
+      </Link>
+    </div>
+    <h5 className={styles.lastSign}>Already have an account?   <Link className={styles.signin} href="/Signup">  Sign-in </Link></h5>
+  </div>
+  
+</div>
+      )}
+     
+     
+     
+      {sessionToken && (
+   <div className={styles.signupContainer}>
 
-      {sessionToken ? (
-        <div>
-        </div>
-      ) : (
-        <SignPoints/>
+   <div className={styles.textContainer}>
 
+    
+   <div className={styles.textContainer2}>
+
+     <div className={styles.head}>
+     <h2 className={styles.signup3}>Reward Tracker    
+          
+</h2>
+< GiTakeMyMoney  className={styles.check}/>
+
+</div>
+
+<div className={styles.textContainer2p}>
+
+<CircularProgressbar 
+  className={styles.circularProgress}
+
+value={points}
+maxValue={totalPoints}
+text={`${points}/${totalPoints}`}
+styles={buildStyles({
+ strokeLinecap: "round",
+ textSize: "20px",
+ pathColor: `rgba(62, 152, 199, ${points / totalPoints})`,
+ textColor: '',
+ trailColor: '#d6d6d6',
+ backgroundColor: '#3e98c7',
+ pathTransition: 'stroke-dashoffset 0.5s ease 0s',
+ transition: 'stroke 0.3s, stroke-width 0.3s ease-in-out',
+ strokeWidth: 8,
+ pathTransitionDuration: 0.5,
+})}
+
+/>
+</div>
+</div>
+
+
+<div className={styles.headmax}>
+   
+<div className={styles.head}>
+
+     <h2 className={styles.signup4}>Your 5/10th Of The Way Off 10% </h2>
+     </div>
+
+  
+     <div className={styles.head}>
+
+         </div>
+    
+         </div>
+
+       
+         <div className={styles.heade}>
+
+         <button className={styles.signupButton2}>Redeem</button>
+
+  </div>
+  </div>
+   </div>
       )}
 
-<div className={styles.delivery}>
-  <h2 className={styles.deliveryTitle}>Delivery Options</h2>
-  {/* <div className={styles.lineTip}></div>  */}
 
+      <div className={styles.delivery}>
+  <h2 className={styles.deliveryTitle}>Delivery Options</h2>
   <p className={styles.deliveryP}>Enjoy the convenience of delivery through popular services like DoorDash, Grubhub, and UberEats. Order your favorite meals and have them delivered right to your doorstep. We partner with trusted delivery providers to ensure a seamless and reliable experience for our customers.</p>
 
   <div className={styles.deliveryOptions}>
   <a href="https://www.ubereats.com/store/usa-chicken-%26-biscuit/3dYWUZGfRDqHxTYxFni34A" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/ubereats.png" alt="UberEats" width={120} height={120} />
+    <Image className={styles.deliveryLogo} src="/img/ubereats.png" alt="UberEats" width={65} height={60} />
   </a>
   <a href="https://www.grubhub.com/restaurant/usa-chicken--biscuit-990-elm-st-manchester/1105914" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/grubhub.png" alt="Grubhub" width={180} height={180} />
+    <Image className={styles.deliveryLogo} src="/img/grubhub.png" alt="Grubhub" width={100} height={100} />
   </a>
   <a href="https://www.doordash.com/store/usa-chicken-&-biscuit-manchester-675957/" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={150} height={150} />
+    <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={100} height={100} />
   </a>
+  
 </div>
+
 </div>
 
 </div>

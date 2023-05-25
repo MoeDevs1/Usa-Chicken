@@ -29,6 +29,20 @@ export default async function getUserDetails(req, res) {
       return;
     }
 
+    if (req.query.signout === 'true') {
+      // Clear the session cookie by setting an expired date in the past
+      res.setHeader('Set-Cookie', [
+        'sessionToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;',
+      ]);
+      
+      // If the user signed in with Google, redirect to Google's logout URL
+   
+        res.status(200).json({ message: 'Signed out successfully' });
+      
+      
+      return;
+    }
+
     res.status(200).json({ firstName: user.firstName, lastName: user.lastName, phone: user.phone, email: user.email, points: user.points});
   } catch (error) {
     console.error(error);

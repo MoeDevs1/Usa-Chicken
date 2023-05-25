@@ -228,4 +228,3 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 };
-

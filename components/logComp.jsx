@@ -107,7 +107,7 @@ const Login = ({ closeLogin }) => {
     setLoading(true); // set loading state to true
   
     try {
-      const response = await axios.post('http://localhost:3000/api/Authentication', { email, password, rememberMe });
+      const response = await axios.post('api/Authentication', { email, password, rememberMe });
       console.log(response.data);
       closeLogin(); // close login form
       window.location.reload();

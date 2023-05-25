@@ -1,4 +1,4 @@
-import styles from '../styles/Checkout.module.css';
+import styles from '../styles/pay.module.css';
 import Image from 'next/image';
 import { BsPaypal } from 'react-icons/bs';
 import { AiOutlineCreditCard } from 'react-icons/ai';
@@ -20,7 +20,7 @@ import OrderDetail from "../components/OrderDetail";
 
 
 
-export default function Checkout() {
+export default function Checkout2() {
 const cart = useSelector((state) => state.cart);
 const [open, setOpen] = useState(false);
 const [cash, setCash] = useState(false);
@@ -62,8 +62,8 @@ useEffect(() => {
 }, []);
 
 let Discount = 0;
-if (points === 500) {
-  Discount = 0.05 * cart.total;
+if (points === 100) {
+  Discount = 0.10 * cart.total;
 }
 
 const handleDeleteProduct = (index) => {
@@ -128,8 +128,8 @@ const createOrder = async (data) => {
   }
 };
 
-if (points === 600 ) {
-  points = 100;
+if (points === 110 ) {
+  points = 10;
 }
 
 const updatePointsInDatabase = async (newPoints) => {
@@ -139,8 +139,8 @@ const updatePointsInDatabase = async (newPoints) => {
     console.log('Points updated successfully in the database');
 
     // Check if points reach 600, then reset to 0
-    if (newPoints === 600) {
-      await axios.put('/api/updatePoints', { points: 100 });
+    if (newPoints === 110) {
+      await axios.put('/api/updatePoints', { points: 10 });
       console.log('Points reset to 0');
     }
   } catch (error) {
@@ -170,11 +170,17 @@ if ( myTotal < 0) {
       });
     }, [currency, showSpinner]);
 
+    const style = {
+      color: "white",
+      shape: "pill",
+      label: "pay",
+      };
+
     return (
       <>
         {showSpinner && isPending && <div className="spinner" />}
         <PayPalButtons
-          style={style}
+          style={style} // Add the style prop with the buttonStyle object
           disabled={false}
           forceReRender={[myTotal.toFixed(2), currency, style]}
           fundingSource={undefined}
@@ -214,12 +220,12 @@ if ( myTotal < 0) {
               });
 
               if (myTotal > 10) {
-                const newPointsValue = points + 100; // Add 100 points to the existing points value
+                const newPointsValue = points + 10; // Add 100 points to the existing points value
                 updatePointsInDatabase(newPointsValue);
-              }if(myTotal < 10 && points === 500 ){
-                const newPointsValue = points + 100; // Add 100 points to the existing points value
+              }if(myTotal < 10 && points === 100 ){
+                const newPointsValue = points + 10; // Add 100 points to the existing points value
                 updatePointsInDatabase(newPointsValue);
-              }
+              }          
             });
           }}
         />
@@ -233,125 +239,8 @@ if ( myTotal < 0) {
     
     <div className={styles.container}>
 
-      <div className={styles.billingInfo}>
-   
-        <div className={styles.billingInfoHeader}>
-  <div className={styles.titleContainer}>
-    <h1 className={styles.titleCart}>Your Cart</h1>
-        <Image className={styles.cartImg} src="/img/cartI.png" alt="" width="30" height="30"/>
-  </div>
-
-
-        </div>
-        <div className={styles.line1}></div> {/* Add this line */}
-
-    
-<div className={styles.left}>
-        <table className={styles.table}>
-          <tbody>
-            <tr className={styles.trTitle}>
-              <th className={styles.columnTitles}>Product</th>
-              <th className={styles.columnTitles}>Name</th>
-              <th className={styles.columnTitles}>Extras</th>
-              <th className={styles.columnTitles}>Quantity</th>
-              <th className={styles.columnTitles}>Total</th>
-              <th className={styles.columnTitles}>Edit</th>
-
-            </tr>
-          </tbody>
-          <tbody>
-            {cart.products.map((product, index) => (
-              <tr className={styles.tr} key={product._id}>
-                <td className={styles.td}>
-                  <div className={styles.imgContainer}>
-                  <span className={styles.images}>
-
-                    <Image
-                      className={styles.realImage}
-                      src={product.img}
-                      layout="fill"
-                      objectFit="cover"
-                      alt=""
-                    />
-                    </span>
-                  </div>
-                </td>
-                <td className={styles.td}>
-                  <span className={styles.name}>{product.title}</span>
-                </td>
-                <td className={styles.td}>
-                  <span className={styles.extras}>
-                    {product.extras.map((extra) => (
-                      <span key={extra._id}>{extra.text}, </span>
-                    ))}
-                  </span>
-                </td>
-                <td className={styles.td}>
-                  <span className={styles.quantity}>{product.quantity}</span>
-                </td>
-                <td className={styles.td}>
-                  <span className={styles.totals}>
-                    ${product.price * product.quantity}
-                  </span>
-                </td>
-                <td className={styles.td}>
-                  <span className={styles.edButtons}>
-                  <Link href={`/Products/${product._id}`}>
-                  <button className={styles.editButton}
-                  onClick={() => handleDeleteProduct(product._id)}
-                    
-                  >Edit
-                  </button>
-                  </Link>
-                  <button className={styles.deleteButton} onClick={() => handleDeleteProduct(index)}>
-          Delete
-        </button>
-                  </span>
-                </td>
-          
-              </tr>
-              
-            ))}
-          </tbody>
-        </table>
-        
-      </div>
-<div>
-  
-     
-    </div>
-   
-     
-     
-
-
-      </div>
-
       <div className={styles.total}>
-      {open ? (
-        
-        <div className={styles.paymentMethods}>
-           <h1 className={styles.title2}>
-        Pay Now <span className={styles.icon}><AiOutlineCreditCard size={24} /></span>
-      </h1>
-      <div className={styles.lineTotal}></div> {/* add this div for the line */}
-      <PayPalScriptProvider
-  options={{
-    "client-id": "test",
-    components: "buttons",
-    currency: "USD",
-    intent: "capture", // or intent: "purchase"
-  }}
->
-  <ButtonWrapper currency={currency} showSpinner={false} />
-</PayPalScriptProvider>
-          <button className={styles.backButton} onClick={() => setOpen(false)}>
-  <span className={styles.buttonText}>Go Back to Billing</span>
-  <span className={styles.buttonAmount}>${myTotal.toFixed(2)}</span>
-</button>
-          {cash && <OrderDetail total={cart.total} createOrder={createOrder} />}
-        </div>
-      ) : (
+  
         <div>
           <h2 className={styles.title1}>Cart Total</h2>
           <div className={styles.subtotal}>
@@ -362,16 +251,19 @@ if ( myTotal < 0) {
             <p>Tax:</p>
             <p>${taxAmount.toFixed(2)}</p>
           </div>
-          {points === 500 ? (
+            
+          {points === 100 ? (
 
           <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Congrats! You've reached 500 points. Enjoy a $5% discount! Order must be over $10.</h5>
+          ) : (
 
-  ) : (
-    <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Once you reach 500 points, you'll get a $10 discount!  &nbsp; &nbsp;  <span className={styles.pointComment}>Your points:</span> {points}</h5>
+    <h5 className={`${styles.tipComment} ${styles.discountComment}`}>Once you reach 100 points, you'll get a $10 discount!  &nbsp; &nbsp;  <span className={styles.pointComment}>Your points:</span> {points}</h5>
     )}
-          <div className={styles.tax}>
+
+<div className={styles.tax}>
+
   <p>Discount:</p>
-  {points === 500 ? (
+  {points === 100 ? (
     <>
       <p>$-{Discount.toFixed(2)}</p>
     </>
@@ -434,13 +326,28 @@ if ( myTotal < 0) {
             Checkout &nbsp; <span className={styles.buttonSentence}>(order cant be $0)</span>
           </button>    </>
   ) : (
-    <button onClick={() => setOpen(true)} className={styles.checkoutButton}>
-    Checkout
+    <button className={styles.checkoutButton} onClick={() => router.push("/Checkout")}>
+    Back to cart
   </button>  )}
 
           </div>
         </div>
-      ) }
+
+    </div>
+
+    <div className={styles.total2}>
+    <PayPalScriptProvider
+    options={{
+    "client-id": "Act_Q-enQ-gIF60dECfy6X0Ieo_fh38os_wK2twikOSrNcHZiNoKgFkDRlpN5h-prVNzZ7Fli5cvYQk3",
+    components: "buttons", // Add this line
+    currency: "USD", // Add this line
+    intent: "capture", // or intent: "purchase" (Add this line)
+  }}
+>
+  <ButtonWrapper currency={currency} showSpinner={false}/>
+
+</PayPalScriptProvider>
+
 
     </div>
     </div>

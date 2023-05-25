@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 import { BiError } from 'react-icons/bi';
 
-const url = 'http://localhost:3000/api/upSign'
+const url = 'api/upSign'
 
 
 
@@ -316,11 +316,8 @@ const Signup = () => {
 
 
         <div className={styles.linkContainer}>
-       
-       
-        <span  className={styles.signInText} class="signup-text">Already have an account?{"   "}&nbsp;</span>
-        <a  className={styles.signInLink}  onClick={alreadyMemeber} href="#" class="signup-link">Sign In</a>
-
+    <span className={styles.signInText}>Already have an account?{"   "}&nbsp;</span>
+    <a className={styles.signInLink} onClick={alreadyMemeber} href="#">Sign In</a>
 </div>
 
 
