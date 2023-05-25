@@ -159,36 +159,36 @@ const Index = ({ orders, products, admin }) => {
 
 
 export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || "";
+  // const myCookie = ctx.req?.cookies || "";
 
-  let admin = false;
+  // let admin = false;
 
-  if (myCookie.token === process.env.TOKEN) {
-    admin = true;
-  }
+  // if (myCookie.token === process.env.TOKEN) {
+  //   admin = true;
+  // }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  // const res = await axios.get("http://localhost:3000/api/products");
 
-  if (myCookie.token !== process.env.TOKEN) {
-    return {
-      redirect: {
-        destination: "/admin/login",
-        permanent: false,
-        pizzaList: res.data,
-         admin,
-      },
-    };
-  }
+  // if (myCookie.token !== process.env.TOKEN) {
+  //   return {
+  //     redirect: {
+  //       destination: "/admin/login",
+  //       permanent: false,
+  //       pizzaList: res.data,
+  //        admin,
+  //     },
+  //   };
+  // }
 
   const productRes = await axios.get("http://localhost:3000/api/products");
   const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const res = await axios.get("http://localhost:3000/api/products");
 
   return {
     props: {
       orders: orderRes.data,
       products: productRes.data,
       pizzaList: res.data,
-      admin,
     },
   };
 };

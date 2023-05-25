@@ -118,7 +118,7 @@ function handleKeyPress(event) {
 
 const createOrder = async (data) => {
   try {
-    const res = await axios.post("http://localhost:3000/api/orders", data);
+    const res = await axios.post("/api/orders", data);
     if (res.status === 201) {
       dispatch(reset());
       router.push(`/orders/${res.data._id}`);
@@ -128,9 +128,12 @@ const createOrder = async (data) => {
   }
 };
 
+
 if (points === 110 ) {
   points = 10;
 }
+
+
 
 const updatePointsInDatabase = async (newPoints) => {
   try {
@@ -203,11 +206,14 @@ if ( myTotal < 0) {
           }}
           onApprove={function (data, actions) {
             return actions.order.capture().then(function (details) {
+
               const cartItems = cart.products.map((product) => ({
                 product: product._id,
                 extras: product.extras.map((extra) => extra._id),
                 quantity: product.quantity,
               }));
+
+              
           
               createOrder({
                 customer: firstName + ' ' + lastName,

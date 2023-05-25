@@ -364,10 +364,16 @@ styles={buildStyles({
 
 <div className={styles.headmax}>
    
-<div className={styles.head}>
+{points === 100 ? (
+  <div className={styles.head}>
+    <h2 className={styles.signup4}>Congrats! {points/10}/10th Of The Way Off 10% </h2>
+  </div>
+) : (
+  <div className={styles.head}>
+    <h2 className={styles.signup4}>Your {points/10}/10th Of The Way Off 10% </h2>
+  </div>
+)}
 
-     <h2 className={styles.signup4}>Your {points/10}/10th Of The Way Off 10% </h2>
-     </div>
 
   
      <div className={styles.head}>
@@ -379,7 +385,13 @@ styles={buildStyles({
        
          <div className={styles.heade}>
 
-         <button className={styles.signupButton2}>Redeem</button>
+
+    
+          <Link href="/menu">
+           <button className={styles.signupButton2}>Redeem</button>
+           </Link>
+
+
 
   </div>
   </div>

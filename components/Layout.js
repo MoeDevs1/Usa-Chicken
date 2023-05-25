@@ -1,20 +1,15 @@
-import Footer from "./Footer"
-import Navbar from "./Navbar"
-import Address from "./address"
-// import { useRouter } from "next/router";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+import Address from "./address";
 
+const Layout = ({ children, showNavbar, showFooter }) => {
+  return (
+    <>
+      {showNavbar && <Navbar />}
+      {children}
+      {showFooter && <Footer />}
+    </>
+  );
+};
 
-const Layout = ({children}) => {
-// const router = useRouter();
-
-    return (
-        <>
-            <Navbar />
-            {/* {router.pathname === "/menu" && <Address />} */}
-            {children}
-            <Footer />
-        </>
-    )
-}
-
-export default Layout
+export default Layout;

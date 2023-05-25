@@ -180,26 +180,26 @@ const Index = ({ orders, products, admin }) => {
 
 
 export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || "";
+  // const myCookie = ctx.req?.cookies || "";
 
-  let admin = false;
+  // let admin = false;
 
-  if (myCookie.token === process.env.TOKEN) {
-    admin = true;
-  }
+  // if (myCookie.token === process.env.TOKEN) {
+  //   admin = true;
+  // }
 
   const res = await axios.get("http://localhost:3000/api/products");
 
-  if (myCookie.token !== process.env.TOKEN) {
-    return {
-      redirect: {
-        destination: "/admin/login",
-        permanent: false,
-        pizzaList: res.data,
-         admin,
-      },
-    };
-  }
+  // if (myCookie.token !== process.env.TOKEN) {
+  //   return {
+  //     redirect: {
+  //       destination: "/admin/login",
+  //       permanent: false,
+  //       pizzaList: res.data,
+  //        admin,
+  //     },
+  //   };
+  // }
 
   const productRes = await axios.get("http://localhost:3000/api/products");
   const orderRes = await axios.get("http://localhost:3000/api/orders");
@@ -213,66 +213,4 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default Index;
-
-{/* <nav className={styles.navbar}>
-<div className={styles.buttonContainer}>
-  <Link href="/admin">
-    <button className={styles.navbarButton}>Dashboard</button>
-  </Link>
-  <Link href="/customerOrders">
-    <button className={styles.navbarButton}>Orders</button>
-  </Link>
-  {!isPasswordCorrect ? (
-      <>
-        {!showForm ? (
-          <button onClick={() => setShowForm(true)} className={styles.navbarButton}>
-            Products
-          </button>
-        ) : (
-          <div className={styles.modal}>
-            <form onSubmit={handleSubmit}>
-            <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button className={styles.buttons}>Submit</button>
-              <button className={styles.buttons} onClick={() => setShowForm(false)}>Close</button>
-            </form>
-          </div>
-        )}
-      </>
-    ) : null}  
-  {!isPasswordCorrects ? (
-       <>
-  {!showForms ? (
-          <button onClick={() => setShowForms(true)} className={styles.navbarButton}>
-            All Orders
-          </button>
-        ) : (
-          <div className={styles.modal}>
-            <form onSubmit={handleSubmitOrders}>
-            <h1 className={styles.passcodeTitle}>Enter Passcode: </h1>
-              <input
-                type="password"
-                value={passwords}
-                onChange={(es) => setPasswords(es.target.value)}
-              />
-              <button className={styles.buttons}>Submit</button>
-              <button className={styles.buttons} onClick={() => setShowForms(false)}>Close</button>
-            </form>
-          </div>
-        )}
-                </>
-    ) : null}  
-</div>
-</nav>
-   
-<div className={styles.dashboard}>
-<h1 className={styles.title}>Dashboard</h1>
-</div>
-
- */}
-
 

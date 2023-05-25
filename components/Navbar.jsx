@@ -24,6 +24,7 @@ const Navbar = ({ pizza }) => {
   const [sessionToken, setSessionToken] = useState(null);
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const LoadingSpinner = () => (
     <Spinner animation="border" role="status">
@@ -210,9 +211,9 @@ const Navbar = ({ pizza }) => {
     <li className={styles.listIteme}>
       <Link className={styles.listIteme}  href="/contact">Contact</Link>
     </li>
-    <li className={styles.listIteme}>
-      <Link className={styles.listIteme}  href="/userProfile">Settings</Link>
-    </li>
+    <li className={`${styles.listIteme} ${styles.settingsItem}`}>
+  <Link className={styles.listIteme} href="/userProfile">Settings</Link>
+</li>
 
     <li className={styles.listIteme}>
 

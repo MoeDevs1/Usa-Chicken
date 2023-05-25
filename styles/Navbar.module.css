@@ -107,9 +107,8 @@
 
 
 .iconn{
-  background-color: white;
+  background-color: #09acf2;
   border-radius: 100%;
-  margin-right: -50px;
 }
 
 .icon2{
@@ -272,6 +271,10 @@ display: none;
 .ButtonContainer{
 }
 
+.settingsItem{
+  display: none;
+}
+
 .texts:first-child {
   font-size: 12px;
   font-weight: 500;
@@ -293,7 +296,7 @@ display: none;
 
 .counter {
   position: absolute;
-  top: 0px;
+  top: 6px;
   right: -58px;
   width: 20px;
   height: 20px;
@@ -306,6 +309,7 @@ display: none;
   font-weight: bold;
   color: #87CEEB;
 }
+
 
 
 .cartSeparator {
@@ -727,7 +731,10 @@ margin-left: 50px;
 .greenLink{
       display:initial;
     }
-
+    .settingsItem{
+      display: initial;
+    }
+    
     .listItem {
       margin: 10px 0;
       font-size: 80px;
