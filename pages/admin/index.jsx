@@ -162,6 +162,9 @@ const Index = ({ orders, products, admin }) => {
         )}
                 </>
     ) : null}  
+    <Link href="/">
+    <button className={styles.button}>Website</button>
+  </Link>
 </div>
 </nav>
    
