@@ -228,8 +228,8 @@ const Order = ({ order, products }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
-  const productRes = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(`https://usa-chicken-final-version.vercel.app/api/orders/${params.id}`);
+  const productRes = await axios.get("https://usa-chicken-final-version.vercel.app/api/products");
 
   return {
     props: { 
