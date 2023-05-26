@@ -228,8 +228,11 @@ const Order = ({ order, products }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`https://usa-chicken-final-version.vercel.app/api/orders/${params.id}`);
-  const productRes = await axios.get("https://usa-chicken-final-version.vercel.app/api/products");
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+
+  const res = await axios.get(`${baseUrl}/api/orders/${params.id}`);
+  const productRes = await axios.get(`${baseUrl}/api/products`);
 
   return {
     props: { 

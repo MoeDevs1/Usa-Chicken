@@ -118,7 +118,8 @@ function handleKeyPress(event) {
 
 const createOrder = async (data) => {
   try {
-    const res = await axios.post("https://usa-chicken-final-version.vercel.app/api/orders", data);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+    const res = await axios.post(`${baseUrl}/api/orders`, data);
     if (res.status === 201) {
       dispatch(reset());
       router.push(`/orders/${res.data._id}`);
