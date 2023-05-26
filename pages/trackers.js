@@ -19,9 +19,13 @@ const trackers = ({ orders, products, admin }) => {
   
     const handleDelete = async (id) => {
       console.log(id);
+
       try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+
         const res = await axios.delete(
-          "http://localhost:3000/api/products/" + id
+          
+          `${baseUrl}/api/products/` + id
         );
         setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
       } catch (err) {
@@ -112,11 +116,13 @@ const formatPhoneNumber = (number) => {
 
 
 export const getServerSideProps = async (ctx) => {  
-    const res = await axios.get("http://localhost:3000/api/products");
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+
+    const res = await axios.get(`${baseUrl}/api/products`);
   
   
-    const productRes = await axios.get("http://localhost:3000/api/products");
-    const orderRes = await axios.get("http://localhost:3000/api/orders");
+    const productRes = await axios.get(`${baseUrl}/api/products`);
+    const orderRes = await axios.get(`${baseUrl}/api/orders`);
   
     return {
       props: {

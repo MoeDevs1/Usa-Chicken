@@ -46,7 +46,9 @@ const Add = ({ setClose }) => {
         category,
       };
 
-      await axios.post("http://localhost:3000/api/products", newProduct);
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+
+      await axios.post(`${baseUrl}/api/products`, newProduct);
       setClose(true);
     } catch (err) {
       console.log(err);

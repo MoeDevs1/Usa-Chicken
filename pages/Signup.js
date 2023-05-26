@@ -39,7 +39,8 @@ const Signup = () => {
       const { user } = session;
       const { email, name } = user;
       const [firstName, lastName] = name.split(' ');
-      const response = await axios.post('http://localhost:3000/api/googleSignup', { firstName, lastName, email });
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+      const response = await axios.post(`${baseUrl}/api/googleSignup`, { firstName, lastName, email });
       console.log(response.data);
     } catch (error) {
       console.error('Error saving Google user:', error);

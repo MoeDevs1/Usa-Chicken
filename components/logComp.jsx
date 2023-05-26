@@ -29,7 +29,9 @@ const Login = ({ closeLogin }) => {
  
     const handleGoogleSignIn = async (email) => {
       try {
-        const response = await axios.post('http://localhost:3000/api/googleLogin', { email });
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+
+        const response = await axios.post(`${baseUrl}/api/googleLogin`, { email });
     
         if (response.data.authorized) {
           closeLogin(); // close login form

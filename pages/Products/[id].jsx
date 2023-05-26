@@ -4557,7 +4557,7 @@ const handleClick = () => {
 
 export const getServerSideProps = async ({ params }) => {
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
 
     const res = await axios.get(
       `${baseUrl}/api/products/${params.id}`

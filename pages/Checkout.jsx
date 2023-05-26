@@ -75,22 +75,14 @@ const handleTipClick = (value) => {
   const tipPercentage = parseFloat(value) / 100;
   const tipAmount = tipPercentage * cart.total;
   const roundedTipAmount = roundToTwoDecimals(tipAmount);
-  // setSelectedTip(roundedTipAmount);
   setSelectedPersonalTip(roundedTipAmount);
 };
 
-// const handleCustomTipChange = (event) => {
-//   const customTip = event.target.value;
-//   // setSelectedTip(customTip);
-//   setSelectedPersonalTip(customTip);
-// };
 
 
 const handleCustomTipChange = (event) => {
   const customTip = event.target.value;
   setSelectedPersonalTip(customTip);
-  
-  // Remove leading "0" if present
   const tipValue = customTip !== '' ? parseFloat(customTip.replace(/^0+/, '')) : 0;
   setSelectedPersonalTip(tipValue);
 };
@@ -118,7 +110,7 @@ function handleKeyPress(event) {
 
 const createOrder = async (data) => {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
     const res = await axios.post(`${baseUrl}/api/orders`, data);
     if (res.status === 201) {
       dispatch(reset());

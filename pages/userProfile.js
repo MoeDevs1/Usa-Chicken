@@ -806,12 +806,12 @@ const formatPhoneNumber = (number) => {
 };
 
 export const getServerSideProps = async (ctx) => {
-  const res = await axios.get("http://localhost:3000/api/products");
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
 
+  const res = await axios.get(`${baseUrl}/api/products`);
 
-
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get(`${baseUrl}/api/products`);
+  const orderRes = await axios.get(`${baseUrl}/api/orders`);
 
   return {
     props: {

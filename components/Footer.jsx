@@ -11,22 +11,6 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
 
-{/* <div className={styles.delivery}>
-  <h2 className={styles.deliveryTitle}>Delivery Options</h2>
-  <p className={styles.deliveryP}>Enjoy the convenience of delivery through popular services like DoorDash, Grubhub, and UberEats. Order your favorite meals and have them delivered right to your doorstep. We partner with trusted delivery providers to ensure a seamless and reliable experience for our customers.</p>
-
-  <div className={styles.deliveryOptions}>
-  <a href="https://www.ubereats.com/store/usa-chicken-%26-biscuit/3dYWUZGfRDqHxTYxFni34A" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/ubereats.png" alt="UberEats" width={100} height={100} />
-  </a>
-  <a href="https://www.grubhub.com/restaurant/usa-chicken--biscuit-990-elm-st-manchester/1105914" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/grubhub.png" alt="Grubhub" width={100} height={100} />
-  </a>
-  <a href="https://www.doordash.com/store/usa-chicken-&-biscuit-manchester-675957/" target="_blank">
-    <Image className={styles.deliveryLogo} src="/img/doordash.png" alt="DoorDash" width={100} height={100} />
-  </a>
-</div>
-</div> */}
       <div className={styles.column}>
         <img src="/img/Logo.png" alt="Logo" className={styles.logo} />
         <p className={styles.description}>

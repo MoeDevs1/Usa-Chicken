@@ -247,29 +247,30 @@ const orderListCount = orderList0.length;
 
 
 export const getServerSideProps = async (ctx) => {
-  // const myCookie = ctx.req?.cookies || "";
+  const myCookie = ctx.req?.cookies || "";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
 
-  // let admin = false;
+  let admin = false;
 
-  // if (myCookie.token === process.env.TOKEN) {
-  //   admin = true;
-  // }
+  if (myCookie.token === process.env.TOKEN) {
+    admin = true;
+  }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(`${baseUrl}/api/products`);
 
-  // if (myCookie.token !== process.env.TOKEN) {
-  //   return {
-  //     redirect: {
-  //       destination: "/admin/login",
-  //       permanent: false,
-  //       pizzaList: res.data,
-  //       admin,
-  //     },
-  //   };
-  // }
+  if (myCookie.token !== process.env.TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+        pizzaList: res.data,
+        admin,
+      },
+    };
+  }
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get(`${baseUrl}/api/products`);
+  const orderRes = await axios.get(`${baseUrl}/api/orders`);
 
   return {
     props: {

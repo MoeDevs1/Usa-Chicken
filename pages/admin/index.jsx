@@ -25,8 +25,10 @@ const Index = ({ orders, products, admin }) => {
   const handleDelete = async (id) => {
     console.log(id);
     try {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        `${baseUrl}/api/products/` + id
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -37,14 +39,15 @@ const Index = ({ orders, products, admin }) => {
   const handleStatus = async (id) => {
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
-  
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
+
     try {
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+      const res = await axios.put(`${baseUrl}/api/orders/` + id, {
         status: currentStatus + 1,
       });
   
       if (currentStatus === 2) {
-        await axios.delete("http://localhost:3000/api/orders/" + id);
+        await axios.delete(`${baseUrl}/api/orders/` + id);
         setOrderList(orderList.filter((order) => order._id !== id));
       } else {
         setOrderList([
@@ -180,29 +183,30 @@ const Index = ({ orders, products, admin }) => {
 
 
 export const getServerSideProps = async (ctx) => {
-  // const myCookie = ctx.req?.cookies || "";
+  const myCookie = ctx.req?.cookies || "";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  // let admin = false;
+  let admin = false;
 
-  // if (myCookie.token === process.env.TOKEN) {
-  //   admin = true;
-  // }
+  if (myCookie.token === process.env.TOKEN) {
+    admin = true;
+  }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(`${baseUrl}/api/products`);
 
-  // if (myCookie.token !== process.env.TOKEN) {
-  //   return {
-  //     redirect: {
-  //       destination: "/admin/login",
-  //       permanent: false,
-  //       pizzaList: res.data,
-  //        admin,
-  //     },
-  //   };
-  // }
+  if (myCookie.token !== process.env.TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+        pizzaList: res.data,
+         admin,
+      },
+    };
+  }
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get(`${baseUrl}/api/products`);
+  const orderRes = await axios.get(`${baseUrl}/api/orders`);
 
   return {
     props: {
