@@ -20,6 +20,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const [isNewOrderButtonVisible, setIsNewOrderButtonVisible] = useState(false);
   const [isNewOrderReceived, setIsNewOrderReceived] = useState(false);
 
+  
   // const playAudioOnNewOrder = () => {
   //   const audioElement = audioRef.current;
   //   audioElement.currentTime = 0; // Reset the audio to the beginning
@@ -290,14 +291,14 @@ const orderListCount = orderList0.length;
             <div className={styles.cartFooter}>
               {formOpen === true ? (
                 <form>
-                  <h5 className={styles.question}>Are you sure?</h5>
+                  <h5 className={styles.question}>Confirm Pickup</h5>
                   <button 
                   className={styles.navbarButton}
                    onClick={() => {
                     const order = orderList.find((order) => order._id === selectedOrder);
                     handleStatus(selectedOrder, order.status);
                   }}>
-                    Yes
+                    Confirmed
                   </button>
                 
                   <button
@@ -307,7 +308,7 @@ const orderListCount = orderList0.length;
                     setformOpen(false);
                   }}
                   >
-                    No
+                    Not Yet
                   </button>
                 </form>
               ) : (

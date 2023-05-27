@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { isEqual } from 'lodash';
+
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -9,9 +11,27 @@ const cartSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
-      state.products.push(action.payload);
-      state.quantity += 1;
-      state.total += action.payload.price * action.payload.quantity;
+      const { id, extras, quantity, price } = action.payload;
+    
+      const existingProductIndex = state.products.findIndex(
+        (product) => product.id === id && isEqual(product.extras, extras)
+      );
+    
+      if (existingProductIndex !== -1) {
+        // Product already exists in the cart
+        state.products[existingProductIndex].quantity += quantity;
+        state.total += price * quantity;
+      } else {
+        // Add new product to the cart
+        state.products.push({
+          id,
+          extras,
+          quantity,
+          price,
+        });
+        state.quantity += quantity;
+        state.total += price * quantity;
+      }
     },
     reset: (state) => {
       state.products = [];
@@ -19,16 +39,11 @@ const cartSlice = createSlice({
       state.total = 0;
     },
     deleteProduct: (state, action) => {
-      const productId = action.payload;
-
-      const deletedProductIndex = state.products.findIndex(
-        (product) => product._id === productId
-  
-        );
-
-      if (deletedProductIndex !== -1) {
-        const deletedProduct = state.products[deletedProductIndex];
-        state.products.splice(deletedProductIndex, 1);
+      const productIndex = action.payload;
+    
+      if (productIndex >= 0 && productIndex < state.products.length) {
+        const deletedProduct = state.products[productIndex];
+        state.products.splice(productIndex, 1);
         state.quantity -= deletedProduct.quantity;
         state.total -= deletedProduct.price * deletedProduct.quantity;
       }
@@ -62,4 +77,6 @@ export const loadCartFromLocalStorage = () => {
     // Handle error if unable to retrieve data from local storage
     return undefined;
   }
-};
+
+
+}

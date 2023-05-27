@@ -86,7 +86,7 @@ export default function Home({ pizzaList }) {
   const [newFirstName, setNewFirstName] = useState('');
   const [newLastName, setNewLastName] = useState('');
   // const [userPoints, setUserPoints] = useState(0);
-  const [points, setPoints] = useState(0);
+  let [points, setPoints] = useState(0);
 
   const dropdownRef = useRef(null); // Create a ref for the dropdown container
 
@@ -118,6 +118,10 @@ const containerStyle = {
     height: '150px',
 };
 
+if (points > 110){
+  points = 100;
+
+}
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -136,6 +140,7 @@ const containerStyle = {
     router.push('/userProfile');
   };
 
+  
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -366,7 +371,7 @@ styles={buildStyles({
    
 {points === 100 ? (
   <div className={styles.head}>
-    <h2 className={styles.signup4}>Congrats! {points/10}/10th Of The Way Off 10% </h2>
+    <h2 className={styles.signup4}>Congrats! Redeem 10% Off your next purchase! </h2>
   </div>
 ) : (
   <div className={styles.head}>

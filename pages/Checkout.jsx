@@ -42,6 +42,9 @@ const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
 const [emailState, setEmailState] = useState('');
 const [personalPhone, setpersonalPhone] = useState('');
+const [form, setForm] = useState(false);
+const [clearButton, setClearButton] = useState(true);
+
 
 useEffect(() => {
   const fetchUserDetails = async () => {
@@ -62,13 +65,18 @@ useEffect(() => {
 }, []);
 
 let Discount = 0;
-if (points === 500) {
-  Discount = 0.05 * cart.total;
+if (points === 100) {
+  Discount = 0.10 * cart.total;
 }
-
 const handleDeleteProduct = (index) => {
   dispatch(deleteProduct(index));
 };
+
+
+const handleClearCart = () => {
+  dispatch(reset());
+};
+
 
 
 const handleTipClick = (value) => {
@@ -123,6 +131,11 @@ const createOrder = async (data) => {
 
 if (points === 110 ) {
   points = 10;
+}
+
+if (points > 110){
+  points = 100;
+
 }
 
 const updatePointsInDatabase = async (newPoints) => {
@@ -241,24 +254,23 @@ if ( myTotal < 0) {
     
 <div className={styles.left}>
         <table className={styles.table}>
-          <tbody>
+          <tbody className={styles.t}>
             <tr className={styles.trTitle}>
               <th className={styles.columnTitles}>Product</th>
-              <th className={styles.columnTitles}>Name</th>
-              <th className={styles.columnTitles}>Extras</th>
+              <th className={`${styles.columnTitles} ${styles.cancelPhone}`}>Name</th>
+              <th className={`${styles.columnTitles} ${styles.cancelPhone}`}>Extras</th>
               <th className={styles.columnTitles}>Quantity</th>
               <th className={styles.columnTitles}>Total</th>
-              <th className={styles.columnTitles}>Edit</th>
+              <th className={`${styles.columnTitles} ${styles.cancelPhone}`}>Edit</th>
 
             </tr>
           </tbody>
-          <tbody>
+          <tbody className={styles.t}>
             {cart.products.map((product, index) => (
               <tr className={styles.tr} key={product._id}>
                 <td className={styles.td}>
                   <div className={styles.imgContainer}>
                   <span className={styles.images}>
-
                     <Image
                       className={styles.realImage}
                       src={product.img}
@@ -296,9 +308,8 @@ if ( myTotal < 0) {
                   >Edit
                   </button>
                   </Link>
-                  <button className={styles.deleteButton} onClick={() => handleDeleteProduct(index)}>
-          Delete
-        </button>
+        <button  className={styles.deleteButton} onClick={() => handleDeleteProduct(index)}>Delete</button>
+
                   </span>
                 </td>
           
@@ -311,6 +322,24 @@ if ( myTotal < 0) {
       </div>
 <div>
   
+<div className={styles.clearButtonContainer}>
+  {clearButton && (
+<button className={styles.clearButton} onClick={() => {setForm(true); setClearButton(false);}}>
+      Clear Cart
+      </button>
+        )}
+      {form && (
+      <form>
+        <h5 className={styles.question}>Are you sure?</h5>
+        <button className={styles.sureButton}  onClick={() => {setForm(false); handleClearCart(); setClearButton(true);}}>
+          Yes
+        </button>
+        <button className={styles.sureButton} onClick={() => {setForm(false); setClearButton(true);}}>
+          No
+        </button>
+      </form>
+      )}
+  </div>
      
     </div>
    
@@ -424,11 +453,13 @@ if ( myTotal < 0) {
           {myTotal <= 0 ? (
     <>
           <button onClick={() => setOpen(false)} className={styles.checkoutButton}>
-            Checkout &nbsp; <span className={styles.buttonSentence}>(order cant be $0)</span>
+            <Link href="/menu">
+            Order Now &nbsp; <span className={styles.buttonSentence}>(order cant be $0)</span>
+            </Link>
           </button>    </>
   ) : (
     <button onClick={() => setOpen(true)} className={styles.checkoutButton}>
-    Checkout
+    Continue Checkout
   </button>  )}
 
           </div>
