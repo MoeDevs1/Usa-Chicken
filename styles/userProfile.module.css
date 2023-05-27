@@ -345,6 +345,10 @@ max-width: 700px;
 
 }
 
+.headtitle{
+  margin-top: 100px;
+}
+
 .Title {
   font-size: 15px;
   margin-top: -4px;
@@ -360,7 +364,7 @@ max-width: 700px;
   display: flex;
   justify-content: center;
 
-  color: #007BFF
+  color: #003b80;
     /* Add this line to set the placeholder text color to red */
 
 }
@@ -664,9 +668,8 @@ font-weight: 500;
 }
 
 .orderNowButton{
-margin-bottom: 20px;
-margin-top: -20px;
-width: 150px;
+margin-top: 50px;
+
 }
 
 @media (max-width: 750px) {

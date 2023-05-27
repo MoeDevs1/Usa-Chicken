@@ -68,8 +68,10 @@ let Discount = 0;
 if (points === 100) {
   Discount = 0.10 * cart.total;
 }
+
 const handleDeleteProduct = (index) => {
   dispatch(deleteProduct(index));
+  window.location.reload();
 };
 
 

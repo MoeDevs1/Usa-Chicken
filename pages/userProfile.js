@@ -12,7 +12,12 @@ import styles from '../styles/userProfile.module.css';
 import Image from 'next/image';
 import { BsCheck2Circle } from 'react-icons/bs';
 import Link from 'next/link';
-
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { TbPigMoney } from "react-icons/tb";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { Doughnut } from 'react-chartjs-2';
+import { SemiCircle } from 'react-progressbar.js';
 
 const UserProfile = ({ orders, products, admin }) => {
   const [teleport, setTeleport] = useState(false);
@@ -49,6 +54,7 @@ const status = ["Paid", "Preparing", "Ready", "Picked Up!"];
 const [emailState, setEmailState] = useState('');
 const [points, setPoints] = useState();
 
+const totalPoints = 100;
 
 const handleButtonClick = (event) => {
   setActiveButton(event.target.innerText);
@@ -528,7 +534,6 @@ const formatPhoneNumber = (number) => {
   ) : (
     <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> {points}</header>
     )} */}
-    <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
         <header className= {`${styles.Title} ${styles.Title}`}> Your Orders</header>
 
           <div className={styles.cardContainer}>
@@ -553,6 +558,8 @@ const formatPhoneNumber = (number) => {
   return null; // Skip rendering if the order doesn't match the email
 })}
   </div>
+  <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
+
 
         </div>
       </div>
@@ -619,13 +626,36 @@ const formatPhoneNumber = (number) => {
 
 
         <div className={styles.container2}>
-        {points === 500 ? (
-          <header className= {`${styles.Title} ${styles.Title}`}><span className={styles.pointsTitle}>Your Points: </span> {points} <span className={styles.ordering}> &nbsp; (Order and get $10 Off)  </span></header>
-  ) : (
-    <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> &nbsp; {points} / 1000</header>
-    )}
-    <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
         <header className= {`${styles.Title} ${styles.Title}`}> Point Tracker</header>
+        {points === 500 ? (
+          <header className= {`${styles.Title} ${styles.headtitle}`}><span className={styles.pointsTitle}>Your Points: </span> {points} <span className={styles.ordering}> &nbsp; (Order and get $10 Off)  </span></header>
+  ) : (
+    <header className= {`${styles.Title} ${styles.Title}`}> <span className={styles.pointsTitle}>Your Points: </span> &nbsp; {points} / 100</header>
+    )}
+        <div className={styles.textContainer2p}>
+
+<CircularProgressbar 
+  className={styles.circularProgress}
+
+value={points}
+maxValue={totalPoints}
+text={`${points}/${totalPoints}`}
+styles={buildStyles({
+ strokeLinecap: "round",
+ textSize: "20px",
+ pathColor: `rgba(0, 123, 255, ${points / totalPoints})`,
+ textColor: '#003b80',
+ trailColor: 'whitesmoke',
+ backgroundColor: 'whitesmoke',
+ pathTransition: 'stroke-dashoffset 0.5s ease 0s',
+ transition: 'stroke 0.3s, stroke-width 0.3s ease-in-out',
+ strokeWidth: 8,
+ pathTransitionDuration: 0.5,
+})}
+
+/>
+</div>
+<button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
 
         <div className={styles.circleContainer}>
        
