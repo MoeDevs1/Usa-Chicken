@@ -131,19 +131,17 @@ const CustomerOrders = ({ orders, products, admin }) => {
   };
   
 
-  const handleStatus = async (id, currentStatus) => {
+  const handleStatus = async (id) => {
+    const item = orderList.find((order) => order._id === id);
+    const currentStatus = item.status;
+  
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
-
-      const res = await axios.put(
-        `${baseUrl}/api/orders/` + id,
-        {
-          status: currentStatus + 1,
-        }
-      );
-
-      if (currentStatus === 3) {
-        await axios.delete(`${baseUrl}/api/orders/` + id);
+      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+        status: currentStatus + 1,
+      });
+  
+      if (currentStatus === 4) {
+        await axios.delete("http://localhost:3000/api/orders/" + id);
         setOrderList(orderList.filter((order) => order._id !== id));
       } else {
         setOrderList([
@@ -155,6 +153,30 @@ const CustomerOrders = ({ orders, products, admin }) => {
       console.log(err);
     }
   };
+
+  const handleStatusNo = async (id) => {
+    const item = orderList.find((order) => order._id === id);
+    const currentStatus = item.status;
+  
+    try {
+      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+        status: currentStatus - 1,
+      });
+  
+      if (currentStatus === 4) {
+        await axios.delete("http://localhost:3000/api/orders/" + id);
+        setOrderList(orderList.filter((order) => order._id !== id));
+      } else {
+        setOrderList([
+          res.data,
+          ...orderList.filter((order) => order._id !== id),
+        ]);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   const orderList0 = orderList.filter((order) => order.status === 0);
 const orderListCount = orderList0.length;
@@ -294,10 +316,7 @@ const orderListCount = orderList0.length;
                   <h5 className={styles.question}>Confirm Pickup</h5>
                   <button 
                   className={styles.navbarButton}
-                   onClick={() => {
-                    const order = orderList.find((order) => order._id === selectedOrder);
-                    handleStatus(selectedOrder, order.status);
-                  }}>
+                   onClick={() => handleStatus(selectedOrder)}>
                     Confirmed
                   </button>
                 

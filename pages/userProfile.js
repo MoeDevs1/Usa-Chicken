@@ -52,9 +52,14 @@ const [pizzaList, setPizzaList] = useState(products);
 const [orderList, setOrderList] = useState(orders);
 const status = ["Paid", "Preparing", "Ready", "Picked Up!"];
 const [emailState, setEmailState] = useState('');
-const [points, setPoints] = useState();
+let [points, setPoints] = useState();
 
 const totalPoints = 100;
+
+if (points > 100){
+  points = 100;
+
+}
 
 const handleButtonClick = (event) => {
   setActiveButton(event.target.innerText);
@@ -655,6 +660,10 @@ styles={buildStyles({
 
 />
 </div>
+
+{/* {points === 100 && (
+    <h2 className={styles.redeemText}>Congrats! Redeem 10% Off your next purchase! </h2>
+    )} */}
 <button className= {`${styles.checkoutButton} ${styles.orderNowButton}`}>Order Now</button>
 
         <div className={styles.circleContainer}>

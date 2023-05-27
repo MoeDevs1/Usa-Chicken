@@ -217,11 +217,9 @@ export const getServerSideProps = async (ctx) => {
   if (myCookie.token === process.env.TOKEN) {
     admin = true;
   }
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
 
   const res = await axios.get(`${baseUrl}/api/products`);
-
-
 
 
   return {

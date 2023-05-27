@@ -118,7 +118,7 @@ const containerStyle = {
     height: '150px',
 };
 
-if (points > 110){
+if (points > 100){
   points = 100;
 
 }

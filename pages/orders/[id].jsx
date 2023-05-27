@@ -3,39 +3,51 @@ import Image from "next/image";
 import axios from "axios";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { formatPhoneNumber } from 'libphonenumber-js';
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import { Route, Router } from "react-router-dom";
+import { useRouter } from 'next/router';
 
 
 const Order = ({ order, products }) => {
   const status = order.status;
-
   const [phone, setPhone] = useState('');
   const [rawPhone, setRawPhone] = useState('');
-
-  
-  // const [pollingIntervalId, setPollingIntervalId] = useState(null);
-
-  // const startPolling = () => {
-  //   const intervalId = setInterval(() => {
-  //     fetchOrders(); // Fetch orders at the specified interval
-  //   }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
-
-  //   // Save the interval ID to a state variable
-  //   setPollingIntervalId(intervalId);
-  // };
+  const [pollingIntervalId, setPollingIntervalId] = useState(null);
+  // const router = useRouter();
+  // const [reloadPage, setReloadPage] = useState(false);
 
   // useEffect(() => {
-  //   fetchOrders(); // Fetch orders when the component mounts
-  //   startPolling(); // Start polling for updates
+  //   if (order.status === 1 && !reloadPage) {
+  //     setReloadPage(true);
+  //   }
+  // }, [order.status]);
+  
+  // useEffect(() => {
+  //   if (reloadPage) {
+  //     setTimeout(() => {
+  //       window.location.reload();
+  //       setReloadPage(false);
+  //     }, 5000);
+  //   }
+  // }, [reloadPage]);
+
+  // const [statuss, setStatus] = useState(0);
+
+  // useEffect(() => {
+  //   const timer1 = setTimeout(() => {
+  //     setStatus(1);
+  //   }, 60000); // 1 minute
+
+  //   const timer2 = setTimeout(() => {
+  //     setStatus(2);
+  //   }, 120000); // 2 minutes
 
   //   return () => {
-  //     // Clean up the polling interval when the component unmounts
-  //     clearInterval(pollingIntervalId);
+  //     clearTimeout(timer1);
+  //     clearTimeout(timer2);
   //   };
   // }, []);
-
-
-
+  
   function formatPhoneNumber(phoneNumber) {
     const cleaned = ('' + phoneNumber).replace(/\D/g, '');
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -64,7 +76,19 @@ const Order = ({ order, products }) => {
         console.error('Error fetching user details', error);
       }
     };
+
+
+  let newNum = 0;
+
+  function changeNewNum() {
+    setTimeout(() => {
+      newNum = 1;
+      console.log("newNum has changed to 1");
+    }, 1000); // 5 minutes in milliseconds
+  }
+
   
+    changeNewNum();
     fetchUserDetails();
   }, []);
 
@@ -98,7 +122,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(1)}>
+        <div className={statusClass(0)}>
           <Image src="/img/bake.png" width={30} height={30} alt="" />
           <span className={styles.text}>Preparing</span>
           <div className={styles.checkedIcon}>
@@ -111,7 +135,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(1)}>
+        <div className={statusClass(0)}>
           <Image src="/img/almostDone.png" width={30} height={30} alt="" />
           <span className={styles.text}>Ready</span>
           <div className={styles.checkedIcon}>
@@ -124,7 +148,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(3)}>
+        <div className={statusClass(statuss)}>
           <Image src="/img/delivered.png" width={30} height={30} alt="" />
           <span className={styles.text}>Picked Up!</span>
 <div className={`${styles.checkedIcon} ${styles.checkedIcons}`}>
@@ -214,15 +238,6 @@ const Order = ({ order, products }) => {
           <div className={styles.totalText}>
             <b className={`${styles.totalTextTitle} ${styles.phoneText}`}>Customer: </b>{order.customer}
           </div>
-          {/* <div className={styles.totalText}>
-            <b className={`${styles.totalTextTitle} ${styles.phoneText}`}>Email: </b>{order.email}
-          </div>
-          <div className={styles.totalText}>
-            <b className={`${styles.totalTextTitle} ${styles.phoneText}`}>Email: </b>{order.phone}
-          </div> */}
-          {/* <div className={styles.totalText}>
-          <b className={styles.totalTextTitle}>Phone: </b>{phone}
-          </div> */}
           <div className={styles.totalText}>
             <b className={`${styles.totalTextTitle} ${styles.phoneText}`}>Address: </b>{order.address}
           </div>
@@ -267,4 +282,3 @@ export const getServerSideProps = async ({ params }) => {
 export default Order;
 
 
-//-----------------------------------
