@@ -167,14 +167,7 @@ const Index = ({ orders, products, admin }) => {
   </Link>
 </div>
 </nav>
-   
-
-
-
-
 </ul>
-
-
       </div>
       <div className={styles.cart}>
             <h2 className={styles.cartTitle}>DashBoard</h2>
@@ -183,7 +176,6 @@ const Index = ({ orders, products, admin }) => {
     </div>
   );
 };
-
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
