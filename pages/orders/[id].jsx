@@ -148,7 +148,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(statuss)}>
+        <div className={statusClass(0)}>
           <Image src="/img/delivered.png" width={30} height={30} alt="" />
           <span className={styles.text}>Picked Up!</span>
 <div className={`${styles.checkedIcon} ${styles.checkedIcons}`}>
