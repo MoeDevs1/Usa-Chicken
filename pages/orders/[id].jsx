@@ -13,27 +13,27 @@ const Order = ({ order, products }) => {
   const [rawPhone, setRawPhone] = useState('');
 
   
-  const [pollingIntervalId, setPollingIntervalId] = useState(null);
+  // const [pollingIntervalId, setPollingIntervalId] = useState(null);
 
-  const startPolling = () => {
-    const intervalId = setInterval(() => {
-      fetchOrders(); // Fetch orders at the specified interval
-    }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
+  // const startPolling = () => {
+  //   const intervalId = setInterval(() => {
+  //     fetchOrders(); // Fetch orders at the specified interval
+  //   }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
 
-    // Save the interval ID to a state variable
-    setPollingIntervalId(intervalId);
-  };
+  //   // Save the interval ID to a state variable
+  //   setPollingIntervalId(intervalId);
+  // };
 
-  useEffect(() => {
-    fetchOrders(); // Fetch orders when the component mounts
-    startPolling(); // Start polling for updates
+  // useEffect(() => {
+  //   fetchOrders(); // Fetch orders when the component mounts
+  //   startPolling(); // Start polling for updates
 
-    return () => {
-      // Clean up the polling interval when the component unmounts
-      clearInterval(pollingIntervalId);
-    };
-  }, []);
-  
+  //   return () => {
+  //     // Clean up the polling interval when the component unmounts
+  //     clearInterval(pollingIntervalId);
+  //   };
+  // }, []);
+
 
 
   function formatPhoneNumber(phoneNumber) {
