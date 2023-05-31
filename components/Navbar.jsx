@@ -163,7 +163,7 @@ const Navbar = ({ pizza }) => {
      
       <div className={styles.item1}>
           <Link href="/">
-            <Image src="/img/Logo.png" alt="Pizza Logo" width={65} height={65}    className={styles.logo}/>
+            <Image src="/img/—Pngtree—burger with melting cheese flat_5511393.png" alt="Pizza Logo" width={65} height={65}    className={styles.logo}/>
  
 
             

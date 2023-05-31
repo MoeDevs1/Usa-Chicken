@@ -28,7 +28,7 @@ const Footer = () => {
 </div>
 </div> */}
       <div className={styles.column}>
-        <img src="/img/Logo.png" alt="Logo" className={styles.logo} />
+        <img src="/img/—Pngtree—burger with melting cheese flat_5511393.png" alt="Logo" className={styles.logo} />
         <p className={styles.description}>
         USA Chicken is a delicious and friendly restaurant that serves up a variety of delicious dishes in a cozy and inviting community setting.
         </p>

@@ -15,7 +15,20 @@ const [price, setPrice] = useState(pizza.prices[0] || 0);
 const [size, setSize] = useState(0);
 const [extras, setExtras] = useState([]);
 const [quantity, setQuantity] = useState(1);
-const dispatch = useDispatch();
+const dispatch = useDispatch()
+;
+const handleMinusButtonClick = () => {
+  if (quantity > 1) {
+    setQuantity(quantity - 1);
+  }
+};
+
+// Function to handle the plus button click
+const handlePlusButtonClick = () => {
+  if (quantity < 10) {
+    setQuantity(quantity + 1);
+  }
+};
 
 
 
@@ -4518,33 +4531,34 @@ const handleClick = () => {
       </div> */}
 
     {/*Add to cart button*/}
+    
     <div className={styles.quantityContainer}>
-    <input
-  onChange={(e) => setQuantity(e.target.value)}
-  type="number"
-  min={1}
-  max={10}
-  defaultValue={1}
-  className={styles.quantity}
-  style={{ color: "black" }}
-  onKeyPress={(e) => {
-    const charCode = e.which ? e.which : e.keyCode;
-    if (charCode >= 48 && charCode <= 57) {
-      e.preventDefault();
-    }
-  }}
+
+<button className={styles.sign} onClick={handleMinusButtonClick}>-</button>
+<input
+value={quantity}
+type="number"
+min={1}
+max={10}
+className={styles.quantity}
+style={{ color: "black" }}
+readOnly
 />
+<button className={styles.signs} onClick={handlePlusButtonClick}>+</button>
 
-        </div>
-        <div  className={styles.buttonContainer}>
-        <button className={styles.button} onClick={handleClick}>
-      {isAdded ? 'Added!' : 'ADD TO CART'}
-      &nbsp;
-     
+<div  className={styles.buttonContainer}>
+      <button className={styles.button} onClick={handleClick}>
+    {isAdded ? 'Added!' : 'ADD TO CART'}
+    &nbsp;
+   
 
-      <span className={styles.buttonAdd}>+${price}</span>
-    </button>
-        </div>
+    <span className={styles.buttonAdd}>+${price}</span>
+  </button>
+      </div>
+
+
+      </div>
+
 
     </div>
     </div>

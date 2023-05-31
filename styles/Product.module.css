@@ -1,387 +1,68 @@
-.pageOne{
-  margin-bottom: 10px;
-  margin-top: 20px;
-
-  }
-
-  .mainContainer{
-  }
-    
-  
-    .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 480px;
-    max-height: 750px;
-    height: 800px;
-    margin: 0 auto;
-    overflow-y: scroll;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: white;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 30px;
-    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4);
-    
-    }
-  
-  
-    .title{
-      /* margin-top: -50px; */
-      text-align: center;
-      /* margin-bottom: 22px; */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-     
-      letter-spacing: 2px;
-      margin-top: -5px;
-
-
-
- 
-        color: #1b5990;
-      font-family: "Open Sans", sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .required {
-      color: red;
-      right: 0;
-    }
-  
-    .optional{
-      right: 0;
-    }
-    
-    .backButton{
-      cursor: pointer;
-      font-size: 25px;
-      color: black;
-      background-color: transparent;
-      border: none;
-      margin-left: -230px;
-      
-      }
-  
-      .imgContainer {
-        width: 100%;
-        height: 200px;
-        margin-top: -20px;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        border-radius: 15px;
-        /* border-bottom: 10px solid black; */
-
-      }
-  
-    .formContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    }
-    
-    .price{
-    color: green;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    text-align: center;
-    }
-    
-    .sizes{
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    }
-    .size{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    }
-    
-    .size:nth-child(2){
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    }
-    
-    .size:nth-child(3){
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    }
-    
-    .number{
-    position: absolute;
-    top: -5px;
-    right: -20px;
-    background-color: black;
-    color: white;
-    font-size: 12px;
-    padding: 0 5px;
-    border-radius: 10px;
-    }
-    
-    .ingredients{
-    display: flex;
-    margin-bottom: 30px;
-    align-items: center;
-    }
-    
-    .optionRow {
-    gap: 20px;
-    align-items: center;
-    margin-bottom: 50px;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-    color: #1e1e1e;
-    letter-spacing: 1.5px;
-    }
-  
-    .optionRow:last-child{
-      margin-bottom: 200px;
-    }
-  
-    .choose{
-      display: flex;
-      justify-content: center;
-      font-size: 18px;
-      font-family: "Open Sans", sans-serif;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #1e1e1e;
-      letter-spacing: 1.5px;
-    }
-    
-    .option {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 20px;
-    font-family: "Open Sans", sans-serif;
-    color: #1e1e1e;
-    letter-spacing: 2px;
-    }
-    
-  /* Hide default checkbox appearance */
-  .checkbox {
-    appearance: none;
-  }
-  
-  /* Create custom checkbox appearance */
-  .checkbox::before {
-    content: '';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 15px;
-    height: 15px;
-    border: 1px solid black;
-    background-color: white;
-    margin-right: 10px;
-    border-radius: 50%;
-  
-  }
-  
-  .checkbox:checked::before {
-    content: '✓';
-    color: white;
-    background-color: black;
-    margin: 2px; /* Create white margin inside the black circle */
-    width: 18px;
-    height: 18px;
-  }
-  
-  .quantity {
-    position: absolute;
-    color: red;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-    border: none;
-    margin-bottom: 50px;
-    margin-left: 395px;
-    outline-color: red; /* Change the outline color to blue */
-    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4);
-
-  }
-
-    
-    
-    
-  
-    .add {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: -300px;
-      margin-top: 250px;
-      background-color: white;
-    }
-    .row{
-      background-color: silver;
-    }
-  
-  
-   .allOptions {
-    display: flex;
-    flex: 1;
-    flex-basis: 25%;
-    padding: 10px;
-
-  }
-  
-    .options {
-      display: flex;
-      flex-wrap: wrap;
-      height: 200px;
-    }
-  
-  
-    .desc{
-      text-align: center;
-      margin-left: 25px;
-      margin-right: 25px;
-      margin-top: -15px;
-      padding-bottom: 20px; /* Adjust this value to change the amount of space */
-      color: rgb(90, 101, 108);
-      font-weight: bolder;
-      letter-spacing: 1px;
-      margin-bottom: -15px;
-      /* Updated text color */
-      font-family: "Montserrat", sans-serif;    font-size: 13px;
-  
-    }
-  
-    /* .buttonAdd{
-      color: black;
-      position: absolute;
-      right: 0;
-      margin-right: 20px;
-    }
-   */
-    .special{
-      margin-top: 1000px;
-    }
-  
-    .quantity{
-      border: 1px solid black;
-    }
-  
-   @media only screen and (max-width: 600px) {
-    .quantity{
-      margin-left: 320px;
-    }
-  
-    .backButton{
-      margin-left: -190px;
-    }
-   }
-  
-   @media only screen and (max-width: 380px) {
-   
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 450px;
-      height:  567px;
-      margin: 0 auto;
-      overflow-y: scroll;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      background-color: white;
-      }
-    
-    }
-  
-    
-    @media only screen and (min-width: 800px) and (max-width: 850px) {
-    
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 450px;
-        max-height: 1300px ;
-        height:  1100px;
-        margin: 0 auto;
-        overflow-y: scroll;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-        background-color: white;
-        }
-      
-      }
-  
-  
-      @media only screen and (min-width: 750px) and (max-width: 800px) {
-    
-        .container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          max-width: 450px;
-          max-height: 1100px ;
-          height:  1000px;
-          margin: 0 auto;
-          overflow-y: scroll;
-          font-family: Arial, sans-serif;
-          font-size: 16px;
-          line-height: 1.5;
-          background-color: white;
-          }
-        
-        }
-    
-        
-.choiceOf{
-  font-size: 14px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  color: #007bff;
-  letter-spacing: 1.5px;
+.pageOne {
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
-    
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 580px;
+  max-height: 750px;
+  height: 800px;
+  overflow-y: scroll;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: white;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4);
+  position: static;
+}
+
+.quantityContainer {
+  overflow-y: scroll;
+  background-color: white;
+  border-top: 1px solid #b3b3b3;
+  max-width: 580px;
+  margin-top: 0%;
+  height: 5%;
+  border-radius: 10px;
+  bottom: 0;
+  width: 100%;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity {
+  width: 70px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  font-size: 16px;
+}
 
 .button {
+  width: 200px;
+  height: 45px;
+  background-color: red;
+  border-radius: 25px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  font-weight: bold;
   border: none;
-  padding: 13px 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 430px;
-  position: fixed;
-  
-   z-index: 1;
-   border-radius: 9px;
-
-   font-size: 1rem;
-   font-family: "Open Sans", sans-serif;
-  filter: grayscale(0%) contrast(130%) brightness(110%);
-  background-color: #ca1035;  color: white;  bottom: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
-.button:hover{
+.button:hover {
   background-color: darkred;
+  cursor: pointer;
 }
+

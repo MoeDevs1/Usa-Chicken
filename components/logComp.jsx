@@ -139,7 +139,7 @@ const Login = ({ closeLogin }) => {
         <div className={styles.line1}></div> {/* Add this line */}
    
           <div className={styles.head}>
-            <Image src="/img/Logo.png" alt="" width="222" height="222" />
+            <Image src="/img/—Pngtree—burger with melting cheese flat_5511393.png" alt="" width="222" height="222" />
             
           </div>
           <div className={styles.head}>  Sign In To Usa Chicken </div>

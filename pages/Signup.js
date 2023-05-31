@@ -175,7 +175,7 @@ const Signup = () => {
       <div className={styles.formLogin}>
         <div className={styles.head}>
        
-        <Image src="/img/Logo.png" alt="" width="222" height="222" />
+        <Image src="/img/—Pngtree—burger with melting cheese flat_5511393.png" alt="" width="222" height="222" />
 
           <header></header>
        

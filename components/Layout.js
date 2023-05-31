@@ -12,7 +12,6 @@ const Layout = ({children}) => {
             <Navbar />
             {/* {router.pathname === "/menu" && <Address />} */}
             {children}
-            <Footer />
         </>
     )
 }
