@@ -233,6 +233,7 @@ if (points > 100){
 
 
   
+  
 
   return (
 
@@ -393,7 +394,6 @@ styles={buildStyles({
 
     
           <Link href="/menu">
-           <button className={styles.signupButton2}>Redeem</button>
            </Link>
 
 

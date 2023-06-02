@@ -302,6 +302,26 @@ margin-left: 5px;
     letter-spacing: 1px;
   }
 
+  .buttonlogin {
+    margin-top: -1px;
+    margin-left: 5px;
+    width: 200px;
+    margin-right: 25px;
+    height: 45px;
+    color:#007bff ;
+    border-radius: 25px;
+    font-family: "Open Sans", sans-serif;
+    color:#ffffff ;
+    font-weight: bold;
+  background-color:      #1b5990 ;
+  ;
+    border: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: not-allowed; /* Change cursor to indicate unclickable */
+    opacity: 0.6; /* Reduce opacity to make it look disabled */
+  }
+  
   .button:hover{
     background-color: darkred;
     cursor: pointer;
