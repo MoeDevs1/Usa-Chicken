@@ -1,0 +1,1092 @@
+.container{
+  padding-left:30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  
+}
+.formLabel {
+  font-size: .7em;
+  padding: 0.5em 0;
+}
+
+
+
+ 
+.formInput {
+  font-size: .7em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+
+.cateringButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  max-width: 100%;
+  margin: 2rem auto;
+  display: block;
+}
+
+.cateringButton:hover {
+  transform: scale(1.1);
+}
+
+.cateringcontainer {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.cateringimg {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.cateringform {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.orderTitle {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.cateringTitle {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+}
+
+
+
+.pizzaList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+  }
+  
+  .pizzaItem {
+    position: relative;
+    margin: 10px;
+    margin-right: 20px;
+    
+    height: 320px;
+    padding-top: 30px;
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    word-wrap: break-word;
+    box-sizing: border-box;
+    flex-basis: 400px;
+    cursor: pointer;
+  }
+  
+
+  
+  .pizzaItem img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+
+.pizzaTitle {
+  font-size: 15px;
+  margin-bottom: -1px;
+    color: #1b5990;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  /* Adds 2 pixels of space between letters */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  /* Centers the text */}
+
+.pizzaDesc {
+  margin-bottom: 6px;
+  font-weight:900;
+  color: rgb(74, 69, 69);
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  margin-left: 20px;
+  letter-spacing: 1px;
+}
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+}
+.pizzaPrice {
+  color: #007BFF;
+display: none  }
+
+
+  .pizzaItem::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    width: 10px;
+  }
+  
+  .pizzaItem:nth-child(odd)::before {
+    left: -10px;
+  }
+  
+  .pizzaItem:nth-child(even)::before {
+    right: -10px;
+  }
+  
+  .pizzaItem:hover {
+    transform: scale(1.1);
+  } 
+
+  
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+
+
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.words {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 20px;
+  text-align: left;
+  grid-area: words;
+  flex: 1;
+}
+
+.pictures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture1 {
+  grid-area: picture1;
+}
+
+.picture2 {
+  grid-area: picture2;
+}
+
+.top {
+  font-size: 27px;
+  
+  margin-bottom: 21px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  margin-top: 30px;
+  letter-spacing: 5px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+}
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Adds spacing between buttons */
+  
+}
+.check{
+  color: white;
+  width: 100px;
+  height: 100px;
+   margin-top: 80px;
+   
+
+}
+.button1 {
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;  color: white;
+  margin-right: 10px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+.button {
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #007BFF;
+    color: white;
+  margin-right: 10px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+.button:hover{
+  transform: scale(1.1);
+}
+.button1:hover{
+  transform: scale(1.1);
+}
+
+.button:last-child{
+  cursor: disabled;
+}
+
+.menuParent {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.menuButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: #1b5990;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+
+  color: white;
+  margin-right: 10px;
+  border: none;
+  
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.menuButton:hover{
+  transform: scale(1.1);
+}
+.banner {
+  width: 100%;
+  filter: grayscale(0%) contrast(130%) brightness(150%);
+
+  margin-top: 0px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  border: 10px solid #fff; /* remove this line */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo{
+  margin-top: 30px;
+}
+/*sign up divider css*/
+
+
+
+.head1{
+  margin-top: 30PX;
+  margin-bottom: -120PX;
+}
+
+.head2{
+display: none;
+
+}
+
+.signupImg {
+  margin: 50px;
+  margin-left: 100px;
+  max-width: 100%;
+  display: block;
+}
+
+
+
+
+.totalButtons {
+  margin-top: 1em;
+}
+
+.buttoned {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+.buttoned:hover {
+  transform: scale(1.1);
+}
+
+.text{
+  margin-top: 150px;
+  width: 70%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+.scroller{
+  display: none;
+}
+
+.discountContainer{
+  background-color: white;
+  padding: 20px;
+}
+
+.discounting{
+  background-color: #1b5990;
+  border-radius: 20px;
+}
+
+
+
+.signButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+  border: none;
+  
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.signButton:hover{
+  transform: scale(1.1);
+}
+
+
+.signupContainer{
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #09317d;
+  padding: 20px;
+  padding-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  height: 50%;
+
+
+}
+
+.signin{
+  color: red;
+  margin-left: 4px;
+}
+
+
+
+
+
+.delivery {
+  text-align: center;
+  margin-bottom: 20px;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.delivery h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.delivery p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.deliveryOptions {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+}
+
+.deliveryLogo {
+  object-fit: contain;
+  border-radius: 10%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add additional styling as needed */
+
+.deliveryTitle{
+  font-size: 27px;
+  margin-bottom: 21px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  margin-top: 30px;
+  letter-spacing: 5px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+}
+
+.deliveryP{
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  color: #1e1e1e;
+  margin-top: 30px;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 100px;
+ margin-right: 100px;
+
+}
+
+.signupP{
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  margin-top: 160px;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 100px;
+ margin-right: 100px;
+}
+.signupP2{
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 100px;
+ margin-right: 100px;
+}
+
+.signupDesc{
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  margin-top: 30px;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+ margin-left: 100px;
+ margin-right: 100px;
+ margin-bottom: -50px;
+}
+
+.lastSign{
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  margin-bottom: 90px;
+}
+
+.signupButton {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;  color: white;
+  margin-right: 10px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 75px;
+}
+
+
+.signupButton:hover{
+  transform: scale(1.1);
+}
+
+
+/* .signupContainer {
+  display: flex;
+  align-items: center;
+}
+
+.imageContainer {
+  margin-right: 20px;
+  width: 600px;
+} */
+
+
+.signImg {
+  width: 100%;
+  margin-top: 0px;
+  border-radius: 5px;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  transition: all 0.3s ease;
+  border: 10px solid #fff; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  margin-left: 20px;
+}
+
+.signImg:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  bottom: -20px;
+  right: -20px;
+  border: 10px solid #fff;
+}
+
+
+.bannerContainer {
+  position: relative;
+}
+
+.banner {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.halal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  padding: 40px;
+  border-radius: 100px;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 100px rgba(250, 248, 248, 0.3);
+  margin-top: 60px;
+  margin-right: 95px;
+  display: none;
+
+}
+
+
+.slideInImage {
+  animation: slideIn 0.8s ease-in 1s forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slideInImage2 {
+  animation: slideIn2 0.8s ease-in 1s forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn2 {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+.textContainer {
+  border: 7px solid #fff; /* remove this line */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+ 
+
+
+
+
+
+.head7{
+  display: flex;
+justify-content: left;
+margin-left: 23%;
+margin-top: -5%;
+margin-bottom: 10%;
+}
+
+
+
+.head{
+  display: flex;
+  justify-content: left;
+  margin-top: -16%;
+  margin-left:0%;
+
+
+}
+.heade{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.headmax{
+  margin-top: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.textContainer2{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupButton2 {
+  padding: 1rem 8rem;
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;   
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  font-family: "Open Sans", sans-serif;
+  color: #a2aab9;
+  letter-spacing: 2px;
+  font-family: bolder;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  margin-top: -4%;
+  margin-right: 350px;
+  margin-bottom: 2%;
+
+}
+.signupbutton2:hover{
+  background-color:#09317d;
+    transform: scale(1.1);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  }
+  
+  
+
+.signup3{
+  font-size: 52px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  /* Centers the text */
+  margin-top: 20%;
+  
+}
+
+.signup4{
+  font-size: 31px;
+  font-family: "Open Sans", sans-serif;
+  color: #a2aab9;
+  letter-spacing: 2px;
+  font-family: bolder;
+  /* Adds 2 pixels of space between letters */
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  margin-right: 340px;
+  /* Centers the text */
+
+}
+
+.circularProgress{
+  margin-left: 50%;
+  margin-top: 10%;
+
+  margin-bottom: 15px;
+}
+.textContainer2p{
+  height: 20%;
+  width: 20%;
+  
+}
+
+
+@media only screen and (max-width: 900px) {
+
+
+
+
+
+  .head {
+    display: initial;
+    justify-content: initial;
+    margin-top: initial;
+    margin-left: initial;
+  }
+  
+  .heade {
+    display: initial;
+    justify-content: initial;
+    align-items: initial;
+  }
+  
+  .headmax {
+    margin-top: initial;
+    display: initial;
+    justify-content: initial;
+    align-items: initial;
+  }
+  
+  .textContainer2 {
+    display: initial;
+    justify-content: initial;
+    align-items: initial;
+  }
+  
+  .signupButton2 {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+
+
+
+    font-size: 1.5rem;
+    font-family: "Open Sans", sans-serif;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    background-color: #ca1035;  color: white;
+    margin-right: 0px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: -25px;
+  }
+  
+  .signupbutton2:hover {
+    background-color: initial;
+    transform: initial;
+  }
+  
+  .right {
+    display: initial;
+    flex-direction: initial;
+  }
+  
+ 
+  
+  .signup4 {
+    font-size: 15px;
+    margin-left: 23px;
+    margin-top: 10%;
+    margin-right: 20px;
+
+  }
+
+
+  .signupP, .deliveryTitle{
+    font-size: 15px;
+    margin-left: 23px;
+    margin-right: 20px;
+  
+  }
+
+.signup3{ font-size: 28px;
+  margin-left: -5px;
+  margin-right: 20px;
+
+}
+    
+  
+  .check{
+
+    width: 15%;
+    height: 15%;
+    margin-left: 85%;
+    margin-bottom: 38px;
+    margin-top:-200%;
+    
+
+  }
+  .circularProgress {
+    margin-left: initial;
+    margin-top: initial;
+    margin-bottom: initial;
+  }
+  
+  .textContainer2p,.circularProgress{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 20px;
+
+  }
+
+  
+
+  
+
+
+
+.signupContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head2 {
+  text-align: center;
+}
+
+ 
+  .imageWrapper{
+    width: 85%;
+    margin-left: 18px;
+  }
+  .container{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+  }
+  
+  .pizzaListContainer {
+     overflow-x:auto;
+     justify-content: flex-start;
+     margin-left: -30px;
+     
+ 
+   }
+   
+   .pizzaList {
+     display: flex;
+     justify-content: flex-start;
+  
+     flex-wrap: nowrap;  
+   }
+ 
+
+   .pizzaItem {
+    padding-top: 30px;
+
+     flex: 0 0 auto;  
+     width: 50%; /* Changed from fixed width to auto */
+     background-color: white;
+   }
+   .pizzaItem {
+    flex-basis: 70%;
+  }
+  
+   .itemTwo{
+     background-color: white;
+     border-radius: 0%;
+ 
+   }
+   .pizzaItem:first-child {
+     margin-left: 15px;
+   }
+ 
+   .pizzaItem:hover {
+     transform: scale(1.1);
+   }
+ 
+   .pizzaImg {
+     border-radius: 30%;
+   }
+ 
+   .container {
+     background-color: white;
+   }
+ 
+   .banner {
+     width: 100%;
+     height: 300px;
+   }
+   
+   .buttons {
+     margin-top: 100px;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+ 
+   .menuParent {
+     display: flex;
+     justify-content: center;
+     margin-top: 20px;
+   }
+ 
+
+ 
+ .buttons {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   margin-top: -5px;
+   
+ }
+ 
+ 
+ .button1 {
+   width: 90%; /* Adjust the width value as needed */
+   height: 60px;
+   font-size: 24px;
+   background-color: #007bff;
+   filter: grayscale(0%) contrast(130%) brightness(110%);
+   color: white;
+   border: none;
+   padding-right: 2px;
+   border-radius: 9px;
+   cursor: pointer;
+   font-weight: bold;
+   padding-left: 3px;
+   margin-bottom: -20px;
+   overflow: hidden; /* Add this line to prevent text overflow */
+ }
+ .button{
+   width: 90%; /* Adjust the width value as needed */
+   height: 60px;
+   font-size: 25px;
+   background-color: #ca1035;
+   filter: grayscale(0%) contrast(130%) brightness(110%);
+   color: white;
+   border: none;
+   padding-right: 2px;
+   border-radius: 9px;
+   cursor: pointer;
+ 
+   margin-top: 15px;
+   font-weight: bold;
+   padding-left: 3px;
+   margin-bottom: -70px;
+   overflow: hidden; /* Add this line to prevent text overflow */
+ }
+ .head{
+  margin-left: -200px;
+ }
+ .halal{
+  display: none;
+ }
+ .signupContainer {
+  margin: 0;
+
+  padding: 10px;
+
+  text-align: left;
+}
+
+/* delivery */
+.delivery {
+  padding: 10px;
+  margin: 0;
+  text-align: left;
+}
+
+/* reduce font sizes for smaller screens */
+
+
+.signupDesc, .deliveryP {
+  font-size: 14px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* control button sizes */
+.signupButton, .button, .button1, .menuButton {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Adjust image size for smaller screens */
+.signupImg, .deliveryLogo {
+  width: 50%;
+}
+
+/* adjust pizza items for smaller screens */
+
+/* Adjust catering form label and input */
+.formLabel, .formInput {
+  font-size: 1em;
+  padding: 1em;
+}
+
+/* Adjust catering button */
+.cateringButton {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+ /* Added styles for .lastSign */
+ .lastSign {
+  font-size: 14px; /* Adjust as per your requirement */
+display: flex;
+justify-content: center;
+}
+
+
+ }
+
+ 

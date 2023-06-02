@@ -1,0 +1,241 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #09317d;
+    color: white;
+    position: relative;
+    z-index: 1;
+    height: 800px;
+  }
+
+  
+.signButton {
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    background-color: #0066CC;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    color: white;
+    margin-right: 10px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .signButton:hover{
+    transform: scale(1.1);
+  }
+  
+  
+  .signupContainer{
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #09317d;
+    padding: 20px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    height: 850px;
+  
+  }
+  
+  .signin{
+    color: red;
+    cursor: pointer;
+  }
+  
+
+  .signupP{
+    font-size: 50px;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    margin-top: 160px;
+    letter-spacing: 2px;
+    /* Adds 2 pixels of space between letters */
+    text-align: center;
+    /* Centers the text */
+   margin-left: 100px;
+   margin-right: 100px;
+  }
+  
+  .signupDesc{
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    margin-top: 30px;
+    letter-spacing: 2px;
+    /* Adds 2 pixels of space between letters */
+    text-align: center;
+    /* Centers the text */
+   margin-left: 100px;
+   margin-right: 100px;
+   margin-bottom: -50px;
+  }
+  
+  .lastSign{
+    font-family: "Open Sans", sans-serif;
+    color: white;
+  }
+  
+  .signupButton {
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    font-family: "Open Sans", sans-serif;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    background-color: #ca1035;  color: white;
+    margin-right: 10px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 75px;
+  }
+  
+  .signupButton:hover{
+    transform: scale(1.1);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .imageContainer {
+    width: 600px;
+    margin-left: 380px;
+    margin-bottom: -100px;
+  }
+  
+  
+  .signImg {
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 5px;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    transition: all 0.3s ease;
+    border: 10px solid #fff; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    margin-left: 20px;
+    display: none;
+  }
+  
+  .signImg:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    border: 10px solid #fff;
+  }
+
+
+/* .slideInImage {
+    animation: slideIn 1s ease-in 1s forwards;
+    opacity: 0;
+  } */
+  
+  .lastSign{
+    margin-bottom: 160px;
+  }
+    
+  @media (max-width: 767px) {
+ 
+  
+    
+  
+   
+   
+  
+    .signupP {
+      font-size: 50px;
+      font-family: "Open Sans", sans-serif;
+      color: white;
+      margin-top: 130px;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  
+    .signupDesc {
+      font-size: 16px;
+      font-family: "Open Sans", sans-serif;
+      color: white;
+      margin-top: 30px;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+    }
+  
+    .lastSign {
+      font-family: "Open Sans", sans-serif;
+      color: white;
+    }
+
+  
+    .signupButton {
+      padding: 1.5rem 3rem;
+      font-size: 1.5rem;
+      font-family: "Open Sans", sans-serif;
+      filter: grayscale(0%) contrast(130%) brightness(110%);
+      background-color: #ca1035;
+      color: white;
+      margin-right: 10px;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 75px;
+    }
+  
+    .signupButton:hover {
+      transform: scale(1.1);
+    }
+  
+    .imageContainer {
+      width: 600px;
+      margin-left: 380px;
+      margin-bottom: -100px;
+    }
+  
+    .signImg {
+      width: 100%;
+      margin-top: 0px;
+      border-radius: 5px;
+      filter: grayscale(0%) contrast(130%) brightness(110%);
+      transition: all 0.3s ease;
+      border: 10px solid #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      margin-left: 20px;
+      display: none;
+    }
+  
+    .signImg:before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      bottom: -20px;
+      right: -20px;
+      border: 10px solid #fff;
+    }
+  
+    .lastSign {
+      margin-bottom: 160px;
+    }
+
+    .imageContainer{
+      display: none;
+    }
+  }
+
+  

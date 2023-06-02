@@ -1,0 +1,931 @@
+.parentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+}
+
+.container1 {
+
+  height: 500px;
+
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 120px;
+  border-radius: 4px;
+  margin-right: 3px;
+  margin-top: 100px;
+  padding-top: 30px;
+}
+
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  padding: 30px;
+max-width: 700px;
+  border-radius: 5px;
+
+  background-color: white;
+  /* Updated background color */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+
+}
+
+
+.input {
+  padding: 1em 20em 1em 1em;
+  /* Reduced padding on the left side to left-align the text */
+  margin-bottom: 40px;
+  text-align: left;
+  font: #007bff;
+
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(11, 100, 72, 0.1);
+  transition: all 0.2s ease-in-out;
+
+  ;
+}
+
+
+
+.inputText {
+  margin-bottom: 9px;
+  color: #000000;
+  /* Updated text color */
+  margin-left: 4px;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 3px;
+  /* Adds 2 pixels of space between letters */
+
+
+}
+
+
+
+
+.passwordContainer {
+  display: flex;
+  align-items: row;
+  margin-top: 30px;
+  margin-left: 30px;
+
+  margin-bottom: 10px;
+}
+
+.emailContainer {
+  display: flex;
+  align-items: row;
+  margin-bottom: 10%;
+
+
+  margin-left: 30px;
+
+}
+
+.inputFieldOldPassword {
+  height: 48px;
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 20px;
+  margin-bottom: -10px;
+  margin-left: 30px;
+
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+
+}
+
+
+.inputFieldPassword {
+  height: 48px;
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 20px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+
+}
+
+.inputFieldPassword1 {
+  height: 48px;
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 20px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+
+}
+
+
+
+
+.inputFieldNewEmail {
+  margin-bottom: -3px;
+  height: 48px;
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 70px;
+
+
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+}
+
+.inputFieldNewEmail:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+}
+
+
+
+
+
+.inputFieldOldPassword:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+
+
+.input:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+.inputFieldOldPassword:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+.inputFieldPassword1:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+.inputFieldPassword:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+
+}
+
+
+
+
+.inputOldFieldEmail {
+  height: 48px;
+  width: 300px;
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 10px;
+
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(11, 100, 72, 0.1);
+  transition: all 0.2s ease-in-out;
+
+
+
+}
+
+.inputOldFieldEmail:focus {
+  border-color: #6bb7f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 5px rgba(133, 155, 171, 0.5);
+  background-color: #fff;
+  outline: none;
+
+}
+
+
+
+
+
+.button {
+  display: flex;
+  background-color: white;
+  border-color: white;
+  border: #007bff;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1px;
+  justify-content: center;
+  border-radius: 1px;
+  padding: 1.8em;
+  width: 500px;
+}
+
+
+.button:focus,
+.button:active {
+  outline: none;
+  background-color: #007fff;
+  color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.cancelButton {
+  width: 70px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: -10px;
+  height: 40px;
+  background-color: #007bff;
+  color: #fff;
+  margin-right: 4px;
+  border: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+.updateButton {
+  width: 70px;
+  height: 40px;
+  background-color: #FF1744;
+  color: #fff;
+  border: #007bff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+
+.userProfileLogo {
+
+  display: flex;
+  justify-content: center;
+}
+
+.logoImage {
+
+  border-radius: 30px;
+
+  border: 5px solid rgb(49, 10, 10);
+  background-color: #007BFF;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-left: 5px;
+  margin-bottom: -10px;
+}
+
+
+.emailTitle {
+  font-size: 15px;
+  margin-bottom: 31px;
+  margin-top: 40px;
+
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+
+  text-transform: uppercase;
+  color: #1e1e1e;
+
+  letter-spacing: 4px;
+  /* Adds 2 pixels of space between letters */
+
+  display: flex;
+  justify-content: center;
+  color: #007BFF
+    /* Add this line to set the placeholder text color to red */
+
+
+}
+
+.headtitle{
+  margin-top: 100px;
+}
+
+.Title {
+  font-size: 15px;
+  margin-top: -4px;
+  margin-bottom: 35px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  letter-spacing: 4px;
+  /* Adds 2 pixels of space between letters */
+
+  display: flex;
+  justify-content: center;
+
+  color: #003b80;
+    /* Add this line to set the placeholder text color to red */
+
+}
+
+
+.Icon {
+  margin-right: 5px;
+  height: 17px;
+  width: 17px;
+
+}
+
+.orderTitle{
+  top: 0;
+}
+
+
+.nameText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0px;
+  color: #524747;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+  /* increase font size /
+letter-spacing: 1px; / add letter spacing /
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); / add subtle text shadow */
+}
+
+
+
+
+
+
+
+
+
+
+.topButtonContainer {
+  display: flex;
+
+  display: flex;
+  justify-content: center;
+  align-items: row;
+
+  margin-top: 1px;
+}
+
+.profileButtonContainer {
+  display: flex;
+
+  display: flex;
+  justify-content: center;
+  align-items: row;
+
+  margin-top: 1px;
+}
+
+
+
+
+.inputFieldPassword::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  /* Adds 2 pixels of space between letters */
+}
+
+.inputFieldPassword1::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  /* Adds 2 pixels of space between letters */
+}
+
+.inputOldFieldEmail::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  /* Adds 2 pixels of space between letters */
+}
+
+
+.inputFieldNewEmail::placeholder {
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  /* Adds 2 pixels of space between letters */
+
+}
+.inputFieldOldPassword::placeholder {
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  /* Adds 2 pixels of space between letters */
+
+}
+
+.icon {
+  margin-left: 4px;
+  color: #007bff;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: 555;
+  margin-top: 5px;
+  /* add this line */
+  padding-left: 10px;
+  /* add this line */
+
+}
+
+
+.errorMessage2 {
+  color: red;
+  font-weight: 555;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: -20px;
+  /* add this line */
+  padding-left: 10px;
+  /* add this line */
+}
+
+
+
+
+
+.errorMessage1 {
+  color: red;
+  font-weight: 555;
+  margin-top: 15px;
+  margin-bottom: -20px;
+  display: inline-block;
+  /* add this line */
+  padding-left: 40px;
+  /* add this line */
+
+}
+
+.errorInput input {
+  border-color: red;
+
+}
+
+.active {
+  background-color: #007fff;
+  color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.popupContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.popupContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 5rem;
+  border-radius: 1rem;
+}
+
+.popupMessage {
+  margin-top: 50px;
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.popupButton {
+  background-color: #007BFF;
+  color: white;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 19px;
+  padding: .7rem 8rem;
+
+  font-weight: bold;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  border: #007bff;
+
+}
+
+.check {
+  color: #16a7c0e8;
+  margin-bottom: -30px;
+  height: 50%;
+  width: 50%;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  color: gray;
+  font-weight: bold;
+}
+
+.popupButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+.cardHeader {
+  /* Your card header styles here */
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.cardContainer{
+  height: 300px;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.checkoutButton {
+  /* Your button styles here */
+  display: table;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.cardHeaderOrder {
+  /* Your order header styles here */
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.cardHeaderText {
+  /* Your text styles here */
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.cardHeaderDate {
+  /* Your date styles here */
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.checkoutButton:hover {
+  background-color: #0056b3;
+}
+
+.checkoutButton:active {
+  background-color: #003b80;
+}
+
+.checkoutButton:focus {
+  outline: none;
+}
+
+.ordering{
+font-weight: 500;
+}
+
+.orderNowButton{
+margin-top: 50px;
+
+}
+
+@media (max-width: 750px) {
+  .parentContainer {
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+
+.inputOldFieldEmail::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 0px;
+  /* Adds 2 pixels of space between letters */
+}
+
+.inputFieldOldPassword::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  /* Adds 2 pixels of space between letters */
+}
+
+.inputFieldNewEmail::placeholder {
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 0px;
+  /* Adds 2 pixels of space between letters */
+
+}
+
+
+  .container1 {
+    max-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    margin-top: 10px;
+    flex-shrink: 1;
+
+  }
+
+  .nameText{
+    display: none;
+  }
+
+.topButtonContainer{
+  display: flex;
+
+  justify-content: center;
+  align-items: row;
+margin-left: 7px;
+}
+
+
+.errorMessage {
+  color: red;
+  font-weight: 15px;
+  margin-top: 1px;
+  margin-bottom: -14px;
+  display:inherit
+  
+
+  /* add this line  /* add this line */
+
+}
+
+
+
+.passwordContainer {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+  .container2 {
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 10px;
+    height:100% ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+.oldPasswordContainer{
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+  .inputFieldOldPassword{
+    width:50%;
+  }
+  
+  
+
+  .inputContainer {
+    margin-left: 0px;
+    margin-right: 0px;  }
+
+  .inputFieldPassword,
+  .inputFieldPassword1,
+  .inputOldFieldEmail,
+  .inputFieldNewEmail {
+    width: 100%;
+    flex-shrink: 1;
+  }
+
+  .errorMessage,
+  .errorMessage1,
+  .errorMessage2 {
+    width: 100%;
+  }
+
+  
+  .errorMessage1{
+    display: flex;   
+    align-items: center; 
+    justify-content: center;
+    padding: 0px;
+  }
+
+  .passwordContainer {
+    margin-left: 0px;
+    margin-right: 0px;
+
+  }
+
+  .emailContainer {
+    margin-left: 0px;
+    margin-right: 0px;
+    display: flex;
+align-items: center;
+justify-content: center;
+
+  }
+
+
+
+
+
+.inputFieldNewEmail,.inputOldFieldEmail {
+
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 1em -3em 1em 1em;
+
+
+}
+  .inputFieldOldPassword,.inputFieldPassword {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 1em -3em 1em 1em;
+
+  }
+  
+  .logoImage {
+    display: none;
+  }
+
+.input{
+  width: 100%;
+  padding: 1em 10em 1em 1em;
+
+}.inputFieldPassword::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: -1px;
+  /* Adds 2 pixels of space between letters */
+}
+
+.inputFieldPassword1::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  letter-spacing: -1px;
+  /* Adds 2 pixels of space between letters */
+}
+
+
+.ordering{
+  display: none;
+}
+}
+
+
+
+
+
+
+@media (min-width: 751px) and (max-width: 1000px) {
+  .parentContainer {
+    flex-direction: column;
+    margin-left: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .container1 {
+    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5px;
+    width: 90%;
+    padding-left: -50px;
+  }
+
+  .nameText {
+    display: none;
+  }
+
+  .container2 {
+    margin: 0 auto;
+    max-width: 100%;
+    padding-right: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    width: 100%;
+    padding: 1em 2.3em;
+    height: auto;
+    flex-shrink: 1;
+    
+  }
+
+  .errorMessage1{
+    margin-left: 40px;
+      }
+
+  .logoImage{
+display: none;
+
+  }
+}
+
+/* .textContainer2p{
+  height: 40%;
+  width: 40%;
+  
+} */
