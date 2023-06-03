@@ -5,7 +5,9 @@ import Address from "./address";
 const Layout = ({ children, showNavbar, showFooter }) => {
   return (
     <>
+      {showNavbar && <Navbar />}
       {children}
+      {showFooter && <Footer />}
     </>
   );
 };

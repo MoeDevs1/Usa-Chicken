@@ -29,9 +29,7 @@ const Login = ({ closeLogin }) => {
  
     const handleGoogleSignIn = async (email) => {
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Replace with your environment variable name
-
-        const response = await axios.post(`${baseUrl}/api/googleLogin`, { email });
+        const response = await axios.post('http://localhost:3000/api/googleLogin', { email });
     
         if (response.data.authorized) {
           closeLogin(); // close login form
@@ -141,7 +139,7 @@ const Login = ({ closeLogin }) => {
         <div className={styles.line1}></div> {/* Add this line */}
    
           <div className={styles.head}>
-            <Image src="/img/Logo.png" alt="" width="222" height="222" />
+            <Image src="/img/—Pngtree—burger with melting cheese flat_5511393.png" alt="" width="222" height="222" />
             
           </div>
           <div className={styles.head}>  Sign In To Usa Chicken </div>

@@ -232,16 +232,27 @@ const [isAdded, setIsAdded] = useState(false);
 
 
 const handleClick = () => {
+  // Check if all required options have been selected
+  const requiredOptions = options.filter((group) => group.group === 'meat' || group.group === 'rice' || group.group === 'sauce');
+  const hasRequiredOptions = requiredOptions.every((group) =>
+    group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+  );
+
+  if (!hasRequiredOptions) {
+    alert('Please choose an option from the required choices');
+    return;
+  }
+
   const extrasArray = specialInstructions ? [...extras, specialInstructions] : extras;
   const product = { ...pizza, extras: extrasArray, price, quantity };
   dispatch(addProduct(product));
-  setSpecialInstructions(''); // clear the input field after adding to cart
+  setSpecialInstructions('');
   setIsAdded(true);
 
   setTimeout(() => {
     setIsAdded(false);
   }, 1000);
-}
+};
 
     return (
       <div>
@@ -281,83 +292,96 @@ const handleClick = () => {
               
   {/*checkboxes for the spot*/}
   {pizza.title === "The Spot" && (
-              <>
-                <h3 className={styles.choose}>Customize Your Order</h3>
-                <div className={styles.ingredients}>
-                  <div className={styles.options}>
-                    <div>
-                      <h4 className={styles.choiceOf}>Choice of Meat <span className={styles.required}>(Required)</span>
-                      </h4>
-                      <div className={styles.optionRow} style={{marginRight: '100px'}}>
-                        {pizza.extraOptions.slice(0, 5).map((option) => (
-                          <div className={styles.option} key={option._id}>
-                            <input
-                              type="checkbox"
-                              id={option.text}
-                              name={option.text}
-                              className={styles.checkbox}
-                              onChange={(e) => handleChange(e, option)}
-                              value={option.price}
-                            />
-                            <label htmlFor={option.text}>{option.text}</label>
-                          </div>
-                        ))}
-                      </div>
-                      <h4 className={styles.choiceOf}>Choice of Rice <span className={styles.required}>(Required)</span>
-                      </h4>
-                      <div className={styles.optionRow}>
-                        {pizza.extraOptions.slice(5, 8).map((option) => (
-                          <div className={styles.option} key={option._id}>
-                            <input
-                              type="checkbox"
-                              id={option.text}
-                              name={option.text}
-                              className={styles.checkbox}
-                              onChange={(e) => handleChange(e, option)}
-                              value={option.price}
-                            />
-                            <label htmlFor={option.text}>{option.text}</label>
-                          </div>
-                        ))}
-                      </div>
-                      <h4 className={styles.choiceOf}>Choice of Sauce <span className={styles.required}>(Required)</span>
-                      </h4>
-                      <div className={styles.optionRow}>
-                        {pizza.extraOptions.slice(8, 12).map((option) => (
-                          <div className={styles.option} key={option._id}>
-                            <input
-                              type="checkbox"
-                              id={option.text}
-                              name={option.text}
-                              className={styles.checkbox}
-                              onChange={(e) => handleChange(e, option)}
-                              value={option.price}
-                            />
-                            <label htmlFor={option.text}>{option.text}</label>
-                          </div>
-                        ))}
-                      </div>
-                      <h4 className={styles.choiceOf}>Add-ons <span className={styles.optional}>(Optional)</span></h4>
-                      <div className={styles.optionRow}>
-                        {pizza.extraOptions.slice(12, 18).map((option) => (
-                          <div className={styles.option} key={option._id}>
-                            <input
-                              type="checkbox"
-                              id={option.text}
-                              name={option.text}
-                              className={styles.checkbox}
-                              onChange={(e) => handleChange(e, option)}
-                              value={option.price}
-                            />
-                            <label htmlFor={option.text}>{option.text}</label>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+  <>
+    <h3 className={styles.choose}>Customize Your Order</h3>
+    <div className={styles.ingredients}>
+      <div className={styles.options}>
+        <div>
+          <h4 className={styles.choiceOf}>
+            Choice of Meat <span className={styles.required}>(Required)</span>
+          </h4>
+          <div className={styles.optionRow} style={{ marginRight: '100px' }}>
+            {pizza.extraOptions
+              .slice(0, 5)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
                 </div>
-              </>
-            )}
+              ))}
+          </div>
+          <h4 className={styles.choiceOf}>
+            Choice of Rice <span className={styles.required}>(Required)</span>
+          </h4>
+          <div className={styles.optionRow}>
+            {pizza.extraOptions
+              .slice(5, 8)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
+                </div>
+              ))}
+          </div>
+          <h4 className={styles.choiceOf}>
+            Choice of Sauce <span className={styles.required}>(Required)</span>
+          </h4>
+          <div className={styles.optionRow}>
+            {pizza.extraOptions
+              .slice(8, 12)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                    required // Add required attribute
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
+                </div>
+              ))}
+          </div>
+          <h4 className={styles.choiceOf}>Add-ons <span className={styles.optional}>(Optional)</span></h4>
+          <div className={styles.optionRow}>
+            {pizza.extraOptions
+              .slice(12, 18)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+)}
+
 
  {/*checkboxes for the spot*/}
  {pizza.title === "5 Pc Tenders w/ Fries" && (
