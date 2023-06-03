@@ -319,7 +319,7 @@ const orderListCount = orderList0.length;
                   <h5 className={styles.question}>Confirm Pickup</h5>
                   <button 
                   className={styles.navbarButton}
-                   onClick={() => handleStatus(selectedOrder)}>
+                   >
                     Confirmed
                   </button>
                 
