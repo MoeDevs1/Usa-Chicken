@@ -48,10 +48,8 @@ const Order = ({ order, products }) => {
   //   };
   // }, []);
   
-  if (response.status === 500) {
-    window.location.reload();
-  }
   
+
   function formatPhoneNumber(phoneNumber) {
     const cleaned = ('' + phoneNumber).replace(/\D/g, '');
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);

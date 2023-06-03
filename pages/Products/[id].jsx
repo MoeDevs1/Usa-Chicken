@@ -18,10 +18,6 @@ const [quantity, setQuantity] = useState(1);
 const dispatch = useDispatch();
 
 
-if (response.status === 500) {
-  window.location.reload();
-}
-
 const changePrice = (number) => {
     setPrice(price + number);
 }

@@ -15,6 +15,7 @@ const handler = async (req, res) => {
       res.status(200).json(order);
     } catch (err) {
       res.status(500).json(err);
+      window.location.reload();
     }
   }
   if (method === "PUT") {

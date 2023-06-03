@@ -20,10 +20,6 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const [isNewOrderButtonVisible, setIsNewOrderButtonVisible] = useState(false);
   const [isNewOrderReceived, setIsNewOrderReceived] = useState(false);
 
-
-  if (response.status === 500) {
-    window.location.reload();
-  }
   
   // const playAudioOnNewOrder = () => {
   //   const audioElement = audioRef.current;

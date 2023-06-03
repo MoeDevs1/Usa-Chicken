@@ -17,9 +17,6 @@ export default function Menu({pizzaList, admin}) {
 
   // Inside your app.js or main page script
 
-  if (response.status === 500) {
-    window.location.reload();
-  }
 
   
   const [close, setClose] = useState(true);
