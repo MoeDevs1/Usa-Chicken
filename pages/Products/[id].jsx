@@ -10,31 +10,6 @@ import Link from 'next/link';
 
 
 const Product = ({pizza}) => {
- 
-  const [showNav, setShowNav] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [newFirstName, setNewFirstName] = useState('');
-  const [newLastName, setNewLastName] = useState('');
-  // const [userPoints, setUserPoints] = useState(0);
-  let [points, setPoints] = useState(0);
-
-
-  const totalPoints = 100;
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
 
 const [price, setPrice] = useState(pizza.prices[0] || 0);
 const [size, setSize] = useState(0);
@@ -42,107 +17,6 @@ const [extras, setExtras] = useState([]);
 const [quantity, setQuantity] = useState(1);
 const dispatch = useDispatch()
 ;
-
-
-  const [sessionToken, setSessionToken] = useState(null);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const redirectToOtherAccount = (event) => {
-    event.preventDefault();
-    console.log("Redirecting to other account");
-  };
-
-  const handleSignup = async () => {
-    router.push('/Signup');
-  };
-
-  const redirectToSettings = () => {
-    router.push('/userProfile');
-  };
-
-  
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await axios.get('/api/getUserDetails');
-        if (response.status === 200) {
-          setSessionToken(true);
-          const { firstName, lastName, points} = response.data;
-          setNewFirstName(firstName);
-          setNewLastName(lastName);
-          // setUserPoints(points);
-          setPoints(points);
-        } else {
-          setSessionToken(null);
-        }
-      } catch (error) {
-        console.error('Error fetching user details', error);
-        setSessionToken(null);
-      }
-    };
-
-    fetchUserDetails();
-  }, [sessionToken]);
-
-
-
-  const signOut = async () => {
-    try {
-      let session = null;
-      let response = null;
-  
-      try {
-        session = await axios.get('/api/getUserDetails');
-      } catch (error) {
-        console.error('Error getting session details', error);
-      }
-  
-      try {
-        response = await axios.get('/api/getUserDetails?signout=true');
-      } catch (error) {
-        console.error('Error signing out', error);
-      }
-  
-      if (session && session.data) {
-        await nextAuthSignOut();
-      }
-  
-      if (response && response.status === 200) {
-        setSessionToken(null);
-      } else {
-        console.error('Error signing out');
-      }
-    } catch (error) {
-      console.error('Error signing out', error);
-    }
-  };
-  
-
-
-
-
-  const handleBackgroundClick = (event) => {
-    if (event.target === event.currentTarget) {
-      setShowNav(false);
-      setShowDropdown(false); // Hide the dropdown when clicking away from it
-    } else {
-      setShowNav(false);
-    }
-  };
-
-  const toggleLogin = () => {
-    setShowLogin(!showLogin);
-  };
-
-  const closeLogin = () => {
-    setShowLogin(false);
-  };
-
-
-
 const handleMinusButtonClick = () => {
   if (quantity > 1) {
     setQuantity(quantity - 1);
@@ -370,14 +244,23 @@ const handleClick = () => {
 }
 
     return (
-
-    
-    <div>      
+      <div>
               <Address />
 
       <div className={styles.mainContainer}>
+        
       <div className={styles.scrollContainer}>
+        
         <div className={styles.pageOne}>
+        <div className={styles.quantityContainer2}>
+<h1 className={styles.title}>{pizza.title}</h1>
+
+      <Link href="/menu">
+              <button className={styles.backButton}>X</button>
+            </Link>
+    </div>
+ 
+
           <div className={styles.container}>
        
             <div className={styles.formContainer}>
@@ -397,8 +280,6 @@ const handleClick = () => {
 
               
   {/*checkboxes for the spot*/}
-
-      
   {pizza.title === "The Spot" && (
               <>
                 <h3 className={styles.choose}>Customize Your Order</h3>
@@ -4669,58 +4550,46 @@ const handleClick = () => {
 )}
 
 
-<div className={styles.quantityContainer2}>
-<h1 className={styles.title}>{pizza.title}</h1>
 
-      <Link href="/menu">
-              <button className={styles.backButton}>X</button>
-            </Link>
-    </div>
 
-<div className={styles.quantityContainer}>
-  
-      <button className={styles.sign} onClick={handleMinusButtonClick}>-</button>
-      <input
-        value={quantity}
-        type="number"
-        min={1}
-        max={10}
-        className={styles.quantity}
-        style={{ color: "black" }}
-        readOnly
-      />
 
-      <button className={styles.signs} onClick={handlePlusButtonClick}>+</button>
-      {!sessionToken && (
 
-      <div className={styles.buttonContainer}>
-        <button className={styles.buttonlogin} >
-          {isAdded ? 'Added!' : 'LOGIN TO PURCHASE!'}
-          &nbsp;
-        </button>
 
-      </div>
-         )}
-      {sessionToken && (
 
-      <div className={styles.buttonContainer}>
-        <button className={styles.button} onClick={handleClick}>
-          {isAdded ? 'Added!' : 'ADD TO CART'}
-          &nbsp;
-          <span className={styles.buttonAdd}>+${price}</span>
-        </button>
 
-      </div>
-         )}
-
-    </div>
  
 
     </div>
+
+ 
+<div className={styles.quantityContainer}>
+  
+  <button className={styles.sign} onClick={handleMinusButtonClick}>-</button>
+  <input
+    value={quantity}
+    type="number"
+    min={1}
+    max={10}
+    className={styles.quantity}
+    style={{ color: "black" }}
+    readOnly
+  />
+  <button className={styles.signs} onClick={handlePlusButtonClick}>+</button>
+  <div className={styles.buttonContainer}>
+    <button className={styles.button} onClick={handleClick}>
+      {isAdded ? 'Added!' : 'ADD TO CART'}
+      &nbsp;
+      <span className={styles.buttonAdd}>+${price}</span>
+    </button>
+  </div>
+
+</div>
     </div>
 
     </div>
+    
     </div>
+    
     </div>
 
 

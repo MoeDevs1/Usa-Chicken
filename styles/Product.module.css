@@ -1,13 +1,56 @@
 .pageOne{
   margin-bottom:0px;
-  margin-top: 0px;
+  margin-top: 40px;
   display: flex;
   align-items: center;
 justify-content: center;
+flex-direction: column;
+position: relative;
+
 
   }
 
+ 
 
+  
+
+  .quantityContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 48%;
+    height: 60px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 10px;
+    margin-top: -62px;
+    margin-left: 4px;
+  
+
+  }
+
+  .quantityContainer2 {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+    width: 48%;
+    height: 60px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: -110px;
+    margin-left: 4px;
+    direction: rtl; /* Set the direction to right-to-left */
+    overflow-x: scroll;
+    z-index: 1; /* Set a higher z-index value */
+
+  }
+  
   
   .imgContainer {
     width: 100%;
@@ -24,15 +67,16 @@ justify-content: center;
     /* border-bottom: 10px solid black; */
 
   }
-  
+
   .container {
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 80vh;
+    height: 650px; /* or any height */
     overflow-x: scroll;
-    margin-top: 20px;
-  
+    margin-top: 50px;
+    overflow: auto;
+
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -40,47 +84,16 @@ justify-content: center;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4);
-    position: relative;
-    
+    border-bottom: 2px solid #dbdbdb;
+    border-left: 2px solid #dbdbdb;
+    border-radius: 2px solid #dbdbdb;
+
+
   }
+ 
+
+
   
-  .quantityContainer2 {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 8%;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    position: fixed;
-    border-radius: 10px;
-    border-top: 2px solid #dbdbdb;
-    direction: rtl; /* Set the direction to right-to-left */
-  }
-  
-  
-  .quantityContainer {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 10%;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4), inset 0
-
-
-
-}
-
 
   
   
