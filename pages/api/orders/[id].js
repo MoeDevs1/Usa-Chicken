@@ -14,12 +14,8 @@ const handler = async (req, res) => {
       const order = await Order.findById(id);
       res.status(200).json(order);
     } catch (err) {
-      if (err.response && err.response.status === 500) {
-        // Server error occurred, reload the page
-        window.location.reload();
-      } else {
-        res.status(500).json(err);
-      }      
+      res.status(500).json(err);
+      window.location.reload();
     }
   }
   if (method === "PUT") {
