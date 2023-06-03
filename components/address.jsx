@@ -32,10 +32,19 @@ const Address = () => {
 
   return (
     <div className={styles.navbar}>
-      <div className={styles.selection}>
+      {/* <div className={styles.selection}>
         <FaMapMarkerAlt className={styles.icon} />
         <div className={styles.content}>
           <h4 className={styles.label}>{getAddressText()}</h4>
+        </div>
+      </div> */}
+
+  <div className={styles.selection}>
+        <FaMapMarkerAlt className={styles.icon} />
+        <div className={styles.content}>
+        <a href="https://www.google.com/maps?client=safari&output=search&q=Pickup+at:+990+Elm+St,+Manchester,+NH&entry=mc&sa=X&ved=2ahUKEwjd6IeTkJj_AhXNFlkFHaz3BqEQ0pQJegQIChAB" target="_blank">
+          <h4 className={styles.label}>Pickup at: 990 Elm St, Manchester, NH</h4>
+          </a>
         </div>
       </div>
       <div className={styles.selection}>
