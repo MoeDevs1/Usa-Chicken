@@ -174,6 +174,11 @@ const options = [  {    group: 'meat',    choices: ['Chicken', 'Beef', 'Mixed Me
     choices: ['1. BBQ', '1. Honey Mustard', '1. Buffalo', '1. White Sauce', '1. Ranch', '1. Sweet & Sour', '1. Blue Cheese'],
     extrasToRemove: ['1. BBQ', '1. Honey Mustard', '1. Buffalo', '1. White Sauce', '1. Ranch', '1. Sweet & Sour', '1. Blue Cheese']
   },
+  {
+  group: 'spotAddOns',
+choices: ['Fries on Top +$1.50', 'Half Pita +$1.50', 'One Scoop of Extra Meat +$4.25', 'Double Meat +$8.50', 'Extra White Sauce +$0.67', 'Extra BBQ Sauce +$0.67'],
+extrasToRemove: ['Fries on Top +$1.50', 'Half Pita +$1.50', 'One Scoop of Extra Meat +$4.25', 'Double Meat +$8.50', 'Extra White Sauce +$0.67', 'Extra BBQ Sauce +$0.67']
+  },
 ];
 
 const [originalPrice, setOriginalPrice] = useState(price);
@@ -211,7 +216,17 @@ const handleChange = (e, option) => {
 };
 
 
+const handleAddOnsChange = (e, option) => {
+  const checked = e.target.checked;
 
+  if (checked) {
+    setPrice(prevPrice => parseFloat((prevPrice + parseFloat(option.price)).toFixed(2)));
+    setExtras(prevExtras => [...prevExtras, option]);
+  } else {
+    setPrice(prevPrice => parseFloat((prevPrice - parseFloat(option.price)).toFixed(2)));
+    setExtras(prevExtras => prevExtras.filter(extra => extra._id !== option._id));
+  }
+};
 
 const [specialInstructions, setSpecialInstructions] = useState('');
 
@@ -310,7 +325,7 @@ const handleClick = () => {
               id={option.text}
               name={option.text}
               className={styles.checkbox}
-              onChange={(e) => handleChange(e, option)}
+              onChange={(e) => handleAddOnsChange(e, option)}
               value={option.price}
             />
             <label htmlFor={option.text}>{option.text}</label>
