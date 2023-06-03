@@ -42,28 +42,28 @@ const CustomerOrders = ({ orders, products, admin }) => {
 
   // const audioRef = useRef(null);
 
-  // const fetchOrders = async () => {
-  //   try {
-  //     // Make the API request to fetch the orders
-  //     const response = await axios.get('/api/orders');
-  //     const data = response.data;
+  const fetchOrders = async () => {
+    try {
+      // Make the API request to fetch the orders
+      const response = await axios.get('/api/orders');
+      const data = response.data;
 
-  //     // Check if a new order has arrived
-  //     // const newOrderReceived = data.some((order) => order.status === 0 && !orderList.some((o) => o._id === order._id));
+      // Check if a new order has arrived
+      // const newOrderReceived = data.some((order) => order.status === 0 && !orderList.some((o) => o._id === order._id));
 
-  //     // Update the orderList state with the fetched data
-  //     setOrderList(data);
+      // Update the orderList state with the fetched data
+      setOrderList(data);
 
-  //     // if (newOrderReceived && !isAudioPlaying) {
-  //     //   playAudioOnNewOrder();
-  //     //   setIsNewOrderReceived(true);
-  //     //   setIsNewOrderButtonVisible(true);
-  //     // }
-  //   } catch (error) {
-  //     // Handle any error that occurs during the fetch
-  //     console.error('Error fetching orders:', error);
-  //   }
-  // };
+      // if (newOrderReceived && !isAudioPlaying) {
+      //   playAudioOnNewOrder();
+      //   setIsNewOrderReceived(true);
+      //   setIsNewOrderButtonVisible(true);
+      // }
+    } catch (error) {
+      // Handle any error that occurs during the fetch
+      console.error('Error fetching orders:', error);
+    }
+  };
 
   // const handleNewOrderButtonClicked = () => {
   //   stopAudio();
@@ -71,24 +71,24 @@ const CustomerOrders = ({ orders, products, admin }) => {
   //   setIsNewOrderReceived(false);
   // };
 
-  // const startPolling = () => {
-  //   const intervalId = setInterval(() => {
-  //     fetchOrders(); // Fetch orders at the specified interval
-  //   }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
+  const startPolling = () => {
+    const intervalId = setInterval(() => {
+      fetchOrders(); // Fetch orders at the specified interval
+    }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
 
-  //   // Save the interval ID to a state variable
-  //   setPollingIntervalId(intervalId);
-  // };
+    // Save the interval ID to a state variable
+    setPollingIntervalId(intervalId);
+  };
 
-  // useEffect(() => {
-  //   fetchOrders(); // Fetch orders when the component mounts
-  //   startPolling(); // Start polling for updates
+  useEffect(() => {
+    fetchOrders(); // Fetch orders when the component mounts
+    startPolling(); // Start polling for updates
 
-  //   return () => {
-  //     // Clean up the polling interval when the component unmounts
-  //     clearInterval(pollingIntervalId);
-  //   };
-  // }, []);
+    return () => {
+      // Clean up the polling interval when the component unmounts
+      clearInterval(pollingIntervalId);
+    };
+  }, []);
 
   const formatPhoneNumber = (number) => {
     const cleaned = ('' + number).replace(/\D/g, '');
@@ -133,6 +133,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
 
   const handleStatus = async (id) => {
     console.log('handleStatus function called'); // Add this line
+
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
@@ -319,7 +320,7 @@ const orderListCount = orderList0.length;
                   <h5 className={styles.question}>Confirm Pickup</h5>
                   <button 
                   className={styles.navbarButton}
-                   >
+                   onClick={() => handleStatus(selectedOrder)}>
                     Confirmed
                   </button>
                 
