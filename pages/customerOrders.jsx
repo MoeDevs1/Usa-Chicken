@@ -42,28 +42,28 @@ const CustomerOrders = ({ orders, products, admin }) => {
 
   // const audioRef = useRef(null);
 
-  const fetchOrders = async () => {
-    try {
-      // Make the API request to fetch the orders
-      const response = await axios.get('/api/orders');
-      const data = response.data;
+  // const fetchOrders = async () => {
+  //   try {
+  //     // Make the API request to fetch the orders
+  //     const response = await axios.get('/api/orders');
+  //     const data = response.data;
 
-      // Check if a new order has arrived
-      // const newOrderReceived = data.some((order) => order.status === 0 && !orderList.some((o) => o._id === order._id));
+  //     // Check if a new order has arrived
+  //     // const newOrderReceived = data.some((order) => order.status === 0 && !orderList.some((o) => o._id === order._id));
 
-      // Update the orderList state with the fetched data
-      setOrderList(data);
+  //     // Update the orderList state with the fetched data
+  //     setOrderList(data);
 
-      // if (newOrderReceived && !isAudioPlaying) {
-      //   playAudioOnNewOrder();
-      //   setIsNewOrderReceived(true);
-      //   setIsNewOrderButtonVisible(true);
-      // }
-    } catch (error) {
-      // Handle any error that occurs during the fetch
-      console.error('Error fetching orders:', error);
-    }
-  };
+  //     // if (newOrderReceived && !isAudioPlaying) {
+  //     //   playAudioOnNewOrder();
+  //     //   setIsNewOrderReceived(true);
+  //     //   setIsNewOrderButtonVisible(true);
+  //     // }
+  //   } catch (error) {
+  //     // Handle any error that occurs during the fetch
+  //     console.error('Error fetching orders:', error);
+  //   }
+  // };
 
   // const handleNewOrderButtonClicked = () => {
   //   stopAudio();
