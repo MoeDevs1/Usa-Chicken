@@ -122,7 +122,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(0)}>
+        <div className={statusClass(1)}>
           <Image src="/img/bake.png" width={30} height={30} alt="" />
           <span className={styles.text}>Preparing</span>
           <div className={styles.checkedIcon}>
@@ -135,7 +135,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(0)}>
+        <div className={statusClass(2)}>
           <Image src="/img/almostDone.png" width={30} height={30} alt="" />
           <span className={styles.text}>Ready</span>
           <div className={styles.checkedIcon}>
@@ -148,7 +148,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(0)}>
+        <div className={statusClass(1)}>
           <Image src="/img/delivered.png" width={30} height={30} alt="" />
           <span className={styles.text}>Picked Up!</span>
 <div className={`${styles.checkedIcon} ${styles.checkedIcons}`}>
