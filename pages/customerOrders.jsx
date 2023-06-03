@@ -134,7 +134,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const handleStatus = async (id) => {
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+    const baseUrl =  "https://usa-chicken-final-version.vercel.app/"; 
 
     try {
       const res = await axios.put(`${baseUrl}/api/orders/` + id, {
@@ -158,7 +158,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const handleStatusNo = async (id) => {
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
-    const baseUrl =  "https://usa-chicken-final-version.vercel.app/"; 
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
 
     try {
       const res = await axios.put(`${baseUrl}/api/orders/` + id, {
