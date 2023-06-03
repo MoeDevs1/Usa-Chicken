@@ -230,21 +230,48 @@ const [specialInstructions, setSpecialInstructions] = useState('');
 
 const [isAdded, setIsAdded] = useState(false);
 
-
 const handleClick = () => {
-  // Check if all required options have been selected
-  const requiredOptions = options.filter((group) => group.group === 'meat' || group.group === 'rice' || group.group === 'sauce');
-  const hasRequiredOptions = requiredOptions.every((group) =>
-    group.choices.some((choice) => extras.some((extra) => extra.text === choice))
-  );
-
-  if (!hasRequiredOptions) {
-    alert('Please choose an option from the required choices');
-    return;
-  }
-
   const extrasArray = specialInstructions ? [...extras, specialInstructions] : extras;
   const product = { ...pizza, extras: extrasArray, price, quantity };
+
+  if (pizza.title === "The Spot") {
+    // Validation for "The Spot" product
+    const requiredOptions = options.filter((group) => group.group === 'meat' || group.group === 'rice' || group.group === 'sauce');
+    const hasRequiredOptions = requiredOptions.every((group) =>
+      group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+    );
+
+    if (!hasRequiredOptions) {
+      alert('Please choose an option from the required choices');
+      return;
+    }
+  } 
+  
+  if (pizza.title === "5 Pc Tenders w/ Fries") {
+    // Validation for "5 Pc Tenders w/ Fries" product
+    const requiredOptions = options.filter((group) => group.group === 'chicken sauce');
+    const hasRequiredOptions = requiredOptions.every((group) =>
+      group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+    );
+
+    if (!hasRequiredOptions) {
+      alert('Please choose an option from the required choices');
+      return;
+    }
+  }
+  if (pizza.title === "Beef Patty") {
+    // Validation for "5 Pc Tenders w/ Fries" product
+    const requiredOptions = options.filter((group) => group.group === 'cheese');
+    const hasRequiredOptions = requiredOptions.every((group) =>
+      group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+    );
+
+    if (!hasRequiredOptions) {
+      alert('Please choose an option from the required choices');
+      return;
+    }
+  }
+
   dispatch(addProduct(product));
   setSpecialInstructions('');
   setIsAdded(true);
