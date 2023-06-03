@@ -18,7 +18,38 @@ const [quantity, setQuantity] = useState(1);
 const dispatch = useDispatch();
 
 
+// Inside your app.js or main page script
 
+// Function to check if the response has a 500 status code
+function isInternalServerError(response) {
+  return response.status === 500;
+}
+
+// Function to reload the page after a delay
+function reloadPageWithDelay(delay) {
+  setTimeout(function() {
+    window.location.reload();
+  }, delay);
+}
+
+// Make an AJAX request or fetch API call
+fetch('your-api-endpoint')
+  .then(function(response) {
+    // Check if the response has a 500 status code
+    if (isInternalServerError(response)) {
+      // Reload the page after a delay (e.g., 3 seconds)
+      reloadPageWithDelay(3000);
+    } else {
+      // Process the successful response
+      // ...
+    }
+  })
+  .catch(function(error) {
+    // Handle network or other errors
+    console.error(error);
+  });
+
+  
 const changePrice = (number) => {
     setPrice(price + number);
 }
