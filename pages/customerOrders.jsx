@@ -106,6 +106,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
         const response = await axios.get('/api/getUserDetails');
         const { firstName, lastName, phone, email, points } = response.data;
         setFirstName(firstName);
+        setLastName(lastName);
         setEmailState(email);
         setPhone(phone);
         setRawPhone(phone); // Set the raw phone number
