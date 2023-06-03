@@ -158,7 +158,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const handleStatusNo = async (id) => {
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+    const baseUrl =  "https://usa-chicken-final-version.vercel.app/"; 
 
     try {
       const res = await axios.put(`${baseUrl}/api/orders/` + id, {
@@ -318,7 +318,7 @@ const orderListCount = orderList0.length;
                   <h5 className={styles.question}>Confirm Pickup</h5>
                   <button 
                   className={styles.navbarButton}
-                   onClick={() => handleStatus("647adca252a5b50db02e5e28")}>
+                   onClick={() => handleStatus(selectedOrder)}>
                     Confirmed
                   </button>
                 
