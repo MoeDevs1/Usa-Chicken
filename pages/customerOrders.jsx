@@ -71,24 +71,24 @@ const CustomerOrders = ({ orders, products, admin }) => {
   //   setIsNewOrderReceived(false);
   // };
 
-  const startPolling = () => {
-    const intervalId = setInterval(() => {
-      fetchOrders(); // Fetch orders at the specified interval
-    }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
+  // const startPolling = () => {
+  //   const intervalId = setInterval(() => {
+  //     fetchOrders(); // Fetch orders at the specified interval
+  //   }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
 
-    // Save the interval ID to a state variable
-    setPollingIntervalId(intervalId);
-  };
+  //   // Save the interval ID to a state variable
+  //   setPollingIntervalId(intervalId);
+  // };
 
-  useEffect(() => {
-    fetchOrders(); // Fetch orders when the component mounts
-    startPolling(); // Start polling for updates
+  // useEffect(() => {
+  //   fetchOrders(); // Fetch orders when the component mounts
+  //   startPolling(); // Start polling for updates
 
-    return () => {
-      // Clean up the polling interval when the component unmounts
-      clearInterval(pollingIntervalId);
-    };
-  }, []);
+  //   return () => {
+  //     // Clean up the polling interval when the component unmounts
+  //     clearInterval(pollingIntervalId);
+  //   };
+  // }, []);
 
   const formatPhoneNumber = (number) => {
     const cleaned = ('' + number).replace(/\D/g, '');
@@ -133,7 +133,27 @@ const CustomerOrders = ({ orders, products, admin }) => {
 
   const handleStatus = async (id) => {
     console.log('handleStatus function called'); // Add this line
+    const item = orderList.find((order) => order._id === id);
+    const currentStatus = item.status;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
+
+    try {
+      const res = await axios.put(`${baseUrl}/api/orders/` + id, {
+        status: currentStatus + 1,
+      });
   
+      if (currentStatus === 4) {
+        await axios.delete(`${baseUrl}/api/orders/` + id);
+        setOrderList(orderList.filter((order) => order._id !== id));
+      } else {
+        setOrderList([
+          res.data,
+          ...orderList.filter((order) => order._id !== id),
+        ]);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleStatusNo = async (id) => {
