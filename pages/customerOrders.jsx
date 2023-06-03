@@ -133,27 +133,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
 
   const handleStatus = async (id) => {
     console.log('handleStatus function called'); // Add this line
-    const item = orderList.find((order) => order._id === id);
-    const currentStatus = item.status;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
-
-    try {
-      const res = await axios.put(`${baseUrl}/api/orders/` + id, {
-        status: currentStatus + 1,
-      });
   
-      if (currentStatus === 4) {
-        await axios.delete(`${baseUrl}/api/orders/` + id);
-        setOrderList(orderList.filter((order) => order._id !== id));
-      } else {
-        setOrderList([
-          res.data,
-          ...orderList.filter((order) => order._id !== id),
-        ]);
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleStatusNo = async (id) => {
