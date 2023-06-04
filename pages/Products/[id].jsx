@@ -6,17 +6,112 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import Address from '@/components/address'; // import the Address component
+import Login from '@/components/logComp'; // import the Address component
 import Link from 'next/link';
 
+import { AiOutlineMinus } from 'react-icons/ai';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const Product = ({pizza}) => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false); // Add this line
 
 const [price, setPrice] = useState(pizza.prices[0] || 0);
 const [size, setSize] = useState(0);
 const [extras, setExtras] = useState([]);
-const [quantity, setQuantity] = useState(1);
 const dispatch = useDispatch()
+
 ;
+const [sessionToken, setSessionToken] = useState(null);
+const [quantity, setQuantity] = useState(1);
+
+
+const [showNav, setShowNav] = useState(false);
+const [showDropdown, setShowDropdown] = useState(false);
+const [showLogin, setShowLogin] = useState(false);
+const [newFirstName, setNewFirstName] = useState('');
+const [newLastName, setNewLastName] = useState('');
+const [isLoading, setIsLoading] = useState(false);
+
+const LoadingSpinner = () => (
+  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+);
+
+
+
+
+const toggleDropdown = () => {
+  setShowDropdown(!showDropdown);
+};
+
+const redirectToOtherAccount = (event) => {
+  event.preventDefault();
+  console.log("Redirecting to other account");
+};
+
+const handleSignup = async () => {
+  setIsLoading(true);
+  router.push('/Signup');
+};
+
+
+const redirectToSettings = () => {
+  router.push('/userProfile');
+};
+
+
+useEffect(() => {
+  const fetchUserDetails = async () => {
+    try {
+      const response = await axios.get('/api/getUserDetails');
+      if (response.status === 200) {
+        setSessionToken(true);
+        const { firstName, lastName } = response.data;
+        setNewFirstName(firstName);
+        setNewLastName(lastName);
+      } else {
+        setSessionToken(null);
+      }
+    } catch (error) {
+      console.error('Error fetching user details', error);
+      setSessionToken(null);
+    }
+  };
+
+  fetchUserDetails();
+}, [sessionToken]);
+
+
+
+
+
+
+
+
+
+
+
+
+const handleBackgroundClick = (event) => {
+  if (event.target === event.currentTarget) {
+    setShowNav(false);
+    setShowDropdown(false); // Hide the dropdown when clicking away from it
+  } else {
+    setShowNav(false);
+  }
+};
+
+const toggleLogin = () => {
+  setShowLogin(!showLogin);
+};
+
+const closeLogin = () => {
+  setShowLogin(false);
+};
+
+
+
 const handleMinusButtonClick = () => {
   if (quantity > 1) {
     setQuantity(quantity - 1);
@@ -41,6 +136,8 @@ const handleSize = (sizeIndex)=> {
     setSize(sizeIndex);
     changePrice(difference)
 };
+
+
 
 const [previousOption, setPreviousOption] = useState("");
 
@@ -281,6 +378,7 @@ const handleClick = () => {
   }, 1000);
 };
 
+
     return (
       <div>
               <Address />
@@ -306,12 +404,12 @@ const handleClick = () => {
               <div className={styles.imgContainer}>
                 
               <Image
+              
   src={pizza.img}
-  width={600}
-  height={600}
-  objectFit="contain"
-  alt=""
-  style={{ border: '2px solid red', borderRadius: '30px' }}
+  className={styles.imgg}
+    width={450}
+    height={250}
+    alt=""
 />
               </div>
               </div>
@@ -399,7 +497,7 @@ const handleClick = () => {
                     onChange={(e) => handleChange(e, option)}
                     value={option.price}
                   />
-                  <label htmlFor={option.text}>{option.text}</label>
+                  <label  className={styles.optionse} htmlFor={option.tsext}>{option.text}</label>
                 </div>
               ))}
           </div>
@@ -519,7 +617,7 @@ const handleClick = () => {
       className={styles.checkbox}
       onChange={(e) => handleChange(e, option)}
       />
-            <label htmlFor={option.text}>{option.text}</label>
+            <label htmlFor={option.text}>{option.label}</label>
           </div>
         ))}
       </div>
@@ -4615,7 +4713,8 @@ const handleClick = () => {
  
 <div className={styles.quantityContainer}>
   
-  <button className={styles.sign} onClick={handleMinusButtonClick}>-</button>
+  <button className={styles.sign} onClick={handleMinusButtonClick}>      <AiOutlinePlus />
+</button>
   <input
     value={quantity}
     type="number"
@@ -4624,14 +4723,36 @@ const handleClick = () => {
     className={styles.quantity}
     style={{ color: "black" }}
     readOnly
+    
   />
-  <button className={styles.signs} onClick={handlePlusButtonClick}>+</button>
+  <button className={styles.signs} onClick={handlePlusButtonClick}>      <AiOutlineMinus />
+  
+</button>
+
   <div className={styles.buttonContainer}>
+    
+  {sessionToken && (
+
     <button className={styles.button} onClick={handleClick}>
+      
       {isAdded ? 'Added!' : 'ADD TO CART'}
       &nbsp;
-      <span className={styles.buttonAdd}>+${price}</span>
+      <span className={styles.buttonAdd}>+ ${price}</span>
     </button>
+)}
+  {!sessionToken && (
+
+<div>
+      <button className={styles.buttonlogin} onClick={() => setIsLoginOpen(true)}>
+        {isAdded ? 'Added!' : 'Login To Purchase'}
+        &nbsp;
+        <span className={styles.buttonAdd}></span>
+      </button>
+
+      {isLoginOpen && <Login closeLogin={() => setIsLoginOpen(false)} />} {/* Add this line */}
+    </div>
+    
+)}
   </div>
 
 </div>

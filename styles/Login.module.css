@@ -362,9 +362,9 @@ transition: all 0.3s ease-in-out;
 .rememberPasswordCheckbox:checked::before {
 content: '\2714';
 position: absolute;
-top: -3px;
+top: -0px;
 left: -1px;
-font-size: 16px;
+font-size: 36px;
 color: #fff;
 }
 

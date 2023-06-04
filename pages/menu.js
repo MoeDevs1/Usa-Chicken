@@ -66,16 +66,16 @@ export default function Menu({ pizzaList, admin }) {
  
   return (
     <div className={styles.container} suppressHydrationWarning={true}>
-        <title>USA Chicken and Biscuits</title>
-        <meta name="description" content="Best Chicken Restraunt in New Hampshire" />
-        <link rel="icon" href="/favicon.ico" />
+      <title>USA Chicken and Biscuits</title>
+      <meta name="description" content="Best Chicken Restaurant in New Hampshire" />
+      <link rel="icon" href="/favicon.ico" />
       <div>
         <Address />
       </div>
       <div>
         <div className={styles.wholeContainer}>
           <h3 className={styles.menuPhoneTitle}>Menu</h3>
-
+  
           <ul className={`${styles.listContainer} ${styles.scrollContainer}`} ref={sidebarRef}>
             <li className={styles.listTitle}>
               <h3>Menu</h3>
@@ -84,101 +84,101 @@ export default function Menu({ pizzaList, admin }) {
               id="popular-itemss"
               className={`${styles.listItem} ${highlighted === 'popular-items' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('popular-items') }}
-              style={{ color: "black" }}
             >
-              <h3 className={styles.listerss}>Popular Items</h3>
+              <h3 className={`${styles.listerss} ${highlighted === 'popular-items' ? styles.highlightedText : ''}`}>Popular Items</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'sandwiches' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('sandwiches') }}
             >
-              <h3 className={`${styles.listers} ${styles.listersSecond}`}>Sandwiches &amp; Subs</h3>
+              <h3 className={`${styles.listers} ${styles.listersSecond} ${highlighted === 'sandwiches' ? styles.highlightedText : ''}`}>Sandwiches &amp; Subs</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'halfapintsauces' ? styles.highlighted : ''}`}
               onClick={(e) => { scrollToSection('halfapintsauces') }}
             >
-              <h3 className={`${styles.listers} ${styles.listersThird}`}>Half a Pint Sauces</h3>
+              <h3 className={`${styles.listers} ${styles.listersThird} ${highlighted === 'halfapintsauces' ? styles.highlightedText : ''}`}>Half a Pint Sauces</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'partywings' ? styles.highlighted : ''}`}
               onClick={(e) => {scrollToSection('partywings') }}
             >
-              <h3 className={styles.listers}>Party Wings</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'partywings' ? styles.highlightedText : ''}`}>Party Wings</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'chickenonly' ? styles.highlighted : ''}`}
               onClick={(e) => {scrollToSection('chickenonly') }}
             >
-              <h3 className={styles.listers}>Chicken Only</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'chickenonly' ? styles.highlightedText : ''}`}>Chicken Only</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'chickenwithside' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('chickenwithside') }}
             >
-              <h3 className={styles.listers}>Chicken with Side</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'chickenwithside' ? styles.highlightedText : ''}`}>Chicken with Side</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'chickencombo' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('chickencombo') }}
             >
-              <h3 className={styles.listers}>Chicken Combo</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'chickencombo' ? styles.highlightedText : ''}`}>Chicken Combo</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'chickentenders' ? styles.highlighted : ''}`}
-              onClick={(e) => { scrollToSection('chickentenders') }}
+              onClick={(e) => {scrollToSection('chickentenders') }}
             >
-              <h3 className={styles.listers}>Chicken Tenders</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'chickentenders' ? styles.highlightedText : ''}`}>Chicken Tenders</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'seafood' ? styles.highlighted : ''}`}
-              onClick={(e) => { scrollToSection('seafood') }}
+              onClick={(e) => {scrollToSection('seafood') }}
             >
-              <h3 id="sidess" className={styles.listers}>Seafood</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'seafood' ? styles.highlightedText : ''}`}>Seafood</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'freshsalad' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('freshsalad') }}
             >
-              <h3 className={styles.listers}>Fresh Salad</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'freshsalad' ? styles.highlightedText : ''}`}>Fresh Salad</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'wraps' ? styles.highlighted : ''}`}
-              onClick={(e) => { scrollToSection('wraps') }}
+              onClick={(e) => {scrollToSection('wraps') }}
             >
-              <h3 className={styles.listers}>Wraps</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'wraps' ? styles.highlightedText : ''}`}>Wraps</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'sides' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('sides') }}
             >
-              <h3 className={styles.listers}>Sides</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'sides' ? styles.highlightedText : ''}`}>Sides</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'thespot' ? styles.highlighted : ''}`}
               onClick={(e) => { scrollToSection('thespot') }}
             >
-              <h3 className={styles.listers}>The Spot</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'thespot' ? styles.highlightedText : ''}`}>The Spot</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'chickennuggets' ? styles.highlighted : ''}`}
               onClick={(e) => { scrollToSection('chickennuggets') }}
             >
-              <h3 className={styles.listers}>Chicken Nuggets</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'chickennuggets' ? styles.highlightedText : ''}`}>Chicken Nuggets</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'desserts' ? styles.highlighted : ''}`}
               onClick={(e) => {  scrollToSection('desserts') }}
             >
-              <h3 className={styles.listers}>Desserts</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'desserts' ? styles.highlightedText : ''}`}>Desserts</h3>
             </li>
             <li
               className={`${styles.listItem} ${highlighted === 'beverages' ? styles.highlighted : ''}`}
               onClick={(e) => { scrollToSection('beverages') }}
             >
-              <h3 className={styles.listers}>Beverages</h3>
+              <h3 className={`${styles.listers} ${highlighted === 'beverages' ? styles.highlightedText : ''}`}>Beverages</h3>
             </li>
           </ul>
+  
 
           <div className={styles.pizzaListContainer} id="pizzaListContainer">
             {/* Title made for every categories and splitting up categories using slice method which goes into array */}

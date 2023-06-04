@@ -1,6 +1,6 @@
 .pageOne{
-  margin-bottom:0px;
-  margin-top: 40px;
+  margin-bottom:20px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
 justify-content: center;
@@ -10,6 +10,11 @@ position: relative;
 
   }
 
+
+
+
+
+  
  
 
   
@@ -19,7 +24,7 @@ position: relative;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 48%;
+    width: 33%;
     height: 60px;
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -27,6 +32,9 @@ position: relative;
     border-radius: 10px;
     margin-top: -62px;
     margin-left: 4px;
+    border-top: 1px solid rgb(241, 242, 241); /* Added border style and green color */
+    padding-top: 10px;
+    padding-right: 50px;
   
 
   }
@@ -37,33 +45,34 @@ position: relative;
 
     align-items: center;
     justify-content: center;
-    width: 48%;
-    height: 60px;
+    width: 33%;
+    height: 75px;
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     position: relative;
     border-radius: 10px;
-    margin-bottom: -110px;
+    margin-bottom: -85px;
     margin-left: 4px;
-    direction: rtl; /* Set the direction to right-to-left */
-    overflow-x: scroll;
     z-index: 1; /* Set a higher z-index value */
 
   }
   
   
   .imgContainer {
-    width: 100%;
-    height: 300px;
-    margin-top: -20px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    
+  width:100%;
+margin-left: -8px;
+  height: 50%;
+margin-top: 130px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: -20px;
+    /* border-bottom: 10px solid black; */
+
+  }
+  
+  .imgg {
+border-radius: 10px;
     /* border-bottom: 10px solid black; */
 
   }
@@ -71,11 +80,17 @@ position: relative;
   .container {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 35%;
     height: 650px; /* or any height */
     overflow-x: scroll;
     margin-top: 50px;
-    overflow: auto;
+    overflow: auto;  font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.3s ease;
+    margin-top: 10px;
+    padding-left: 10px;
 
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -106,39 +121,19 @@ position: relative;
       right: 0;
     }
   
-    .optional{
-      right: 0;
-    }
+   
     
     .backButton{
 
-margin-left: 800%;
-color: red;
+margin-left: 80%;
+color: #da002c;
+background-color: #ccc;
+margin-bottom: 5px;
 
       
       }
 
       
-      .sign {
-        height: 25px;
-        width: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-        margin-right: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-        background-color: #f4eeee;
-        color: #8d8989;
-        font-size: 34px;
-        border: rgb(111, 111, 111) solid 3px;
-        padding-bottom: 8px;
-        margin-left: 120px;
-    
-    
-      }
-
       
     .formContainer {
     display: flex;
@@ -146,14 +141,7 @@ color: red;
     margin-top: 20px;
     }
     
-    .price{
-    color: green;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    text-align: center;
-    }
-    
+   
     .sizes{
     width: 40%;
     display: flex;
@@ -161,41 +149,11 @@ color: red;
     margin-bottom: 20px;
     }
     .size{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+  
     }
     
-    .size:nth-child(2){
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    }
-    
-    .size:nth-child(3){
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    }
-    
-    .number{
-    position: absolute;
-    top: -5px;
-    right: -20px;
-    background-color: black;
-    color: white;
-    font-size: 12px;
-    padding: 0 5px;
-    border-radius: 10px;
-    }
-    
+ 
+
     .ingredients{
     display: flex;
     margin-bottom: 30px;
@@ -205,12 +163,12 @@ color: red;
     .optionRow {
     gap: 20px;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     font-size: 14px;
     font-family: "Open Sans", sans-serif;
     color: #1e1e1e;
     letter-spacing: 1.5px;
-    
+    font-weight:600;
     
     }
   
@@ -221,54 +179,57 @@ color: red;
       justify-content: center;
       font-size: 18px;
       font-family: "Open Sans", sans-serif;
-      font-weight: bold;
       text-transform: uppercase;
-      color: #1e1e1e;
+      color: #434343;
       letter-spacing: 1.5px;
+      margin-bottom: 76px;
       
     }
     
-    .option {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 20px;
-    font-family: "Open Sans", sans-serif;
-    color: #1e1e1e;
-    letter-spacing: 2px;
-    
-    }
+
     
   /* Hide default checkbox appearance */
   .checkbox {
-    margin-left: 25px;
 
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
-  }
-  
-  /* Create custom checkbox appearance */
-  .checkbox::before {
-    content: '';
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 25px;
+    margin-right: 10px;
     width: 15px;
     height: 15px;
-    border: 1px solid black;
-    background-color: white;
-    margin-right: 10px;
-    border-radius: 50%;
-  
+    vertical-align: top;
+    border: 2px solid #ccc;
+    margin-bottom: 25px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    border-radius: 50%; /* Make it a circle */
+
+
+
   }
-  
   .checkbox:checked::before {
-    content: '✓';
-    color: rgb(244, 239, 239);
-    background-color: rgb(193, 188, 188);
-    margin: 2px; /* Create white margin inside the black circle */
-    width: 18px;
-    height: 18px;
-  }
+    content: '\2714';
+    position: absolute;
+    top: -5px;
+    left: -0px;
+    font-size:17px;
+    color: #fff;
+    
+    }
+
+
+    
+    .checkbox:checked {
+      border-color: #1E90FF;
+      background-color: #1E90FF;
+      }
+      
+      .rememberPasswordCheckbox {
+      color: rgb(156, 155, 155);
+      }
+      
   
   
  
@@ -279,7 +240,7 @@ color: red;
 
   
   .quantity:hover {
-    background-color: #eaeaea;
+    background-color: #ffffff;
   }
   
   .quantity:focus {
@@ -289,50 +250,42 @@ color: red;
   }
   
   .quantity::placeholder {
-    color: #999;
+    color: #ff0000;
   }
   
   
-.img{
-
-  border-radius: 30px;
-}
 
   .button{
-    margin-top: -1px;
-margin-left: 5px;
-    width:200px;
-    margin-right: 25px;
-    height: 45px;
-    background-color: red;
- 
-    border-radius: 25px;
-    font-family: "Open Sans", sans-serif;
-    color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 120%;
+    height: 40px;
+    color: #fff;
+    border: #007bff;
+    transition: all 0.3s ease-in-out;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    background-color: #ca1035;
+    text-transform: uppercase;
     font-weight: bold;
-    border: none;
-    font-size: 14px;
-    letter-spacing: 1px;
+    cursor: pointer;
+    margin-left: 20px;
   }
 
   .buttonlogin {
-    margin-top: -1px;
-    margin-left: 5px;
-    width: 200px;
-    margin-right: 25px;
-    height: 45px;
-    color:#007bff ;
-    border-radius: 25px;
-    font-family: "Open Sans", sans-serif;
-    color:#ffffff ;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 120%;
+    height: 40px;
+    color: #fff;
+    border: #007bff;
+    transition: all 0.3s ease-in-out;
+    filter: grayscale(0%) contrast(130%) brightness(110%);
+    text-transform: uppercase;
     font-weight: bold;
-  background-color:      #1b5990 ;
+    cursor: pointer;
+    margin-left: 20px;
+  background-color:      #626465 ;
   ;
-    border: none;
-    font-size: 14px;
-    letter-spacing: 1px;
-    cursor: not-allowed; /* Change cursor to indicate unclickable */
-    opacity: 0.6; /* Reduce opacity to make it look disabled */
   }
   
   .button:hover{
@@ -340,29 +293,14 @@ margin-left: 5px;
     cursor: pointer;
   }
 
-  .signs {
-    height: 25px;
-    width: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: #e9e9e9;
-    color: #8d8989;
-    font-size: 28px;
-    border: rgb(111, 111, 111) solid 3px;
-  }
-  
+
 
   
-  .signs:hover {
-    background-color: #ccc;
+  .sign:hover,.signs:hover {
+    background-color: #ffffff;
   }
 
-  .signs:focus {
+  .sign.signs:focus {
     outline: none;
   }
 
@@ -394,17 +332,23 @@ margin-left: 5px;
       height: 200px;
     }
   
+
+    .optionse{
+
+      color: #fb4646;
+      font-weight: 700;
+    }
   
     .desc{
       text-align: center;
       margin-left: 25px;
       margin-right: 25px;
-      margin-top: 65px;
+      margin-top: 50px;
       padding-bottom: 20px; /* Adjust this value to change the amount of space */
       color: rgb(90, 101, 108);
       font-weight: bolder;
       letter-spacing: 1px;
-      margin-bottom: -15px;
+      margin-bottom: -92px;
       /* Updated text color */
       font-family: "Montserrat", sans-serif;   
        font-size: 13px;
@@ -412,22 +356,89 @@ margin-left: 5px;
   
     }        
     .choiceOf{
-      font-size: 14px;
+      font-size: 17px;
       font-family: "Open Sans", sans-serif;
       font-weight: bold;
-      color: #007bff;
+      color: #056ddd;
+      font-weight: bolder;
       margin-left: 25px;
 
       letter-spacing: 1.5px;
+      margin-bottom: 15px;
+      margin-top: -40px;
     }
     
         
+  .quantityContainer {
+  display: flex;
+  align-items: center;
+}
+
+
+.sign {
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10%;
+    color: #007bff;
+background-color: #007bff;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #007bff;
+    color: #0e0d0d;
+    font-size: 18px;
+    border: rgb(111, 111, 111) solid 3px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  
+  
+
+}
+
  
-  
+
+.signs{
+
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 10px;
+margin-right: 10px;
+border-radius: 10%;
+color: #007bff;
+background-color: #007bff;
+cursor: pointer;
+background-color: #ffffff;
+color: #0e0d0d;
+font-size: 18px;
+border: rgb(111, 111, 111) solid 3px;
+background-color: #FFFFFF;
+box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.quantity {
+  border: 2px solid rgb(208, 206, 206); /* Added border style and green color */
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  width: 50px;
+  height: 35px;
+  text-align: center;
+  font-size: 18px;
+
+}
+
     
   
     
-    
+.quantity::-webkit-inner-spin-button,
+.quantity::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
   .title{
     /* margin-top: -50px; */
     text-align: center;
@@ -438,6 +449,7 @@ margin-left: 5px;
     font-size: 30px;
    
     letter-spacing: 2px;
+    padding-bottom: 5px;
   
   
   
@@ -491,19 +503,7 @@ margin-left: 5px;
 
   .quantityContainer2{
 
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 8%;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    position: fixed;
-    border-radius: 10px;
-    border-top: 2px solid #dbdbdb; /* Nice green outline color */
-  
+width: 100%;
   }
 
 
