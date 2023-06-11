@@ -135,6 +135,28 @@ if (points > 100){
   const handleSignup = async () => {
     router.push('/Signup');
   };
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('/api/getUserDetails');
+        if (response.status === 200) {
+          setSessionToken(true);
+          const { firstName, lastName, points} = response.data;
+          setNewFirstName(firstName);
+          setNewLastName(lastName);
+          // setUserPoints(points);
+          setPoints(points);
+        } else {
+          setSessionToken(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user details', error);
+        setSessionToken(null);
+      }
+    };
+
+    fetchUserDetails();
+  }, [sessionToken]);
 
   const redirectToSettings = () => {
     router.push('/userProfile');
@@ -232,6 +254,7 @@ if (points > 100){
   }, []);
 
 
+  
   
 
   return (
@@ -393,7 +416,6 @@ styles={buildStyles({
 
     
           <Link href="/menu">
-           <button className={styles.signupButton2}>Redeem</button>
            </Link>
 
 

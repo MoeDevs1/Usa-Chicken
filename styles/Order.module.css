@@ -329,7 +329,6 @@
   border: none;
   padding: 12px 24px;
   font-size: 18px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 30px;
   width: 280px;
@@ -340,7 +339,7 @@
   text-align: center;
 }
 
-.checkoutButton:hover {
+/* .checkoutButton:hover {
   background-color: #0056b3;
 }
 
@@ -350,7 +349,7 @@
 
 .checkoutButton:focus {
   outline: none;
-}
+} */
 
 @media (max-width: 600px) {
   .tracker {

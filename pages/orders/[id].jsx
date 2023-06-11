@@ -1,67 +1,16 @@
-import styles from "../../styles/Order.module.css";
-import Image from "next/image";
-import axios from "axios";
-import { AiOutlineCreditCard } from "react-icons/ai";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Image from 'next/image';
+import { AiOutlineCreditCard } from 'react-icons/ai';
 import { formatPhoneNumber } from 'libphonenumber-js';
-import { useEffect, useState} from "react";
-import { Route, Router } from "react-router-dom";
-import { useRouter } from 'next/router';
-
+import styles from '../../styles/Order.module.css';
 
 const Order = ({ order, products }) => {
-  const status = order.status;
+  const [status, setStatus] = useState(order.status);
   const [phone, setPhone] = useState('');
   const [rawPhone, setRawPhone] = useState('');
   const [pollingIntervalId, setPollingIntervalId] = useState(null);
-  // const router = useRouter();
-  // const [reloadPage, setReloadPage] = useState(false);
-
-  // useEffect(() => {
-  //   if (order.status === 1 && !reloadPage) {
-  //     setReloadPage(true);
-  //   }
-  // }, [order.status]);
   
-  // useEffect(() => {
-  //   if (reloadPage) {
-  //     setTimeout(() => {
-  //       window.location.reload();
-  //       setReloadPage(false);
-  //     }, 5000);
-  //   }
-  // }, [reloadPage]);
-
-  // const [statuss, setStatus] = useState(0);
-
-  // useEffect(() => {
-  //   const timer1 = setTimeout(() => {
-  //     setStatus(1);
-  //   }, 60000); // 1 minute
-
-  //   const timer2 = setTimeout(() => {
-  //     setStatus(2);
-  //   }, 120000); // 2 minutes
-
-  //   return () => {
-  //     clearTimeout(timer1);
-  //     clearTimeout(timer2);
-  //   };
-  // }, []);
-  
-  
-
-  function formatPhoneNumber(phoneNumber) {
-    const cleaned = ('' + phoneNumber).replace(/\D/g, '');
-    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-    }
-    return phoneNumber;
-  }
-  
-  const formattedPhoneNumber = formatPhoneNumber(order.method);
-
-
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -78,30 +27,55 @@ const Order = ({ order, products }) => {
         console.error('Error fetching user details', error);
       }
     };
-
-
-  let newNum = 0;
-
-  function changeNewNum() {
-    setTimeout(() => {
-      newNum = 1;
-      console.log("newNum has changed to 1");
-    }, 1000); // 5 minutes in milliseconds
-  }
-
-  
-    changeNewNum();
     fetchUserDetails();
   }, []);
 
-  
+  function formatPhoneNumber(phoneNumber) {
+    const cleaned = ('' + phoneNumber).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    }
+    return phoneNumber;
+  }
+
+  let statusName = "";
+  const formattedPhoneNumber = formatPhoneNumber(order.method);
+
+  if(status === 0){
+    statusName = "Preparing";
+  }
+  else {
+    statusName = "Done";
+
+  }
+  useEffect(() => {
+    if (order.status === 0) {
+      const intervalId = setTimeout(() => {
+        updateOrderStatus(order._id, order.status + 1);
+      }, 10000); // Increment status after 10 seconds
+
+      return () => {
+        clearTimeout(intervalId); // Cleanup the timeout when the component unmounts or the status changes
+      };
+    }
+  }, [order.status]);
+
+
+  const updateOrderStatus = async (orderId, newStatus) => {
+    try {
+      await axios.put(`/api/orders/${orderId}`, { status: newStatus });
+      // Update the order status locally if needed
+    } catch (error) {
+      console.error('Error updating order status', error);
+    }
+  };
 
   const statusClass = (index) => {
     if (index - status < 1) return styles.done;
     if (index - status === 1) return styles.inProgress;
     if (index - status > 1) return styles.undone;
   };
-
 
   return (
     <div className={styles.newContainer}>
@@ -137,7 +111,7 @@ const Order = ({ order, products }) => {
             />
           </div>
         </div>
-        <div className={statusClass(2)}>
+        <div className={statusClass(1)}>
           <Image src="/img/almostDone.png" width={30} height={30} alt="" />
           <span className={styles.text}>Ready</span>
           <div className={styles.checkedIcon}>
@@ -252,9 +226,9 @@ const Order = ({ order, products }) => {
        
         
           <div className={styles.wholePriceArea}>
-          <button className={styles.checkoutButton}>
-            Paid
-          </button>
+          <b className={styles.checkoutButton}>
+           {statusName}
+          </b>
           </div>
 </div>
 

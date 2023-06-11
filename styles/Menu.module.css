@@ -14,7 +14,16 @@
     margin-left: 10px;
     overflow-y: scroll;
   } 
-  
+  /* In your Menu.module.css or any other CSS file */
+.highlighted {
+  /* Add your desired styles to highlight the data section */
+
+  /* Add any other styles you need */
+}
+.highlightedText {
+  color: #007BFF; /* Replace "red" with the desired text color */
+}
+
   
   .listTitle{
     font-size: 30px;
@@ -152,10 +161,10 @@
     }
     .listContainer {
       width: 100%;
+      margin-bottom: -130px;
       background-color: white;
       list-style-type: none;
       margin-left: 0;
-      overflow-y: scroll;
       display: flex;
       flex-wrap: nowrap;
       overflow-x: scroll;
@@ -189,7 +198,6 @@
     }
   
     .popularItems{
-      margin-top: 50px;
     }
     
     .featuredContainer {
@@ -222,7 +230,20 @@
       margin-bottom: -20px;
       margin-top: -2px;
       display: inline;
+      position: sticky;
+      z-index: 100;
     }
+
+    .titleS {
+      text-align: left;
+      margin-top: 60px;
+      margin-bottom: -80px;
+      font-family: "Arial Black";
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+    }
+  
     
     .listerss{
       margin-left: -40px;
@@ -248,13 +269,7 @@
       border-radius: 10px;
     }
     
-    .titleS {
-      text-align: left;
-      margin-top: 60px;
-      margin-bottom: -80px;
-      font-family: "Arial Black";
-      font-size: 12px;
-    }
+   
   
     
     .address{

@@ -6,16 +6,125 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import Address from '@/components/address'; // import the Address component
+import Login from '@/components/logComp'; // import the Address component
 import Link from 'next/link';
 
+import { AiOutlineMinus } from 'react-icons/ai';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const Product = ({pizza}) => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false); // Add this line
 
 const [price, setPrice] = useState(pizza.prices[0] || 0);
 const [size, setSize] = useState(0);
 const [extras, setExtras] = useState([]);
+const dispatch = useDispatch()
+
+;
+const [sessionToken, setSessionToken] = useState(null);
 const [quantity, setQuantity] = useState(1);
-const dispatch = useDispatch();
+
+
+const [showNav, setShowNav] = useState(false);
+const [showDropdown, setShowDropdown] = useState(false);
+const [showLogin, setShowLogin] = useState(false);
+const [newFirstName, setNewFirstName] = useState('');
+const [newLastName, setNewLastName] = useState('');
+const [isLoading, setIsLoading] = useState(false);
+
+const LoadingSpinner = () => (
+  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+);
+
+
+
+
+const toggleDropdown = () => {
+  setShowDropdown(!showDropdown);
+};
+
+const redirectToOtherAccount = (event) => {
+  event.preventDefault();
+  console.log("Redirecting to other account");
+};
+
+const handleSignup = async () => {
+  setIsLoading(true);
+  router.push('/Signup');
+};
+
+
+const redirectToSettings = () => {
+  router.push('/userProfile');
+};
+
+
+useEffect(() => {
+  const fetchUserDetails = async () => {
+    try {
+      const response = await axios.get('/api/getUserDetails');
+      if (response.status === 200) {
+        setSessionToken(true);
+        const { firstName, lastName } = response.data;
+        setNewFirstName(firstName);
+        setNewLastName(lastName);
+      } else {
+        setSessionToken(null);
+      }
+    } catch (error) {
+      console.error('Error fetching user details', error);
+      setSessionToken(null);
+    }
+  };
+
+  fetchUserDetails();
+}, [sessionToken]);
+
+
+
+
+
+
+
+
+
+
+
+
+const handleBackgroundClick = (event) => {
+  if (event.target === event.currentTarget) {
+    setShowNav(false);
+    setShowDropdown(false); // Hide the dropdown when clicking away from it
+  } else {
+    setShowNav(false);
+  }
+};
+
+const toggleLogin = () => {
+  setShowLogin(!showLogin);
+};
+
+const closeLogin = () => {
+  setShowLogin(false);
+};
+
+
+
+const handleMinusButtonClick = () => {
+  if (quantity > 1) {
+    setQuantity(quantity - 1);
+  }
+};
+
+// Function to handle the plus button click
+const handlePlusButtonClick = () => {
+  if (quantity < 10) {
+    setQuantity(quantity + 1);
+  }
+};
+
 
 
 const changePrice = (number) => {
@@ -27,6 +136,8 @@ const handleSize = (sizeIndex)=> {
     setSize(sizeIndex);
     changePrice(difference)
 };
+
+
 
 const [previousOption, setPreviousOption] = useState("");
 
@@ -173,11 +284,6 @@ const options = [  {    group: 'meat',    choices: ['Chicken', 'Beef', 'Mixed Me
     choices: ['1. BBQ', '1. Honey Mustard', '1. Buffalo', '1. White Sauce', '1. Ranch', '1. Sweet & Sour', '1. Blue Cheese'],
     extrasToRemove: ['1. BBQ', '1. Honey Mustard', '1. Buffalo', '1. White Sauce', '1. Ranch', '1. Sweet & Sour', '1. Blue Cheese']
   },
-  {
-  group: 'spotAddOns',
-choices: ['Fries on Top +$1.50', 'Half Pita +$1.50', 'One Scoop of Extra Meat +$4.25', 'Double Meat +$8.50', 'Extra White Sauce +$0.67', 'Extra BBQ Sauce +$0.67'],
-extrasToRemove: ['Fries on Top +$1.50', 'Half Pita +$1.50', 'One Scoop of Extra Meat +$4.25', 'Double Meat +$8.50', 'Extra White Sauce +$0.67', 'Extra BBQ Sauce +$0.67']
-  },
 ];
 
 const [originalPrice, setOriginalPrice] = useState(price);
@@ -215,127 +321,192 @@ const handleChange = (e, option) => {
 };
 
 
-const handleAddOnsChange = (e, option) => {
-  const checked = e.target.checked;
 
-  if (checked) {
-    setPrice(prevPrice => parseFloat((prevPrice + parseFloat(option.price)).toFixed(2)));
-    setExtras(prevExtras => [...prevExtras, option]);
-  } else {
-    setPrice(prevPrice => parseFloat((prevPrice - parseFloat(option.price)).toFixed(2)));
-    setExtras(prevExtras => prevExtras.filter(extra => extra._id !== option._id));
-  }
-};
 
 const [specialInstructions, setSpecialInstructions] = useState('');
 
 const [isAdded, setIsAdded] = useState(false);
 
-
 const handleClick = () => {
   const extrasArray = specialInstructions ? [...extras, specialInstructions] : extras;
   const product = { ...pizza, extras: extrasArray, price, quantity };
+
+  if (pizza.title === "The Spot") {
+    // Validation for "The Spot" product
+    const requiredOptions = options.filter((group) => group.group === 'meat' || group.group === 'rice' || group.group === 'sauce');
+    const hasRequiredOptions = requiredOptions.every((group) =>
+      group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+    );
+
+    if (!hasRequiredOptions) {
+      alert('Please choose an option from the required choices');
+      return;
+    }
+  } 
+  
+  if (pizza.title === "5 Pc Tenders w/ Fries") {
+    // Validation for "5 Pc Tenders w/ Fries" product
+    const requiredOptions = options.filter((group) => group.group === 'chicken sauce');
+    const hasRequiredOptions = requiredOptions.every((group) =>
+      group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+    );
+
+    if (!hasRequiredOptions) {
+      alert('Please choose an option from the required choices');
+      return;
+    }
+  }
+  if (pizza.title === "Beef Patty") {
+    // Validation for "5 Pc Tenders w/ Fries" product
+    const requiredOptions = options.filter((group) => group.group === 'cheese');
+    const hasRequiredOptions = requiredOptions.every((group) =>
+      group.choices.some((choice) => extras.some((extra) => extra.text === choice))
+    );
+
+    if (!hasRequiredOptions) {
+      alert('Please choose an option from the required choices');
+      return;
+    }
+  }
+
   dispatch(addProduct(product));
-  setSpecialInstructions(''); // clear the input field after adding to cart
+  setSpecialInstructions('');
   setIsAdded(true);
 
   setTimeout(() => {
     setIsAdded(false);
   }, 1000);
-}
+};
+
 
     return (
-      <div className={styles.mainContainer}>  <Address />
-<div className={styles.pageOne}>
-  <div className={styles.container}>
-    <Link href="/menu">
-      <button className={styles.backButton}>X</button>
-    </Link>
-    <div className={styles.formContainer}>
-    <h1 className={styles.title}>{pizza.title}</h1>
-    <p className={styles.desc}>{pizza.desc}</p>
-      <div className={styles.imgContainer}>
-        <Image src={pizza.img} width={500} height={500} objectFit="contain" alt="" />
-      </div>
+      <div>
+              <Address />
+
+      <div className={styles.mainContainer}>
+        
+      <div className={styles.scrollContainer}>
+        
+        <div className={styles.pageOne}>
+        <div className={styles.quantityContainer2}>
+<h1 className={styles.title}>{pizza.title}</h1>
+
+      <Link href="/menu">
+              <button className={styles.backButton}>X</button>
+            </Link>
+    </div>
+ 
+
+          <div className={styles.container}>
+       
+            <div className={styles.formContainer}>
+              <p className={styles.desc}>{pizza.desc}</p>
+              <div className={styles.imgContainer}>
+                
+              <Image
+              
+  src={pizza.img}
+  className={styles.imgg}
+    width={450}
+    height={250}
+    alt=""
+/>
+              </div>
+              </div>
+
+              
   {/*checkboxes for the spot*/}
   {pizza.title === "The Spot" && (
-  <>{/*For the two rows for the must include options and additional options*/}
-<h3 className={styles.choose}>Customize Your Order</h3>
-<div className={styles.ingredients}>
-  <div className={styles.options}>
-    <div>
-      <h4 className={styles.choiceOf} >Choice of Meat <span className={styles.required}>(Required)</span>
-</h4>
-      <div className={styles.optionRow} style={{marginRight: '100px'}}>
-        {pizza.extraOptions.slice(0, 5).map((option) => (
-       <div className={styles.option} key={option._id}>
-      <input
-      type="checkbox"
-      id={option.text}
-      name={option.text}
-      className={styles.checkbox}
-      onChange={(e) => handleChange(e, option)}
-      value={option.price}
-      />
-            <label htmlFor={option.text}>{option.text}</label>
+  <>
+    <h3 className={styles.choose}>Customize Your Order</h3>
+    <div className={styles.ingredients}>
+      <div className={styles.options}>
+        <div>
+          <h4 className={styles.choiceOf}>
+            Choice of Meat <span className={styles.required}>(Required)</span>
+          </h4>
+          <div className={styles.optionRow} style={{ marginRight: '100px' }}>
+            {pizza.extraOptions
+              .slice(0, 5)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
+                </div>
+              ))}
           </div>
-        ))}
-      </div>
-      <h4 className={styles.choiceOf} >Choice of Rice <span className={styles.required}>(Required)</span>
-</h4>
-      <div className={styles.optionRow}>
-        {pizza.extraOptions.slice(5, 8).map((option) => (
-          <div className={styles.option} key={option._id}>
-            <input
-              type="checkbox"
-              id={option.text}
-              name={option.text}
-              className={styles.checkbox}
-              onChange={(e) => handleChange(e, option)}
-              value={option.price}
-            />
-            <label htmlFor={option.text}>{option.text}</label>
+          <h4 className={styles.choiceOf}>
+            Choice of Rice <span className={styles.required}>(Required)</span>
+          </h4>
+          <div className={styles.optionRow}>
+            {pizza.extraOptions
+              .slice(5, 8)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
+                </div>
+              ))}
           </div>
-        ))}
-      </div>
-      <h4 className={styles.choiceOf} >Choice of Sauce <span className={styles.required}>(Required)</span>
-</h4>
-      <div className={styles.optionRow}>
-        {pizza.extraOptions.slice(8, 12).map((option) => (
-          <div className={styles.option} key={option._id}>
-            <input
-              type="checkbox"
-              id={option.text}
-              name={option.text}
-              className={styles.checkbox}
-              onChange={(e) => handleChange(e, option)}
-              value={option.price}
-            />
-            <label htmlFor={option.text}>{option.text}</label>
+          <h4 className={styles.choiceOf}>
+            Choice of Sauce <span className={styles.required}>(Required)</span>
+          </h4>
+          <div className={styles.optionRow}>
+            {pizza.extraOptions
+              .slice(8, 12)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                    required // Add required attribute
+                  />
+                  <label htmlFor={option.text}>{option.text}</label>
+                </div>
+              ))}
           </div>
-        ))}
-      </div>
-      <h4 className={styles.choiceOf} >Add-ons <span className={styles.optional}>(Optional)</span></h4>
-      <div className={styles.optionRow}>
-        {pizza.extraOptions.slice(12, 18).map((option) => (
-          <div className={styles.option} key={option._id}>
-            <input
-              type="checkbox"
-              id={option.text}
-              name={option.text}
-              className={styles.checkbox}
-              onChange={(e) => handleAddOnsChange(e, option)}
-              value={option.price}
-            />
-            <label htmlFor={option.text}>{option.text}</label>
+          <h4 className={styles.choiceOf}>Add-ons <span className={styles.optional}>(Optional)</span></h4>
+          <div className={styles.optionRow}>
+            {pizza.extraOptions
+              .slice(12, 18)
+              .map((option) => (
+                <div className={styles.option} key={option._id}>
+                  <input
+                    type="checkbox"
+                    id={option.text}
+                    name={option.text}
+                    className={styles.checkbox}
+                    onChange={(e) => handleChange(e, option)}
+                    value={option.price}
+                  />
+                  <label  className={styles.optionse} htmlFor={option.tsext}>{option.text}</label>
+                </div>
+              ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</>
+  </>
 )}
+
 
  {/*checkboxes for the spot*/}
  {pizza.title === "5 Pc Tenders w/ Fries" && (
@@ -391,6 +562,7 @@ const handleClick = () => {
           </div>
         ))}
       </div>
+      
     </div>
   </div>
 </div>
@@ -445,7 +617,7 @@ const handleClick = () => {
       className={styles.checkbox}
       onChange={(e) => handleChange(e, option)}
       />
-            <label htmlFor={option.text}>{option.text}</label>
+            <label htmlFor={option.text}>{option.label}</label>
           </div>
         ))}
       </div>
@@ -4526,43 +4698,70 @@ const handleClick = () => {
 </>
 )}
 
-{/* <div className={styles.special}>
-        <label htmlFor="special-instructions">Special Instructions:</label>
-        <input type="text" id="special-instructions" value={specialInstructions} onChange={(e) => setSpecialInstructions(e.target.value)} />
-      </div> */}
 
-    {/*Add to cart button*/}
-    <div className={styles.quantityContainer}>
-    <input
-  onChange={(e) => setQuantity(e.target.value)}
-  type="number"
-  min={1}
-  max={10}
-  defaultValue={1}
-  className={styles.quantity}
-  style={{ color: "black" }}
-  onKeyPress={(e) => {
-    const charCode = e.which ? e.which : e.keyCode;
-    if (charCode >= 48 && charCode <= 57) {
-      e.preventDefault();
-    }
-  }}
-/>
 
-        </div>
-        <div  className={styles.buttonContainer}>
-        <button className={styles.button} onClick={handleClick}>
+
+
+
+
+
+
+ 
+
+    </div>
+
+ 
+<div className={styles.quantityContainer}>
+  
+  <button className={styles.sign} onClick={handleMinusButtonClick}>      <AiOutlinePlus />
+</button>
+  <input
+    value={quantity}
+    type="number"
+    min={1}
+    max={10}
+    className={styles.quantity}
+    style={{ color: "black" }}
+    readOnly
+    
+  />
+  <button className={styles.signs} onClick={handlePlusButtonClick}>      <AiOutlineMinus />
+  
+</button>
+
+  <div className={styles.buttonContainer}>
+    
+  {sessionToken && (
+
+    <button className={styles.button} onClick={handleClick}>
+      
       {isAdded ? 'Added!' : 'ADD TO CART'}
       &nbsp;
-     
-
-      <span className={styles.buttonAdd}>+${price}</span>
+      <span className={styles.buttonAdd}>+ ${price}</span>
     </button>
-        </div>
+)}
+  {!sessionToken && (
+
+<div>
+      <button className={styles.buttonlogin} onClick={() => setIsLoginOpen(true)}>
+        {isAdded ? 'Added!' : 'Login To Purchase'}
+        &nbsp;
+        <span className={styles.buttonAdd}></span>
+      </button>
+
+      {isLoginOpen && <Login closeLogin={() => setIsLoginOpen(false)} />} {/* Add this line */}
+    </div>
+    
+)}
+  </div>
+
+</div>
+    </div>
 
     </div>
+    
     </div>
-    </div>
+    
     </div>
 
 
@@ -4570,11 +4769,8 @@ const handleClick = () => {
 }
 
 export const getServerSideProps = async ({ params }) => {
-
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
-
     const res = await axios.get(
-      `${baseUrl}/api/products/${params.id}`
+      `http://localhost:3000/api/products/${params.id}`
     );
     return {
       props: {

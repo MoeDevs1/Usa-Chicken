@@ -16,60 +16,21 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const [formOpen, setformOpen] = useState(false);
   const [accepting, setAccepting] = useState(false);
   const [pollingIntervalId, setPollingIntervalId] = useState(null);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isNewOrderButtonVisible, setIsNewOrderButtonVisible] = useState(false);
-  const [isNewOrderReceived, setIsNewOrderReceived] = useState(false);
 
-  
-  // const playAudioOnNewOrder = () => {
-  //   const audioElement = audioRef.current;
-  //   audioElement.currentTime = 0; // Reset the audio to the beginning
-  //   audioElement.play();
-  //   setIsAudioPlaying(true);
-
-  //   // Stop the audio after 5 seconds (adjust the duration as needed)
-  //   setTimeout(() => {
-  //     audioElement.pause();
-  //     setIsAudioPlaying(false);
-  //   }, 5000); // 5000 milliseconds (5 seconds)
-  // };
-
-  // const stopAudio = () => {
-  //   const audioElement = audioRef.current;
-  //   audioElement.pause();
-  //   setIsAudioPlaying(false);
-  // };
-
-  // const audioRef = useRef(null);
 
   const fetchOrders = async () => {
     try {
       // Make the API request to fetch the orders
       const response = await axios.get('/api/orders');
       const data = response.data;
-
-      // Check if a new order has arrived
-      // const newOrderReceived = data.some((order) => order.status === 0 && !orderList.some((o) => o._id === order._id));
-
-      // Update the orderList state with the fetched data
       setOrderList(data);
 
-      // if (newOrderReceived && !isAudioPlaying) {
-      //   playAudioOnNewOrder();
-      //   setIsNewOrderReceived(true);
-      //   setIsNewOrderButtonVisible(true);
-      // }
     } catch (error) {
       // Handle any error that occurs during the fetch
       console.error('Error fetching orders:', error);
     }
   };
 
-  // const handleNewOrderButtonClicked = () => {
-  //   stopAudio();
-  //   setIsNewOrderButtonVisible(false);
-  //   setIsNewOrderReceived(false);
-  // };
 
   const startPolling = () => {
     const intervalId = setInterval(() => {
@@ -83,12 +44,13 @@ const CustomerOrders = ({ orders, products, admin }) => {
   useEffect(() => {
     fetchOrders(); // Fetch orders when the component mounts
     startPolling(); // Start polling for updates
-
+  
     return () => {
       // Clean up the polling interval when the component unmounts
       clearInterval(pollingIntervalId);
     };
   }, []);
+  
 
   const formatPhoneNumber = (number) => {
     const cleaned = ('' + number).replace(/\D/g, '');
@@ -176,14 +138,6 @@ const orderListCount = orderList0.length;
 
   return (
     <div className={styles.container}>
-      {/* {orderList.length > 0 && <audio ref={audioRef} src="/ringer.mp3" autoPlay={false} />}
-      
-      <button>
-        Recieved new order
-      </button> */}
-      
-
-{/* <button onClick={playAudio}>Play Background Audio</button>  */}
       <nav className={styles.navbar}>
       </nav>
       <div className={styles.sidebar}>
@@ -193,12 +147,8 @@ const orderListCount = orderList0.length;
         </Link>
         <span className={styles.title}>Orders</span>
 
-        {/* {accepting ? ( */}
         <button className={styles.acceptButton} onClick={() => { setAccepting(false)}}>Accepting</button>
-    {/* // ) : (
-    //   <button className={styles.closedButton} onClick={() => setAccepting(true)}>Closed</button>
-    // )} */}
-
+ 
         </div>
         <div className={styles.topSideBar2}>
         <span className={styles.kitchenTitle}>In The Kitchen</span>        
@@ -309,6 +259,7 @@ const orderListCount = orderList0.length;
                   <h5 className={styles.question}>Confirm Pickup</h5>
                   <button 
                   className={styles.navbarButton}
+
                    onClick={() => handleStatus(selectedOrder)}>
                     Confirmed
                   </button>
@@ -326,8 +277,6 @@ const orderListCount = orderList0.length;
               <button
                 className={styles.navbarButton}
                 onClick={() => {
-                  // const order = orderList.find((order) => order._id === selectedOrder);
-                  // handleStatus(selectedOrder, order.status);
                   setformOpen(true);
                 }}
               >
@@ -338,8 +287,6 @@ const orderListCount = orderList0.length;
           </>
         )}
       </div>
-
-      {/* <audio ref={audioRef} src="/ringer.mp3" />  */}
 
     </div>
   );
