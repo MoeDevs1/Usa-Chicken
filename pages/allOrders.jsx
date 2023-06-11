@@ -100,16 +100,17 @@ const CustomerOrders = ({ orders, products, admin }) => {
   
 
   const handleStatus = async (id, currentStatus) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
     try {
       const res = await axios.put(
-        "http://localhost:3000/api/orders/" + id,
-        {
+        `${baseUrl}/api/orders/`+ id,
+        {  
           status: currentStatus + 1,
         }
       );
 
       if (currentStatus === 3) {
-        await axios.delete("http://localhost:3000/api/orders/" + id);
+        await axios.delete( `${baseUrl}/api/orders/` + id);
         setOrderList(orderList.filter((order) => order._id !== id));
       } else {
         setOrderList([

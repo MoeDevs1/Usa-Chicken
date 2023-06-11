@@ -156,7 +156,7 @@ const formatPhoneNumber = (number) => {
     e.preventDefault();
     setSubmitted(true);
     setLoading(true); // Set loading to true when the update process starts
-
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
     if (newLastName.length < 2 || newLastName.length > 10) {
       setLastNameError(true);
       return;
@@ -171,7 +171,7 @@ const formatPhoneNumber = (number) => {
       setFirstNameError(false);
     }
     try {
-      const response = await axios.post('http://localhost:3000/api/ChangeInfo', {
+      const response = await axios.post(`${baseUrl}/api/ChangeInfo`, {
         oldPassword,
         newPassword,
         confirmPassword,
@@ -226,6 +226,7 @@ const formatPhoneNumber = (number) => {
     e.preventDefault();
     setSubmitted(true);
     setLoading(true); // Set loading to true when the update process starts
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
 
   
     // Check if new password and confirm password match
@@ -236,7 +237,7 @@ const formatPhoneNumber = (number) => {
     }
   
     try {
-      const response = await axios.post('http://localhost:3000/api/ChangeInfo', {
+      const response = await axios.post(`${baseUrl}/api/ChangeInfo`, {
         oldPassword,
         newPassword,
         confirmPassword,

@@ -20,9 +20,10 @@ const Index = ({ orders, products, admin }) => {
   };
 
   const handleDelete = async (id) => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
     console.log(id);
     try {
-      const res = await axios.delete(`http://localhost:3000/api/products/${id}`);
+      const res = await axios.delete(`${baseUrl}/api/products/${id}`);
       setPizzaList((prevList) => prevList.filter((pizza) => pizza._id !== id));
     } catch (err) {
       console.log(err);
