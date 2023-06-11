@@ -142,16 +142,6 @@ const CustomerOrders = ({ orders, products, admin }) => {
       const res = await axios.put(`${baseUrl}/api/orders/` + id, {
         status: currentStatus + 1,
       });
-  
-      if (currentStatus === 4) {
-        await axios.delete(`${baseUrl}/api/orders/` + id);
-        setOrderList(orderList.filter((order) => order._id !== id));
-      } else {
-        setOrderList([
-          res.data,
-          ...orderList.filter((order) => order._id !== id),
-        ]);
-      }
     } catch (err) {
       console.log(err);
     }
