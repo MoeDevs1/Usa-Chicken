@@ -130,22 +130,21 @@ const CustomerOrders = ({ orders, products, admin }) => {
     }
   };
   
-
   const handleStatus = async (id) => {
-    console.log('handleStatus function called'); // Add this line
-
+    console.log('handleStatus function called');
+  
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
-
+  
     try {
-      const res = await axios.put(`${baseUrl}/api/orders/` + id, {
+      const res = await axios.put(`/api/orders/${id}`, {
         status: currentStatus + 1,
       });
     } catch (err) {
       console.log(err);
     }
   };
+  
 
   const handleStatusNo = async (id) => {
     const item = orderList.find((order) => order._id === id);
