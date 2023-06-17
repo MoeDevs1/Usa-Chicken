@@ -29,7 +29,7 @@ const style = { layout: "vertical" };
 const dispatch = useDispatch();
 const router = useRouter();
 const [taxRate, setTaxRate] = useState(0.09); // set tax rate to 8%
-const [selectedTip, setSelectedTip] = useState(null);
+const [selectedTip, setSelectedTip] = useState(0);
 const [selectedPersonalTip, setSelectedPersonalTip] = useState(0);
 const tipAmount = parseFloat(selectedTip) / 100.0 * cart.total;
 let personalTip = parseFloat(selectedPersonalTip);
@@ -63,30 +63,27 @@ useEffect(() => {
     }
   };
 
-    const fetchStoreStatus = async () => {
-      try {
-        const response = await axios.get("/api/stores");
-        const stores = response.data;
-        if (stores.length > 0) {
-          const { status } = stores[0]; // Assuming the status is stored in the first store
-          if (status === 1) {
-            setStoreStatus(1);
-          } else {
-            setStoreStatus(0);
-          }
-        }
-      } catch (error) {
-        // Handle network or other errors
+const fetchStoreStatus = async () => {
+  try {
+    const response = await axios.get("/api/stores");
+    const stores = response.data;
+    if (stores.length > 0) {
+      const { status } = stores[0]; // Assuming the status is stored in the first store
+      if (status === 1) {
+        setStoreStatus(1);
+      } else {
+        setStoreStatus(0);
       }
-    };
+    }
+  } catch (error) {
+    // Handle network or other errors
+  }
+};
 
-  fetchStoreStatus();
+fetchStoreStatus();
 
-  fetchUserDetails();
+fetchUserDetails();
 }, []);
-
-
-
 
 
 let Discount = 0;
@@ -112,8 +109,6 @@ const handleTipClick = (value) => {
   const roundedTipAmount = roundToTwoDecimals(tipAmount);
   setSelectedPersonalTip(roundedTipAmount);
 };
-
-
 
 const getButtonClassName = (value) => {
   const tipPercentage = parseFloat(value) / 100;
@@ -142,6 +137,9 @@ const handlePersonal = (value) => {
 }
 
 
+const isSelected = (value) => {
+  return value === setSelectedTip ? styles.selectedTipButton : "";
+};
 
 function handleKeyPress(event) {
   if (event.key === "-") {
@@ -266,10 +264,10 @@ if ( myTotal < 0) {
       </>
     );
   };
-  
-  // useEffect(() => {
-  //   handleTipClick("30%");
-  // }, []);
+
+   useEffect(() => {
+    handleTipClick("30%");
+  }, []);
   
   return (
 
@@ -397,7 +395,7 @@ if ( myTotal < 0) {
       <div className={styles.lineTotal}></div> {/* add this div for the line */}
       <PayPalScriptProvider
   options={{
-    "client-id": "asd",
+    "client-id": "test",
     components: "buttons",
     currency: "USD",
     intent: "capture", // or intent: "purchase"
@@ -517,12 +515,5 @@ if ( myTotal < 0) {
     
   );
 }
-
-
-
-
-
-
-
 
 
