@@ -92,7 +92,14 @@ export default function Home({ pizzaList }) {
 
   const totalPoints = 100;
 
-
+  if (points === 110 ) {
+    points = 10;
+  }
+  
+  if (points > 110){
+    points = 100;
+  
+  }
 
 const options = {
     strokeWidth: 6,

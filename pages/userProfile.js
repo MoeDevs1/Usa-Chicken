@@ -56,7 +56,11 @@ let [points, setPoints] = useState();
 
 const totalPoints = 100;
 
-if (points > 100){
+if (points === 110 ) {
+  points = 10;
+}
+
+if (points > 110){
   points = 100;
 
 }

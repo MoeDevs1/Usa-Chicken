@@ -177,8 +177,8 @@ const updatePointsInDatabase = async (newPoints) => {
     console.log('Points updated successfully in the database');
 
     // Check if points reach 600, then reset to 0
-    if (newPoints === 600) {
-      await axios.put('/api/updatePoints', { points: 100 });
+    if (newPoints === 100) {
+      await axios.put('/api/updatePoints', { points: 0 });
       console.log('Points reset to 0');
     }
   } catch (error) {
@@ -251,11 +251,11 @@ if ( myTotal < 0) {
                 cart: cartItems,
               });
 
-              if (myTotal > 10) {
-                const newPointsValue = points + 10; // Add 100 points to the existing points value
+              if (myTotal > 10 && points !== 100 && points > 100) {
+                const newPointsValue = points + 10; 
                 updatePointsInDatabase(newPointsValue);
-              }if(myTotal < 10 && points === 100 ){
-                const newPointsValue = points + 10; // Add 100 points to the existing points value
+              }if(points >= 100 ){
+                const newPointsValue = 0; 
                 updatePointsInDatabase(newPointsValue);
               }
             });
@@ -395,7 +395,7 @@ if ( myTotal < 0) {
       <div className={styles.lineTotal}></div> {/* add this div for the line */}
       <PayPalScriptProvider
   options={{
-    "client-id": "test",
+    "client-id": "AZKeTNF7A40u_1SqfsyD0Pe7UkK8-sWdobEgHYd3LYHLqKvO-C-4H6w_Etor_YdSJiyB9CDyR8Q4X7mz",
     components: "buttons",
     currency: "USD",
     intent: "capture", // or intent: "purchase"

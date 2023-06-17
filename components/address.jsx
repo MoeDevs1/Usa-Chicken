@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from "../styles/Address.module.css";
 import { FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import axios from 'axios';
+
 
 const Address = () => {
   const [isAddressChanged, setIsAddressChanged] = useState(false);
@@ -30,6 +32,31 @@ const Address = () => {
   };
 
 
+  const [storeStatus, setStoreStatus] = useState(0);
+
+
+
+useEffect(() => {
+const fetchStoreStatus = async () => {
+  try {
+    const response = await axios.get("/api/stores");
+    const stores = response.data;
+    if (stores.length > 0) {
+      const { status } = stores[0]; // Assuming the status is stored in the first store
+      if (status === 1) {
+        setStoreStatus(1);
+      } else {
+        setStoreStatus(0);
+      }
+    }
+  } catch (error) {
+    // Handle network or other errors
+  }
+};
+
+fetchStoreStatus();
+}, []);
+
   return (
     <div className={styles.navbar}>
       {/* <div className={styles.selection}>
@@ -55,10 +82,16 @@ const Address = () => {
           </p>
         </div>
       </div>
-      {/* <button className={styles.button} onClick={handleClick}>
-        {isAddressChanged ? 'Change back' : 'Change'}
-        {isPhoneChanged}
-      </button> */}
+      
+      <div className={styles.status}>
+      {storeStatus === 1 ? (
+        <h5 className={styles.statusWord}>Open</h5>
+      ): (
+        <h5 className={styles.statusWord}>Closed</h5>
+      )}
+      
+      
+      </div>
     </div>
   );
 };
