@@ -88,7 +88,6 @@ const formatPhoneNumber = (number) => {
         setNewFirstName(firstName);
         setNewLastName(lastName);
         setPoints(points);
-
       } catch (error) {
         console.error('Error fetching user details', error);
       }

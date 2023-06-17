@@ -261,14 +261,11 @@ margin-left: 0px;
   transition: background-color 0.3s;
 }
 
-.tipButton:hover {
-  background-color: #ebebeb;
+.selected {
+  background-color: #007bff;;
+  color: white;
 }
 
-.tipButton.selected {
-  background-color: #333333;
-  color: #ffffff;
-}
 
 .tipContainer{
   gap: 3px;
@@ -309,10 +306,6 @@ text-align: center;
   align-items: center;
   
 
-}
-.selectedTipButton {
-  background-color: #104E8B;
-  color: white;
 }
 
 
@@ -588,6 +581,8 @@ flex-direction: row;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
+  font-family: "Open Sans", sans-serif;
+
 }
 
 .checkoutButton:hover {
@@ -601,6 +596,44 @@ flex-direction: row;
 .checkoutButton:focus {
   outline: none;
 }
+
+
+
+.closedButton {
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.closedMessage {
+  display: flex;
+  font-size: 1.2rem; /* Adjust the size as needed */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.savedCartMessage {
+  display: flex;
+  font-size: 0.8rem; /* Adjust the size as needed */
+  font-weight: normal;
+}
+
+
 .spinner{
   width: 1000px;
 }

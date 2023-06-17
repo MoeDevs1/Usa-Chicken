@@ -14,9 +14,30 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const [firstName, setFirstName] = useState('');
   const status = ["Preparing", "Ready for Pick Up"];
   const [formOpen, setformOpen] = useState(false);
-  const [accepting, setAccepting] = useState(false);
   const [pollingIntervalId, setPollingIntervalId] = useState(null);
 
+  const [storeStatus, setStoreStatus] = useState(0);
+
+  const fetchStoreStatus = async () => {
+    try {
+      const response = await axios.get("/api/stores");
+      const stores = response.data;
+      if (stores.length > 0) {
+        const { status } = stores[0]; // Assuming the status is stored in the first store
+        if (status === 1) {
+          setStoreStatus(1);
+        } else {
+          setStoreStatus(0);
+        }
+      }
+    } catch (error) {
+      // Handle network or other errors
+    }
+  };
+
+  useEffect(() => {
+    fetchStoreStatus();
+  }, []);
 
   const fetchOrders = async () => {
     try {
@@ -35,7 +56,8 @@ const CustomerOrders = ({ orders, products, admin }) => {
   const startPolling = () => {
     const intervalId = setInterval(() => {
       fetchOrders(); // Fetch orders at the specified interval
-    }, 5000); // 5000 milliseconds (5 seconds) interval, adjust as needed
+      fetchStoreStatus();
+    }, 1000); // 5000 milliseconds (5 seconds) interval, adjust as needed
 
     // Save the interval ID to a state variable
     setPollingIntervalId(intervalId);
@@ -82,6 +104,29 @@ const CustomerOrders = ({ orders, products, admin }) => {
   
     fetchUserDetails();
   }, []);
+
+  const updateStoreStatus = async (status) => {
+    try {
+      const response = await fetch("/api/stores", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ location: "manchester", status }),
+      });
+  
+      if (response.ok) {
+        const updatedStore = await response.json();
+        console.log("open");
+      } else {
+        console.log("closed");
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  };
+  
+
   
   const handleOrderClick = (orderId) => {
     if (selectedOrder === orderId) {
@@ -107,7 +152,6 @@ const CustomerOrders = ({ orders, products, admin }) => {
     }
   };
   
-
   const handleStatusNo = async (id) => {
     const item = orderList.find((order) => order._id === id);
     const currentStatus = item.status;
@@ -133,7 +177,7 @@ const CustomerOrders = ({ orders, products, admin }) => {
   };
 
 
-  const orderList0 = orderList.filter((order) => order.status === 0);
+const orderList0 = orderList.filter((order) => order.status === 0);
 const orderListCount = orderList0.length;
 
   return (
@@ -146,9 +190,33 @@ const orderListCount = orderList0.length;
         <span className={styles.backButton}><FaBars className={styles.FaBars}/> </span>
         </Link>
         <span className={styles.title}>Orders</span>
+        
+   {
+     storeStatus === 1? (
+    <button
+      className={styles.acceptButton}
+      onClick={() => {
+        // Make an API call to update the store status to 0
+        updateStoreStatus(0);
+      }}
+    >
+      Accepting
+    </button>
+  ) : (
+    <button
+      className={styles.closedButton}
+      onClick={() => {
+        // Make an API call to update the store status to 1
+        updateStoreStatus(1);
+      }}
+    >
+      Closed
+    </button>
+  )
+}
 
-        <button className={styles.acceptButton} onClick={() => { setAccepting(false)}}>Accepting</button>
- 
+
+
         </div>
         <div className={styles.topSideBar2}>
         <span className={styles.kitchenTitle}>In The Kitchen</span>        
@@ -200,7 +268,6 @@ const orderListCount = orderList0.length;
         </span>
           <span className={styles.details}><span className={styles.header}>Total: </span> ${orderList.find((order) => order._id === selectedOrder).total}</span>
           <span className={styles.details}><span className={styles.header}>Phone: </span> {formatPhoneNumber(orderList.find((order) => order._id === selectedOrder).phone)}</span>
-
         </div>
     ) : null}
 

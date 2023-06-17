@@ -49,17 +49,18 @@ const Order = ({ order, products }) => {
     statusName = "Done";
 
   }
-  useEffect(() => {
-    if (order.status === 0) {
-      const intervalId = setTimeout(() => {
-        updateOrderStatus(order._id, order.status + 1);
-      }, 10000); // Increment status after 10 seconds
+  
+  // useEffect(() => {
+  //   if (order.status === 0) {
+  //     const intervalId = setTimeout(() => {
+  //       updateOrderStatus(order._id, order.status + 1);
+  //     }, 10000);
 
-      return () => {
-        clearTimeout(intervalId); // Cleanup the timeout when the component unmounts or the status changes
-      };
-    }
-  }, [order.status]);
+  //     return () => {
+  //       clearTimeout(intervalId);
+  //     };
+  //   }
+  // }, [order.status]);
 
 
   const updateOrderStatus = async (orderId, newStatus) => {
