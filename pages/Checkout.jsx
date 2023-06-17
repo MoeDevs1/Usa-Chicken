@@ -1,4 +1,3 @@
-
 import styles from '../styles/Checkout.module.css';
 import Image from 'next/image';
 import { BsPaypal } from 'react-icons/bs';
@@ -30,7 +29,7 @@ const style = { layout: "vertical" };
 const dispatch = useDispatch();
 const router = useRouter();
 const [taxRate, setTaxRate] = useState(0.09); // set tax rate to 8%
-const [selectedTip, setSelectedTip] = useState(0);
+const [selectedTip, setSelectedTip] = useState(null);
 const [selectedPersonalTip, setSelectedPersonalTip] = useState(0);
 const tipAmount = parseFloat(selectedTip) / 100.0 * cart.total;
 let personalTip = parseFloat(selectedPersonalTip);
@@ -45,6 +44,8 @@ const [emailState, setEmailState] = useState('');
 const [personalPhone, setpersonalPhone] = useState('');
 const [form, setForm] = useState(false);
 const [clearButton, setClearButton] = useState(true);
+const [storeStatus, setStoreStatus] = useState(0);
+
 
 
 useEffect(() => {
@@ -62,8 +63,31 @@ useEffect(() => {
     }
   };
 
+    const fetchStoreStatus = async () => {
+      try {
+        const response = await axios.get("/api/stores");
+        const stores = response.data;
+        if (stores.length > 0) {
+          const { status } = stores[0]; // Assuming the status is stored in the first store
+          if (status === 1) {
+            setStoreStatus(1);
+          } else {
+            setStoreStatus(0);
+          }
+        }
+      } catch (error) {
+        // Handle network or other errors
+      }
+    };
+
+  fetchStoreStatus();
+
   fetchUserDetails();
 }, []);
+
+
+
+
 
 let Discount = 0;
 if (points === 100) {
@@ -91,6 +115,16 @@ const handleTipClick = (value) => {
 
 
 
+const getButtonClassName = (value) => {
+  const tipPercentage = parseFloat(value) / 100;
+  const tipAmount = tipPercentage * cart.total;
+  const roundedTipAmount = roundToTwoDecimals(tipAmount);
+  
+  return selectedPersonalTip === roundedTipAmount ? `${styles.tipButton} ${styles.selected}` : styles.tipButton;
+};
+
+
+
 const handleCustomTipChange = (event) => {
   const customTip = event.target.value;
   setSelectedPersonalTip(customTip);
@@ -108,9 +142,6 @@ const handlePersonal = (value) => {
 }
 
 
-const isSelected = (value) => {
-  return value === setSelectedTip ? styles.selectedTipButton : "";
-};
 
 function handleKeyPress(event) {
   if (event.key === "-") {
@@ -235,6 +266,10 @@ if ( myTotal < 0) {
       </>
     );
   };
+  
+  // useEffect(() => {
+  //   handleTipClick("30%");
+  // }, []);
   
   return (
 
@@ -362,7 +397,7 @@ if ( myTotal < 0) {
       <div className={styles.lineTotal}></div> {/* add this div for the line */}
       <PayPalScriptProvider
   options={{
-    "client-id": "test",
+    "client-id": "asd",
     components: "buttons",
     currency: "USD",
     intent: "capture", // or intent: "purchase"
@@ -411,21 +446,21 @@ if ( myTotal < 0) {
           <h5 className={styles.tipComment}>Spread the love! Tip your order, it's appreciated!</h5>
           <div className={styles.tipContainer}>
             <button
-              className={`${styles.tipButton} ${isSelected("10%")}`}
+              className={getButtonClassName("10%")}
               onClick={() => handleTipClick("10%")}
             >
               10%
               <div className={styles.tipAmountNum}>${tipAmount10.toFixed(2)}</div>
             </button>
             <button
-              className={`${styles.tipButton} ${isSelected("15%")}`}
+              className={getButtonClassName("15%")}
               onClick={() => handleTipClick("15%")}
             >
               15%
               <div className={styles.tipAmountNum}>${tipAmount15.toFixed(2)}</div>
             </button>
             <button
-              className={`${styles.tipButton} ${isSelected("30%")}`}
+              className={getButtonClassName("30%")}
               onClick={() => handleTipClick("30%")}
             >
               30%
@@ -453,17 +488,24 @@ if ( myTotal < 0) {
             <p>${myTotal.toFixed(2)}</p>
           </div>
           <div className={styles.wholePriceArea}>
-          {myTotal <= 0 ? (
-    <>
-          <button onClick={() => setOpen(false)} className={styles.checkoutButton}>
-            <Link href="/menu">
-            Order Now &nbsp; <span className={styles.buttonSentence}>(order cant be $0)</span>
-            </Link>
-          </button>    </>
-  ) : (
-    <button onClick={() => setOpen(true)} className={styles.checkoutButton}>
+          {storeStatus === 0 ? (
+ <button className={styles.closedButton}>
+
+<span className={styles.closedMessage}>Sorry, we're closed</span>
+<span className={styles.savedCartMessage}>Don't worry! Your cart will be saved so you can checkout later!</span>
+
+</button>
+) : myTotal <= 0 ? (
+  <button onClick={() => setOpen(false)} className={styles.checkoutButton}>
+    <Link href="/menu">
+      Order Now &nbsp; <span className={styles.buttonSentence}>(order can't be $0)</span>
+    </Link>
+  </button>
+) : (
+  <button onClick={() => setOpen(true)} className={styles.checkoutButton}>
     Continue Checkout
-  </button>  )}
+  </button>
+)}
 
           </div>
         </div>
@@ -475,3 +517,12 @@ if ( myTotal < 0) {
     
   );
 }
+
+
+
+
+
+
+
+
+
