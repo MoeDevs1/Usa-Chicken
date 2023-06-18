@@ -631,6 +631,7 @@ flex-direction: row;
   display: flex;
   font-size: 0.8rem; /* Adjust the size as needed */
   font-weight: normal;
+  margin-top: 5px;
 }
 
 
@@ -1053,6 +1054,15 @@ flex-direction: row;
 
   .question{
     text-align: center;
+  }
+
+  
+  .centerButton{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   

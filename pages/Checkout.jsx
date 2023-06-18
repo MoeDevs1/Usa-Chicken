@@ -487,12 +487,14 @@ if ( myTotal < 0) {
           </div>
           <div className={styles.wholePriceArea}>
           {storeStatus === 0 ? (
+            <div className={styles.centerButton}>
  <button className={styles.closedButton}>
 
 <span className={styles.closedMessage}>Sorry, we're closed</span>
+</button>
 <span className={styles.savedCartMessage}>Don't worry! Your cart will be saved so you can checkout later!</span>
 
-</button>
+</div>
 ) : myTotal <= 0 ? (
   <button onClick={() => setOpen(false)} className={styles.checkoutButton}>
     <Link href="/menu">

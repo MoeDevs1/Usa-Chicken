@@ -14,7 +14,8 @@ import { TbPigMoney } from "react-icons/tb";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { Doughnut } from 'react-chartjs-2';
 import { SemiCircle } from 'react-progressbar.js';
-
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const pizzas = [
   {
@@ -100,6 +101,23 @@ export default function Home({ pizzaList }) {
     points = 100;
   
   }
+
+  const [showPage, setShowPage] = useState(true);
+  const [alreadyLoaded, setalreadyLoaded] = useState(true);
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPage(false);
+      setalreadyLoaded(false)
+    }, 3000); // 5 seconds delay
+
+    return () => {
+      clearTimeout(timer); // Clear the timer if the component unmounts before the timeout
+    };
+  }, []);
+
+
 
 const options = {
     strokeWidth: 6,
@@ -273,6 +291,26 @@ if (points > 100){
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {showPage && alreadyLoaded ? (
+
+         <div className={styles.newHome}>
+                      <Image className={styles.loaderPicture} src="/img/Logo.png" alt="" width="300" height="300" />
+          <h1 className={styles.loaderTitle}>Welcome to USA Chicken & Biscuits</h1>
+          <span className={styles.loader}> USA Chicken & Biscuits
+
+                     {/* <Image className={styles.logotop} src="/img/Logo.png" alt="" width="150" height="150" />
+                     <h5 titletop>USA Chicken & Biscuits</h5> */}
+                     </span>
+
+       </div>
+       
+
+
+          ) : (
+
+            <div>
+<Navbar/>
 
       <div className={styles.bannerContainer}>
   <div className={styles.circularContainer}>
@@ -449,8 +487,11 @@ styles={buildStyles({
   </a>
   
 </div>
-
 </div>
+<Footer/>
+</div>
+
+          )}
 
 </div>
 
