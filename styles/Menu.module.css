@@ -1,0 +1,306 @@
+.container{
+  background-color: white;
+  height: 100%;
+  }
+  
+  .wholeContainer {
+    display: flex;
+    height: 800px;
+  }
+  .listContainer{
+    width: 100%;
+    background-color: white;
+    list-style-type: none;
+    margin-left: 10px;
+    overflow-y: scroll;
+  } 
+  /* In your Menu.module.css or any other CSS file */
+.highlighted {
+  /* Add your desired styles to highlight the data section */
+
+  /* Add any other styles you need */
+}
+.highlightedText {
+  color: #007BFF; /* Replace "red" with the desired text color */
+}
+
+  
+  .listTitle{
+    font-size: 30px;
+    font: bolder;
+    text-align: left;
+    margin-top: -35px;
+    margin-bottom: -10px;
+    font-family: "Arial Black";
+  }
+  
+  .pizzaListContainer {
+    background-color: white;
+    margin-left: 200px;
+    position: fixed;
+    max-height: 800px;
+    margin-top: -10px;
+    overflow-y: scroll;
+  }
+  
+  
+  .featuredContainer {
+    position: relative;;
+  }
+  
+  .listItem {
+    font-size: 12px;
+    color: grey;
+    cursor: pointer;
+    font-family: "Arial";
+    font-weight: 900;
+    margin-bottom: 10px;
+  
+  }
+  
+  .listItem:hover{
+    text-decoration: underline;
+  }
+  
+  
+  
+  .buttonContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .button {
+    margin-top: 200px;
+    padding: 1rem 2rem;
+    background-color: #F59E0B;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .titleS {
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: -70px;
+    margin-left: 75px;
+    font-size: 11px;
+
+  
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+  
+    text-transform: uppercase;
+  
+    letter-spacing: 4px;
+    /* Adds 2 pixels of space between letters */
+    color: #007BFF;
+
+  }
+
+  .listTitle{
+    font-weight: 100;
+    color: #007BFF;
+
+ 
+  }
+  
+  .titleS:first-child{
+    margin-top: 0px;
+  }
+  
+  .address{
+    font-size: 12px;
+    margin-top: -20px;
+    margin-bottom: 50px;
+  
+  }
+  
+  .addressss{
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 50px;
+  
+  }
+  
+  .addresss{
+  margin-top: -30px;
+  }
+  
+  .divider{
+    margin-top: -100px;
+  }
+  
+  .dash{
+    color: white;
+  }
+  
+  .dash:first-child{
+    margin-top: 0px;
+  }
+  
+  .menuPhoneTitle{
+    
+    display: none;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .container{
+      background-color: white;
+      height: 100%;
+    }
+    
+    .wholeContainer {
+      display: flex;
+      height: auto;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .listContainer {
+      width: 100%;
+      margin-bottom: -130px;
+      background-color: white;
+      list-style-type: none;
+      margin-left: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+      position: sticky;
+      top: 70px; /* add the height of the .container */
+      z-index: 10; /* higher than the .container */
+    }
+    
+    .listTitle{
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-family: "Arial Black";
+      color: green;
+      position: fixed;
+      margin-top: -100px;
+      display: none;
+    }
+    
+    .pizzaListContainer {
+      background-color: white;
+      margin-left: 12px;
+      position: relative;
+      max-height: none;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      width: 100%;
+      margin-right: 50px;
+    }
+  
+    .popularItems{
+    }
+    
+    .featuredContainer {
+      position: relative;
+    }
+    
+    .listContainer {
+      justify-content: space-between;
+    }
+    
+    .listItem {
+      font-size: 14px;
+      color: grey;
+      cursor: pointer;
+      font-family: "Arial";
+      font-weight: bold;
+      margin-bottom: -0px;
+      text-align: center;
+      white-space: nowrap;
+      padding: 0  10px; /* optional padding to create some space around each item */
+      width: 100%;
+      margin-top: 0px;
+    
+    }
+  
+    .menuPhoneTitle{
+      font-size: 30px;
+      font-family: "Arial Black";
+      font-weight: bold;
+      margin-bottom: -20px;
+      margin-top: -2px;
+      display: inline;
+      position: sticky;
+      z-index: 100;
+    }
+
+    .titleS {
+      text-align: left;
+      margin-top: 60px;
+      margin-bottom: -80px;
+      font-family: "Arial Black";
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    
+    .listerss{
+      margin-left: -40px;
+    }
+  
+  
+    .listItem:hover{
+      text-decoration: underline;
+    }
+    
+    .buttonContainer {
+      position: relative;
+      margin-top: 20px;
+    }
+    
+    .button {
+      margin-top: 20px;
+      padding: 1rem 2rem;
+      background-color: #F59E0B;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    
+   
+  
+    
+    .address{
+      font-size: 12px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .addressss{
+      font-size: 12px;
+      margin-top: 2px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    
+    .addresss{
+      margin-top: -30px;
+    }
+    
+    .divider{
+      margin-top: -50px;
+    }
+    
+    .dash{
+      color: white;
+      margin-top: -100px;
+      margin-bottom: 100px;
+    }
+    
+    .dash:first-child{
+      margin-top: 0px;
+    }
+  }

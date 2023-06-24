@@ -1,0 +1,772 @@
+.blurBackground {
+  position: fixed;
+  margin-left: 205px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px); /* adjust the blur amount as needed */
+  z-index: 10; /* adjust as needed, it should be less than your navbar */
+  background-color: rgba(186, 172, 172, 0.5);
+
+}
+
+.greenLink{
+  display: none;
+}
+.signUpButton3 {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+.signUpButtonP {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+ 
+  outline: none;
+  display: flex;
+  justify-content: center;
+}
+.signUpButton3:hover {
+  background-color: #87CEEB; /* Light blue color */
+  color: #FFFFFF; /* Text color when hovering */
+}
+
+.signUpButton2 {
+  background-color: transparent;
+  color: white; /* Green */
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.loogo {
+  flex: 1;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.signUpButton2:hover {
+  background-color: #45a049;
+}
+
+.container {
+  height: 70px;
+  padding: 0 50px;
+  background-color: #09317d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-family: 'Montserrat';
+  opacity: 1;
+}
+
+.bars{
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+
+
+  color: #007bff;
+}
+.logocontainer{
+  margin-left: 10px;
+  margin-bottom: 14px;
+  margin-top: -20px;
+}
+
+
+
+.iconn{
+  background-color: #09acf2;
+  border-radius: 100%;
+}
+
+.icon2{
+  margin-top: 5px;
+margin-right: 50px;
+}
+
+
+.container {
+  color: red;
+}
+
+  
+.container a:hover {
+  color: #FF1744;
+}
+
+.Loginbutton:hover{
+  /* Add hover styles for 
+  s */
+  filter: grayscale(0%) contrast(150%) brightness(150%); /* Adjust the values as desired */
+  transform: scale(1.1); /* Add a scale effect on hover */
+}
+.signUpButton:hover {
+  /* Add hover styles for buttons */
+  filter: grayscale(0%) contrast(150%) brightness(150%); /* Adjust the values as desired */
+  transform: scale(1.1); /* Add a scale effect on hover */
+}
+
+.container a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+  
+}
+.Loginbutton{
+  border-radius: 5px;
+  margin-bottom: 5px;
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  border: #007bff;
+  transition: all 0.3s ease-in-out;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #ca1035;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+.signUpButton{
+
+  margin-bottom: 5px;
+  margin-left: 6px;
+  width: 90px;
+  height: 40px;
+  filter: grayscale(0%) contrast(130%) brightness(110%);
+  background-color: #007bff;
+  color: #fff;
+  border: #ffffff;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.cost{
+  margin-left: -4px;
+}
+.line0 {
+  height: 5px;
+  width: 104%; /* Adjusted width value */
+  background-color: rgb(255, 252, 252);
+  margin-bottom: -20px;
+  margin-left: -8px;
+  margin-top: 20px;
+}
+.line00 {
+  height: 5px;
+  width: 104%; /* Adjusted width value */
+  background-color: rgb(255, 252, 252);
+  margin-bottom: 2px;
+  margin-left: -8px;
+  margin-top: 20px;
+}
+
+
+.Icone{
+
+display: none;
+}
+
+
+.menuTitle{
+  color: black;
+  margin-top: 50px;
+  font-weight: 200px;
+}
+
+.list.show {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  margin: 0px 0;
+  font-size: 3px;
+}
+
+.listIteme{
+
+  margin: 10px 0px;
+  
+  font-size: 0px;
+  font-weight: bolder;
+}
+.fontstlye{
+  color: green;
+}
+
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.item1 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.item:nth-child(2) {
+  flex: 3;
+}
+
+.item:last-child {
+  justify-content: flex-end;
+}
+
+.callbutton {
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.texts {
+  margin-left: 20px;
+  color: black;
+}
+
+.ButtonContainer{
+}
+
+.settingsItem{
+  display: none;
+}
+
+.texts:first-child {
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: -100px;
+}
+
+.texts:last-child {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cart {
+  position: relative;
+  color: rgb(255, 0, 0);
+
+}
+
+.item{}
+
+.counter {
+  position: absolute;
+  top: 6px;
+  right: -58px;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: black;
+  padding-left: 5px;
+  padding-top: 2px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #87CEEB;
+}
+
+
+
+.cartSeparator {
+  color: rgb(255, 0, 0); /* or any other color you want */
+  opacity: .2;
+  display: none;
+}
+
+.show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  color: black;
+  margin-top: 100px;
+}
+.LoginLink{
+  color: black;
+  margin-right: 20px;
+}
+   
+.menuButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  margin-left: 20px;
+  margin-top: -20px;
+}
+
+.menuButton svg {
+  font-size: 2em; /* Adjust the size as needed */
+}
+
+.head {
+
+  margin-top: -35px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+
+  font-size: 14px;
+  letter-spacing: 2px;
+  
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 108%;
+  height: 545%;
+  left: 13%;
+  z-index: 10;
+  display: none;
+  padding: 30px;
+  padding-left: 8px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.4);
+
+  padding-right: 4px;
+  background-color: #08315c;
+
+}
+
+ .dropdownMenu {
+  display: block;
+}
+
+
+
+.handIcon{
+  margin-left: 5px;
+}
+
+.dropDownTitle1{
+  margin-top: -4px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: white;
+
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: .9.2rem;
+  /* increase font size /
+letter-spacing: 1px; / add letter spacing /
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); / add subtle text shadow */
+}
+
+
+.Title{
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+  align-items: center;
+  color: #0066CC;
+  margin-bottom: 25px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  /* increase font size /
+letter-spacing: 1px; / add letter spacing /
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); / add subtle text shadow */
+}
+
+
+.dropDownTitle3{
+  font-size: 12px;
+
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+
+  text-transform: uppercase;
+  color: #1e1e1e;
+  margin-bottom: 10px;
+  margin-left: 5px;
+
+  letter-spacing: 4px;
+  /* Adds 2 pixelmas of space between letters */
+margin-top: 20px;
+  display: flex;
+  color: #007BFF
+    /* Add this line to set the placeholder text color to red */
+
+    
+}
+.line {
+  height: 2px;
+  width: 105%; /* Adjusted width value */
+  background-color: #d4d4d4;
+  margin-bottom: 20px;
+  margin-left: -8px;
+  margin-top: 20px;
+}
+
+
+.line2{
+  height: 2px;
+  width: 105%; /* Adjusted width value */
+  background-color: #d4d4d4;
+  margin-bottom: 20px;
+  margin-left: -8px;
+  margin-top: 20px;
+
+  }
+.line3{
+    height: 2px;
+    width: 220px;
+    background-color: transparent; /* Updated background-color value */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: -30px;
+  }
+  
+
+  
+
+  
+  .dropdownContainer a {
+    margin-bottom: 6px;
+    color: white;
+    /* Updated text color */
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    margin-left:4px;
+    font-weight:bold;
+    letter-spacing: 2px;
+    text-decoration: none; /* Remove the default underline */
+    
+  }
+  
+  .dropdownContainer a:hover {
+    text-decoration: underline; /* Add underline on hover */
+    color: #ff0000;
+  }
+  
+
+  
+
+  
+
+.divder{
+
+  margin-top: 8px;
+}
+
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.userButton {
+  color: black; /* White text color */
+  background-color: #09317d; /* Primary color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Add rounded corners */
+  padding: 10px 20px; /* Add some padding */
+  font-size: 16px; /* Increase the font size */
+  text-transform: uppercase; /* Convert text to uppercase */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Add smooth transition */
+}
+
+.Icon{
+  height: 14px;
+  width: 14px;
+
+  vertical-align: text-bottom;
+}
+
+
+
+    
+    
+    @media (min-width: 767px) {
+      .list.show {
+        flex-direction: row;
+      }
+
+      .container{
+        padding: 0px;
+      }
+
+  
+
+      .userButton {
+ margin-left: 90px;
+ margin-right: 15px;
+      }
+
+
+    
+      .list {
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .listItem {
+        margin: 0 10px;
+      }
+
+      .listItem {
+        font-size: 18px;
+    font-weight: bold;
+    font-family: "Arial";
+      }
+      
+      .menuButton{
+        display: none;
+      }
+      .menuTitle{
+        display: none;
+      }
+      .listItem img {
+      display: none;
+      }
+      .faIcon{
+        display: none;
+      }
+
+.item1{
+  margin-left: 0px;
+}
+      .ButtonContainer{
+        margin-left: 00px;
+      }
+   
+
+
+      .Loginbutton{
+
+margin-right: 0px;  
+margin-right: 0px;
+margin-left: 50px;
+
+      }
+      .signUpButton{
+      margin-right: 40px;
+      }
+      
+
+    }
+
+    @media (max-width: 766px){
+      
+       .userButton{
+        display: none;
+       }
+      .item1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 455px;
+        margin-left: 5px;
+      }
+      
+
+      .ButtonContainer{
+        display: flex;
+        margin-right: -40px;
+      }
+    
+
+
+      .Loginbutton{
+
+ 
+      
+        width: 55%;
+        height: 40px;
+        display: none;
+      
+      }
+      .signUpButton{
+        width: 80px;
+        height: 40px;
+        margin-top: 20px;
+        margin-right: -40px;
+
+      }
+      
+
+
+    
+      .list {
+        padding: 0;
+        background-color: #08315c;
+        box-shadow: 0 0 90px 1px rgba(0, 0, 0,.4);
+
+        display: none;
+       width: 205px;
+        margin: 0;
+        height: 100%;
+      }
+
+      .item1{
+        display: flex;
+        align-items: center;
+        justify-self: center;
+     
+      }
+      
+      
+
+
+    
+.iconn{
+  display: none;
+}
+
+      .listItem {
+ color: #1e1e1e;
+
+      }
+      
+   
+      .listItem img {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        margin-left: -10px;
+      }
+      .listItem:first-child {
+        color: white;
+      }
+
+      .icon2{
+        margin-left:- 80px;
+ margin-right: -30px;
+      }
+      
+      .closeButton{
+        position: absolute;
+        top: 10px;
+        cursor: pointer;
+
+        right: 10px;   
+        }
+.cart {
+  position: relative;
+  color: rgb(255, 0, 0);
+  margin-top: -20px;
+}
+
+
+.Icone{
+
+  margin-top: 20px;
+  width: 10px;
+  height: 10px;
+  display: initial;
+}
+
+.greenLink{
+      display:initial;
+    }
+    .settingsItem{
+      display: initial;
+    }
+    
+    .listItem {
+      margin: 10px 0;
+      font-size: 80px;
+    }
+    
+    .listIteme{
+    
+      margin: 1px 0;
+      font-size: 60px;
+      font-weight: 100;
+    }
+    .counter{
+
+      position: absolute;
+      top: -8px;
+      right: -58px;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      background-color: black;
+      padding-left: 5px;
+      padding-top: 2px;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #87CEEB;
+    }
+    
+    }
+    
+ 
+    
+    .iteme{
+      margin-top: 30px;
+    }
