@@ -280,7 +280,7 @@ export const getServerSideProps = async (ctx) => {
   let pizzaList = []; // Default value
 
   try {
-    const res = await axios.get("https://usa-chicken.vercel.app/api/products");
+    const res = await axios.get("/api/products");
     pizzaList = res.data; // Set pizzaList to the fetched data on success
   } catch (err) {
     console.error("Error fetching products:", err.message); // Log the error message
