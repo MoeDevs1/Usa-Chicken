@@ -2,13 +2,12 @@ import dbConnect from "@/util/mongo";
 import Users1 from "@/models/Users1";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
-
+import jwt from 'jsonwebtoken';
+import { serialize } from 'cookie';
 dbConnect();
 
 export default async function handler(req, res) {
   const { method } = req;
-
-
 
   if (method === "POST") {
     try {
@@ -36,6 +35,7 @@ export default async function handler(req, res) {
 
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
+
       // Generate a unique userId
       const userId = uuidv4();
 
@@ -49,16 +49,25 @@ export default async function handler(req, res) {
         password: hashedPassword,
       });
 
-      // Return the newly created user
-      const user = {
-        userId: newUser.userId,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        phone: newUser.phone,
-        email: newUser.email,
-      };
+      // Generate a session token
+      const sessionToken = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
+        expiresIn: '1h',
+      });
 
-      res.status(201).json({ success: true, user });
+      // Set session token cookie
+      const sessionCookie = serialize('sessionToken', sessionToken, {
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: false, // change secure attribute for testing
+        path: '/',
+      });
+
+      // Set the session token cookie in the response
+      res.setHeader('Set-Cookie', sessionCookie);
+
+      // Instead of returning user info directly, just send the session token
+      res.status(201).json({ success: true, sessionToken });
+
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
