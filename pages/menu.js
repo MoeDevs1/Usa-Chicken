@@ -269,7 +269,6 @@ export default function Menu({ pizzaList, admin }) {
     </div>
   );
 }
-
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
   let admin = false;
@@ -278,11 +277,18 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
 
-  const res = await axios.get("https://usa-chicken.vercel.app/api/products");
+  let pizzaList = []; // Default value
+
+  try {
+    const res = await axios.get("https://usa-chicken.vercel.app/api/products");
+    pizzaList = res.data; // Set pizzaList to the fetched data on success
+  } catch (err) {
+    console.error("Error fetching products:", err.message); // Log the error message
+  }
 
   return {
     props: {
-      pizzaList: res.data,
+      pizzaList, // This will be an empty array if the request failed
       admin,
     },
   };
