@@ -4770,7 +4770,7 @@ const handleClick = () => {
 
 export const getServerSideProps = async ({ params }) => {
     const res = await axios.get(
-      `https://usa-chicken.vercel.app//api/products/${params.id}`
+      `https://usa-chicken.vercel.app/api/products/${params.id}`
     );
     return {
       props: {
