@@ -1,33 +1,36 @@
-# UsaChicken Store
-Welcome to the UsaChicken Store repository! Inspired by my favorite chicken store in New Hampshire, this application is more than just a digital platform—it's a tribute. I meticulously recreated their entire menu, offering users a dynamic culinary platform where they can order meals, customize choices, earn sign-up rewards, and much more.
+ 
+---
 
-🛠 Technologies Used
+# UsaChicken Store Web Application
 
-Framework: Next.js (React framework)
+Welcome to the UsaChicken Store repository! Born from my admiration for my favorite chicken store in New Hampshire, this project goes beyond the confines of a regular digital platform. Serving as a heartfelt tribute, I have taken great care to replicate their entire menu, granting users an interactive culinary journey where they can effortlessly order meals, fine-tune their choices, accrue sign-up bonuses, and so much more.
 
-Database: MongoDB with Mongoose
+<img width="1435" alt="Screenshot 2023-10-16 at 5 40 35 PM" src="https://github.com/MoeDevs1/Usa-Chicken/assets/120997135/d26435b9-586e-4391-b1c5-3a33a56fb298">
 
-Payment Integration: PayPal
+🌐 **Live**: [UsaChicken Store](https://usa-chicken.vercel.app/) 
+> **Note**: There are some rendering issues currently under resolution. If any challenges arise while accessing the menu or logging in, please refresh the page a couple of times.
 
-📝 Features
+## 🛠 Technologies Used
 
-Online Ordering: User-friendly menu for a delightful ordering experience.
+- **Framework**: Next.js (React framework)
+- **Database**: MongoDB with Mongoose
+- **Payment**: Integrated with PayPal
 
-Owner's Dashboard: Real-time tracking of orders and alerts.
+## 📝 Features
 
-Reward System: Earn points with every sign-up.
+- **Effortless Online Ordering**: Navigate a user-centric menu designed for a seamless ordering experience.
+- **Owner's Dashboard**: Stay updated with real-time order tracking and instant alerts.
+- **Loyalty Reward System**: Accumulate points with every fresh sign-up.
+- **Meal Personalization**: Modify and tailor your meals to resonate with your palate.
 
-Customizable Meals: Tailor your meals to your liking.
+## 🔐 Security
 
-🔐 Security
+- Comprehensive user authentication integrated for both login and sign-up, ensuring a secure user experience.
 
-Integrated user authentication for login and signup.
+## 🤝 Contribute
 
-🤝 Contribute
 
-Feel free to fork this repository, raise issues, or submit Pull Requests. For discussions or queries, use the issue tab.
+Feel free to fork this repository, raise issues, or propose Pull Requests. 
 
-🌐 Check it out 
-
- https://usa-chicken.vercel.app/    <----  Please note: there are some rendering issues currently being addressed. If you encounter any problems viewing the menu or logging in, kindly refresh the page a few times.
+---
 
