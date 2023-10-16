@@ -1,4 +1,5 @@
-#UsaChicken Store
+# UsaChicken Store
+
 Welcome to the UsaChicken Store repository! Inspired by my favorite chicken store in New Hampshire, this application is more than just a digital platform—it's a tribute. I meticulously recreated their entire menu, offering users a dynamic culinary platform where they can order meals, customize choices, earn sign-up rewards, and much more.
 
 🛠 Technologies Used
@@ -15,3 +16,4 @@ Integrated user authentication for login and signup.
 🤝 Contribute
 Feel free to fork this repository, raise issues, or submit Pull Requests. For discussions or queries, use the issue tab.
 
+Check it out: https://usa-chicken.vercel.app/   <----- Please note: there are some rendering issues currently being addressed. If you encounter any problems viewing the menu or logging in, kindly refresh the page a few times.
